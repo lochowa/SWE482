@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 /**
  *
- * @author Andrew Lochow TEST PUSH
+ * @author Andrew Lochow
  */
 public class SQLiteJDBCDriverConnection {
      /**
