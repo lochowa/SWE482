@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.sqlitejdbcdriverconnection;
+package Create_Person_Table;
 
 /**
  *
@@ -22,7 +22,7 @@ public class Create_Person_Table {
      */
     public static void createNewTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:C://sqlite/db/tests.db";
+        String url = "jdbc:sqlite:C://sqlite/db/test.db";
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS person (\n"

@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.sqlitejdbcdriverconnection;
-import java.sql.Connection;
+package Query_Persons;
+
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 /**
  *
  * @author Andrew Lochow
  */
-public class Insert_Person {
-
+public class Query_Persons {
  
     /**
      * Connect to the test.db database
-     *
      * @return the Connection object
      */
     private Connection connect() {
@@ -32,36 +32,35 @@ public class Insert_Person {
         return conn;
     }
  
+    
     /**
-     * Insert a new row into the warehouses table
-     *
-     * @param name
-     * @param notes
+     * select all rows in the warehouses table
      */
-    public void insert(String name, String notes) {
-        String sql = "INSERT INTO person(name,notes) VALUES(?,?)";
- 
+    public void selectAll(){
+        String sql = "SELECT id, name, notes FROM person";
+        
         try (Connection conn = this.connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, name);
-            pstmt.setString(2, notes);
-            pstmt.executeUpdate();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") +  "\t" + 
+                                   rs.getString("name") + "\t" +
+                                   rs.getString("notes"));
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
- 
+    
+   
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
- 
-        Insert_Person app = new Insert_Person();
-        // insert three new rows
-        app.insert("Andrew Lochow", "Surface Owner");
-        app.insert("Michael Barth", "Mineral Owner");
-        app.insert("David Watts", "Deceased");
+        Query_Persons app = new Query_Persons();
+        app.selectAll();
     }
  
-}    
-
+}
