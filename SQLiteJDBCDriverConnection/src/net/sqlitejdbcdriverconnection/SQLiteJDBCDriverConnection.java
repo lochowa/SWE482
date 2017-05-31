@@ -5,12 +5,10 @@
  */
 package net.sqlitejdbcdriverconnection;
  
-import Insert_Person.Insert_Person;
-import Create_Person_Table.Create_Person_Table;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import static Create_Person_Table.Create_Person_Table.createNewTable;
+import Query_Persons.Query_Persons;
 /**
  *
  * @author Andrew Lochow
@@ -46,12 +44,8 @@ public class SQLiteJDBCDriverConnection {
      */
     public static void main(String[] args) {
         connect();
-        Create_Person_Table.createNewTable();
-        Insert_Person app2 = new Insert_Person();
-        // insert three new rows
-        app2.insert("Andrew Lochow", "Surface Owner");
-        app2.insert("Michael Barth", "Mineral Owner");
-        app2.insert("David Watts", "Deceased");
+        Query_Persons app = new Query_Persons();
+        app.selectAll();
         // TODO code application logic here
     }
     
