@@ -9,24 +9,27 @@ package JavaApp.mvccompliant;
  *
  * @author Ubuntu2B
  */
-public class MVCLeasehold {
+public class MVCDocument {
+
     public static void main(String[] args) {
         // TODO code application logic here
-        new MVCLeasehold();
+        new MVCDocument();
     }
-        public MVCLeasehold(){
-            
-        MLeasehold model = new MLeasehold();
-        VLeasehold view = new VLeasehold();
+
+    public MVCDocument() {
+
+        MDocument model = new MDocument();
+        VDocument view = new VDocument();
+
         model.addObserver(view);
-        
-        CLeasehold controller = new CLeasehold();
-        
+
+        CDocument controller = new CDocument();
         controller.addModel(model);
         controller.addView(view);
         //  Initialise Model attribute values.
-        controller.initModel(0, null, null, 0, null, 0, null, false, 0, null, null, null, null, null);
-        
-        view.addController(controller);    
-}
+        controller.initModel(0, null, null, null, 0, 0, 0);
+
+        view.addController(controller);
+
+    }
 }

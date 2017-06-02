@@ -20,7 +20,7 @@ public class MMenu extends java.util.Observable {
 
     }
     
-    void setAction(String command){
+    void setValues(String command){
         this.command = command;
     }
     // Variable Declaration Area:  Do not change.

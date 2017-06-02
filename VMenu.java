@@ -13,12 +13,6 @@ import javax.swing.event.ListSelectionEvent;
  */
 public class VMenu extends JFrame implements java.util.Observer {
 
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("Menu View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
-    }
-
     public static class CloseListener extends WindowAdapter {
 
         @Override
@@ -26,6 +20,13 @@ public class VMenu extends JFrame implements java.util.Observer {
             e.getWindow().setVisible(false);
             System.exit(0);
         }
+    }
+
+    // CloseListener Class Object
+    @Override
+    public void update(Observable obs, Object obj) {
+        // Test Script:  Who called the operation and what did they send?
+        System.out.println("Menu View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
     }
 
     VMenu() {
@@ -52,7 +53,7 @@ public class VMenu extends JFrame implements java.util.Observer {
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         scrollPane = new JScrollPane();
-        scrollPane.setPreferredSize(new Dimension(240,320));
+        scrollPane.setPreferredSize(new Dimension(240, 320));
         _FunctionList = new JList(new SysFeatures().buildList());
         _FunctionList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         _FunctionList.setAutoscrolls(false);

@@ -19,9 +19,10 @@ public class CMenu implements java.awt.event.ActionListener {
         System.out.println("Controller: Received Action Command: " + e.getActionCommand());
         model.incrementValue();
         
-        if (e.getActionCommand().equals("CLOSEWINDOW")) {
-            view.setVisible(false);
+        if(e.getActionCommand().equals("CLOSEWINDOW")){
+            System.exit(0);
         }
+        
         switch (e.getActionCommand()) {
 
             case "PROJECT_CONFIGURATION":
@@ -35,12 +36,12 @@ public class CMenu implements java.awt.event.ActionListener {
 
             case "ADD_PLACEHOLDER_PROPERTY":
                 // TO DO: Connect MVC Function class here.
-                new MVCProperty();
+                new MVCPlaceholder();
                 break;
 
             case "ADD_LEASE":
                 // TO DO: Connect MVC Function class here.
-                new MVCLeasehold();
+                new MVCLease();
                 break;
 
             case "DISTRIBUTE_OWNERSHIP_RTI":
@@ -82,7 +83,7 @@ public class CMenu implements java.awt.event.ActionListener {
     }
     
     void initModel(String command){
-        model.setAction(command);
+        model.setValues(command);
     }
     
 }

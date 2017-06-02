@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import info.clearthought.layout.*;
 import java.util.Observable;
 
 /**
@@ -44,56 +43,53 @@ public class VProperty extends JFrame implements java.util.Observer {
         SAVEPROPERTY,
         CBOTOWNSHIPCHANGE,
         CBORANGECHANGE,
-        CBOSECTIONCHANGE,
         CBOMERIDIANCHANGE,
+        SEARCHPROPERTY,
         CLOSEWINDOW
 
     }
     void addController(ActionListener controller) {
         System.out.println("View: Adding Property Controller");
-        _SaveButton.addActionListener(controller);
+        _SaveProperty.addActionListener(controller);
         _CancelButton.addActionListener(controller);
         _AddMineralOwner.addActionListener(controller);
         _AddSurfaceOwner.addActionListener(controller);
         _cboTownship.addActionListener(controller);
         _cboRange.addActionListener(controller);
-        _cbxBounders.addActionListener(controller);
+        _cbxPropertyBounders.addActionListener(controller);
     }
     
     
-    private void initComponents() {
+       private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner non-commercial license
         dialogPane = new JPanel();
         contentPanel = new JPanel();
-        headerPanel = new JPanel();
-        lblRecordID = new JLabel();
-        _RecordID = new JTextField();
-        headerLegalDescription = new JLabel();
+        lblDBRecordID = new JLabel();
+        _DBRecordID = new JTextField();
         lblParcelID = new JLabel();
         _ParcelID = new JTextField();
+        lblTownship = new JLabel();
+        _cboTownship = new JComboBox();
         lblTaxMapID = new JLabel();
         _TaxMapID = new JTextField();
+        lblRange = new JLabel();
+        _cboRange = new JComboBox();
         lblCounty = new JLabel();
         _County = new JTextField();
+        lblSection = new JLabel();
+        _cboSection = new JComboBox();
         lblState = new JLabel();
         _State = new JTextField();
+        lblMeridian = new JLabel();
+        _cboMeridian = new JComboBox();
         lblAcreage = new JLabel();
         _Acreage = new JTextField();
-        lblTownship = new JLabel();
-        lblRange = new JLabel();
-        lblSection = new JLabel();
-        lblPrincipalMeridian = new JLabel();
-        _cboTownship = new JComboBox();
-        _cboRange = new JComboBox();
-        _cboSection = new JComboBox();
-        _cboPMeridian = new JComboBox();
-        lblLegalDescription = new JLabel();
-        scrollPane = new JScrollPane();
+        lblPropertyDescription = new JLabel();
+        scrollPane1 = new JScrollPane();
         _LegalDescription = new JTextArea();
-        _cbxBounders = new JCheckBox();
+        _cbxPropertyBounders = new JCheckBox();
         boundersPanel = new JPanel();
-//        boundersPanel.setVisible(false);
         lblNorthBounder = new JLabel();
         lblEastBounder = new JLabel();
         lblSouthBounder = new JLabel();
@@ -102,491 +98,349 @@ public class VProperty extends JFrame implements java.util.Observer {
         _EastBounder = new JTextField();
         _SouthBounder = new JTextField();
         _WestBounder = new JTextField();
-        headerSurfaceOwner = new JLabel();
+        _PropertyVerification = new JButton();
+        headerSurfaceOwnership = new JLabel();
         _AddSurfaceOwner = new JButton();
-        surfaceOwnerPanel = new JPanel();
-        lblSOName = new JLabel();
-        _SOName = new JTextField();
-        lblSOAddress = new JLabel();
-        _SOAddress = new JTextField();
-        lblSOCity = new JLabel();
-        _SOCity = new JTextField();
-        lblSOState = new JLabel();
-        _SOState = new JTextField();
-        lblSOZipCode = new JLabel();
-        _SOZipCode = new JTextField();
+        _SurfaceOwnerPane = new JPanel();
         headerMineralOwnership = new JLabel();
         _AddMineralOwner = new JButton();
-        insertMOPanel = new JPanel();
+        _MineralOwnershipPane = new JPanel();
         buttonBar = new JPanel();
-        lblInterestSubtotal = new JLabel();
-        _SaveButton = new JButton();
+        _SaveProperty = new JButton();
         _CancelButton = new JButton();
 
         //======== this ========
-        setType(Window.Type.POPUP);
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setAutoscrolls(true);
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
             {
-                contentPanel.setLayout(null);
+                contentPanel.setLayout(new GridBagLayout());
+                ((GridBagLayout)contentPanel.getLayout()).columnWidths = new int[] {140, 140, 140, 135, 0};
+                ((GridBagLayout)contentPanel.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                ((GridBagLayout)contentPanel.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout)contentPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0E-4};
 
-                //======== headerPanel ========
+                //---- lblDBRecordID ----
+                lblDBRecordID.setText("Record Identification");
+                contentPanel.add(lblDBRecordID, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- _DBRecordID ----
+                _DBRecordID.setAutoscrolls(false);
+                _DBRecordID.setEditable(false);
+                contentPanel.add(_DBRecordID, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- lblParcelID ----
+                lblParcelID.setText("Parcel Number");
+                lblParcelID.setFont(lblParcelID.getFont().deriveFont(lblParcelID.getFont().getSize() + 1f));
+                contentPanel.add(lblParcelID, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- _ParcelID ----
+                _ParcelID.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_ParcelID, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- lblTownship ----
+                lblTownship.setText("Township");
+                lblTownship.setFont(lblTownship.getFont().deriveFont(lblTownship.getFont().getSize() + 1f));
+                contentPanel.add(lblTownship, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 5, 10, 5), 0, 0));
+                _cboTownship.setActionCommand(Actions.CBOTOWNSHIPCHANGE.name());
+                contentPanel.add(_cboTownship, new GridBagConstraints(3, 1, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- lblTaxMapID ----
+                lblTaxMapID.setText("Tax Map Identification");
+                lblTaxMapID.setFont(lblTaxMapID.getFont().deriveFont(lblTaxMapID.getFont().getSize() + 1f));
+                contentPanel.add(lblTaxMapID, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- _TaxMapID ----
+                _TaxMapID.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_TaxMapID, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- lblRange ----
+                lblRange.setText("Range");
+                lblRange.setFont(lblRange.getFont().deriveFont(lblRange.getFont().getSize() + 1f));
+                contentPanel.add(lblRange, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 5, 10, 5), 0, 0));
+                _cboRange.setActionCommand(Actions.CBORANGECHANGE.name());
+                contentPanel.add(_cboRange, new GridBagConstraints(3, 2, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- lblCounty ----
+                lblCounty.setText("County");
+                lblCounty.setFont(lblCounty.getFont().deriveFont(lblCounty.getFont().getSize() + 1f));
+                contentPanel.add(lblCounty, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- _County ----
+                _County.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_County, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- lblSection ----
+                lblSection.setText("Section");
+                lblSection.setFont(lblSection.getFont().deriveFont(lblSection.getFont().getSize() + 1f));
+                contentPanel.add(lblSection, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 5, 10, 5), 0, 0));
+                contentPanel.add(_cboSection, new GridBagConstraints(3, 3, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- lblState ----
+                lblState.setText("State");
+                lblState.setFont(lblState.getFont().deriveFont(lblState.getFont().getSize() + 1f));
+                contentPanel.add(lblState, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- _State ----
+                _State.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_State, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- lblMeridian ----
+                lblMeridian.setText("Principal Meridian");
+                lblMeridian.setFont(lblMeridian.getFont().deriveFont(lblMeridian.getFont().getSize() + 1f));
+                contentPanel.add(lblMeridian, new GridBagConstraints(2, 4, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 5, 10, 5), 0, 0));
+                _cboMeridian.setActionCommand(Actions.CBOMERIDIANCHANGE.name());
+                contentPanel.add(_cboMeridian, new GridBagConstraints(3, 4, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- lblAcreage ----
+                lblAcreage.setText("Acreage");
+                lblAcreage.setFont(lblAcreage.getFont().deriveFont(lblAcreage.getFont().getSize() + 1f));
+                contentPanel.add(lblAcreage, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+                contentPanel.add(_Acreage, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- lblPropertyDescription ----
+                lblPropertyDescription.setText("Property Description:");
+                lblPropertyDescription.setFont(lblPropertyDescription.getFont().deriveFont(lblPropertyDescription.getFont().getSize() + 1f));
+                contentPanel.add(lblPropertyDescription, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //======== scrollPane1 ========
                 {
-                    headerPanel.setLayout(new GridBagLayout());
-                    ((GridBagLayout) headerPanel.getLayout()).columnWidths = new int[]{155, 155, 155, 150, 0};
-                    ((GridBagLayout) headerPanel.getLayout()).rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 120, 0};
-                    ((GridBagLayout) headerPanel.getLayout()).columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0E-4};
-                    ((GridBagLayout) headerPanel.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
-                    //---- lblRecordID ----
-                    lblRecordID.setText("Record Identification");
-                    headerPanel.add(lblRecordID, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _RecordID ----
-                    _RecordID.setEnabled(false);
-                    _RecordID.setAutoscrolls(false);
-                    headerPanel.add(_RecordID, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- headerLegalDescription ----
-                    headerLegalDescription.setText("LEGAL DESCRIPTION");
-                    headerLegalDescription.setFont(headerLegalDescription.getFont().deriveFont(Font.BOLD, headerLegalDescription.getFont().getSize() + 1f));
-                    headerPanel.add(headerLegalDescription, new GridBagConstraints(0, 1, 4, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 0), 0, 0));
-
-                    //---- lblParcelID ----
-                    lblParcelID.setText("Parcel Number");
-                    lblParcelID.setFont(lblParcelID.getFont().deriveFont(lblParcelID.getFont().getSize() + 1f));
-                    headerPanel.add(lblParcelID, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _ParcelID ----
-                    _ParcelID.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _ParcelID.setAutoscrolls(false);
-                    headerPanel.add(_ParcelID, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- lblTaxMapID ----
-                    lblTaxMapID.setText("Tax Map Identification");
-                    lblTaxMapID.setFont(lblTaxMapID.getFont().deriveFont(lblTaxMapID.getFont().getSize() + 1f));
-                    headerPanel.add(lblTaxMapID, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _TaxMapID ----
-                    _TaxMapID.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _TaxMapID.setAutoscrolls(false);
-                    headerPanel.add(_TaxMapID, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- lblCounty ----
-                    lblCounty.setText("County");
-                    lblCounty.setFont(lblCounty.getFont().deriveFont(lblCounty.getFont().getSize() + 1f));
-                    headerPanel.add(lblCounty, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _County ----
-                    _County.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _County.setAutoscrolls(false);
-                    headerPanel.add(_County, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- lblState ----
-                    lblState.setText("State");
-                    lblState.setFont(lblState.getFont().deriveFont(lblState.getFont().getSize() + 1f));
-                    headerPanel.add(lblState, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _State ----
-                    _State.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _State.setAutoscrolls(false);
-                    headerPanel.add(_State, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- lblAcreage ----
-                    lblAcreage.setText("Acreage:");
-                    lblAcreage.setFont(lblAcreage.getFont().deriveFont(lblAcreage.getFont().getSize() + 1f));
-                    headerPanel.add(lblAcreage, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _Acreage ----
-                    _Acreage.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _Acreage.setAutoscrolls(false);
-                    headerPanel.add(_Acreage, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- lblTownship ----
-                    lblTownship.setText("Township");
-                    lblTownship.setFont(lblTownship.getFont().deriveFont(lblTownship.getFont().getSize() + 1f));
-                    headerPanel.add(lblTownship, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- lblRange ----
-                    lblRange.setText("Range:");
-                    lblRange.setFont(lblRange.getFont().deriveFont(lblRange.getFont().getSize() + 1f));
-                    headerPanel.add(lblRange, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- lblSection ----
-                    lblSection.setText("Section:");
-                    lblSection.setFont(lblSection.getFont().deriveFont(lblSection.getFont().getSize() + 1f));
-                    headerPanel.add(lblSection, new GridBagConstraints(2, 7, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- lblPrincipalMeridian ----
-                    lblPrincipalMeridian.setText("Principal Meridian:");
-                    lblPrincipalMeridian.setFont(lblPrincipalMeridian.getFont().deriveFont(lblPrincipalMeridian.getFont().getSize() + 1f));
-                    headerPanel.add(lblPrincipalMeridian, new GridBagConstraints(3, 7, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 0), 0, 0));
-
-                    //---- _cboTownship ----
-                    _cboTownship.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _cboTownship.setActionCommand(Actions.CBOTOWNSHIPCHANGE.name());
-                    headerPanel.add(_cboTownship, new GridBagConstraints(0, 8, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _cboRange ----
-                    _cboRange.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _cboRange.setActionCommand(Actions.CBORANGECHANGE.name());
-                    headerPanel.add(_cboRange, new GridBagConstraints(1, 8, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _cboSection ----
-                    _cboSection.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _cboSection.setActionCommand(Actions.CBOSECTIONCHANGE.name());
-                    headerPanel.add(_cboSection, new GridBagConstraints(2, 8, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _cboPMeridian ----
-                    _cboPMeridian.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _cboPMeridian.setActionCommand(Actions.CBOMERIDIANCHANGE.name());
-                    headerPanel.add(_cboPMeridian, new GridBagConstraints(3, 8, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 0), 0, 0));
-
-                    //---- lblLegalDescription ----
-                    lblLegalDescription.setText("Property Description:");
-                    lblLegalDescription.setFont(lblLegalDescription.getFont().deriveFont(lblLegalDescription.getFont().getSize() + 1f));
-                    headerPanel.add(lblLegalDescription, new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //======== scrollPane ========
-                    {
-
-                        //---- _LegalDescription ----
-                        _LegalDescription.setMinimumSize(new Dimension(4, 67));
-                        _LegalDescription.setPreferredSize(new Dimension(4, 67));
-                        _LegalDescription.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _LegalDescription.setAutoscrolls(false);
-                        _LegalDescription.setLineWrap(true);
-                        _LegalDescription.setWrapStyleWord(true);
-                        scrollPane.setViewportView(_LegalDescription);
-                    }
-                    headerPanel.add(scrollPane, new GridBagConstraints(0, 10, 4, 3, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 0), 0, 0));
-
-                    //---- _cbxBounders ----
-                    _cbxBounders.setText("Property Bounders");
-                    _cbxBounders.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    _cbxBounders.setActionCommand("addPropertyBounders");
-                    headerPanel.add(_cbxBounders, new GridBagConstraints(0, 13, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //======== boundersPanel ========
-                    {
-                        boundersPanel.setLayout(new TableLayout(new double[][]{
-                            {TableLayout.FILL, TableLayout.FILL, TableLayout.FILL, TableLayout.FILL},
-                            {TableLayout.PREFERRED, TableLayout.PREFERRED}}));
-                        ((TableLayout) boundersPanel.getLayout()).setHGap(5);
-                        ((TableLayout) boundersPanel.getLayout()).setVGap(5);
-
-                        //---- lblNorthBounder ----
-                        lblNorthBounder.setText("North Bounder");
-                        boundersPanel.add(lblNorthBounder, new TableLayoutConstraints(0, 0, 0, 0, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
-
-                        //---- lblEastBounder ----
-                        lblEastBounder.setText("East Bounder");
-                        boundersPanel.add(lblEastBounder, new TableLayoutConstraints(1, 0, 1, 0, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
-
-                        //---- lblSouthBounder ----
-                        lblSouthBounder.setText("South Bounder");
-                        boundersPanel.add(lblSouthBounder, new TableLayoutConstraints(2, 0, 2, 0, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
-
-                        //---- lblWestBounder ----
-                        lblWestBounder.setText("West Bounder");
-                        boundersPanel.add(lblWestBounder, new TableLayoutConstraints(3, 0, 3, 0, TableLayoutConstraints.CENTER, TableLayoutConstraints.FULL));
-
-                        //---- _NorthBounder ----
-                        _NorthBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _NorthBounder.setAutoscrolls(false);
-                        boundersPanel.add(_NorthBounder, new TableLayoutConstraints(0, 1, 0, 1, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
-
-                        //---- _EastBounder ----
-                        _EastBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _EastBounder.setAutoscrolls(false);
-                        boundersPanel.add(_EastBounder, new TableLayoutConstraints(1, 1, 1, 1, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
-
-                        //---- _SouthBounder ----
-                        _SouthBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _SouthBounder.setAutoscrolls(false);
-                        boundersPanel.add(_SouthBounder, new TableLayoutConstraints(2, 1, 2, 1, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
-
-                        //---- _WestBounder ----
-                        _WestBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _WestBounder.setAutoscrolls(false);
-                        boundersPanel.add(_WestBounder, new TableLayoutConstraints(3, 1, 3, 1, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
-                    }
-                    headerPanel.add(boundersPanel, new GridBagConstraints(0, 14, 4, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 0), 0, 0));
-
-                    //---- headerSurfaceOwner ----
-                    headerSurfaceOwner.setText("SURFACE OWNER");
-                    headerSurfaceOwner.setFont(headerSurfaceOwner.getFont().deriveFont(headerSurfaceOwner.getFont().getStyle() | Font.BOLD, headerSurfaceOwner.getFont().getSize() + 1f));
-                    headerPanel.add(headerSurfaceOwner, new GridBagConstraints(0, 15, 2, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _AddSurfaceOwner ----
-                    _AddSurfaceOwner.setText("Add Surface Owner");
-                    _AddSurfaceOwner.setActionCommand(Actions.ADDSURFACEOWNER.name());
-                    headerPanel.add(_AddSurfaceOwner, new GridBagConstraints(3, 15, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 0), 0, 0));
-
-                    //======== surfaceOwnerPanel ========
-                    {
-                        surfaceOwnerPanel.setLayout(new GridBagLayout());
-                        ((GridBagLayout) surfaceOwnerPanel.getLayout()).columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
-                        ((GridBagLayout) surfaceOwnerPanel.getLayout()).rowHeights = new int[]{0, 0, 0, 0};
-                        ((GridBagLayout) surfaceOwnerPanel.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0E-4};
-                        ((GridBagLayout) surfaceOwnerPanel.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 1.0E-4};
-
-                        //---- lblSOName ----
-                        lblSOName.setText("Surface Owner:");
-                        lblSOName.setFont(lblSOName.getFont().deriveFont(lblSOName.getFont().getSize() + 1f));
-                        surfaceOwnerPanel.add(lblSOName, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 5, 5), 0, 0));
-
-                        //---- _SOName ----
-                        _SOName.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _SOName.setEditable(false);
-                        _SOName.setAutoscrolls(false);
-                        surfaceOwnerPanel.add(_SOName, new GridBagConstraints(1, 0, 5, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 5, 0), 0, 0));
-
-                        //---- lblSOAddress ----
-                        lblSOAddress.setText("Address:");
-                        lblSOAddress.setFont(lblSOAddress.getFont().deriveFont(lblSOAddress.getFont().getSize() + 1f));
-                        surfaceOwnerPanel.add(lblSOAddress, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 5, 5), 0, 0));
-
-                        //---- _SOAddress ----
-                        _SOAddress.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _SOAddress.setEditable(false);
-                        _SOAddress.setAutoscrolls(false);
-                        surfaceOwnerPanel.add(_SOAddress, new GridBagConstraints(1, 1, 5, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 5, 0), 0, 0));
-
-                        //---- lblSOCity ----
-                        lblSOCity.setText("City:");
-                        lblSOCity.setFont(lblSOCity.getFont().deriveFont(lblSOCity.getFont().getSize() + 1f));
-                        surfaceOwnerPanel.add(lblSOCity, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 5), 0, 0));
-
-                        //---- _SOCity ----
-                        _SOCity.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _SOCity.setEditable(false);
-                        _SOCity.setAutoscrolls(false);
-                        surfaceOwnerPanel.add(_SOCity, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 5), 0, 0));
-
-                        //---- lblSOState ----
-                        lblSOState.setText("State:");
-                        lblSOState.setFont(lblSOState.getFont().deriveFont(lblSOState.getFont().getSize() + 1f));
-                        surfaceOwnerPanel.add(lblSOState, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 5), 0, 0));
-
-                        //---- _SOState ----
-                        _SOState.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _SOState.setEditable(false);
-                        _SOState.setAutoscrolls(false);
-                        surfaceOwnerPanel.add(_SOState, new GridBagConstraints(3, 2, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 5), 0, 0));
-
-                        //---- lblSOZipCode ----
-                        lblSOZipCode.setText("Zip Code:");
-                        lblSOZipCode.setFont(lblSOZipCode.getFont().deriveFont(lblSOZipCode.getFont().getSize() + 1f));
-                        surfaceOwnerPanel.add(lblSOZipCode, new GridBagConstraints(4, 2, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 5), 0, 0));
-
-                        //---- _SOZipCode ----
-                        _SOZipCode.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                        _SOZipCode.setEditable(false);
-                        _SOZipCode.setAutoscrolls(false);
-                        surfaceOwnerPanel.add(_SOZipCode, new GridBagConstraints(5, 2, 1, 1, 0.0, 0.0,
-                                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                                new Insets(0, 0, 0, 0), 0, 0));
-                    }
-                    headerPanel.add(surfaceOwnerPanel, new GridBagConstraints(0, 16, 4, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 0), 0, 0));
-
-                    //---- headerMineralOwnership ----
-                    headerMineralOwnership.setText("MINERAL OWNERSHIP");
-                    headerMineralOwnership.setFont(headerMineralOwnership.getFont().deriveFont(headerMineralOwnership.getFont().getStyle() | Font.BOLD, headerMineralOwnership.getFont().getSize() + 1f));
-                    headerPanel.add(headerMineralOwnership, new GridBagConstraints(0, 17, 2, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 5), 0, 0));
-
-                    //---- _AddMineralOwner ----
-                    _AddMineralOwner.setText("Add Mineral Owner");
-                    _AddMineralOwner.setActionCommand(Actions.ADDMINERALOWNER.name());
-                    headerPanel.add(_AddMineralOwner, new GridBagConstraints(3, 17, 1, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 10, 0), 0, 0));
-
-                    //======== insertMOPanel ========
-                    {
-                        insertMOPanel.setMinimumSize(new Dimension(580, 240));
-                        insertMOPanel.setBorder(new EtchedBorder());
-                        insertMOPanel.setLayout(new GridLayout());
-                    }
-                    headerPanel.add(insertMOPanel, new GridBagConstraints(0, 18, 4, 1, 0.0, 0.0,
-                            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                    //---- _LegalDescription ----
+                    _LegalDescription.setLineWrap(true);
+                    _LegalDescription.setWrapStyleWord(true);
+                    _LegalDescription.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                    scrollPane1.setViewportView(_LegalDescription);
                 }
-                contentPanel.add(headerPanel);
-                headerPanel.setBounds(new Rectangle(new Point(0, 0), headerPanel.getPreferredSize()));
-                
-                { // compute preferred size
-                    Dimension preferredSize = new Dimension();
-                    for (int i = 0; i < contentPanel.getComponentCount(); i++) {
-                        Rectangle bounds = contentPanel.getComponent(i).getBounds();
-                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                    }
-                    Insets insets = contentPanel.getInsets();
-                    preferredSize.width += insets.right;
-                    preferredSize.height += insets.bottom;
-                    contentPanel.setMinimumSize(preferredSize);
-                    contentPanel.setPreferredSize(preferredSize);
+                contentPanel.add(scrollPane1, new GridBagConstraints(0, 7, 4, 3, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- _cbxPropertyBounders ----
+                _cbxPropertyBounders.setText("Property Bounders");
+                _cbxPropertyBounders.setActionCommand(Actions.DISPLAYBOUNDERS.name());
+                _cbxPropertyBounders.setFont(_cbxPropertyBounders.getFont().deriveFont(_cbxPropertyBounders.getFont().getSize() + 1f));
+                contentPanel.add(_cbxPropertyBounders, new GridBagConstraints(0, 10, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //======== boundersPanel ========
+                {
+                    boundersPanel.setLayout(new GridBagLayout());
+                    ((GridBagLayout)boundersPanel.getLayout()).columnWidths = new int[] {140, 140, 140, 135, 0};
+                    ((GridBagLayout)boundersPanel.getLayout()).rowHeights = new int[] {0, 0, 0};
+                    ((GridBagLayout)boundersPanel.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                    ((GridBagLayout)boundersPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 1.0E-4};
+
+                    //---- lblNorthBounder ----
+                    lblNorthBounder.setText("North Bounder");
+                    boundersPanel.add(lblNorthBounder, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                    //---- lblEastBounder ----
+                    lblEastBounder.setText("East Bounder");
+                    boundersPanel.add(lblEastBounder, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                    //---- lblSouthBounder ----
+                    lblSouthBounder.setText("South Bounder");
+                    boundersPanel.add(lblSouthBounder, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                    //---- lblWestBounder ----
+                    lblWestBounder.setText("West Bounder");
+                    boundersPanel.add(lblWestBounder, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+                        new Insets(0, 0, 10, 0), 0, 0));
+                    boundersPanel.add(_NorthBounder, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 5), 0, 0));
+                    boundersPanel.add(_EastBounder, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 5), 0, 0));
+                    boundersPanel.add(_SouthBounder, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 5), 0, 0));
+                    boundersPanel.add(_WestBounder, new GridBagConstraints(3, 1, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 0), 0, 0));
                 }
+                contentPanel.add(boundersPanel, new GridBagConstraints(0, 11, 4, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- _PropertyVerification ----
+                _PropertyVerification.setText("Property Verification");
+                _PropertyVerification.setActionCommand(Actions.SEARCHPROPERTY.name());
+                _PropertyVerification.setMinimumSize(new Dimension(149, 35));
+                _PropertyVerification.setMaximumSize(new Dimension(149, 35));
+                _PropertyVerification.setPreferredSize(new Dimension(149, 35));
+                _PropertyVerification.setFont(_PropertyVerification.getFont().deriveFont(_PropertyVerification.getFont().getSize() + 1f));
+                contentPanel.add(_PropertyVerification, new GridBagConstraints(0, 12, 4, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- headerSurfaceOwnership ----
+                headerSurfaceOwnership.setText("SURFACE OWNERSHIP");
+                headerSurfaceOwnership.setFont(headerSurfaceOwnership.getFont().deriveFont(headerSurfaceOwnership.getFont().getSize() + 1f));
+                contentPanel.add(headerSurfaceOwnership, new GridBagConstraints(0, 13, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- _AddSurfaceOwner ----
+                _AddSurfaceOwner.setText("Add Surface Owner");
+                _AddSurfaceOwner.setActionCommand(Actions.ADDSURFACEOWNER.name());
+                contentPanel.add(_AddSurfaceOwner, new GridBagConstraints(3, 13, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //======== _SurfaceOwnerPane ========
+                {
+                    _SurfaceOwnerPane.setBorder(new EtchedBorder());
+                    _SurfaceOwnerPane.setMinimumSize(new Dimension(4, 167));
+                    _SurfaceOwnerPane.setPreferredSize(new Dimension(4, 104));
+                    _SurfaceOwnerPane.setLayout(new GridLayout());
+                }
+                contentPanel.add(_SurfaceOwnerPane, new GridBagConstraints(0, 14, 4, 3, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- headerMineralOwnership ----
+                headerMineralOwnership.setText("MINERAL OWNERSHIP");
+                headerMineralOwnership.setFont(headerMineralOwnership.getFont().deriveFont(headerMineralOwnership.getFont().getSize() + 1f));
+                contentPanel.add(headerMineralOwnership, new GridBagConstraints(0, 17, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- _AddMineralOwner ----
+                _AddMineralOwner.setText("Add Mineral Owner");
+                _AddMineralOwner.setActionCommand(Actions.ADDMINERALOWNER.name());
+                contentPanel.add(_AddMineralOwner, new GridBagConstraints(3, 17, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //======== _MineralOwnershipPane ========
+                {
+                    _MineralOwnershipPane.setBorder(new EtchedBorder());
+                    _MineralOwnershipPane.setPreferredSize(new Dimension(4, 104));
+                    _MineralOwnershipPane.setLayout(new GridLayout());
+                }
+                contentPanel.add(_MineralOwnershipPane, new GridBagConstraints(0, 18, 4, 3, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
-            dialogPane.add(contentPanel, BorderLayout.WEST);
+            dialogPane.add(contentPanel, BorderLayout.CENTER);
 
             //======== buttonBar ========
             {
                 buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 buttonBar.setLayout(new GridBagLayout());
-                ((GridBagLayout) buttonBar.getLayout()).columnWidths = new int[]{0, 85, 80};
-                ((GridBagLayout) buttonBar.getLayout()).columnWeights = new double[]{1.0, 0.0, 0.0};
+                ((GridBagLayout)buttonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
+                ((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
 
-                //---- lblInterestSubtotal ----
-                lblInterestSubtotal.setText("Net Interest Subtotal:");
-                buttonBar.add(lblInterestSubtotal, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 0, 15), 0, 0));
-
-                //---- _SaveButton ----
-                _SaveButton.setText("OK");
-                _SaveButton.setActionCommand(Actions.SAVEPROPERTY.name());
-                buttonBar.add(_SaveButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 0, 5), 0, 0));
+                //---- _SaveProperty ----
+                _SaveProperty.setText("SAVE");
+                _SaveProperty.setActionCommand(Actions.SAVEPROPERTY.name());
+                buttonBar.add(_SaveProperty, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 0, 5), 0, 0));
 
                 //---- _CancelButton ----
                 _CancelButton.setText("Cancel");
                 _CancelButton.setActionCommand(Actions.CLOSEWINDOW.name());
                 buttonBar.add(_CancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 0, 0), 0, 0));
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
-        contentPane.add(dialogPane, BorderLayout.WEST);
+        contentPane.add(dialogPane, BorderLayout.CENTER);
         pack();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(getOwner());
         this.setVisible(true);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-    // intComponents()
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner non-commercial license
     private JPanel dialogPane;
     private JPanel contentPanel;
-    private JPanel headerPanel;
-    
-    private JLabel lblRecordID;
+    private JLabel lblDBRecordID;
+    private JTextField _DBRecordID;
     private JLabel lblParcelID;
-    private JLabel lblTaxMapID;
-    private JLabel lblCounty;
-    private JLabel lblState;
-    private JLabel lblAcreage;
-    private JLabel lblTownship;
-    private JLabel lblRange;
-    private JLabel lblSection;
-    private JLabel lblPrincipalMeridian;
-    
-    private JTextField _RecordID;
     private JTextField _ParcelID;
-    private JTextField _TaxMapID;
-    private JTextField _County;
-    private JTextField _State;
-    private JTextField _Acreage;
+    private JLabel lblTownship;
     private JComboBox _cboTownship;
+    private JLabel lblTaxMapID;
+    private JTextField _TaxMapID;
+    private JLabel lblRange;
     private JComboBox _cboRange;
+    private JLabel lblCounty;
+    private JTextField _County;
+    private JLabel lblSection;
     private JComboBox _cboSection;
-    private JComboBox _cboPMeridian;
-    
-    private JLabel headerLegalDescription;
-    private JLabel lblLegalDescription;
-    private JScrollPane scrollPane;
+    private JLabel lblState;
+    private JTextField _State;
+    private JLabel lblMeridian;
+    private JComboBox _cboMeridian;
+    private JLabel lblAcreage;
+    private JTextField _Acreage;
+    private JLabel lblPropertyDescription;
+    private JScrollPane scrollPane1;
     private JTextArea _LegalDescription;
-    
-    private JCheckBox _cbxBounders;
+    private JCheckBox _cbxPropertyBounders;
     private JPanel boundersPanel;
     private JLabel lblNorthBounder;
     private JLabel lblEastBounder;
@@ -596,30 +450,15 @@ public class VProperty extends JFrame implements java.util.Observer {
     private JTextField _EastBounder;
     private JTextField _SouthBounder;
     private JTextField _WestBounder;
-    
-    private JPanel surfaceOwnerPanel;
+    private JButton _PropertyVerification;
+    private JLabel headerSurfaceOwnership;
     private JButton _AddSurfaceOwner;
-    private JLabel headerSurfaceOwner;
-    private JLabel lblSOName;
-    private JLabel lblSOAddress;
-    private JLabel lblSOCity;
-    private JLabel lblSOState;
-    private JLabel lblSOZipCode;
-    
-    private JTextField _SOName;
-    private JTextField _SOAddress;
-    private JTextField _SOCity;
-    private JTextField _SOState;
-    private JTextField _SOZipCode;
-    
+    private JPanel _SurfaceOwnerPane;
     private JLabel headerMineralOwnership;
-    private JPanel insertMOPanel;
     private JButton _AddMineralOwner;
-    
+    private JPanel _MineralOwnershipPane;
     private JPanel buttonBar;
-    private JLabel lblInterestSubtotal;
-    private JButton _SaveButton;
+    private JButton _SaveProperty;
     private JButton _CancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-
 }
