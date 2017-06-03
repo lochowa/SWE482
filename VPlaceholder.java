@@ -1,5 +1,8 @@
 package JavaApp.mvccompliant;
-
+/**
+ *
+ * @author by Michael Barth
+ */
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -8,10 +11,7 @@ import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
-/**
- *
- * @author Ubuntu2B
- */
+
 public class VPlaceholder extends JFrame implements java.util.Observer {
 
     public static class CloseListener extends WindowAdapter {

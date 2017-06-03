@@ -1,8 +1,7 @@
 package JavaApp.mvccompliant;
-
 /**
  *
- * @author Ubuntu2B
+ * @author by Michael Barth
  */
 public class MDocument extends java.util.Observable {
 
@@ -45,5 +44,6 @@ public class MDocument extends java.util.Observable {
         this.documentID = documentID;
         this.book = book;
         this.page = page;
+                notifyObservers(counter);
     }
 }

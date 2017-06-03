@@ -1,17 +1,13 @@
 package JavaApp.mvccompliant;
-
-/*
- * Created by JFormDesigner on Wed May 31 00:37:48 MDT 2017
+/**
+ * 
+ * @author Michael Barth
  */
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.util.Observable;
-
-/**
- * @author Michael Barth
- */
 
 
 public class VProperty extends JFrame implements java.util.Observer {

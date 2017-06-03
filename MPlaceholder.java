@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package JavaApp.mvccompliant;
-
 /**
  *
- * @author Ubuntu2B
+ * @author by Michael Barth
  */
 public class MPlaceholder extends java.util.Observable {
 
@@ -77,6 +71,7 @@ public class MPlaceholder extends java.util.Observable {
         this.bounders[2] = b_south;
         this.bounders[3] = b_west;
         this.titled = titled;
+        notifyObservers(counter);
     }
     // setValues()
 }

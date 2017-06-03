@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package JavaApp.mvccompliant;
-
 /**
  *
- * @author Ubuntu2B
+ * @author by Michael Barth
  */
 public class MVCLeasehold {
     public static void main(String[] args) {
@@ -25,8 +19,8 @@ public class MVCLeasehold {
         controller.addModel(model);
         controller.addView(view);
         //  Initialise Model attribute values.
-        controller.initModel(0, null, null, 0, null, 0, null, false, 0, null, null, null, null, null);
-        
+        controller.initModel(0, null, null, 0, null, 0, null, false, 0, 0, null, null, null, null, null);
+        // TO DO:  Update initModel() arguments to include Document Object initialization.
         view.addController(controller);    
 }
 }

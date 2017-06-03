@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package JavaApp.mvccompliant;
 
 /**
  *
- * @author Ubuntu2B
+ * @author by Michael Barth
  */
 public class MLease extends java.util.Observable {
     
@@ -32,7 +27,7 @@ public class MLease extends java.util.Observable {
     private int _PaymentTerms;
     private String _PaymentDueDate;
     private int _TotalBonusPayment;
-    private int _Royalty;
+    private double _Royalty;
     private int _PrimaryTerm;
     private String _PrimaryTermExpiration;
     private int _OptionalTerm;
@@ -59,7 +54,7 @@ public class MLease extends java.util.Observable {
             int paymentTerms,
             String paymentDueDate,
             int totalBonusPayment,
-            int royalty,
+            double royalty,
             int primaryTerm,
             String primaryTermExpiration,
             boolean isOptional,
@@ -98,6 +93,7 @@ public class MLease extends java.util.Observable {
         this._LesseeCity = lesseeCity;
         this._LesseeState = lesseeState;
         this._LesseeZipCode = lesseeZipCode;
+                notifyObservers(counter);
     }
             
     

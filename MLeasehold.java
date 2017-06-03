@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package JavaApp.mvccompliant;
-
 /**
  *
- * @author Ubuntu2B
+ * @author by Michael Barth
  */
 public class MLeasehold extends java.util.Observable {
 
@@ -34,12 +28,14 @@ public class MLeasehold extends java.util.Observable {
     private int optionalTerm;
     private String optionalTermExpiration;
     private boolean isOptional;
+    private double royalty;
     private int leasedAcreage;
     private String currentLessee;
     private String currentShallowDepthRights;
     private String specificShallowDepthRestrictions;
     private String currentDeepDepthRights;
     private String specificDeepDepthRestrictions;
+    // TO DO: Add List<E> to contain Recorded Document REF numbers.
 
     void setValues(
             int dbRecordID,
@@ -50,12 +46,14 @@ public class MLeasehold extends java.util.Observable {
             int optionalTerm,
             String optionalTermExpiration,
             boolean isOptional,
+            double royalty,
             int leasedAcreage,
             String currentLessee,
             String currentShallowDepthRights,
             String specificShallowDepthRestrictions,
             String currentDeepDepthRights,
             String specificDeepDepthRestrictions
+            // TO DO: Add code to include Recorded Document objects.
     ) {
         this.dbRecordID = dbRecordID;
         this.lessor = lessor;
@@ -65,12 +63,14 @@ public class MLeasehold extends java.util.Observable {
         this.optionalTerm = optionalTerm;
         this.optionalTermExpiration = optionalTermExpiration;
         this.isOptional = isOptional;
+        this.royalty = royalty;
         this.leasedAcreage = leasedAcreage;
         this.currentLessee = currentLessee;
         this.currentShallowDepthRights = currentShallowDepthRights;
         this.specificShallowDepthRestrictions = specificShallowDepthRestrictions;
         this.currentDeepDepthRights = currentDeepDepthRights;
         this.specificDeepDepthRestrictions = specificDeepDepthRestrictions;
-
+        // TO DO: Add code to include Recorded Document objects.
+        notifyObservers(counter);
     }
 }

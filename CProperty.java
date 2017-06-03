@@ -1,13 +1,12 @@
 package JavaApp.mvccompliant;
-
-
+/**
+ *
+ * @author by Michael Barth
+ */
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 
-/**
- *
- * @author Ubuntu2B
- */
+
 public class CProperty implements java.awt.event.ActionListener {
 
     MProperty model;

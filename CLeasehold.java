@@ -1,17 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package JavaApp.mvccompliant;
-
+/**
+ *
+ * @author by Michael Barth
+ */
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 
-/**
- *
- * @author Ubuntu2B
- */
+
 public class CLeasehold implements java.awt.event.ActionListener {
 
     MLeasehold model;
@@ -19,7 +14,8 @@ public class CLeasehold implements java.awt.event.ActionListener {
     
     private enum Actions {
         SAVELEASEHOLD,
-        CLOSEWINDOW
+        CLOSEWINDOW,
+        ADDINSTRUMENT
     }
     void addModel(MLeasehold m) {
         // Test Script: Operation Feedback
@@ -46,6 +42,9 @@ public class CLeasehold implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(Actions.CLOSEWINDOW.name())) {
             view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
         }
+        if(e.getActionCommand().equals(Actions.ADDINSTRUMENT.name())){
+            new MVCDocument();
+        }
     }
 
     void initModel(
@@ -57,12 +56,14 @@ public class CLeasehold implements java.awt.event.ActionListener {
             int optionalTerm,
             String optionalTermExpiration,
             boolean isOptional,
+            int royalty,
             int leasedAcreage,
             String currentLessee,
             String currentShallowDepthRights,
             String specificShallowDepthRestrictions,
             String currentDeepDepthRights,
             String specificDeepDepthRestrictions
+            //TO DO: Add code to include Recorded Document object.
     ) {
         model.setValues(
                 dbRecordID,
@@ -73,12 +74,14 @@ public class CLeasehold implements java.awt.event.ActionListener {
                 optionalTerm,
                 optionalTermExpiration,
                 isOptional,
+                royalty,
                 leasedAcreage,
                 currentLessee,
                 currentShallowDepthRights,
                 specificShallowDepthRestrictions,
                 currentDeepDepthRights,
                 specificDeepDepthRestrictions
+                //TO DO: Add code to include Recorded Document object.
         );
 
     }

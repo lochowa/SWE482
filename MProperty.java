@@ -5,16 +5,16 @@ package JavaApp.mvccompliant;
  */
 public class MProperty extends java.util.Observable {
 
-    void incrementValue(){
+    void incrementValue() {
         ++counter;
     } // incrementValue()
-    
-    int getCounter() { 
-        return counter; 
+
+    int getCounter() {
+        return counter;
     } // getCounter()
 
     // Variable Declaration Area:  Do not change.
-    private int counter;   
+    private int counter;
     private int dbRecordID;
     private int parcelID;
     private String taxMapID;
@@ -29,14 +29,14 @@ public class MProperty extends java.util.Observable {
     private final String[] bounders = new String[4];
     // TO DO: Create List<E> to hold RTI MInterest recods
     // END Variable Declaration Area
-    
-    MProperty(){
+
+    MProperty() {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model Property()");
-        
+
     }
     // MProperty()
-    
+
     void setValues(
             int dbRecordID,
             int parcelID,
@@ -53,28 +53,28 @@ public class MProperty extends java.util.Observable {
             String b_east,
             String b_south,
             String b_west
-            // TO DO: Integrate List<E>
-    ){
-        
-    this.dbRecordID = dbRecordID;
-    this.parcelID = parcelID;
-    this.taxMapID = taxMapID;
-    this.county = county;
-    this.state = state;
-    this.acreage = acreage;
-    this.township = township;
-    this.range = range;
-    this.section = section;
-    this.PM = PM;
-    this.description = description;
-    this.bounders[0] = b_north;
-    this.bounders[1] = b_east;
-    this.bounders[2] = b_south;
-    this.bounders[3] = b_west;
-    // TO DO: Create List<E> to hold RTI MInterest recods
-    
+    // TO DO: Integrate List<E>
+    ) {
+
+        this.dbRecordID = dbRecordID;
+        this.parcelID = parcelID;
+        this.taxMapID = taxMapID;
+        this.county = county;
+        this.state = state;
+        this.acreage = acreage;
+        this.township = township;
+        this.range = range;
+        this.section = section;
+        this.PM = PM;
+        this.description = description;
+        this.bounders[0] = b_north;
+        this.bounders[1] = b_east;
+        this.bounders[2] = b_south;
+        this.bounders[3] = b_west;
+        notifyObservers(counter);
+        // TO DO: Create List<E> to hold RTI MInterest recods
+
     }
     // setValues()
-    
 
 }

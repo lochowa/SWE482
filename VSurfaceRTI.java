@@ -1,14 +1,14 @@
 package JavaApp.mvccompliant;
-
+/**
+ * 
+ * @author Michael Barth
+ */
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
-/**
- * @author Michael Barth
- */
 
 public class VSurfaceRTI extends JFrame implements java.util.Observer {
     public static class CloseListener extends WindowAdapter {

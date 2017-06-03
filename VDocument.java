@@ -1,5 +1,7 @@
 package JavaApp.mvccompliant;
-
+/**
+ * @author Michael Barth
+ */
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -8,9 +10,7 @@ import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
-/**
- * @author Michael Barth
- */
+
 public class VDocument extends JFrame implements java.util.Observer {
 
     public static class CloseListener extends WindowAdapter {

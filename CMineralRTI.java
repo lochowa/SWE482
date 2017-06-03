@@ -1,19 +1,12 @@
 package JavaApp.mvccompliant;
-
-
+/**
+ *
+ * @author by Michael Barth
+ */
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Ubuntu2B
- */
 public class CMineralRTI implements java.awt.event.ActionListener {
     
     MMineralRTI model;
@@ -49,6 +42,9 @@ public class CMineralRTI implements java.awt.event.ActionListener {
         }
         if(e.getActionCommand().equals(Actions.ADDINSTRUMENT.name())){
             new MVCDocument();
+        }
+        if(e.getActionCommand().equals(Actions.CONVERTFRACTION.name())){
+            new MVCFractionTool();
         }
     }
     

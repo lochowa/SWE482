@@ -1,19 +1,20 @@
 package JavaApp.mvccompliant;
 /**
- * 
  * @author Michael Barth
  */
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VMineralRTI extends JFrame implements java.util.Observer {
-
+public class VLessor extends JFrame implements java.util.Observer {
+    
     public static class CloseListener extends WindowAdapter {
-
+        
         @Override
         public void windowClosing(WindowEvent e) {
             e.getWindow().setVisible(false);
@@ -21,53 +22,43 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
         }
     }
 
-    VMineralRTI() {
-        initComponents();
-    }
-
     // CloseListener Class Object
     @Override
     public void update(Observable obs, Object obj) {
         // Test Script:  Who called the operation and what did they send?
-        System.out.println("MineralRTI View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
+        System.out.println("Lessor View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
     }
 
-    public enum Actions {
-        ADDLEASEBURDEN,
-        SEARCHNAME,
-        CONVERTFRACTION,
+    public VLessor() {
+        initComponents();
+    }
+    
+    private enum Actions {
         ADDINSTRUMENT,
-        SAVEINTEREST,
-        CLOSEWINDOW
+        INSERTLESSOR,
+        CLOSEWINDOW,
+        ACTIVESTATUSCHANGE
     }
 
     void addController(ActionListener controller) {
-        System.out.println("View: Adding MineralRTI Controller");
-        _InsertButton.addActionListener(controller);
+        System.out.println("View: Adding Menu Controller");
+        _InsertLessor.addActionListener(controller);
         _CancelButton.addActionListener(controller);
-        _SearchName.addActionListener(controller);
         _AddInstrument.addActionListener(controller);
-        _ConvertFraction.addActionListener(controller);
-        _AddLeaseBurden.addActionListener(controller);
         _cbxActiveStatus.addActionListener(controller);
-
     }
-
+    
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner non-commercial license
         dialogPane = new JPanel();
         contentPanel = new JPanel();
-        lblDBRecordID = new JLabel();
-        _DBRecordID = new JTextField();
-        _NameQuery = new JTextField();
-        _SearchName = new JButton();
+        lblRecordID = new JLabel();
+        _RecordID = new JTextField();
         lblNetInterest = new JLabel();
         _NetInterest = new JTextField();
-        _ConvertFraction = new JButton();
         lblInterestStatus = new JLabel();
         _cboInterestStatus = new JComboBox();
-        _AddLeaseBurden = new JButton();
         lblName1 = new JLabel();
         _Name1 = new JTextField();
         lblName2 = new JLabel();
@@ -90,7 +81,7 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
         panel2 = new JPanel();
         buttonBar = new JPanel();
         _cbxActiveStatus = new JCheckBox();
-        _InsertButton = new JButton();
+        _InsertLessor = new JButton();
         _CancelButton = new JButton();
 
         //======== this ========
@@ -107,200 +98,170 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                 contentPanel.setFont(contentPanel.getFont().deriveFont(contentPanel.getFont().getSize() + 1f));
                 contentPanel.setLayout(new GridBagLayout());
                 ((GridBagLayout) contentPanel.getLayout()).columnWidths = new int[]{140, 140, 135, 0};
-                ((GridBagLayout) contentPanel.getLayout()).rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                ((GridBagLayout) contentPanel.getLayout()).rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
                 ((GridBagLayout) contentPanel.getLayout()).columnWeights = new double[]{0.0, 0.0, 0.0, 1.0E-4};
-                ((GridBagLayout) contentPanel.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout) contentPanel.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
-                //---- lblDBRecordID ----
-                lblDBRecordID.setText("Record Identification");
-                contentPanel.add(lblDBRecordID, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                //---- lblRecordID ----
+                lblRecordID.setText("Record Identification");
+                contentPanel.add(lblRecordID, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _DBRecordID ----
-                _DBRecordID.setEditable(false);
-                _DBRecordID.setAutoscrolls(false);
-                contentPanel.add(_DBRecordID, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                //---- _RecordID ----
+                _RecordID.setEditable(false);
+                _RecordID.setAutoscrolls(false);
+                contentPanel.add(_RecordID, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
-
-                //---- _NameQuery ----
-                _NameQuery.setAutoscrolls(false);
-                _NameQuery.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_NameQuery, new GridBagConstraints(0, 1, 3, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(30, 0, 10, 0), 0, 0));
-
-                //---- _SearchName ----
-                _SearchName.setText("Name Verification");
-                _SearchName.setMargin(new Insets(2, 15, 2, 15));
-                _SearchName.setFont(_SearchName.getFont().deriveFont(_SearchName.getFont().getStyle() & ~Font.BOLD, _SearchName.getFont().getSize() + 1f));
-                _SearchName.setActionCommand(Actions.SEARCHNAME.name());
-                contentPanel.add(_SearchName, new GridBagConstraints(0, 2, 3, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 25, 0), 0, 0));
 
                 //---- lblNetInterest ----
                 lblNetInterest.setText("Net Interesst");
                 lblNetInterest.setFont(lblNetInterest.getFont().deriveFont(lblNetInterest.getFont().getSize() + 1f));
-                contentPanel.add(lblNetInterest, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblNetInterest, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _NetInterest ----
                 _NetInterest.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_NetInterest, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
+                contentPanel.add(_NetInterest, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
-
-                //---- _ConvertFraction ----
-                _ConvertFraction.setText("Convert Fraction");
-                _ConvertFraction.setActionCommand(Actions.CONVERTFRACTION.name());
-                contentPanel.add(_ConvertFraction, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- lblInterestStatus ----
                 lblInterestStatus.setText("Status");
                 lblInterestStatus.setFont(lblInterestStatus.getFont().deriveFont(lblInterestStatus.getFont().getSize() + 1f));
-                contentPanel.add(lblInterestStatus, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblInterestStatus, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _cboInterestStatus ----
                 _cboInterestStatus.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_cboInterestStatus, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
+                contentPanel.add(_cboInterestStatus, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
-
-                //---- _AddLeaseBurden ----
-                _AddLeaseBurden.setText("Add Lease Burden");
-                _AddLeaseBurden.setActionCommand(Actions.ADDLEASEBURDEN.name());
-                contentPanel.add(_AddLeaseBurden, new GridBagConstraints(2, 4, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- lblName1 ----
                 lblName1.setText("Name #1");
                 lblName1.setFont(lblName1.getFont().deriveFont(lblName1.getFont().getSize() + 1f));
-                contentPanel.add(lblName1, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblName1, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _Name1 ----
                 _Name1.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_Name1, new GridBagConstraints(1, 5, 2, 1, 0.0, 0.0,
+                contentPanel.add(_Name1, new GridBagConstraints(1, 3, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- lblName2 ----
                 lblName2.setText("Name #2");
                 lblName2.setFont(lblName2.getFont().deriveFont(lblName2.getFont().getSize() + 1f));
-                contentPanel.add(lblName2, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblName2, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _Name2 ----
                 _Name2.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_Name2, new GridBagConstraints(1, 6, 2, 1, 0.0, 0.0,
+                contentPanel.add(_Name2, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- lblName3 ----
                 lblName3.setText("Name #3");
                 lblName3.setFont(lblName3.getFont().deriveFont(lblName3.getFont().getSize() + 1f));
-                contentPanel.add(lblName3, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblName3, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _Name3 ----
                 _Name3.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_Name3, new GridBagConstraints(1, 7, 2, 1, 0.0, 0.0,
+                contentPanel.add(_Name3, new GridBagConstraints(1, 5, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- lblName4 ----
                 lblName4.setText("Name #4");
                 lblName4.setFont(lblName4.getFont().deriveFont(lblName4.getFont().getSize() + 1f));
-                contentPanel.add(lblName4, new GridBagConstraints(0, 8, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblName4, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _Name4 ----
                 _Name4.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_Name4, new GridBagConstraints(1, 8, 2, 1, 0.0, 0.0,
+                contentPanel.add(_Name4, new GridBagConstraints(1, 6, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- lblAddress ----
                 lblAddress.setText("Address");
                 lblAddress.setFont(lblAddress.getFont().deriveFont(lblAddress.getFont().getSize() + 1f));
-                contentPanel.add(lblAddress, new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblAddress, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _Address ----
                 _Address.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_Address, new GridBagConstraints(1, 9, 2, 1, 0.0, 0.0,
+                contentPanel.add(_Address, new GridBagConstraints(1, 7, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- lblCity ----
                 lblCity.setText("City");
                 lblCity.setFont(lblCity.getFont().deriveFont(lblCity.getFont().getSize() + 1f));
-                contentPanel.add(lblCity, new GridBagConstraints(0, 10, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblCity, new GridBagConstraints(0, 8, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _City ----
                 _City.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_City, new GridBagConstraints(1, 10, 2, 1, 0.0, 0.0,
+                contentPanel.add(_City, new GridBagConstraints(1, 8, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- lblState ----
                 lblState.setText("State");
                 lblState.setFont(lblState.getFont().deriveFont(lblState.getFont().getSize() + 1f));
-                contentPanel.add(lblState, new GridBagConstraints(0, 11, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblState, new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _State ----
                 _State.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_State, new GridBagConstraints(1, 11, 1, 1, 0.0, 0.0,
+                contentPanel.add(_State, new GridBagConstraints(1, 9, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- lblZipCode ----
                 lblZipCode.setText("Zip Code");
                 lblZipCode.setFont(lblZipCode.getFont().deriveFont(lblZipCode.getFont().getSize() + 1f));
-                contentPanel.add(lblZipCode, new GridBagConstraints(0, 12, 1, 1, 0.0, 0.0,
+                contentPanel.add(lblZipCode, new GridBagConstraints(0, 10, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _ZipCode ----
                 _ZipCode.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_ZipCode, new GridBagConstraints(1, 12, 1, 1, 0.0, 0.0,
+                contentPanel.add(_ZipCode, new GridBagConstraints(1, 10, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- label9 ----
                 label9.setText("Contact Number");
                 label9.setFont(label9.getFont().deriveFont(label9.getFont().getSize() + 1f));
-                contentPanel.add(label9, new GridBagConstraints(0, 13, 1, 1, 0.0, 0.0,
+                contentPanel.add(label9, new GridBagConstraints(0, 11, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- _ContactNumber ----
                 _ContactNumber.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_ContactNumber, new GridBagConstraints(1, 13, 2, 1, 0.0, 0.0,
+                contentPanel.add(_ContactNumber, new GridBagConstraints(1, 11, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- _AddInstrument ----
                 _AddInstrument.setText("Add Vesting Instrument");
                 _AddInstrument.setActionCommand(Actions.ADDINSTRUMENT.name());
-                contentPanel.add(_AddInstrument, new GridBagConstraints(0, 14, 2, 1, 0.0, 0.0,
+                contentPanel.add(_AddInstrument, new GridBagConstraints(0, 12, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
@@ -311,7 +272,7 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                     panel2.setPreferredSize(new Dimension(4, 67));
                     panel2.setLayout(new GridLayout());
                 }
-                contentPanel.add(panel2, new GridBagConstraints(0, 15, 3, 1, 0.0, 0.0,
+                contentPanel.add(panel2, new GridBagConstraints(0, 13, 3, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));
             }
@@ -328,14 +289,15 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                 _cbxActiveStatus.setText("Active?");
                 _cbxActiveStatus.setFont(_cbxActiveStatus.getFont().deriveFont(_cbxActiveStatus.getFont().getSize() + 2f));
                 _cbxActiveStatus.setSelected(true);
+                _cbxActiveStatus.setActionCommand(Actions.ACTIVESTATUSCHANGE.name());
                 buttonBar.add(_cbxActiveStatus, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 5), 0, 0));
 
-                //---- _InsertButton ----
-                _InsertButton.setText("INSERT");
-                _InsertButton.setActionCommand(Actions.SAVEINTEREST.name());
-                buttonBar.add(_InsertButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                //---- _InsertLessor ----
+                _InsertLessor.setText("INSERT");
+                _InsertLessor.setActionCommand(Actions.INSERTLESSOR.name());
+                buttonBar.add(_InsertLessor, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 5), 0, 0));
 
@@ -360,16 +322,12 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
     // Generated using JFormDesigner non-commercial license
     private JPanel dialogPane;
     private JPanel contentPanel;
-    private JLabel lblDBRecordID;
-    private JTextField _DBRecordID;
-    private JTextField _NameQuery;
-    private JButton _SearchName;
+    private JLabel lblRecordID;
+    private JTextField _RecordID;
     private JLabel lblNetInterest;
     private JTextField _NetInterest;
-    private JButton _ConvertFraction;
     private JLabel lblInterestStatus;
     private JComboBox _cboInterestStatus;
-    private JButton _AddLeaseBurden;
     private JLabel lblName1;
     private JTextField _Name1;
     private JLabel lblName2;
@@ -392,8 +350,7 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
     private JPanel panel2;
     private JPanel buttonBar;
     private JCheckBox _cbxActiveStatus;
-    private JButton _InsertButton;
+    private JButton _InsertLessor;
     private JButton _CancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-
 }

@@ -1,8 +1,7 @@
 package JavaApp.mvccompliant;
-
 /**
  *
- * @author Ubuntu2B
+ * @author by Michael Barth
  */
 public class MVCSurfaceRTI {
             public static void main(String[] args) {

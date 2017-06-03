@@ -4,12 +4,12 @@ package JavaApp.mvccompliant;
  * @author by Michael Barth
  */
 public class MMineralRTI extends java.util.Observable {
-    
-    MMineralRTI(){
+
+    MMineralRTI() {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model MineralRTI()");
     }
-    
+
     void incrementValue() {
         ++counter;
     } // incrementValue()
@@ -21,7 +21,7 @@ public class MMineralRTI extends java.util.Observable {
     // Variable Declaration Area:  Do not change.
     private int counter;
     private int dbRecordID;
-    private int interest;
+    private double interest;
     private String status;
     private String[] owners = new String[4];
     private String address;
@@ -31,13 +31,11 @@ public class MMineralRTI extends java.util.Observable {
     private String phone;
     // TO DO:  Insert List<E> to contain Recorded Documents
     private boolean active;
-    
+
     // END Variable Declaration Area
-
-
     void setValues(
             int dbRecordID,
-            int interest,
+            double interest,
             String status,
             String name1,
             String name2,
@@ -59,7 +57,7 @@ public class MMineralRTI extends java.util.Observable {
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
+        notifyObservers(counter);
     }
-    
-    
+
 }

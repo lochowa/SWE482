@@ -3,27 +3,26 @@ package JavaApp.mvccompliant;
  *
  * @author by Michael Barth
  */
-public class MVCDocument {
+public class MVCLessor {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        new MVCDocument();
+        new MVCLessor();
     }
 
-    public MVCDocument() {
+    public MVCLessor() {
 
-        MDocument model = new MDocument();
-        VDocument view = new VDocument();
-
+        MLessor model = new MLessor();
+        VLessor view = new VLessor();
         model.addObserver(view);
 
-        CDocument controller = new CDocument();
+        CLessor controller = new CLessor();
+
         controller.addModel(model);
         controller.addView(view);
         //  Initialise Model attribute values.
-        controller.initModel(0, null, null, null, 0, 0, 0);
-
+        controller.initModel(0, 0, null, null, null, null, null, null, null, null, 0, null, false);
+        // TO DO:  Update initModel() arguments to include Recorded Document.
         view.addController(controller);
-
     }
 }

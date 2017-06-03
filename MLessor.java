@@ -3,7 +3,12 @@ package JavaApp.mvccompliant;
  *
  * @author by Michael Barth
  */
-public class MSurfaceRTI extends java.util.Observable {
+public class MLessor extends java.util.Observable {
+
+    MLessor() {
+        // Test Script:  Intercommunication Feedback.
+        System.out.println("Model Lessor()");
+    }
 
     void incrementValue() {
         ++counter;
@@ -16,23 +21,22 @@ public class MSurfaceRTI extends java.util.Observable {
     // Variable Declaration Area:  Do not change.
     private int counter;
     private int dbRecordID;
-    private final String[] names = new String[4];
+    private double interest;
+    private String status;
+    private String[] owners = new String[4];
     private String address;
     private String city;
     private String state;
     private int zipcode;
     private String phone;
-    // TO DO: Insert List<E> to hold recorded documents.
-
-    // END Variable Declariation Area.
-    MSurfaceRTI() {
-        // Test Script:  Intercommunication Feedback.
-        System.out.println("Model SurfaceRTI()");
-
-    }
+    private boolean active;
+    // TO DO:  Insert List<E> to contain Recorded Documents   
+    // END Variable Declaration Area
 
     void setValues(
-            int dbRecord,
+            int dbRecordID,
+            double interest,
+            String status,
             String name1,
             String name2,
             String name3,
@@ -41,17 +45,20 @@ public class MSurfaceRTI extends java.util.Observable {
             String city,
             String state,
             int zipcode,
-            String phone) {
-        this.dbRecordID = dbRecord;
-        this.names[0] = name1;
-        this.names[1] = name2;
-        this.names[2] = name3;
-        this.names[3] = name4;
+            String phone,
+            boolean active) // TO DO:  Insert code to include Recorded Document
+    {
+        this.interest = interest;
+        this.status = status;
+        this.owners[0] = name1;
+        this.owners[1] = name2;
+        this.owners[2] = name3;
+        this.owners[3] = name4;
         this.address = address;
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
-        this.phone = phone;
+        // TO DO: Insert code to include Recorded Document
         notifyObservers(counter);
     }
 

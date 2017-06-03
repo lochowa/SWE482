@@ -1,5 +1,8 @@
 package JavaApp.mvccompliant;
-
+/**
+ *
+ * @author by Michael Barth
+ */
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Observable;
@@ -7,10 +10,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.ListSelectionEvent;
 
-/**
- *
- * @author by Michael Barth
- */
+
 public class VMenu extends JFrame implements java.util.Observer {
 
     public static class CloseListener extends WindowAdapter {

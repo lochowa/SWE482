@@ -1,5 +1,4 @@
 package JavaApp.mvccompliant;
-
 /**
  *
  * @author by Michael Barth

@@ -1,10 +1,10 @@
 package JavaApp.mvccompliant;
-
-import java.awt.event.ActionEvent;
 /**
  *
  * @author by Michael Barth
  */
+import java.awt.event.ActionEvent;
+
 public class CMenu implements java.awt.event.ActionListener {
     MMenu model;
     VMenu view;

@@ -1,12 +1,12 @@
 package JavaApp.mvccompliant;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
-
 /**
  *
  * @author by Michael Barth
  */
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
+
+
 public class CLease implements java.awt.event.ActionListener {
     
     MLease model;
@@ -35,7 +35,7 @@ public class CLease implements java.awt.event.ActionListener {
             new MVCPlaceholder();
         }
         if(e.getActionCommand().equals(Actions.SEARCHNAME.name())){
-            new MVCMineralRTI();
+            new MVCLessor();
         }
     }
     void addModel(MLease m) {

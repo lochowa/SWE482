@@ -3,26 +3,24 @@ package JavaApp.mvccompliant;
  *
  * @author by Michael Barth
  */
-public class MVCDocument {
-
+public class MVCFractionTool {
     public static void main(String[] args) {
         // TODO code application logic here
-        new MVCDocument();
+        new MVCFractionTool();
     }
 
-    public MVCDocument() {
+    public MVCFractionTool() {
 
-        MDocument model = new MDocument();
-        VDocument view = new VDocument();
+        MFractionTool model = new MFractionTool();
+        VFractionTool view = new VFractionTool();
 
         model.addObserver(view);
 
-        CDocument controller = new CDocument();
+        CFractionTool controller = new CFractionTool();
         controller.addModel(model);
         controller.addView(view);
         //  Initialise Model attribute values.
-        controller.initModel(0, null, null, null, 0, 0, 0);
-
+        controller.initModel(0, 0);
         view.addController(controller);
 
     }
