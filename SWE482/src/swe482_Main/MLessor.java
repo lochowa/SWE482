@@ -1,10 +1,15 @@
-package swe482;
+package swe482_Main;
 /**
  *
  * @author by Michael Barth
  */
-public class MInterest extends java.util.Observable {
-    
+public class MLessor extends java.util.Observable {
+
+    MLessor() {
+        // Test Script:  Intercommunication Feedback.
+        System.out.println("Model Lessor()");
+    }
+
     void incrementValue() {
         ++counter;
     } // incrementValue()
@@ -16,10 +21,7 @@ public class MInterest extends java.util.Observable {
     // Variable Declaration Area:  Do not change.
     private int counter;
     private int dbRecordID;
-    private int dbPropertyREFID;
-    private int dbInterestID;
-    private String nameQuery;
-    private int interest;
+    private double interest;
     private String status;
     private String[] owners = new String[4];
     private String address;
@@ -27,46 +29,37 @@ public class MInterest extends java.util.Observable {
     private String state;
     private int zipcode;
     private String phone;
-    // TO DO:  Insert List<E> to contain Recorded Documents
     private boolean active;
-    
+    // TO DO:  Insert List<E> to contain Recorded Documents   
     // END Variable Declaration Area
 
-    MInterest() {
-        // Test Script:  Intercommunication Feedback.
-        System.out.println("Model Interest()");
-
-    }
-
     void setValues(
-            int counter,
             int dbRecordID,
-            int dbPropertyREFID,
-            int dbInterestID
-    ) {
-        this.dbRecordID = dbRecordID;
-        this.dbPropertyREFID = dbPropertyREFID;
-        this.dbInterestID = dbInterestID;
-    }
-
-    void setOwner(
-            int interest,
+            double interest,
             String status,
-            String[] owners,
+            String name1,
+            String name2,
+            String name3,
+            String name4,
             String address,
             String city,
             String state,
             int zipcode,
             String phone,
-            boolean active) {
+            boolean active) // TO DO:  Insert code to include Recorded Document
+    {
         this.interest = interest;
         this.status = status;
-        this.owners = owners;
+        this.owners[0] = name1;
+        this.owners[1] = name2;
+        this.owners[2] = name3;
+        this.owners[3] = name4;
         this.address = address;
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
+        // TO DO: Insert code to include Recorded Document
+        notifyObservers(counter);
     }
-    
-    
+
 }

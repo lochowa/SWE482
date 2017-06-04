@@ -1,11 +1,10 @@
-package swe482;
-
+package swe482_Main;
 /**
  *
  * @author by Michael Barth
  */
 public class MMenu extends java.util.Observable {
-    
+
     void incrementValue() {
         ++counter;
     } // incrementValue()
@@ -13,19 +12,20 @@ public class MMenu extends java.util.Observable {
     int getCounter() {
         return counter;
     } // getCounter()
-    
-    MMenu(){ 
+
+    MMenu() {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model Menu()");
 
     }
-    
-    void setAction(String command){
+
+    void setValues(String command) {
         this.command = command;
+        notifyObservers(counter);
     }
     // Variable Declaration Area:  Do not change.
     private int counter;
     private String command;
-    
+
     // END Variable Declaration Area
 }

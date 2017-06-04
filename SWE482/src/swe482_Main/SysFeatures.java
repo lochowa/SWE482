@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package swe482;
-
+package swe482_Main;
 /**
  *
- * @author Ubuntu2B
+ * @author by Michael Barth
  */
 public class SysFeatures {
     
     private enum Features{
-        PROJECT_CONFIGURATION,
+
         ADD_PROPERTY,
         ADD_PLACEHOLDER_PROPERTY,
         ADD_LEASE,
@@ -20,9 +14,10 @@ public class SysFeatures {
         MODIFY_OWNER_RECORD,
         CREATE_PROJECT_REPORT,
         CREATE_LEASE_PURCHASE_REPORT,
+        PROJECT_CONFIGURATION,
         QUERY_RECORDS
     }
-    
+
     private static final String[] List = new String[Features.values().length];
     
     String[] buildList(){

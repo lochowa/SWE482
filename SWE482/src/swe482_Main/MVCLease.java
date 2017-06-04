@@ -1,28 +1,26 @@
-package swe482;
-
+package swe482_Main;
 /**
  *
  * @author by Michael Barth
  */
-public class MVCInterest {
-
-
+public class MVCLease {
+    
     public static void main(String[] args) {
         // TODO code application logic here
-        new MVCInterest();
+        new MVCLease();
     }
-        public MVCInterest(){
+        public MVCLease(){
             
-                    MInterest model = new MInterest();
-        VInterest view = new VInterest();
+        MLease model = new MLease();
+        VLease view = new VLease();
         model.addObserver(view);
         
-        CInterest controller = new CInterest();
+        CLease controller = new CLease();
         
         controller.addModel(model);
         controller.addView(view);
         //  Initialise Model attribute values.
-        controller.initModel(0, 0, 0, 0, null, null, null, null, null, 0, null, true);
+        controller.initModel(0, 0, null, 0, 0, null, 0, 0, 0, null, false, 0, null, null, null, null, null, 0, null, null, null, null, 0);
         
         view.addController(controller);    
 }

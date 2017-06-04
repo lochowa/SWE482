@@ -1,5 +1,4 @@
-package swe482;
-
+package swe482_Main;
 /**
  *
  * @author by Michael Barth
