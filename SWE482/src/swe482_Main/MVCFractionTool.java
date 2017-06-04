@@ -14,8 +14,6 @@ public class MVCFractionTool {
         MFractionTool model = new MFractionTool();
         VFractionTool view = new VFractionTool();
 
-        model.addObserver(view);
-
         CFractionTool controller = new CFractionTool();
         controller.addModel(model);
         controller.addView(view);

@@ -13,8 +13,7 @@ public class MVCLease {
             
         MLease model = new MLease();
         VLease view = new VLease();
-        model.addObserver(view);
-        
+
         CLease controller = new CLease();
         
         controller.addModel(model);

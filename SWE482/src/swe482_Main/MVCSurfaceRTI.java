@@ -13,9 +13,7 @@ public class MVCSurfaceRTI {
         
         MSurfaceRTI model = new MSurfaceRTI();
         VSurfaceRTI view = new VSurfaceRTI();
-        
-        model.addObserver(view);
-        
+
         CSurfaceRTI controller = new CSurfaceRTI();
         controller.addModel(model);
         controller.addView(view);

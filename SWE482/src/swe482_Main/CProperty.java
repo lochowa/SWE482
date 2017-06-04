@@ -34,7 +34,6 @@ public class CProperty implements java.awt.event.ActionListener {
                 + " with e.paramString: " + e.paramString());
         
         System.out.println("Controller: Acted on Property Model");
-        model.incrementValue();
         
         if((e.getActionCommand().equals(Actions.ADDMINERALOWNER.name()))){
             new MVCMineralRTI();

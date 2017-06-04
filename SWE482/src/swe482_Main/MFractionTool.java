@@ -10,16 +10,7 @@ public class MFractionTool extends java.util.Observable {
         System.out.println("Model FractionTool()");
     }
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private double topNumber;
     private double bottomNumber;
     private double decimal;
@@ -27,9 +18,7 @@ public class MFractionTool extends java.util.Observable {
     void setValues(
             double topNumber,
             double bottomNumber) {
-        ++counter;
         this.topNumber = topNumber;
         this.bottomNumber = bottomNumber;
-        notifyObservers(counter);
     }
 }

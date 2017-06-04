@@ -5,16 +5,7 @@ package swe482_Main;
  */
 public class MInterest extends java.util.Observable {
     
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private int dbRecordID;
     private int dbPropertyREFID;
     private int dbInterestID;

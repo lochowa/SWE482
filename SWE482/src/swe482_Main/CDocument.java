@@ -24,7 +24,6 @@ public class CDocument implements java.awt.event.ActionListener {
                 + " with e.paramString: " + e.paramString());
 
         System.out.println("Controller: Acted on Lease Model");
-        model.incrementValue();
 
         if (e.getActionCommand().equals(Actions.CLOSEWINDOW.name())) {
             view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));

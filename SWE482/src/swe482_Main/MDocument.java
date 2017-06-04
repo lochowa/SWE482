@@ -5,21 +5,12 @@ package swe482_Main;
  */
 public class MDocument extends java.util.Observable {
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     MDocument() {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model Menu()");
     }
 
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private int dbRecordID;
     private String docType;
     private String effectiveDate;
@@ -44,6 +35,5 @@ public class MDocument extends java.util.Observable {
         this.documentID = documentID;
         this.book = book;
         this.page = page;
-                notifyObservers(counter);
     }
 }

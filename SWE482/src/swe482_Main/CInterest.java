@@ -38,10 +38,9 @@ public class CInterest implements java.awt.event.ActionListener {
                 + " with e.paramString: " + e.paramString());
         
         System.out.println("Controller: Acted on Interest Model");
-        model.incrementValue();
         
-        if(e.getActionCommand().equals("CLOSEWINDOW")){
-            view.setVisible(false);
+        if (e.getActionCommand().equals(Actions.CLOSEWINDOW.name())) {
+            view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
         }
         
         if(e.getActionCommand().equals(Actions.ADDLEASEBURDEN.name())){

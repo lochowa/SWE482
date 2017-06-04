@@ -10,16 +10,7 @@ public class MLeasehold extends java.util.Observable {
         System.out.println("Model Leasehold()");
     }
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private int dbRecordID;
     private String lessor;
     private String lessee;
@@ -71,6 +62,5 @@ public class MLeasehold extends java.util.Observable {
         this.currentDeepDepthRights = currentDeepDepthRights;
         this.specificDeepDepthRestrictions = specificDeepDepthRestrictions;
         // TO DO: Add code to include Recorded Document objects.
-        notifyObservers(counter);
     }
 }

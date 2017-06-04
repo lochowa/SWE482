@@ -10,16 +10,7 @@ public class MMineralRTI extends java.util.Observable {
         System.out.println("Model MineralRTI()");
     }
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private int dbRecordID;
     private double interest;
     private String status;
@@ -57,7 +48,6 @@ public class MMineralRTI extends java.util.Observable {
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
-        notifyObservers(counter);
     }
 
 }

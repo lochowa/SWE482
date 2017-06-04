@@ -14,7 +14,6 @@ public class MVCMineralRTI {
 
         MMineralRTI model = new MMineralRTI();
         VMineralRTI view = new VMineralRTI();
-        model.addObserver(view);
 
         CMineralRTI controller = new CMineralRTI();
 

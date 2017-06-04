@@ -5,14 +5,6 @@ package swe482_Main;
  */
 public class MSurfaceRTI extends java.util.Observable {
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
     private int counter;
     private int dbRecordID;
@@ -52,7 +44,6 @@ public class MSurfaceRTI extends java.util.Observable {
         this.state = state;
         this.zipcode = zipcode;
         this.phone = phone;
-        notifyObservers(counter);
     }
 
 }

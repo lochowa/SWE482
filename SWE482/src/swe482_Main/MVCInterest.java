@@ -15,8 +15,7 @@ public class MVCInterest {
             
                     MInterest model = new MInterest();
         VInterest view = new VInterest();
-        model.addObserver(view);
-        
+
         CInterest controller = new CInterest();
         
         controller.addModel(model);

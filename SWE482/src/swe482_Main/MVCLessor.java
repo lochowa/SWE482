@@ -14,7 +14,6 @@ public class MVCLessor {
 
         MLessor model = new MLessor();
         VLessor view = new VLessor();
-        model.addObserver(view);
 
         CLessor controller = new CLessor();
 

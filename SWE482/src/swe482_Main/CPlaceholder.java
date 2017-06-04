@@ -28,9 +28,7 @@ public class CPlaceholder implements java.awt.event.ActionListener{
         + " button is clicked at " + new java.util.Date(e.getWhen())
                 + " with e.paramString: " + e.paramString());
         
-        System.out.println("Controller: Acted on Property Model");
-        model.incrementValue();
-        
+        System.out.println("Controller: Acted on Property Model");  
 
         if(e.getActionCommand().equals(Actions.CLOSEWINDOW.name())){
             view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));

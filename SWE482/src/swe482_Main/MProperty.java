@@ -5,16 +5,14 @@ package swe482_Main;
  */
 public class MProperty extends java.util.Observable {
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
+    MProperty() {
+        // Test Script:  Intercommunication Feedback.
+        System.out.println("Model Property()");
 
-    int getCounter() {
-        return counter;
-    } // getCounter()
+    }   // MProperty()
 
     // Variable Declaration Area:  Do not change.
-    private int counter;
+
     private int dbRecordID;
     private int parcelID;
     private String taxMapID;
@@ -29,14 +27,7 @@ public class MProperty extends java.util.Observable {
     private final String[] bounders = new String[4];
     // TO DO: Create List<E> to hold RTI MInterest recods
     // END Variable Declaration Area
-
-    MProperty() {
-        // Test Script:  Intercommunication Feedback.
-        System.out.println("Model Property()");
-
-    }
-    // MProperty()
-
+ 
     void setValues(
             int dbRecordID,
             int parcelID,
@@ -71,7 +62,6 @@ public class MProperty extends java.util.Observable {
         this.bounders[1] = b_east;
         this.bounders[2] = b_south;
         this.bounders[3] = b_west;
-        notifyObservers(counter);
         // TO DO: Create List<E> to hold RTI MInterest recods
 
     }

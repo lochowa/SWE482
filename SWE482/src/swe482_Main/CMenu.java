@@ -17,7 +17,6 @@ public class CMenu implements java.awt.event.ActionListener {
                 + " with e.paramString: " + e.paramString());
 
         System.out.println("Controller: Received Action Command: " + e.getActionCommand());
-        model.incrementValue();
         
         if(e.getActionCommand().equals("CLOSEWINDOW")){
             System.exit(0);

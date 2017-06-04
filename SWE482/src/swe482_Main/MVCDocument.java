@@ -15,8 +15,6 @@ public class MVCDocument {
         MDocument model = new MDocument();
         VDocument view = new VDocument();
 
-        model.addObserver(view);
-
         CDocument controller = new CDocument();
         controller.addModel(model);
         controller.addView(view);
