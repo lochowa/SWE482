@@ -11,29 +11,29 @@ public class MDocument extends java.util.Observable {
     }
 
     // Variable Declaration Area:  Do not change.
-    private int dbRecordID;
-    private String docType;
-    private String effectiveDate;
-    private String recordingDate;
-    private int documentID;
-    private int book;
-    private int page;
+    private int _RecordIdentification;
+    private String _DocumentType;
+    private String _EffectiveDate;
+    private String _RecordedDate;
+    private int _ReceptionNumber;
+    private int _Book;
+    private int _Page;
 
     // END Variable Declaration Area
     void setValues(
-            int dbRecordID,
-            String docType,
-            String effectiveDate,
-            String recordingDate,
-            int documentID,
-            int book,
-            int page) {
-        this.dbRecordID = dbRecordID;
-        this.docType = docType;
-        this.effectiveDate = effectiveDate;
-        this.recordingDate = recordingDate;
-        this.documentID = documentID;
-        this.book = book;
-        this.page = page;
+            int RecordIdentification,
+            String DocumentType,
+            String EffectiveDate,
+            String RecordedDate,
+            int ReceptionNumber,
+            int Book,
+            int Page) {
+        this._RecordIdentification = RecordIdentification;
+        this._DocumentType = DocumentType;
+        this._EffectiveDate = EffectiveDate;
+        this._RecordedDate = RecordedDate;
+        this._ReceptionNumber = ReceptionNumber;
+        this._Book = Book;
+        this._Page = Page;
     }
 }

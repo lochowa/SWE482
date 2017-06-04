@@ -58,15 +58,15 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
         // Generated using JFormDesigner non-commercial license
         dialogPane = new JPanel();
         contentPanel = new JPanel();
-        lblDBRecordID = new JLabel();
-        _DBRecordID = new JTextField();
+        lblRecordIdentification = new JLabel();
+        _RecordIdentification = new JTextField();
         _NameQuery = new JTextField();
         _SearchName = new JButton();
-        lblNetInterest = new JLabel();
-        _NetInterest = new JTextField();
+        lblOwnerRTI = new JLabel();
+        _OwnerRTI = new JTextField();
         _ConvertFraction = new JButton();
-        lblInterestStatus = new JLabel();
-        _cboInterestStatus = new JComboBox();
+        lblStatus = new JLabel();
+        _cboStatus = new JComboBox();
         _AddLeaseBurden = new JButton();
         lblName1 = new JLabel();
         _Name1 = new JTextField();
@@ -111,16 +111,16 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                 ((GridBagLayout) contentPanel.getLayout()).columnWeights = new double[]{0.0, 0.0, 0.0, 1.0E-4};
                 ((GridBagLayout) contentPanel.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
-                //---- lblDBRecordID ----
-                lblDBRecordID.setText("Record Identification");
-                contentPanel.add(lblDBRecordID, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                //---- lblRecordIdentification ----
+                lblRecordIdentification.setText("Record Identification");
+                contentPanel.add(lblRecordIdentification, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _DBRecordID ----
-                _DBRecordID.setEditable(false);
-                _DBRecordID.setAutoscrolls(false);
-                contentPanel.add(_DBRecordID, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                //---- _RecordIdentification ----
+                _RecordIdentification.setEditable(false);
+                _RecordIdentification.setAutoscrolls(false);
+                contentPanel.add(_RecordIdentification, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
@@ -140,16 +140,16 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 25, 0), 0, 0));
 
-                //---- lblNetInterest ----
-                lblNetInterest.setText("Net Interesst");
-                lblNetInterest.setFont(lblNetInterest.getFont().deriveFont(lblNetInterest.getFont().getSize() + 1f));
-                contentPanel.add(lblNetInterest, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+                //---- lblOwnerRTI ----
+                lblOwnerRTI.setText("Net Interesst");
+                lblOwnerRTI.setFont(lblOwnerRTI.getFont().deriveFont(lblOwnerRTI.getFont().getSize() + 1f));
+                contentPanel.add(lblOwnerRTI, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _NetInterest ----
-                _NetInterest.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_NetInterest, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
+                //---- _OwnerRTI ----
+                _OwnerRTI.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_OwnerRTI, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
@@ -160,16 +160,16 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
-                //---- lblInterestStatus ----
-                lblInterestStatus.setText("Status");
-                lblInterestStatus.setFont(lblInterestStatus.getFont().deriveFont(lblInterestStatus.getFont().getSize() + 1f));
-                contentPanel.add(lblInterestStatus, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                //---- lblStatus ----
+                lblStatus.setText("Status");
+                lblStatus.setFont(lblStatus.getFont().deriveFont(lblStatus.getFont().getSize() + 1f));
+                contentPanel.add(lblStatus, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _cboInterestStatus ----
-                _cboInterestStatus.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_cboInterestStatus, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
+                //---- _cboStatus ----
+                _cboStatus.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_cboStatus, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
@@ -360,15 +360,15 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
     // Generated using JFormDesigner non-commercial license
     private JPanel dialogPane;
     private JPanel contentPanel;
-    private JLabel lblDBRecordID;
-    private JTextField _DBRecordID;
+    private JLabel lblRecordIdentification;
+    private JTextField _RecordIdentification;
     private JTextField _NameQuery;
     private JButton _SearchName;
-    private JLabel lblNetInterest;
-    private JTextField _NetInterest;
+    private JLabel lblOwnerRTI;
+    private JTextField _OwnerRTI;
     private JButton _ConvertFraction;
-    private JLabel lblInterestStatus;
-    private JComboBox _cboInterestStatus;
+    private JLabel lblStatus;
+    private JComboBox _cboStatus;
     private JButton _AddLeaseBurden;
     private JLabel lblName1;
     private JTextField _Name1;
@@ -395,5 +395,39 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
     private JButton _InsertButton;
     private JButton _CancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+        
+    String getNameQuery(){
+        return this._NameQuery.getText();
+    }
+    
+    String getOwnerRTI(){
+        return this._OwnerRTI.getText();
+    }
+    
+    String getStatus(){
+        return this._cboStatus.getSelectedItem().toString();
+    }
+   
+    String getName1(){
+        return this._Name1.getText();
+    }
+    
+    String getName2(){
+        return this._Name2.getText();
+    }
+    
+    String getName3(){
+        return this._Name3.getText();
+    }
+    
+    String getName4(){
+        return this._Name4.getText();
+    }
+    
+    String getAddress(){
+        return this._Address.getText();
+    }
+    
 
 }

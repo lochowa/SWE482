@@ -9,10 +9,9 @@ class AddPanelTestCode
   public void buildGUI()
   {
     visiblePanel.setBorder(BorderFactory.createTitledBorder("Visible Panel"));
-    JButton btn1 = new JButton("Add, but no validation");
-    JButton btn2 = new JButton("Add and validate");
+    JButton btn2 = new JButton("Add JPanel");
     JPanel p = new JPanel(new GridLayout(1,2));
-    p.add(btn1); p.add(btn2);
+    p.add(btn2);
  
     JFrame f = new JFrame();
     f.getContentPane().add(visiblePanel);
@@ -22,9 +21,6 @@ class AddPanelTestCode
     f.setLocationRelativeTo(null);
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     f.setVisible(true);
-    btn1.addActionListener((ActionEvent ae) -> {
-        visiblePanel.add(new JButton("Hello"));
-    });
     btn2.addActionListener((ActionEvent ae) -> {
         visiblePanel.add(createJPanel());
         visiblePanel.revalidate();
