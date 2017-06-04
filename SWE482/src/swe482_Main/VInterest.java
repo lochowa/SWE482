@@ -1,4 +1,4 @@
-package swe482;
+package swe482_Main;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -31,13 +31,20 @@ public class VInterest extends JFrame implements java.util.Observer {
         // Test Script:  Who called the operation and what did they send?
         System.out.println("Property View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
     }
-
+    public enum Actions {
+        ADDLEASEBURDEN,
+        SEARCHNAME,
+        CONVERTFRACTION,
+        ADDRECORDEDINSTRUMENT,
+        SAVEINTEREST,
+        CLOSEWINDOW
+    }
     void addController(ActionListener controller) {
         System.out.println("View: Adding Interest Controller");
         _SaveButton.addActionListener(controller);
         _CancelButton.addActionListener(controller);
         _SearchName.addActionListener(controller);
-        _AddRecordedDocument.addActionListener(controller);
+        _AddRecordedInstrument.addActionListener(controller);
         _ConvertFraction.addActionListener(controller);
         _AddLeaseBurden.addActionListener(controller);
         _cbxActiveStatus.addActionListener(controller);
@@ -81,7 +88,7 @@ public class VInterest extends JFrame implements java.util.Observer {
         _ZipCode = new JTextField();
         label9 = new JLabel();
         _ContactNumber = new JTextField();
-        _AddRecordedDocument = new JButton();
+        _AddRecordedInstrument = new JButton();
         panel2 = new JPanel();
         buttonBar = new JPanel();
         _cbxActiveStatus = new JCheckBox();
@@ -157,7 +164,7 @@ public class VInterest extends JFrame implements java.util.Observer {
 
                 //---- _SearchName ----
                 _SearchName.setText("Unique Name Verification");
-                _SearchName.setActionCommand("NameVerification");
+                _SearchName.setActionCommand(Actions.SEARCHNAME.name());
                 _SearchName.setMargin(new Insets(2, 15, 2, 15));
                 _SearchName.setFont(_SearchName.getFont().deriveFont(_SearchName.getFont().getStyle() & ~Font.BOLD, _SearchName.getFont().getSize() + 1f));
                 contentPanel.add(_SearchName, new GridBagConstraints(1, 4, 3, 1, 0.0, 0.0,
@@ -198,6 +205,7 @@ public class VInterest extends JFrame implements java.util.Observer {
 
                 //---- _AddLeaseBurden ----
                 _AddLeaseBurden.setText("Add Lease Burden");
+                _AddLeaseBurden.setActionCommand(Actions.ADDLEASEBURDEN.name());
                 contentPanel.add(_AddLeaseBurden, new GridBagConstraints(3, 6, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 10, 0), 0, 0));
@@ -319,9 +327,10 @@ public class VInterest extends JFrame implements java.util.Observer {
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _AddRecordedDocument ----
-                _AddRecordedDocument.setText("Add Recorded Document");
-                contentPanel.add(_AddRecordedDocument, new GridBagConstraints(0, 16, 2, 1, 0.0, 0.0,
+                //---- _AddRecordedInstrument ----
+                _AddRecordedInstrument.setText("Add Recorded Document");
+                _AddRecordedInstrument.setActionCommand(Actions.ADDRECORDEDINSTRUMENT.name());
+                contentPanel.add(_AddRecordedInstrument, new GridBagConstraints(0, 16, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 10, 5), 0, 0));
 
@@ -355,12 +364,14 @@ public class VInterest extends JFrame implements java.util.Observer {
 
                 //---- _SaveButton ----
                 _SaveButton.setText("SAVE");
+                _SaveButton.setActionCommand(Actions.SAVEINTEREST.name());
                 buttonBar.add(_SaveButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 5), 0, 0));
 
                 //---- _CancelButton ----
                 _CancelButton.setText("Cancel");
+                _CancelButton.setActionCommand(Actions.CLOSEWINDOW.name());
                 buttonBar.add(_CancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 0), 0, 0));
@@ -411,7 +422,7 @@ public class VInterest extends JFrame implements java.util.Observer {
     private JTextField _ZipCode;
     private JLabel label9;
     private JTextField _ContactNumber;
-    private JButton _AddRecordedDocument;
+    private JButton _AddRecordedInstrument;
     private JPanel panel2;
     private JPanel buttonBar;
     private JCheckBox _cbxActiveStatus;

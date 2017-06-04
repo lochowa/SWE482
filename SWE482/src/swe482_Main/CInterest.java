@@ -1,7 +1,8 @@
-package swe482;
+package swe482_Main;
 
 
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,7 +22,14 @@ public class CInterest implements java.awt.event.ActionListener {
     CInterest(){
         
     }
-    
+    public enum Actions {
+        ADDLEASEBURDEN,
+        SEARCHNAME,
+        CONVERTFRACTION,
+        ADDRECORDEDINSTRUMENT,
+        SAVEINTEREST,
+        CLOSEWINDOW
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         // Test Script:  Interobject Communication Feedback
@@ -31,6 +39,14 @@ public class CInterest implements java.awt.event.ActionListener {
         
         System.out.println("Controller: Acted on Interest Model");
         model.incrementValue();
+        
+        if(e.getActionCommand().equals("CLOSEWINDOW")){
+            view.setVisible(false);
+        }
+        
+        if(e.getActionCommand().equals(Actions.ADDLEASEBURDEN.name())){
+            new MVCLeasehold();
+        }
     }
     
     void addModel(MInterest m) {

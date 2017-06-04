@@ -1,12 +1,12 @@
-package swe482;
-
-
-import java.awt.event.ActionEvent;
-
+package swe482_Main;
 /**
  *
- * @author Ubuntu2B
+ * @author by Michael Barth
  */
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
+
+
 public class CProperty implements java.awt.event.ActionListener {
 
     MProperty model;
@@ -22,7 +22,6 @@ public class CProperty implements java.awt.event.ActionListener {
         SAVEPROPERTY,
         CBOTOWNSHIPCHANGE,
         CBORANGECHANGE,
-        CBOSECTIONCHANGE,
         CBOMERIDIANCHANGE,
         CLOSEWINDOW
 
@@ -37,8 +36,15 @@ public class CProperty implements java.awt.event.ActionListener {
         System.out.println("Controller: Acted on Property Model");
         model.incrementValue();
         
-        if((e.getActionCommand().equals("ADDMINERALOWNER"))){
-            new MVCInterest();
+        if((e.getActionCommand().equals(Actions.ADDMINERALOWNER.name()))){
+            new MVCMineralRTI();
+        }
+        
+        if (e.getActionCommand().equals(Actions.ADDSURFACEOWNER.name())){
+            new MVCSurfaceRTI();
+        }
+        if (e.getActionCommand().equals(Actions.CLOSEWINDOW.name())) {
+            view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
         }
     }
     
