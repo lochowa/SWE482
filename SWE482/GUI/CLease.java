@@ -1,40 +1,52 @@
-package swe482;
+package JavaApp.mvccompliant;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
 /**
  *
  * @author by Michael Barth
  */
-public class CLeasehold implements java.awt.event.ActionListener {
+public class CLease implements java.awt.event.ActionListener {
     
-    MLeasehold model = new MLeasehold();
-    VLeasehold view = new VLeasehold();
-
+    MLease model;
+    VLease view;
+    private enum Actions {
+        SAVECONTENTS,
+        CLOSEWINDOW,
+        SEARCHNAME,
+        ADDLEGALDESCRIPTION,
+        LESSEECLIENT
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         // Test Script:  Interobject Communication Feedback
-        System.out.println("Interest Controller: The " + e.getActionCommand()
+        System.out.println("Lease Controller: The " + e.getActionCommand()
         + " button is clicked at " + new java.util.Date(e.getWhen())
                 + " with e.paramString: " + e.paramString());
         
-        System.out.println("Controller: Acted on Interest Model");
+        System.out.println("Controller: Acted on Lease Model");
         model.incrementValue();
         
-        if(e.getActionCommand().equals("CLOSEWINDOW")){
-            view.setVisible(false);
+        if(e.getActionCommand().equals(Actions.CLOSEWINDOW.name())){
+            view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
         }
-    
+        if(e.getActionCommand().equals(Actions.ADDLEGALDESCRIPTION.name())){
+            new MVCPlaceholder();
+        }
+        if(e.getActionCommand().equals(Actions.SEARCHNAME.name())){
+            new MVCMineralRTI();
+        }
     }
-        void addModel(MLeasehold m) {
+    void addModel(MLease m) {
         // Test Script: Operation Feedback
-        System.out.println("Controller: Adding Interest Model");
+        System.out.println("Controller: Adding Lease Model");
         this.model = m;
     }
 
-    void addView(VLeasehold v) {
+    void addView(VLease v) {
         // Test Script: Operation Feedback
-        System.out.println("Controller: Adding Interest View");
+        System.out.println("Controller: Adding Lease View");
         this.view = v;
     } 
     

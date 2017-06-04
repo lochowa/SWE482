@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package swe482;
+package JavaApp.mvccompliant;
 
 /**
  *
  * @author Ubuntu2B
  */
-public class MLeasehold extends java.util.Observable {
+public class MLease extends java.util.Observable {
     
+    MLease(){
+        // Test Script:  Intercommunication Feedback.
+        System.out.println("Model Lease()");
+    }
     void incrementValue() {
         ++counter;
     } // incrementValue()
