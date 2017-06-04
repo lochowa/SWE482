@@ -13,7 +13,7 @@ public class CDocument implements java.awt.event.ActionListener {
     VDocument view;
     
     private enum Actions {
-        SAVEDOCUMENT,
+        INSERTDOCUMENT,
         CLOSEWINDOW
     }
     @Override
@@ -27,6 +27,13 @@ public class CDocument implements java.awt.event.ActionListener {
 
         if (e.getActionCommand().equals(Actions.CLOSEWINDOW.name())) {
             view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
+        }
+        
+        if (e.getActionCommand().equals(Actions.INSERTDOCUMENT.name())){
+            System.out.println("Validating Data");
+            if(this.validateData(view)){
+                System.out.println("Document View: Valid User Input");
+            } else System.out.println("Invalid Data");
         }
 
     }
@@ -43,21 +50,45 @@ public class CDocument implements java.awt.event.ActionListener {
         this.view = v;
     }
 
+    //  MVC initializes values to the Model.
     void initModel(
-            int dbRecordID,
-            String docType,
-            String effectiveDate,
-            String recordingDate,
-            int documentID,
-            int book,
-            int page) {
-        model.setValues(
-                dbRecordID,
-                docType,
-                effectiveDate,
-                recordingDate,
-                documentID,
-                book,
-                page);
+            int RecordIdentification,
+            String DocumentType,
+            String EffectiveDate,
+            String RecordedDate,
+            int ReceptionNumber,
+            int Book,
+            int Page) {
+        model.setValues(RecordIdentification, DocumentType, EffectiveDate, RecordedDate, ReceptionNumber, Book, Page);
     }
+    
+    boolean validateData(VDocument v){
+        //  Using Try/Catch for Data Validation.
+        boolean isValid = false;
+        int validInt;
+        try{
+            if (!v.getReceptionNumber().isEmpty()){
+                validInt = Integer.parseInt(v.getReceptionNumber().trim());
+            } else {
+                // Change field label color to RED.
+            }
+            if (!v.getBook().isEmpty()){
+                validInt = Integer.parseInt(v.getBook().trim());
+            } else {
+                // Change field label color to RED.
+            }
+            if (!v.getPage().isEmpty()){
+                validInt = Integer.parseInt(v.getBook().trim());
+            }
+            String regex = "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$";
+            if (!v.getEffectiveDate().isEmpty() && v.getEffectiveDate().trim().matches(regex) &&
+                !v.getRecordingDate().isEmpty() && v.getRecordingDate().trim().matches(regex)
+                ){
+                isValid = true;
+            }
+        } catch (NumberFormatException e) { return isValid; }
+        return isValid;
+        }
+    
+    
 }
