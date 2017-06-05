@@ -36,4 +36,62 @@ public class MDocument extends java.util.Observable {
         this._Book = Book;
         this._Page = Page;
     }
+
+    public int getRecordIdentification() {
+        return _RecordIdentification;
+    }
+
+    public void setRecordIdentification(int _RecordIdentification) {
+        this._RecordIdentification = _RecordIdentification;
+    }
+
+    public String getDocumentType() {
+        return _DocumentType;
+    }
+
+    public void setDocumentType(String _DocumentType) {
+        this._DocumentType = _DocumentType;
+    }
+
+    public String getEffectiveDate() {
+        return _EffectiveDate;
+    }
+
+    public void setEffectiveDate(String _EffectiveDate) {
+        this._EffectiveDate = _EffectiveDate;
+    }
+
+    public String getRecordedDate() {
+        return _RecordedDate;
+    }
+
+    public void setRecordedDate(String _RecordedDate) {
+        this._RecordedDate = _RecordedDate;
+    }
+
+    public int getReceptionNumber() {
+        return _ReceptionNumber;
+    }
+
+    public void setReceptionNumber(int _ReceptionNumber) {
+        this._ReceptionNumber = _ReceptionNumber;
+    }
+
+    public int getBook() {
+        return _Book;
+    }
+
+    public void setBook(int _Book) {
+        this._Book = _Book;
+    }
+
+    public int getPage() {
+        return _Page;
+    }
+
+    public void setPage(int _Page) {
+        this._Page = _Page;
+    }
+    
+    
 }

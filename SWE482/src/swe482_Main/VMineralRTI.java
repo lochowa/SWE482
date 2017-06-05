@@ -9,9 +9,13 @@ import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
-
-public class VMineralRTI extends JFrame implements java.util.Observer {
-
+/**
+ *
+ * @author Ubuntu2B
+ * @param <E>
+ */
+public class VMineralRTI<E> extends JFrame implements java.util.Observer {
+        
     public static class CloseListener extends WindowAdapter {
 
         @Override
@@ -77,13 +81,13 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
         lblName4 = new JLabel();
         _Name4 = new JTextField();
         lblAddress = new JLabel();
-        _Address = new JTextField();
+        _OwnerAddress = new JTextField();
         lblCity = new JLabel();
-        _City = new JTextField();
+        _OwnerCity = new JTextField();
         lblState = new JLabel();
-        _State = new JTextField();
+        _OwnerState = new JTextField();
         lblZipCode = new JLabel();
-        _ZipCode = new JTextField();
+        _OwnerZipCode = new JTextField();
         label9 = new JLabel();
         _ContactNumber = new JTextField();
         _AddInstrument = new JButton();
@@ -239,9 +243,9 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _Address ----
-                _Address.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_Address, new GridBagConstraints(1, 9, 2, 1, 0.0, 0.0,
+                //---- _OwnerAddress ----
+                _OwnerAddress.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_OwnerAddress, new GridBagConstraints(1, 9, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
@@ -252,9 +256,9 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _City ----
-                _City.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_City, new GridBagConstraints(1, 10, 2, 1, 0.0, 0.0,
+                //---- _OwnerCity ----
+                _OwnerCity.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_OwnerCity, new GridBagConstraints(1, 10, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
@@ -265,9 +269,9 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _State ----
-                _State.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_State, new GridBagConstraints(1, 11, 1, 1, 0.0, 0.0,
+                //---- _OwnerState ----
+                _OwnerState.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_OwnerState, new GridBagConstraints(1, 11, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
@@ -278,9 +282,9 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _ZipCode ----
-                _ZipCode.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_ZipCode, new GridBagConstraints(1, 12, 1, 1, 0.0, 0.0,
+                //---- _OwnerZipCode ----
+                _OwnerZipCode.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_OwnerZipCode, new GridBagConstraints(1, 12, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
@@ -379,13 +383,13 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
     private JLabel lblName4;
     private JTextField _Name4;
     private JLabel lblAddress;
-    private JTextField _Address;
+    private JTextField _OwnerAddress;
     private JLabel lblCity;
-    private JTextField _City;
+    private JTextField _OwnerCity;
     private JLabel lblState;
-    private JTextField _State;
+    private JTextField _OwnerState;
     private JLabel lblZipCode;
-    private JTextField _ZipCode;
+    private JTextField _OwnerZipCode;
     private JLabel label9;
     private JTextField _ContactNumber;
     private JButton _AddInstrument;
@@ -405,6 +409,10 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
         return this._OwnerRTI.getText();
     }
     
+    void setOwnerRTI(String OwnerRTI){
+        this._OwnerRTI.setText(OwnerRTI);
+    }
+    
     String getStatus(){
         return this._cboStatus.getSelectedItem().toString();
     }
@@ -413,21 +421,72 @@ public class VMineralRTI extends JFrame implements java.util.Observer {
         return this._Name1.getText();
     }
     
+    void setName1(String Name1){
+        this._Name1.setText(Name1);
+    }
+    
     String getName2(){
         return this._Name2.getText();
+    }
+    
+    void setName2(String Name2){
+        this._Name2.setText(Name2);
     }
     
     String getName3(){
         return this._Name3.getText();
     }
     
+    void setName3(String Name3){
+        this._Name3.setText(Name3);
+    }
+    
     String getName4(){
         return this._Name4.getText();
     }
     
-    String getAddress(){
-        return this._Address.getText();
+    void setName4(String Name4){
+        this._Name4.setText(Name4);
     }
     
-
+    String getOwnerAddress(){
+        return this._OwnerAddress.getText();
+    }
+    
+    void setownerAddress(String Address){
+        this._OwnerAddress.setText(Address);
+    }
+    
+    String getOwnerCity(){
+        return this._OwnerCity.getText();
+    }
+    
+    void setOwnerCity(String City){
+        this._OwnerCity.setText(City);
+    }
+    
+    String getOwnerState(){
+        return this._OwnerState.getText();
+    }
+    
+    void setOwnerState(String State){
+        this._OwnerState.setText(State);
+    }
+    
+    String getOwnerZipCode(){
+        return this._OwnerZipCode.getText();
+    }
+    
+    void setOwnerZipCode(String ZipCode){
+        this._OwnerZipCode.setText(ZipCode);
+    }
+    
+    String getContactNumber(){
+        return this._ContactNumber.getText();
+    }
+    
+    void setContactNumber(String ContactNumber){
+        this._ContactNumber.setText(ContactNumber);
+    }
+   
 }

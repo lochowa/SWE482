@@ -43,7 +43,7 @@ public class CMineralRTI implements java.awt.event.ActionListener {
             new MVCDocument();
         }
         if(e.getActionCommand().equals(Actions.CONVERTFRACTION.name())){
-            new MVCFractionTool();
+            this.updateOwnerRTI(Double.toString(new MVCFractionTool().returnDouble()));
         }
     }
     
@@ -60,21 +60,31 @@ public class CMineralRTI implements java.awt.event.ActionListener {
     } 
     
     void initModel(
-            int dbRecordID,
-            int interest,
-            String status,
-            String name1,
-            String name2,
-            String name3,
-            String name4,
-            String address,
-            String city ,
-            String state ,
-            int zipcode,
-            String phone ,
-            // TO DO:  Insert List<E> to contain Recorded Documents
-            boolean active){
-            model.setValues(0, 0, null, null, null, null, null, null, null, null, 0, null, false);
-        
+            boolean Active,
+            int RecordIdentification,
+            int ownerRTI,
+            String Status,
+            String Name1,
+            String Name2,
+            String Name3,
+            String Name4,
+            String Address,
+            String City ,
+            String State ,
+            String ZipCode,
+            String ContactNumber){
+        model.setValues(Active, RecordIdentification, ownerRTI, Status, Name1, Name2, Name3, Name4, Address, City, State, State, ContactNumber);
+    }
+    
+    void updateModel(){
+
+    }
+    
+    void addDocument(MDocument Document){
+        model.addDocument(Document);
+    }
+    
+    void updateOwnerRTI(String RTI){
+        view.setOwnerRTI(RTI);
     }
 }

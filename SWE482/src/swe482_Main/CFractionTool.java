@@ -18,18 +18,30 @@ public class CFractionTool implements java.awt.event.ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent ae) {
         // Test Script:  Interobject Communication Feedback
-        System.out.println("FractionTool Controller: The " + e.getActionCommand()
-                + " button is clicked at " + new java.util.Date(e.getWhen())
-                + " with e.paramString: " + e.paramString());
+        System.out.println("FractionTool Controller: The " + ae.getActionCommand()
+                + " button is clicked at " + new java.util.Date(ae.getWhen())
+                + " with e.paramString: " + ae.paramString());
 
-        System.out.println("Controller: Received Action Command: " + e.getActionCommand());
+        System.out.println("Controller: Received Action Command: " + ae.getActionCommand());
 
-        if (e.getActionCommand().equals(Actions.CLOSEWINDOW.name())) {
+        if (ae.getActionCommand().equals(Actions.CLOSEWINDOW.name())) {
             view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
         }
-        if(e.getActionCommand().equals(Actions.CONVERTFRACTION.name())){
+        if(ae.getActionCommand().equals(Actions.CONVERTFRACTION.name())){
+            try {
+                double Numerator = Double.parseDouble(view.getTopNumber());
+                double Denominator = Double.parseDouble(view.getBottomNumber());
+                double Decimal = Numerator/Denominator;
+                view.setDecimal(Decimal);
+                model.setDecimal(Decimal);
+            } catch (NumberFormatException e) {  
+            }
+        }
+        
+        if (ae.getActionCommand().equals(Actions.INSERTDECIMAL.name())){
+            
             
         }
     }
@@ -52,5 +64,9 @@ public class CFractionTool implements java.awt.event.ActionListener {
         model.setValues(
                 firstNumber,
                 secondNumber);
+    }
+    
+    double getDecimal(){
+        return model.getDecimal();
     }
 }

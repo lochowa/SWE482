@@ -175,4 +175,16 @@ public class VFractionTool extends JFrame implements java.util.Observer {
     private JButton _InsertDecimal;
     private JButton _CancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    String getTopNumber(){
+        return this._TopNumber.getText();
+    }
+    
+    String getBottomNumber(){
+        return this._BottomNumber.getText();
+    }
+    
+    void setDecimal(double Decimal){
+        this._Decimal.setText(Double.toString(Decimal));
+    }
 }

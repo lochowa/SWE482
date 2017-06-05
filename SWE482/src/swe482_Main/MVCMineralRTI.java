@@ -7,7 +7,7 @@ public class MVCMineralRTI {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        new MVCMineralRTI();
+        MVCMineralRTI mvcMineralRTI = new MVCMineralRTI();
     }
 
     public MVCMineralRTI() {
@@ -20,7 +20,7 @@ public class MVCMineralRTI {
         controller.addModel(model);
         controller.addView(view);
         //  Initialise Model attribute values.
-        controller.initModel(0, 0, null, null, null, null, null, null, null, null, 0, null, false);
+        controller.initModel(true, 0, 0, null, null, null, null, null, null, null, null, null, null);
 
         view.addController(controller);
 }

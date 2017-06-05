@@ -21,4 +21,28 @@ public class MFractionTool extends java.util.Observable {
         this.topNumber = topNumber;
         this.bottomNumber = bottomNumber;
     }
+
+    public double getTopNumber() {
+        return topNumber;
+    }
+
+    public void setTopNumber(double topNumber) {
+        this.topNumber = topNumber;
+    }
+
+    public double getBottomNumber() {
+        return bottomNumber;
+    }
+
+    public void setBottomNumber(double bottomNumber) {
+        this.bottomNumber = bottomNumber;
+    }
+
+    public double getDecimal() {
+        return decimal;
+    }
+
+    public void setDecimal(double decimal) {
+        this.decimal = decimal;
+    }
 }
