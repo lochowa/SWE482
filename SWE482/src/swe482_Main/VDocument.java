@@ -47,7 +47,7 @@ public class VDocument extends JFrame  {
         lblRecordIdentification = new JLabel();
         _RecordIdentification = new JTextField();
         lblDocumentType = new JLabel();
-        _cboDocumentType = new JComboBox();
+        _cboDocumentType = new JComboBox(Deeds);
         lblEffectiveDate = new JLabel();
         _EffectiveDate = new JTextField();
         lblRecordedDate = new JLabel();
@@ -222,6 +222,18 @@ public class VDocument extends JFrame  {
     private JPanel buttonBar;
     private JButton _SaveDocument;
     private JButton _CancelButton;
+        private final String[] Deeds = {
+        "WD  - Warranty Deed",
+        "SWD - Special Warranty Deed",
+        "BS  - Bargain and Sale",
+        "QCD - Quitclaim",
+        "GD  - Grant Deed",
+        "PRD - Personal Representative Deed",
+        "FD  - Fiduciary Deed",
+        "ST  - Survivorship Tenancy",
+        "TDT - Transfer on Death Tenancy",
+        "DD  - Dower"
+    };
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     String getRecordIdentification(){
