@@ -3,7 +3,7 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MPlaceholder{
+public class MPlaceholder extends java.util.Observable {
 
     MPlaceholder() {
         // Test Script:  Intercommunication Feedback.

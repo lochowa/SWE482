@@ -3,7 +3,7 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MMenu{
+public class MMenu extends java.util.Observable {
 
     MMenu() {
         // Test Script:  Intercommunication Feedback.
