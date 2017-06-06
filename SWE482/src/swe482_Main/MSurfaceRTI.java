@@ -3,7 +3,7 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MSurfaceRTI extends java.util.Observable {
+public class MSurfaceRTI {
 
     // Variable Declaration Area:  Do not change.
     private int counter;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
  *
  * @author by Michael Barth
  */
-public class MMineralRTI extends java.util.Observable {
+public class MMineralRTI{
 
     MMineralRTI() {
         // Test Script:  Intercommunication Feedback.

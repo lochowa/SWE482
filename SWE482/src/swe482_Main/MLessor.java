@@ -3,7 +3,7 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MLessor extends java.util.Observable {
+public class MLessor{
 
     MLessor() {
         // Test Script:  Intercommunication Feedback.

@@ -4,7 +4,7 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MLease extends java.util.Observable {
+public class MLease{
     
     MLease(){
         // Test Script:  Intercommunication Feedback.
