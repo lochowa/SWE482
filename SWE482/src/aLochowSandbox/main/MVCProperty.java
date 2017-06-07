@@ -19,8 +19,6 @@ public class MVCProperty {
         MProperty model = new MProperty();
         VProperty view = new VProperty();
         
-        model.addObserver(view);
-        
         CProperty controller = new CProperty();
         controller.addModel(model);
         controller.addView(view);

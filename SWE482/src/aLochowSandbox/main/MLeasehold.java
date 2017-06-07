@@ -6,7 +6,7 @@ import swe482_Main.*;
  *
  * @author by Michael Barth
  */
-public class MLeasehold extends java.util.Observable {
+public class MLeasehold{
 
     MLeasehold() {
         // Test Script:  Intercommunication Feedback.
