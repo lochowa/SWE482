@@ -455,7 +455,7 @@ public class VProperty extends JFrame   {
     private JButton _SaveProperty;
     private JButton _CancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-}
+
 // Getters for field values *Added by Andrew Lochow*
     public String getDBRecordID(){
         String recID = _DBRecordID.getText();
