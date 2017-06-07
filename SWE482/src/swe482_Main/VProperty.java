@@ -4,13 +4,15 @@ package swe482_Main;
  * @author Michael Barth
  */
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.border.*;
 
 
 
-public class VProperty extends JFrame{
+public class VProperty extends JFrame   {
     
     public static class CloseListener extends WindowAdapter {
         @Override
