@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VLessor extends JFrame implements java.util.Observer {
+public class VLessor  {
     
     public static class CloseListener extends WindowAdapter {
         

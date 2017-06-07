@@ -14,7 +14,7 @@ import java.util.Observable;
  */
 
 
-public class VProperty extends JFrame implements java.util.Observer {
+public class VProperty  {
     
     public static class CloseListener extends WindowAdapter {
         @Override

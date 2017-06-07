@@ -13,7 +13,7 @@ import javax.swing.border.*;
 /**
  * @author Michael Barth
  */
-public class VInterest extends JFrame implements java.util.Observer {
+public class VInterest  {
     public static class CloseListener extends WindowAdapter {
 
         @Override

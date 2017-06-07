@@ -3,7 +3,7 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MProperty extends java.util.Observable {
+public class MProperty{
 
     MProperty() {
         // Test Script:  Intercommunication Feedback.

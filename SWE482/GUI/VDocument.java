@@ -11,7 +11,7 @@ import javax.swing.border.*;
 /**
  * @author Michael Barth
  */
-public class VDocument extends JFrame implements java.util.Observer {
+public class VDocument  {
 
     public static class CloseListener extends WindowAdapter {
 

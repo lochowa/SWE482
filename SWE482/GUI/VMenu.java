@@ -11,7 +11,7 @@ import javax.swing.event.ListSelectionEvent;
  *
  * @author by Michael Barth
  */
-public class VMenu extends JFrame implements java.util.Observer {
+public class VMenu  {
 
     public static class CloseListener extends WindowAdapter {
 

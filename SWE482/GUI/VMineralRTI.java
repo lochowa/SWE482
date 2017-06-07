@@ -13,7 +13,7 @@ import javax.swing.border.*;
 /**
  * @author Michael Barth
  */
-public class VMineralRTI extends JFrame implements java.util.Observer {
+public class VMineralRTI  {
 
     public static class CloseListener extends WindowAdapter {
 

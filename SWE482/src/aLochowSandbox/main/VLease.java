@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VLease extends JFrame implements java.util.Observer {
+public class VLease  {
 
     public static class CloseListener extends WindowAdapter {
 

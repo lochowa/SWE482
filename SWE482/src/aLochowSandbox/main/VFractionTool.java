@@ -11,7 +11,7 @@ import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class VFractionTool extends JFrame implements java.util.Observer {
+public class VFractionTool  {
 
     public static class CloseListener extends WindowAdapter {
 
