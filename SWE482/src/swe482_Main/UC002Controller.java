@@ -44,7 +44,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
 
             // TO DO: Add Code to get ArrayList<Property> is empty
 //            Implementing Try/Catch Statement for user input validation.
-            this.userInputFeedback();
+            this.feedbackLeaseForm();
             try {
                 if (view.getXuc005_cbxAlternativePayee()){
                     if(!view.getXuc005_AlternatePayee().isEmpty() && !view.getXuc005_AlternatePayee().matches(stringReg)){
@@ -103,94 +103,94 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         CLOSE_ADDPROPERTY
     }
     
-    private void userInputFeedback() {
+    private void feedbackLeaseForm() {
 //            START Invalid User Feedback
         if (view.getXuc005_OOPDate().isEmpty() || !view.getXuc005_OOPDate().matches(dateReg)) {
-            view.setXuc005_lblOOPDate(1);
+            view.setXuc005_lblOOPDate(true);
         } else {
-            view.setXuc005_lblOOPDate(0);
+            view.setXuc005_lblOOPDate(false);
         }
         if (view.getXuc005_BPA().isEmpty() || !view.getXuc005_BPA().matches(doubleReg)) {
-            view.setXuc005_lblBPA(1);
+            view.setXuc005_lblBPA(true);
         } else {
-            view.setXuc005_lblBPA(0);
+            view.setXuc005_lblBPA(false);
         }
         if (view.getXuc005_PaymentTerms().isEmpty() || !view.getXuc005_PaymentTerms().matches(integerReg)) {
-            view.setXuc005_lblPaymentTerms(1);
+            view.setXuc005_lblPaymentTerms(true);
         } else {
-            view.setXuc005_lblPaymentTerms(0);
+            view.setXuc005_lblPaymentTerms(false);
         }
         if (view.getXuc005_BonusSubtotal().isEmpty() || !view.getXuc005_BonusSubtotal().matches(doubleReg)) {
-            view.setXuc005_lblBonusSubtotal(1);
+            view.setXuc005_lblBonusSubtotal(true);
         } else {
-            view.setXuc005_lblBonusSubtotal(0);
+            view.setXuc005_lblBonusSubtotal(false);
         }
         if (view.getXuc005_AlternatePayee().isEmpty() || !view.getXuc005_AlternatePayee().matches(stringReg)) {
-            view.setXuc005_lblAlternativePayee(1);
+            view.setXuc005_lblAlternativePayee(true);
         } else {
-            view.setXuc005_lblAlternativePayee(0);
+            view.setXuc005_lblAlternativePayee(false);
         }
 
         if (!view.getXuc005_cbxAlternativePayee()) {
             if (!view.getXuc005_AlternatePayee().isEmpty() && view.getXuc005_AlternatePayee().matches(stringReg)) {
-                view.setXuc005_cbxAlternatePayee(1);
+                view.setXuc005_cbxAlternatePayee(true);
             }
         }
         if (view.getXuc005_cbxAlternativePayee()) {
             if (!view.getXuc005_AlternatePayee().isEmpty()
                     && view.getXuc005_AlternatePayee().matches(stringReg)) {
-                view.setXuc005_cbxAlternatePayee(0);
+                view.setXuc005_cbxAlternatePayee(false);
             }
         }
         if (view.getUc002_Lessor().isEmpty() || !view.getUc002_Lessor().matches(stringReg)) {
-            view.setUc002_lblLessor(1);
+            view.setUc002_lblLessor(true);
         } else {
-            view.setUc002_lblLessor(0);
+            view.setUc002_lblLessor(false);
         }
         if (view.getUc002_Address().isEmpty() || !view.getUc002_Address().matches(streetReg)) {
-            view.setUc002_lblAddress(1);
+            view.setUc002_lblAddress(true);
         } else {
-            view.setUc002_lblAddress(0);
+            view.setUc002_lblAddress(false);
         }
         if (view.getUc002_City().isEmpty() || !view.getUc002_City().matches(stringReg)) {
-            view.setUc002_lblCity(1);
+            view.setUc002_lblCity(true);
         } else {
-            view.setUc002_lblCity(0);
+            view.setUc002_lblCity(false);
         }
         if (view.getUc002_State().isEmpty() || !view.getUc002_State().matches(stateReg)) {
-            view.setUc002_lblState(1);
+            view.setUc002_lblState(true);
         } else {
-            view.setUc002_lblState(0);
+            view.setUc002_lblState(false);
         }
         if (view.getUc002_ZipCode().isEmpty() || !view.getUc002_ZipCode().matches(zipCodeReg)) {
-            view.setUc002_lblZipCode(1);
+            view.setUc002_lblZipCode(true);
         } else {
-            view.setUc002_lblZipCode(0);
+            view.setUc002_lblZipCode(false);
         }
         if (view.getUc002_Lessee().isEmpty() || !view.getUc002_Lessee().matches(stringReg)) {
-            view.setUc002_lblLessee(1);
+            view.setUc002_lblLessee(true);
         } else {
-            view.setUc002_lblLessee(0);
+            view.setUc002_lblLessee(false);
         }
         if (view.getUc002_LeaseDate().isEmpty() || !view.getUc002_LeaseDate().matches(dateReg)) {
-            view.setUc002_lblLeaseDate(1);
+            view.setUc002_lblLeaseDate(true);
         } else {
-            view.setUc002_lblLeaseDate(0);
+            view.setUc002_lblLeaseDate(false);
         }
         if (view.getUc002_PrimaryTerm().isEmpty() || !view.getUc002_PrimaryTerm().matches(integerReg)) {
-            view.setUc002_lblPrimaryTerm(1);
+            view.setUc002_lblPrimaryTerm(true);
         } else {
-            view.setUc002_lblPrimaryTerm(0);
+            view.setUc002_lblPrimaryTerm(false);
         }
         if (view.getUc002_SecondaryTerm().isEmpty() || !view.getUc002_SecondaryTerm().matches(integerReg)) {
-            view.setUc002_lblSecondaryTerm(1);
+            view.setUc002_lblSecondaryTerm(true);
         } else {
-            view.setUc002_lblSecondaryTerm(0);
+            view.setUc002_lblSecondaryTerm(false);
         }
         if (view.getUc002_Royalty().isEmpty() || !view.getUc002_Royalty().matches(royaltyReg)) {
-            view.setUc002_lblRoyalty(1);
+            view.setUc002_lblRoyalty(true);
         } else {
-            view.setUc002_lblRoyalty(0);
+            view.setUc002_lblRoyalty(false);
         }
 
     }
