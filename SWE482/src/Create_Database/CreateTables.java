@@ -14,7 +14,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
  
-public class QueryPersons {
+public class CreateTables {
  
     /**
      * Create a new table in the test database
