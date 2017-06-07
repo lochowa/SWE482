@@ -6,7 +6,7 @@ import swe482_Main.*;
  *
  * @author by Michael Barth
  */
-public class MInterest extends java.util.Observable {
+public class MInterest{
     
     // Variable Declaration Area:  Do not change.
     private int dbRecordID;

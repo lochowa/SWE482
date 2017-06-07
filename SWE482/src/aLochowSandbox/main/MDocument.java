@@ -6,7 +6,7 @@ import swe482_Main.*;
  *
  * @author by Michael Barth
  */
-public class MDocument extends java.util.Observable {
+public class MDocument {
 
     MDocument() {
         // Test Script:  Intercommunication Feedback.

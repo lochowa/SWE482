@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VSurfaceRTI  {
+public class VSurfaceRTI extends JFrame  {
     public static class CloseListener extends WindowAdapter {
 
         @Override
@@ -41,7 +41,6 @@ public class VSurfaceRTI  {
         _cbxActiveStatus.addActionListener(controller);
     }
      
-    @Override
     public void update(Observable obs, Object obj) {
         // Test Script:  Who called the operation and what did they send?
         System.out.println("SurfaceRTI View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());

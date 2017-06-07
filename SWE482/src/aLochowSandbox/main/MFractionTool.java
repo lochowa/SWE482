@@ -6,7 +6,7 @@ import swe482_Main.*;
  *
  * @author by Michael Barth
  */
-public class MFractionTool extends java.util.Observable {
+public class MFractionTool{
     
     MFractionTool() {
         // Test Script:  Intercommunication Feedback.

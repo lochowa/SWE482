@@ -6,13 +6,12 @@ package aLochowSandbox.main;
 import swe482_Main.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.ListSelectionEvent;
 
 
-public class VMenu  {
+public class VMenu extends JFrame  {
 
     public static class CloseListener extends WindowAdapter {
 
@@ -24,11 +23,7 @@ public class VMenu  {
     }
 
     // CloseListener Class Object
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("Menu View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
-    }
+    
 
     VMenu() {
         initComponents();

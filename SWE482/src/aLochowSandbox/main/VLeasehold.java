@@ -8,12 +8,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VLeasehold  {
+public class VLeasehold extends JFrame  {
 
     public static class CloseListener extends WindowAdapter {
 
@@ -25,11 +24,7 @@ public class VLeasehold  {
     }
 
     // CloseListener Class Object
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("Leasehold View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
-    }
+    
 
     public VLeasehold() {
         initComponents();

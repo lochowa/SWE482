@@ -7,11 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class VFractionTool  {
+public class VFractionTool extends JFrame  {
 
     public static class CloseListener extends WindowAdapter {
 
@@ -23,11 +22,7 @@ public class VFractionTool  {
     }
 
     // CloseListener Class Object
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("FractionTool View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
-    }
+    
     public VFractionTool() {
         initComponents();
     }
