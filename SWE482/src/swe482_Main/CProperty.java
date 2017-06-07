@@ -45,6 +45,25 @@ public class CProperty implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(Actions.CLOSEWINDOW.name())) {
             view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
         }
+        if (e.getActionCommand().equals(Actions.SAVEPROPERTY.name())){
+            String recID = view.getDBRecordID();
+            int parcelID = view.getParcelID();
+            String taxmap = view.getTaxMapID();
+            String county = view.getCounty();
+            String st = view.getCounty();
+            String description = view.getDescription();
+            int acreage = view.getAcreage();
+            String township = view.getTownship();
+            String range = view.getRange();
+            int section = view.getSection();
+            String PM = view.getPM();
+            String bnorth = view.getbNorth();
+            String bsouth = view.getbSouth();
+            String beast = view.getbEast();
+            String bwest = view.getbWest();            
+            model.setValues(recID,parcelID,taxmap,county,st,acreage,township,range,section,PM,description,bnorth,beast,bsouth,bwest);
+            model.committoDB();
+        }
     }
     
     void addModel(MProperty m){
