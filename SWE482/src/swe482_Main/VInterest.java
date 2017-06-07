@@ -2,7 +2,6 @@ package swe482_Main;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 /*
@@ -12,7 +11,7 @@ import javax.swing.border.*;
 /**
  * @author Michael Barth
  */
-public class VInterest extends JFrame implements java.util.Observer {
+public class VInterest extends JFrame  {
     public static class CloseListener extends WindowAdapter {
 
         @Override
@@ -26,11 +25,7 @@ public class VInterest extends JFrame implements java.util.Observer {
         initComponents();
     }
     // CloseListener Class Object
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("Property View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
-    }
+   
     public enum Actions {
         ADDLEASEBURDEN,
         SEARCHNAME,

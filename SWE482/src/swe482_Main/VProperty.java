@@ -7,10 +7,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import java.util.Observable;
 
 
-public class VProperty extends JFrame implements java.util.Observer {
+
+public class VProperty extends JFrame{
     
     public static class CloseListener extends WindowAdapter {
         @Override
@@ -20,18 +20,13 @@ public class VProperty extends JFrame implements java.util.Observer {
         }
     }
     // CloseListener Class Object
+   
     
     VProperty() {
         initComponents();
     }
-    
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("Property View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
- 
 
-    }
+    
     public enum Actions {
         ADDMINERALOWNER,
         ADDSURFACEOWNER,
