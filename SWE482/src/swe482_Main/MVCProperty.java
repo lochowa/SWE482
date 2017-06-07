@@ -20,7 +20,7 @@ public class MVCProperty {
         controller.addModel(model);
         controller.addView(view);
         //  Initialise Model attribute values.
-        controller.initModel(0, 0, null, null, null, 0, null, null, 0, null, null, null, null, null, null);
+        controller.initModel(null, 0, null, null, null, 0, null, null, 0, null, null, null, null, null, null);
         
         view.addController(controller);
         
