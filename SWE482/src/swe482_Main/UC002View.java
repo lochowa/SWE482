@@ -8,7 +8,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.Objects;
 import java.util.Observable;
-import java.util.ResourceBundle;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
@@ -161,7 +160,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         dpUC002 = new JPanel();
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner non-commercial license
-        ResourceBundle bundle = ResourceBundle.getBundle("mvcproject.UC002AddLease");
         uc002_contentPane = new JPanel();
         xuc005_lblOOPDate = new JLabel();
         uc002_lblLeaseDate = new JLabel();
@@ -224,7 +222,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
             ((GridBagLayout) uc002_contentPane.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
             //---- xuc005_lblOOPDate ----
-            xuc005_lblOOPDate.setText(bundle.getString("JFD_Lease.xuc005_lblOOPDate.text"));
+            xuc005_lblOOPDate.setText("Effective Date (OOP)");
             xuc005_lblOOPDate.setFont(xuc005_lblOOPDate.getFont().deriveFont(xuc005_lblOOPDate.getFont().getSize() + 1f));
             uc002_contentPane.add(xuc005_lblOOPDate, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -238,7 +236,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //---- uc002_lblLeaseDate ----
-            uc002_lblLeaseDate.setText(bundle.getString("JFD_Lease.uc002_lblLeaseDate.text"));
+            uc002_lblLeaseDate.setText("Lease Effective Date");
             uc002_lblLeaseDate.setFont(uc002_lblLeaseDate.getFont().deriveFont(uc002_lblLeaseDate.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblLeaseDate, new GridBagConstraints(4, 1, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -252,7 +250,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 0), 0, 0));
 
             //---- Xuc005_lblBPA ----
-            Xuc005_lblBPA.setText(bundle.getString("JFD_Lease.uc002_lblBPA.text"));
+            Xuc005_lblBPA.setText("Bonus per Acre (BPA)");
             Xuc005_lblBPA.setFont(Xuc005_lblBPA.getFont().deriveFont(Xuc005_lblBPA.getFont().getSize() + 1f));
             uc002_contentPane.add(Xuc005_lblBPA, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -266,7 +264,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //---- uc002_lblRoyalty ----
-            uc002_lblRoyalty.setText(bundle.getString("JFD_Lease.uc002_lblRoyalty.text"));
+            uc002_lblRoyalty.setText("Royalty");
             uc002_lblRoyalty.setFont(uc002_lblRoyalty.getFont().deriveFont(uc002_lblRoyalty.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblRoyalty, new GridBagConstraints(4, 2, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -280,7 +278,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 0), 0, 0));
 
             //---- xuc005_lblPaymentTerms ----
-            xuc005_lblPaymentTerms.setText(bundle.getString("JFD_Lease.xuc005_lblPaymentTerms.text"));
+            xuc005_lblPaymentTerms.setText("Payment Terms");
             xuc005_lblPaymentTerms.setFont(xuc005_lblPaymentTerms.getFont().deriveFont(xuc005_lblPaymentTerms.getFont().getSize() + 1f));
             uc002_contentPane.add(xuc005_lblPaymentTerms, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -294,7 +292,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //---- uc002_lblPrimaryTerm ----
-            uc002_lblPrimaryTerm.setText(bundle.getString("JFD_Lease.uc002_lblPrimaryTerm.text"));
+            uc002_lblPrimaryTerm.setText("Primary Term");
             uc002_lblPrimaryTerm.setFont(uc002_lblPrimaryTerm.getFont().deriveFont(uc002_lblPrimaryTerm.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblPrimaryTerm, new GridBagConstraints(4, 3, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -308,7 +306,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 0), 0, 0));
 
             //---- xuc005_lblBonusSubtotal ----
-            xuc005_lblBonusSubtotal.setText(bundle.getString("JFD_Lease.xuc005_lblBonusSubtotal.text"));
+            xuc005_lblBonusSubtotal.setText("Bonus Pmt. Subtotal");
             xuc005_lblBonusSubtotal.setFont(xuc005_lblBonusSubtotal.getFont().deriveFont(xuc005_lblBonusSubtotal.getFont().getSize() + 1f));
             uc002_contentPane.add(xuc005_lblBonusSubtotal, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -322,7 +320,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //---- uc002_lblSecondaryTerm ----
-            uc002_lblSecondaryTerm.setText(bundle.getString("JFD_Lease.uc002_lblSecondaryTerm.text"));
+            uc002_lblSecondaryTerm.setText("Secondary Term");
             uc002_lblSecondaryTerm.setFont(uc002_lblSecondaryTerm.getFont().deriveFont(uc002_lblSecondaryTerm.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblSecondaryTerm, new GridBagConstraints(4, 4, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -336,14 +334,14 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 0), 0, 0));
 
             //---- xuc005_cbxAlternativePayee ----
-            xuc005_cbxAlternativePayee.setText(bundle.getString("JFD_Lease.uc002_cbxAlternativePayee.text"));
+            xuc005_cbxAlternativePayee.setText("Alternate Non-Lessor Payee?");
             xuc005_cbxAlternativePayee.setFont(xuc005_cbxAlternativePayee.getFont().deriveFont(xuc005_cbxAlternativePayee.getFont().getSize() + 1f));
             uc002_contentPane.add(xuc005_cbxAlternativePayee, new GridBagConstraints(0, 5, 3, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 10, 5), 0, 0));
 
             //---- xuc005_lblAlternativePayee ----
-            xuc005_lblAlternativePayee.setText(bundle.getString("JFD_Lease.uc002_lblAlternativePayee.text"));
+            xuc005_lblAlternativePayee.setText("Alternate Payee");
             xuc005_lblAlternativePayee.setFont(xuc005_lblAlternativePayee.getFont().deriveFont(xuc005_lblAlternativePayee.getFont().getSize() + 1f));
             uc002_contentPane.add(xuc005_lblAlternativePayee, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -357,13 +355,13 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 10, 0), 0, 0));
 
             //---- uc002_FindLessor ----
-            uc002_FindLessor.setText(bundle.getString("JFD_Lease.uc002_FindLessor.text"));
+            uc002_FindLessor.setText("Add");
             uc002_contentPane.add(uc002_FindLessor, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //---- uc002_lblLessor ----
-            uc002_lblLessor.setText(bundle.getString("JFD_Lease.uc002_lblLessor.text"));
+            uc002_lblLessor.setText("Lessor");
             uc002_lblLessor.setFont(uc002_lblLessor.getFont().deriveFont(uc002_lblLessor.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblLessor, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -377,7 +375,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 0), 0, 0));
 
             //---- uc002_lblAddress ----
-            uc002_lblAddress.setText(bundle.getString("JFD_Lease.uc002_lblAddress.text"));
+            uc002_lblAddress.setText("Address");
             uc002_lblAddress.setFont(uc002_lblAddress.getFont().deriveFont(uc002_lblAddress.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblAddress, new GridBagConstraints(1, 8, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -391,7 +389,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 0), 0, 0));
 
             //---- uc002_lblCity ----
-            uc002_lblCity.setText(bundle.getString("JFD_Lease.uc002_lblCity.text"));
+            uc002_lblCity.setText("City");
             uc002_lblCity.setFont(uc002_lblCity.getFont().deriveFont(uc002_lblCity.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblCity, new GridBagConstraints(1, 9, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -405,7 +403,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //---- uc002_lblState ----
-            uc002_lblState.setText(bundle.getString("JFD_Lease.uc002_lblState.text"));
+            uc002_lblState.setText("State");
             uc002_lblState.setFont(uc002_lblState.getFont().deriveFont(uc002_lblState.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblState, new GridBagConstraints(4, 9, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -419,7 +417,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //---- uc002_lblZipCode ----
-            uc002_lblZipCode.setText(bundle.getString("JFD_Lease.uc002_lblZipCode.text"));
+            uc002_lblZipCode.setText("Zip Code");
             uc002_lblZipCode.setFont(uc002_lblZipCode.getFont().deriveFont(uc002_lblZipCode.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblZipCode, new GridBagConstraints(6, 9, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -433,7 +431,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 0), 0, 0));
 
             //---- uc002_lblLessee ----
-            uc002_lblLessee.setText(bundle.getString("JFD_Lease.uc002_lblLessee.text"));
+            uc002_lblLessee.setText("Lessee");
             uc002_lblLessee.setFont(uc002_lblLessee.getFont().deriveFont(uc002_lblLessee.getFont().getSize() + 1f));
             uc002_contentPane.add(uc002_lblLessee, new GridBagConstraints(1, 10, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -447,13 +445,13 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(5, 0, 10, 0), 0, 0));
 
             //---- xuc007_AddProperty ----
-            xuc007_AddProperty.setText(bundle.getString("JFD_Lease.xuc007_AddProperty.text"));
+            xuc007_AddProperty.setText("Add");
             uc002_contentPane.add(xuc007_AddProperty, new GridBagConstraints(0, 11, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //---- xuc007_lblLeasedLegalDescriptions ----
-            xuc007_lblLeasedLegalDescriptions.setText(bundle.getString("JFD_Lease.xuc007_lblLeasedLegalDescriptions.text"));
+            xuc007_lblLeasedLegalDescriptions.setText("Leased Legal Descriptions");
             xuc007_lblLeasedLegalDescriptions.setFont(xuc007_lblLeasedLegalDescriptions.getFont().deriveFont(xuc007_lblLeasedLegalDescriptions.getFont().getSize() + 1f));
             uc002_contentPane.add(xuc007_lblLeasedLegalDescriptions, new GridBagConstraints(1, 11, 3, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -478,11 +476,11 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                 uc002_ButtonBar.setLayout(new GridLayout(1, 2));
 
                 //---- uc002_SaveButton ----
-                uc002_SaveButton.setText(bundle.getString("JFD_Lease.uc002_SaveButton.text"));
+                uc002_SaveButton.setText("SAVE");
                 uc002_ButtonBar.add(uc002_SaveButton);
 
                 //---- uc002_CancelButton ----
-                uc002_CancelButton.setText(bundle.getString("JFD_Lease.uc002_CancelButton.text"));
+                uc002_CancelButton.setText("CANCEL");
                 uc002_ButtonBar.add(uc002_CancelButton);
             }
             uc002_contentPane.add(uc002_ButtonBar, new GridBagConstraints(6, 13, 2, 1, 0.0, 0.0,
