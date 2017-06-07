@@ -60,7 +60,7 @@ public class CProperty implements java.awt.event.ActionListener {
     }
 
     void initModel(
-            int dbRecordID,
+            String dbRecordID,
             int parcelID,
             String taxMapID,
             String county,

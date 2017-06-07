@@ -9,6 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.util.UUID;
 
 
 
@@ -454,4 +455,68 @@ public class VProperty extends JFrame   {
     private JButton _SaveProperty;
     private JButton _CancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+}
+// Getters for field values *Added by Andrew Lochow*
+    public String getDBRecordID(){
+        String recID = _DBRecordID.getText();
+        return recID;
+    }
+    public int getParcelID(){
+        return Integer.parseInt(_ParcelID.getText());
+    }
+    public String getTaxMapID(){
+        return _TaxMapID.getText();
+    }
+    public String getCounty(){
+        return _County.getText();
+    }
+    
+    public String getSt(){
+        return _State.getText();
+    }
+    
+    public int getAcreage(){
+        return Integer.parseInt(_Acreage.getText());
+    }
+    
+    public String getTownship(){
+        String township = (String)_cboTownship.getSelectedItem();
+        return township;
+    }
+    
+    public String getRange(){
+        String range = (String)_cboRange.getSelectedItem();
+        return range;
+    }
+    
+    public int getSection(){
+        int section = Integer.parseInt((String)_cboSection.getSelectedItem());
+        return section;
+    }
+    
+    public String getDescription(){
+        return _LegalDescription.getText();        
+    }
+    
+    public String getPM(){
+        String PM = (String)_cboMeridian.getSelectedItem();
+        return PM;
+    }
+    
+    public String getbNorth(){
+        return _NorthBounder.getText();
+    }
+    
+    public String getbSouth(){
+        return _SouthBounder.getText();
+    }
+    
+    public String getbEast(){
+        return _EastBounder.getText();
+    }
+    
+    public String getbWest(){
+        return _WestBounder.getText();
+    }
+
 }
