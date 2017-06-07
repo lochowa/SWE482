@@ -13,7 +13,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VPlaceholder extends JFrame implements java.util.Observer {
+public class VPlaceholder  {
 
     public static class CloseListener extends WindowAdapter {
 

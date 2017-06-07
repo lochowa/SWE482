@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VSurfaceRTI extends JFrame implements java.util.Observer {
+public class VSurfaceRTI  {
     public static class CloseListener extends WindowAdapter {
 
         @Override

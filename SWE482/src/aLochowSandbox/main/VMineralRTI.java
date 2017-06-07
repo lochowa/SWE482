@@ -15,7 +15,7 @@ import javax.swing.border.*;
  * @author Ubuntu2B
  * @param <E>
  */
-public class VMineralRTI<E> extends JFrame implements java.util.Observer {
+public class VMineralRTI<E>  {
         
     public static class CloseListener extends WindowAdapter {
 

@@ -12,7 +12,7 @@ import javax.swing.border.*;
 import javax.swing.event.ListSelectionEvent;
 
 
-public class VMenu extends JFrame implements java.util.Observer {
+public class VMenu  {
 
     public static class CloseListener extends WindowAdapter {
 
