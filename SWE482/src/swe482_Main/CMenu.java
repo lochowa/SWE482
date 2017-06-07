@@ -39,8 +39,8 @@ public class CMenu implements java.awt.event.ActionListener {
                 break;
 
             case "ADD_LEASE":
-                // TO DO: Connect MVC Function class here.
-                new UC002MVC();
+        // TO DO: Connect MVC Function class here.
+        UC002MVC uC002MVC = new UC002MVC();
                 break;
 
             case "DISTRIBUTE_OWNERSHIP_RTI":
