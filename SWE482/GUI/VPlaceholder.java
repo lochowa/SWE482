@@ -12,7 +12,7 @@ import javax.swing.border.*;
  *
  * @author Ubuntu2B
  */
-public class VPlaceholder extends JFrame implements java.util.Observer {
+public class VPlaceholder  {
 
     public static class CloseListener extends WindowAdapter {
 

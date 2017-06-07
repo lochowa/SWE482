@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VLessor extends JFrame implements java.util.Observer {
+public class VLessor extends JFrame  {
     
     public static class CloseListener extends WindowAdapter {
         
@@ -24,11 +24,6 @@ public class VLessor extends JFrame implements java.util.Observer {
     }
 
     // CloseListener Class Object
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("Lessor View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
-    }
 
     public VLessor() {
         initComponents();

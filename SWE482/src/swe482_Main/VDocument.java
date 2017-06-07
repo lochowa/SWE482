@@ -6,12 +6,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VDocument extends JFrame implements java.util.Observer {
+public class VDocument extends JFrame  {
 
     public static class CloseListener extends WindowAdapter {
 
@@ -23,11 +22,6 @@ public class VDocument extends JFrame implements java.util.Observer {
     }
 
     // CloseListener Class Object
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("Document View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
-    }
 
     public VDocument() {
         initComponents();

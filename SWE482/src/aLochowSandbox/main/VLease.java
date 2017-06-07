@@ -6,12 +6,11 @@ package aLochowSandbox.main;
 import swe482_Main.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VLease extends JFrame implements java.util.Observer {
+public class VLease extends JFrame  {
 
     public static class CloseListener extends WindowAdapter {
 
@@ -23,12 +22,6 @@ public class VLease extends JFrame implements java.util.Observer {
     }
 
     // CloseListener Class Object
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("Lease View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
-    }
-
     public VLease() {
         initComponents();
     }

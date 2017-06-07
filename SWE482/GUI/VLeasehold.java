@@ -12,7 +12,7 @@ import javax.swing.border.*;
  *
  * @author by Michael Barth
  */
-public class VLeasehold extends JFrame implements java.util.Observer {
+public class VLeasehold  {
 
     public static class CloseListener extends WindowAdapter {
 
