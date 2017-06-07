@@ -6,12 +6,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class VDocument extends JFrame implements java.util.Observer {
+public class VDocument extends JFrame  {
 
     public static class CloseListener extends WindowAdapter {
 
@@ -23,18 +22,13 @@ public class VDocument extends JFrame implements java.util.Observer {
     }
 
     // CloseListener Class Object
-    @Override
-    public void update(Observable obs, Object obj) {
-        // Test Script:  Who called the operation and what did they send?
-        System.out.println("Document View : Observable is " + obj.getClass() + ", object passed is " + obj.getClass());
-    }
 
     public VDocument() {
         initComponents();
     }
 
     private enum Actions {
-        SAVEDOCUMENT,
+        INSERTDOCUMENT,
         CLOSEWINDOW
     }
 
@@ -50,16 +44,16 @@ public class VDocument extends JFrame implements java.util.Observer {
         // Generated using JFormDesigner non-commercial license
         dialogPane = new JPanel();
         contentPanel = new JPanel();
-        lblDBRecordID = new JLabel();
-        _dbRecordID = new JTextField();
+        lblRecordIdentification = new JLabel();
+        _RecordIdentification = new JTextField();
         lblDocumentType = new JLabel();
         _cboDocumentType = new JComboBox();
         lblEffectiveDate = new JLabel();
         _EffectiveDate = new JTextField();
         lblRecordedDate = new JLabel();
         _RecordedDate = new JTextField();
-        lblDocumentID = new JLabel();
-        _DocumentID = new JTextField();
+        lblReceptionNumber = new JLabel();
+        _ReceptionNumber = new JTextField();
         lblBook = new JLabel();
         _Book = new JTextField();
         lblPage = new JLabel();
@@ -85,13 +79,13 @@ public class VDocument extends JFrame implements java.util.Observer {
                 ((GridBagLayout) contentPanel.getLayout()).columnWeights = new double[]{0.0, 0.0, 0.0, 1.0E-4};
                 ((GridBagLayout) contentPanel.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
-                //---- lblDBRecordID ----
-                lblDBRecordID.setText("Record Identification");
-                contentPanel.add(lblDBRecordID, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                //---- lblRecordIdentification ----
+                lblRecordIdentification.setText("Record Identification");
+                contentPanel.add(lblRecordIdentification, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
-                _dbRecordID.setEditable(false);
-                contentPanel.add(_dbRecordID, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                _RecordIdentification.setEditable(false);
+                contentPanel.add(_RecordIdentification, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
@@ -134,17 +128,17 @@ public class VDocument extends JFrame implements java.util.Observer {
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
-                //---- lblDocumentID ----
-                lblDocumentID.setText("Document Number");
-                lblDocumentID.setFont(lblDocumentID.getFont().deriveFont(lblDocumentID.getFont().getSize() + 1f));
-                contentPanel.add(lblDocumentID, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                //---- lblReceptionNumber ----
+                lblReceptionNumber.setText("Document Number");
+                lblReceptionNumber.setFont(lblReceptionNumber.getFont().deriveFont(lblReceptionNumber.getFont().getSize() + 1f));
+                contentPanel.add(lblReceptionNumber, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- _DocumentID ----
-                _DocumentID.setFont(_DocumentID.getFont().deriveFont(_DocumentID.getFont().getSize() + 1f));
-                _DocumentID.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                contentPanel.add(_DocumentID, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
+                //---- _ReceptionNumber ----
+                _ReceptionNumber.setFont(_ReceptionNumber.getFont().deriveFont(_ReceptionNumber.getFont().getSize() + 1f));
+                _ReceptionNumber.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(_ReceptionNumber, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
@@ -185,7 +179,7 @@ public class VDocument extends JFrame implements java.util.Observer {
 
                 //---- _SaveDocument ----
                 _SaveDocument.setText("INSERT");
-                _SaveDocument.setActionCommand(Actions.SAVEDOCUMENT.name());
+                _SaveDocument.setActionCommand(Actions.INSERTDOCUMENT.name());
                 buttonBar.add(_SaveDocument, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 5), 0, 0));
@@ -211,16 +205,16 @@ public class VDocument extends JFrame implements java.util.Observer {
     // Generated using JFormDesigner non-commercial license
     private JPanel dialogPane;
     private JPanel contentPanel;
-    private JLabel lblDBRecordID;
-    private JTextField _dbRecordID;
+    private JLabel lblRecordIdentification;
+    private JTextField _RecordIdentification;
     private JLabel lblDocumentType;
     private JComboBox _cboDocumentType;
     private JLabel lblEffectiveDate;
     private JTextField _EffectiveDate;
     private JLabel lblRecordedDate;
     private JTextField _RecordedDate;
-    private JLabel lblDocumentID;
-    private JTextField _DocumentID;
+    private JLabel lblReceptionNumber;
+    private JTextField _ReceptionNumber;
     private JLabel lblBook;
     private JTextField _Book;
     private JLabel lblPage;
@@ -229,4 +223,40 @@ public class VDocument extends JFrame implements java.util.Observer {
     private JButton _SaveDocument;
     private JButton _CancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    String getRecordIdentification(){
+        return this._RecordIdentification.getText();
+    }
+    
+    void setRecordIdentification(int number){
+        _RecordIdentification.setText(Integer.toString(number));
+    }
+    
+    String getDocumentType(){
+        return _cboDocumentType.getSelectedItem().toString();
+    }
+    
+    String getEffectiveDate(){
+        return _EffectiveDate.getText();
+    }
+    
+    String getRecordingDate(){ 
+        return _RecordedDate.getText(); 
+    }
+    
+    String getReceptionNumber(){
+        return this._ReceptionNumber.getText();
+    }
+    
+    void setReceptionNumber(int number){
+        this._ReceptionNumber.setText(Integer.toString(number));
+    }
+    
+    String getBook(){
+        return this._Book.getText();
+    }
+    
+    String getPage(){
+        return this._Page.getText();
+    }
 }

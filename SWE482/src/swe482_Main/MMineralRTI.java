@@ -1,4 +1,6 @@
 package swe482_Main;
+
+import java.util.ArrayList;
 /**
  *
  * @author by Michael Barth
@@ -10,54 +12,57 @@ public class MMineralRTI extends java.util.Observable {
         System.out.println("Model MineralRTI()");
     }
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
-    private int counter;
-    private int dbRecordID;
-    private double interest;
-    private String status;
-    private String[] owners = new String[4];
-    private String address;
-    private String city;
-    private String state;
-    private int zipcode;
-    private String phone;
-    // TO DO:  Insert List<E> to contain Recorded Documents
-    private boolean active;
+    private boolean _Active;
+    private int _RecordIdentification;
+    private double _OwnerRTI;
+    private String _Status;
+    private final String[] _OwnerNames = new String[4];
+    /*
+     * _OwnerName[0] = Name_1
+     * _OwnerName[1] = Name_2
+     * _OwnerName[2] = Name_3
+     * _OwnerName[3] = Name_4
+    */
+    private final String[] _OwnerAddress = new String[4];
+    /*
+     * _OwnerAddress[0] = Street Address
+     * _OwnerAddress[1] = City
+     * _OwnerAddress[2] = State
+     * _OwnerAddress[3] = ZipCode
+    */
+    private String _ContactNumber;
+    private ArrayList<MDocument> Documents = new ArrayList<>();
 
     // END Variable Declaration Area
     void setValues(
-            int dbRecordID,
-            double interest,
-            String status,
-            String name1,
-            String name2,
-            String name3,
-            String name4,
-            String address,
-            String city,
-            String state,
-            int zipcode,
-            String phone,
-            boolean active) {
-        this.interest = interest;
-        this.status = status;
-        this.owners[0] = name1;
-        this.owners[1] = name2;
-        this.owners[2] = name3;
-        this.owners[3] = name4;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
-        notifyObservers(counter);
+            boolean Active,
+            int RecordIdentification,
+            double ownerRTI,
+            String Status,
+            String Name1,
+            String Name2,
+            String Name3,
+            String Name4,
+            String Address,
+            String City,
+            String State,
+            String ZipCode,
+            String ContactNumber) {
+        this._Active = Active;
+        this._OwnerRTI = ownerRTI;
+        this._Status = Status;
+        this._OwnerNames[0] = Name1;
+        this._OwnerNames[1] = Name2;
+        this._OwnerNames[2] = Name3;
+        this._OwnerNames[3] = Name4;
+        this._OwnerAddress[0] = Address;
+        this._OwnerAddress[1] = City;
+        this._OwnerAddress[2] = State;
+        this._OwnerAddress[3] = ZipCode;
     }
 
+    void addDocument(MDocument Document){
+        Documents.add(Document);
+    }
 }

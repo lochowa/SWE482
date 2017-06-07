@@ -10,16 +10,7 @@ public class MPlaceholder extends java.util.Observable {
         System.out.println("Model Placeholder()");
     }
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private int dbRecordID;
     private int parcelID;
     private String taxMapID;
@@ -71,7 +62,6 @@ public class MPlaceholder extends java.util.Observable {
         this.bounders[2] = b_south;
         this.bounders[3] = b_west;
         this.titled = titled;
-        notifyObservers(counter);
     }
     // setValues()
 }

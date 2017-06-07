@@ -3,23 +3,14 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MLeasehold extends java.util.Observable {
+public class MLeasehold{
 
     MLeasehold() {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model Leasehold()");
     }
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private int dbRecordID;
     private String lessor;
     private String lessee;
@@ -71,6 +62,5 @@ public class MLeasehold extends java.util.Observable {
         this.currentDeepDepthRights = currentDeepDepthRights;
         this.specificDeepDepthRestrictions = specificDeepDepthRestrictions;
         // TO DO: Add code to include Recorded Document objects.
-        notifyObservers(counter);
     }
 }

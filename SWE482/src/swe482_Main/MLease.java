@@ -10,16 +10,8 @@ public class MLease extends java.util.Observable {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model Lease()");
     }
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
 
     // Variable Declaration Area:  Do not change.
-    private int counter; 
     private int dbRecordID;
     private int dbLeaseID;
     private String _OOPEffectiveDate;
@@ -93,7 +85,6 @@ public class MLease extends java.util.Observable {
         this._LesseeCity = lesseeCity;
         this._LesseeState = lesseeState;
         this._LesseeZipCode = lesseeZipCode;
-                notifyObservers(counter);
     }
             
     

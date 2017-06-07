@@ -5,14 +5,6 @@ package swe482_Main;
  */
 public class MMenu extends java.util.Observable {
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     MMenu() {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model Menu()");
@@ -21,7 +13,6 @@ public class MMenu extends java.util.Observable {
 
     void setValues(String command) {
         this.command = command;
-        notifyObservers(counter);
     }
     // Variable Declaration Area:  Do not change.
     private int counter;

@@ -12,8 +12,7 @@ public class MVCLeasehold {
             
         MLeasehold model = new MLeasehold();
         VLeasehold view = new VLeasehold();
-        model.addObserver(view);
-        
+
         CLeasehold controller = new CLeasehold();
         
         controller.addModel(model);

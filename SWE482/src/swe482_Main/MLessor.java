@@ -3,23 +3,14 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MLessor extends java.util.Observable {
+public class MLessor{
 
     MLessor() {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model Lessor()");
     }
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private int dbRecordID;
     private double interest;
     private String status;
@@ -59,7 +50,6 @@ public class MLessor extends java.util.Observable {
         this.state = state;
         this.zipcode = zipcode;
         // TO DO: Insert code to include Recorded Document
-        notifyObservers(counter);
     }
 
 }

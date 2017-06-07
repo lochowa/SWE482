@@ -3,23 +3,14 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MFractionTool extends java.util.Observable {
+public class MFractionTool{
     
     MFractionTool() {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model FractionTool()");
     }
 
-    void incrementValue() {
-        ++counter;
-    } // incrementValue()
-
-    int getCounter() {
-        return counter;
-    } // getCounter()
-
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private double topNumber;
     private double bottomNumber;
     private double decimal;
@@ -27,9 +18,31 @@ public class MFractionTool extends java.util.Observable {
     void setValues(
             double topNumber,
             double bottomNumber) {
-        ++counter;
         this.topNumber = topNumber;
         this.bottomNumber = bottomNumber;
-        notifyObservers(counter);
+    }
+
+    public double getTopNumber() {
+        return topNumber;
+    }
+
+    public void setTopNumber(double topNumber) {
+        this.topNumber = topNumber;
+    }
+
+    public double getBottomNumber() {
+        return bottomNumber;
+    }
+
+    public void setBottomNumber(double bottomNumber) {
+        this.bottomNumber = bottomNumber;
+    }
+
+    public double getDecimal() {
+        return decimal;
+    }
+
+    public void setDecimal(double decimal) {
+        this.decimal = decimal;
     }
 }

@@ -14,9 +14,7 @@ public class MVCPlaceholder {
         
         MPlaceholder model = new MPlaceholder();
         VPlaceholder view = new VPlaceholder();
-        
-        model.addObserver(view);
-        
+
         CPlaceholder controller = new CPlaceholder();
         controller.addModel(model);
         controller.addView(view);

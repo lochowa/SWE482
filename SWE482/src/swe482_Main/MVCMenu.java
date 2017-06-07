@@ -14,8 +14,6 @@ public class MVCMenu {
         MMenu model = new MMenu();
         VMenu view = new VMenu();
 
-        model.addObserver(view);
-
         CMenu controller = new CMenu();
         controller.addModel(model);
         controller.addView(view);
