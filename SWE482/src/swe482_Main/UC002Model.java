@@ -32,7 +32,11 @@ public class UC002Model extends java.util.Observable {
     public int getModCount() {
         return this.modCount;
     }
-
+    
+    public void incrementModCount(){
+        this.modCount++;
+    }
+    
     public XUC007Property getXuc007_LeasedProperty(int index) {
         return xuc007_LeasedProperty.get(index);
     }
@@ -99,10 +103,6 @@ public class UC002Model extends java.util.Observable {
 //        END XUC-007 UC002Model Operations, Variables, Mutators and Accessors
 //        START UC-002 / XUC-005 Operations, Variables, Mutators and Accessors
 
-    public void printPayee(){
-        System.out.println(this.xuc005_AlternatePayee);
-        System.out.println(this.isAlternativePayee);
-    }
     public void setUC002Values(
             String xuc005_OOPDate,
             double xuc005_BPA,

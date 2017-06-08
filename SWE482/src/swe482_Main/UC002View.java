@@ -38,21 +38,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     *   Select Queried Property Descriptions
     *   
      */
-    public static void main(String[] args) {
-        /* Use an appropriate Look and Feel */
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (UnsupportedLookAndFeelException | IllegalAccessException | InstantiationException | ClassNotFoundException ex) {
-        }
-        /* Turn off metal's use of bold fonts */
-
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        SwingUtilities.invokeLater(() -> {
-            UC002View view = new UC002View();
-        });
-    }
 
     UC002View() {
         buildGUI();
@@ -77,7 +62,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
             e.getWindow().dispose();
         }
     }
-    private static final WindowListener CLOSE = new WindowAdapter() {
+    public final WindowListener CLOSE = new WindowAdapter() {
         @Override
         public void windowClosing(WindowEvent e) {
             e.getWindow().dispose();
@@ -522,7 +507,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc007_lblCounty = new JLabel();
         xuc007_County = new JTextField();
         xuc007_lblSection = new JLabel();
-        textField3 = new JTextField();
+        xuc007_Section = new JTextField();
         xuc007_lblState = new JLabel();
         xuc007_State = new JTextField();
         xuc007_lblMeridian = new JLabel();
@@ -658,10 +643,10 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 5, 10, 5), 0, 0));
 
-                    //---- textField3 ----
-//                    textField3.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    textField3.setFont(textField3.getFont().deriveFont(textField3.getFont().getSize() + 1f));
-                    xuc007_paneProperty.add(textField3, new GridBagConstraints(3, 2, 1, 1, 0.0, 0.0,
+                    //---- xuc007_Section ----
+//                    xuc007_Section.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                    xuc007_Section.setFont(xuc007_Section.getFont().deriveFont(xuc007_Section.getFont().getSize() + 1f));
+                    xuc007_paneProperty.add(xuc007_Section, new GridBagConstraints(3, 2, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 10, 0), 0, 0));
 
@@ -873,7 +858,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         pdXUC007.add(dpXUC007);
         cpXUC007.add(pdXUC007, BorderLayout.CENTER);
         dXUC007.setMinimumSize(new Dimension(680, 500));
-
+        dXUC007.addWindowListener(CLOSE);
     }
 
     private JPanel uc002_contentPane;
@@ -931,7 +916,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     private JLabel xuc007_lblCounty;
     private JTextField xuc007_County;
     private JLabel xuc007_lblSection;
-    private JTextField textField3;
+    private JTextField xuc007_Section;
     private JLabel xuc007_lblState;
     private JTextField xuc007_State;
     private JLabel xuc007_lblMeridian;
@@ -955,6 +940,125 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     private JButton xuc007_SearchProperty;
     private JButton xuc007_InsertProperty;
     private JButton xuc007_CloseAddProperty;
+
+    public String getXuc007_ParcelID() {
+        return xuc007_ParcelID.getText();
+    }
+
+    public void setXuc007_ParcelID(String xuc007_ParcelID) {
+        this.xuc007_ParcelID.setText(xuc007_ParcelID);
+    }
+
+    public String getXuc007_Township() {
+        return xuc007_Township.getText();
+    }
+
+    public void setXuc007_Township(String xuc007_Township) {
+        this.xuc007_Township.setText(xuc007_Township);
+    }
+
+    public String getXuc007_TaxMapID() {
+        return xuc007_TaxMapID.getText();
+    }
+
+    public void setXuc007_TaxMapID(String xuc007_TaxMapID) {
+        this.xuc007_TaxMapID.setText(xuc007_TaxMapID);
+    }
+
+    public String getXuc007_Range() {
+        return xuc007_Range.getText();
+    }
+
+    public void setXuc007_Range(String xuc007_Range) {
+        this.xuc007_Range.setText(xuc007_Range);
+    }
+
+    public String getXuc007_County() {
+        return xuc007_County.getText();
+    }
+
+    public void setXuc007_County(String xuc007_County) {
+        this.xuc007_County.setText(xuc007_County);
+    }
+
+    public String getXuc007_State() {
+        return xuc007_State.getText();
+    }
+
+    public void setXuc007_State(String xuc007_State) {
+        this.xuc007_State.setText(xuc007_State);
+    }
+
+    public String getXuc007_Meridian() {
+        return xuc007_Meridian.getText();
+    }
+
+    public void setXuc007_Meridian(String xuc007_Meridian) {
+        this.xuc007_Meridian.setText(xuc007_Meridian);
+    }
+
+    public String getXuc007_Acreage() {
+        return xuc007_Acreage.getText();
+    }
+
+    public void setXuc007_Acreage(String xuc007_Acreage) {
+        this.xuc007_Acreage.setText(xuc007_Acreage);
+    }
+
+    public String getXuc007_LegalDescription() {
+        return xuc007_LegalDescription.getText();
+    }
+
+    public void setXuc007_LegalDescription(String xuc007_LegalDescription) {
+        this.xuc007_LegalDescription.setText(xuc007_LegalDescription);
+    }
+
+    public String getXuc007_NorthBounder() {
+        return xuc007_NorthBounder.getName();
+    }
+
+    public void setXuc007_NorthBounder(String xuc007_NorthBounder) {
+        this.xuc007_NorthBounder.setText(xuc007_NorthBounder);
+    }
+
+    public String getXuc007_EastBounder() {
+        return xuc007_EastBounder.getText();
+    }
+
+    public void setXuc007_EastBounder(String xuc007_EastBounder) {
+        this.xuc007_EastBounder.setText(xuc007_EastBounder);
+    }
+
+    public String getXuc007_SouthBounder() {
+        return xuc007_SouthBounder.getText();
+    }
+
+    public void setXuc007_SouthBounder(String xuc007_SouthBounder) {
+        this.xuc007_SouthBounder.setText(xuc007_SouthBounder);
+    }
+
+    public String getXuc007_WestBounder() {
+        return xuc007_WestBounder.getText();
+    }
+
+    public void setXuc007_WestBounder(String xuc007_WestBounder) {
+        this.xuc007_WestBounder.setText(xuc007_WestBounder);
+    }
+    
+      public String getXuc007_Section() {
+        return xuc007_Section.getText();
+    }
+
+    public void setXuc007_Section(String xuc007_Section) {
+        this.xuc007_Section.setText(xuc007_Section);
+    }
+
+    public boolean getXuc007_cbxBounders() {
+        if(xuc007_cbxBounders.isSelected()){
+            return true;
+        }
+        return false;
+    }
 
     // START UC-002 Mutators and Accessors
     public boolean getXuc005_cbxAlternativePayee() {
@@ -1084,6 +1188,14 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         this.xuc005_AlternatePayee.setText(uc002_AlternatePayee);
     }
     // END UC-002 Mutators and Accessors
+    
+    public JDialog getDxuc007(){
+        return dXUC007;
+    }
+    
+    public JFrame getfUC002(){
+        return fUC002;
+    }
     // START UC-002 Validation Feedback Mutators
 
     public void setXuc005_cbxAlternatePayee(boolean feedback) {
@@ -1351,4 +1463,5 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
             xuc007_lblWestBounder.setForeground(Color.black);
         }
     }
+    
 }

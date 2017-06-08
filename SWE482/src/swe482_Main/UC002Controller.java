@@ -1,6 +1,7 @@
 package swe482_Main;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -33,7 +34,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(UserActions.CLOSE_LEASE.name())) {
             System.out.println("Action Triggered: Close Lease");
-
+             view.getDxuc007().dispose();
+             view.getfUC002().dispose();
         }
         if (e.getActionCommand().equals(UserActions.OPEN_ADDPROPERTY.name())) {
             System.out.println("Action Triggered: Add Property");
@@ -45,6 +47,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             // TO DO: Add Code to get ArrayList<Property> is empty
 //            Implementing Try/Catch Statement for user input validation.
             this.feedbackLeaseForm();
+            // TO DO: Wrap try/loop to execute based on boolean return on data validation.
             try {
                 if (view.getXuc005_cbxAlternativePayee()){
                     if(!view.getXuc005_AlternatePayee().isEmpty() && !view.getXuc005_AlternatePayee().matches(stringReg)){
@@ -87,9 +90,29 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         
         if(e.getActionCommand().equals(UserActions.INSERT_PROPERTY.name())){
             System.out.println("Action Triggered: Insert Property");
+            XUC007Property property = model.createXUCProperty(
+                    Integer.parseInt(view.getXuc007_ParcelID()),
+                    view.getXuc007_TaxMapID(),
+                    view.getXuc007_County(),
+                    view.getXuc007_State(),
+                    Double.parseDouble(view.getXuc007_Acreage()),
+                    view.getXuc007_Township(),
+                    view.getXuc007_Range(),
+                    Integer.parseInt(view.getXuc007_Section()),
+                    view.getXuc007_Meridian(),
+                    view.getXuc007_LegalDescription(),
+                    view.getXuc007_cbxBounders(),
+                    view.getXuc007_NorthBounder(),
+                    view.getXuc007_EastBounder(),
+                    view.getXuc007_SouthBounder(),
+                    view.getXuc007_WestBounder()
+            );
+            model.addXuc007_LeasedProperty(property);
+            model.incrementModCount();
         }
         if(e.getActionCommand().equals(UserActions.CLOSE_ADDPROPERTY.name())){
             System.out.println("Action Triggered: Close Add Property Window");
+               view.getDxuc007().dispose();
         }
     }
 
