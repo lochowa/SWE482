@@ -46,24 +46,11 @@ public class CProperty implements java.awt.event.ActionListener {
             view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
         }
         if (e.getActionCommand().equals(Actions.SAVEPROPERTY.name())){
-            String recID = view.getDBRecordID();
-            int parcelID = view.getParcelID();
-            String taxmap = view.getTaxMapID();
-            String county = view.getCounty();
-            String st = view.getCounty();
-            String description = view.getDescription();
-            int acreage = view.getAcreage();
-            String township = view.getTownship();
-            String range = view.getRange();
-            int section = view.getSection();
-            String PM = view.getPM();
-            String bnorth = view.getbNorth();
-            String bsouth = view.getbSouth();
-            String beast = view.getbEast();
-            String bwest = view.getbWest();
-            System.out.print(recID);
-            model.setValues(recID,parcelID,taxmap,county,st,acreage,township,range,section,PM,description,bnorth,beast,bsouth,bwest);
-            System.out.print(recID);
+            System.out.print(view.getDBRecordID());
+            model.setValues(view.getDBRecordID(), view.getParcelID(),view.getTaxMapID()
+                    ,view.getCounty(),view.getSt(),view.getAcreage(),view.getTownship()
+                    ,view.getRange(),view.getSection(),view.getPM(),view.getDescription()
+                    ,view.getbNorth(),view.getbEast(),view.getbSouth(), view.getbWest());
             model.committoDB();
         }
     }
