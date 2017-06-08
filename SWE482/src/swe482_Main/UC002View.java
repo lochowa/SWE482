@@ -441,15 +441,21 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //======== xuc007_scrollPanel ========
-            {
+            
+                        {
 
                 //======== xuc007Pane_LeasedProperty ========
                 {
                     xuc007Pane_LeasedProperty.setAutoscrolls(true);
-                    xuc007Pane_LeasedProperty.setLayout(new GridLayout());
+                    xuc007Pane_LeasedProperty.setLayout(new GridBagLayout());
+                    ((GridBagLayout)xuc007Pane_LeasedProperty.getLayout()).columnWidths = new int[] {0, 0};
+                    ((GridBagLayout)xuc007Pane_LeasedProperty.getLayout()).rowHeights = new int[] {0, 0};
+                    ((GridBagLayout)xuc007Pane_LeasedProperty.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+                    ((GridBagLayout)xuc007Pane_LeasedProperty.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
                 }
                 xuc007_scrollPanel.setViewportView(xuc007Pane_LeasedProperty);
             }
+
             uc002_contentPane.add(xuc007_scrollPanel, new GridBagConstraints(0, 12, 8, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
@@ -830,6 +836,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
 
                 //---- xuc007_SearchProperty ----
                 xuc007_SearchProperty.setText("Property Verification");
+                xuc007_SearchProperty.setActionCommand(UserActions.SEARCH_PROPERTY.name());
                 xuc007_ButtonBar.add(xuc007_SearchProperty, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 5), 0, 0));
@@ -1461,10 +1468,48 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         }
     }
     
-    public void addXuc007Pane_LeasedProperty(JPanel addProperty){
-        xuc007Pane_LeasedProperty.add(addProperty);
+    public void addXuc007Pane_LeasedProperty(String description, int gridY){
+        xuc007Pane_LeasedProperty.add(addComponent(description), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
         xuc007Pane_LeasedProperty.revalidate();
-        fUC002.revalidate();
-    }
 
+    }
+    public JPanel addComponent(String description){
+        
+        JPanel newProperty = new JPanel();
+        JButton _remove = new JButton();
+        JTextField _description = new JTextField();
+        JButton _edit = new JButton();
+
+        //======== this ========
+        newProperty.setLayout(new GridBagLayout());
+        ((GridBagLayout)newProperty.getLayout()).columnWidths = new int[] {84, 390, 57, 0};
+        ((GridBagLayout)newProperty.getLayout()).rowHeights = new int[] {0, 0};
+        ((GridBagLayout)newProperty.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
+        ((GridBagLayout)newProperty.getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
+
+        //---- _remove ----
+        _remove.setText("Remove");
+        newProperty.add(_remove, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 5), 0, 0));
+
+        //---- _description ----
+        _description.setMinimumSize(new Dimension(300, 22));
+        _description.setText(description);
+        _description.setEditable(false);
+        newProperty.add(_description, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 5), 0, 0));
+
+        //---- _edit ----
+        _edit.setText("Edit");
+        newProperty.add(_edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 0), 0, 0));
+        
+        return newProperty;
+    }
+    
 }
