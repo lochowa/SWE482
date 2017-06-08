@@ -458,11 +458,8 @@ public class VProperty extends JFrame   {
 
 // Getters for field values *Added by Andrew Lochow*
     public String getDBRecordID(){
-        String recID = _DBRecordID.getText();
-        if (recID == null){
             UUID UrecID = UUID.randomUUID();
-            recID = UrecID.toString();
-        }
+            String recID = UrecID.toString();
         return recID;
     }
     public int getParcelID(){

@@ -63,6 +63,7 @@ public class CProperty implements java.awt.event.ActionListener {
             String bwest = view.getbWest();
             System.out.print(recID);
             model.setValues(recID,parcelID,taxmap,county,st,acreage,township,range,section,PM,description,bnorth,beast,bsouth,bwest);
+            System.out.print(recID);
             model.committoDB();
         }
     }

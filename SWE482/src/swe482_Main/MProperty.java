@@ -42,6 +42,16 @@ public class MProperty{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        finally {
+            try {
+                if (conn != null) {
+                    System.out.println("Could not connect to Database");
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
         return conn;
     }
     // END Variable Declaration Area
@@ -94,18 +104,18 @@ public class MProperty{
     public void committoDB(){
         
         String sql = "INSERT INTO Property (LandRecordID,ID_Parcel,ID_Tax, Description, Acres) VALUES(?,?,?,?,?)";
-        Connection conn = this.connect();
+        Connection con = this.connect();
         PreparedStatement pstmt = null;
         try{
-            pstmt = conn.prepareStatement(sql);
+            con.setAutoCommit(false);
+            pstmt = con.prepareStatement(sql);
             pstmt.setString(1, this.dbRecordID);
             pstmt.setInt(2, this.parcelID);
             pstmt.setString(3, this.taxMapID);
             pstmt.setString(4, this.description);
             pstmt.setInt(5, this.acreage);
-            conn.commit();
+            con.commit();
             pstmt.close();
-            conn.setAutoCommit(true);
         }
 
         catch(SQLException e){
