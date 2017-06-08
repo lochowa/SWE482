@@ -1,6 +1,13 @@
 package swe482_Main;
 
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -99,6 +106,40 @@ public class UC002Model extends java.util.Observable {
                 xuc007_EastBounder,
                 xuc007_SouthBounder,
                 xuc007_WestBounder);
+    }
+    
+    private JPanel addComponent() {
+        JPanel newProperty = new JPanel();
+        JButton _remove = new JButton();
+        JTextField _description = new JTextField();
+        JButton _edit = new JButton();
+
+        //======== this ========
+        newProperty.setLayout(new GridBagLayout());
+        ((GridBagLayout)newProperty.getLayout()).columnWidths = new int[] {84, 454, 57, 0};
+        ((GridBagLayout)newProperty.getLayout()).rowHeights = new int[] {0, 0};
+        ((GridBagLayout)newProperty.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
+        ((GridBagLayout)newProperty.getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
+
+        //---- _remove ----
+        _remove.setText("Remove");
+        newProperty.add(_remove, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 5), 0, 0));
+
+        //---- _description ----
+        _description.setMinimumSize(new Dimension(468, 22));
+        newProperty.add(_description, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 5), 0, 0));
+
+        //---- _edit ----
+        _edit.setText("Edit");
+        newProperty.add(_edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 0), 0, 0));
+        
+        return newProperty;
     }
 //        END XUC-007 UC002Model Operations, Variables, Mutators and Accessors
 //        START UC-002 / XUC-005 Operations, Variables, Mutators and Accessors
