@@ -91,6 +91,49 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         if(e.getActionCommand().equals(UserActions.INSERT_PROPERTY.name())){
             System.out.println("Action Triggered: Insert Property");
           
+            if(view.getXuc007_ParcelID().isEmpty() || !view.getXuc007_ParcelID().matches(integerReg)){
+                view.setXuc007_lblParcelID(true);
+            } else { view.setXuc007_lblParcelID(false); }
+            if(view.getXuc007_TaxMapID().isEmpty() || !view.getXuc007_TaxMapID().matches(stringReg)){
+                view.setXuc007_lblTaxMapID(true);
+            } else { view.setXuc007_lblTaxMapID(false); }
+            if(view.getXuc007_County().isEmpty() || !view.getXuc007_County().matches(stringReg)){
+                view.setXuc007_lblCounty(true);
+            } else { view.setXuc007_lblCounty(false); }
+            if (view.getXuc007_State().isEmpty()|| !view.getXuc007_State().toUpperCase().matches(stateReg)){
+                view.setXuc007_lblState(true);
+            } else { view.setXuc007_lblState(false); }
+            if (view.getXuc007_Acreage().isEmpty() || !view.getXuc007_Acreage().matches(doubleReg)){
+                view.setXuc007_lblAcreage(true);
+            } else { view.setXuc007_lblAcreage(false); }
+            if(view.getXuc007_Township().isEmpty()|| !view.getXuc007_Township().matches(townshipReg)){
+                view.setXuc007_lblTownship(true);
+            } else { view.setXuc007_lblTownship(false); }
+            if(view.getXuc007_Range().isEmpty() || !view.getXuc007_Range().matches(rangeReg)){
+                view.setXuc007_lblRange(true);
+            } else { view.setXuc007_lblRange(false); }
+            if(view.getXuc007_Section().isEmpty() || !view.getXuc007_Section().matches(sectionReg)){
+                view.setXuc007_lblSection(true);
+            } else { view.setXuc007_lblSection(false); }
+            if(view.getXuc007_Meridian().isEmpty() || !view.getXuc007_Meridian().matches(stringReg)){
+                view.setXuc007_lblMeridian(true);
+            } else { view.setXuc007_lblMeridian(false); }
+            if(view.getXuc007_LegalDescription().isEmpty() || !view.getXuc007_LegalDescription().matches(stringReg)){
+                view.setXuc007_lblLegalDescription(true);
+            } else { view.setXuc007_lblLeasedLegalDescriptions(false); }
+            
+            if (!view.getXuc007_cbxBounders()) {
+            if (!view.getXuc007_NorthBounder().isEmpty() && view.getXuc007_NorthBounder().matches(stringReg)) {
+                view.setXuc007_lblNorthBounder(true);
+            
+            }
+            }
+        if (view.getXuc007_cbxBounders()) {
+            if (!view.getXuc005_AlternatePayee().isEmpty()
+                    && view.getXuc005_AlternatePayee().matches(stringReg)) {
+                view.setXuc005_cbxAlternatePayee(false);
+            }
+        }
             
         // Need boolean to trigger try/catch loop code.    
          try{
