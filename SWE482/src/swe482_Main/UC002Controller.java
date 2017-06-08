@@ -77,7 +77,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                 model.printUC002Values();
                 model.sqlStatement();
                 
-            } catch (NumberFormatException nf) { return;
+            } catch (NumberFormatException f1) { return;
             }
         }
         if (e.getActionCommand().equals(UserActions.SEARCH_PERSON.name())) {
@@ -90,6 +90,10 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         
         if(e.getActionCommand().equals(UserActions.INSERT_PROPERTY.name())){
             System.out.println("Action Triggered: Insert Property");
+          
+            
+        // Need boolean to trigger try/catch loop code.    
+         try{
             XUC007Property property = model.createXUCProperty(
                     Integer.parseInt(view.getXuc007_ParcelID()),
                     view.getXuc007_TaxMapID(),
@@ -109,7 +113,9 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             );
             model.addXuc007_LeasedProperty(property);
             model.incrementModCount();
-        }
+        } catch (NumberFormatException f2) { 
+            
+        }}
         if(e.getActionCommand().equals(UserActions.CLOSE_ADDPROPERTY.name())){
             System.out.println("Action Triggered: Close Add Property Window");
                view.getDxuc007().dispose();
