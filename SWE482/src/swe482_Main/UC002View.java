@@ -608,7 +608,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                             new Insets(0, 0, 10, 5), 0, 0));
 
                     //---- xuc007_lblRange ----
-                    xuc007_lblRange.setText("Range:");
+                    xuc007_lblRange.setText("Range");
                     xuc007_lblRange.setFont(xuc007_lblRange.getFont().deriveFont(xuc007_lblRange.getFont().getSize() + 2f));
                     xuc007_paneProperty.add(xuc007_lblRange, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -637,7 +637,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                             new Insets(0, 0, 10, 5), 0, 0));
 
                     //---- xuc007_lblSection ----
-                    xuc007_lblSection.setText("Section:");
+                    xuc007_lblSection.setText("Section");
                     xuc007_lblSection.setFont(xuc007_lblSection.getFont().deriveFont(xuc007_lblSection.getFont().getSize() + 2f));
                     xuc007_paneProperty.add(xuc007_lblSection, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -836,7 +836,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
 
                 //---- xuc007_InsertProperty ----
                 xuc007_InsertProperty.setText("INSERT");
-                xuc007_InsertProperty.setActionCommand(UserActions.OPEN_ADDPROPERTY.name());
+                xuc007_InsertProperty.setActionCommand(UserActions.INSERT_PROPERTY.name());
                 xuc007_ButtonBar.add(xuc007_InsertProperty, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 5), 0, 0));
@@ -1014,7 +1014,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     }
 
     public String getXuc007_NorthBounder() {
-        return xuc007_NorthBounder.getName();
+        return xuc007_NorthBounder.getText();
     }
 
     public void setXuc007_NorthBounder(String xuc007_NorthBounder) {
@@ -1054,10 +1054,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     }
 
     public boolean getXuc007_cbxBounders() {
-        if(xuc007_cbxBounders.isSelected()){
-            return true;
-        }
-        return false;
+        return this.xuc007_cbxBounders.isSelected();
     }
 
     // START UC-002 Mutators and Accessors

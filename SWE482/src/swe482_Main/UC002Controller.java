@@ -1,7 +1,6 @@
 package swe482_Main;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
 
 /**
  *
@@ -16,11 +15,15 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
     private final String doubleReg = "^(([1-9]{1}(\\d+)?)(\\.\\d+)?)|([0]\\.(\\d+)?([1-9]{1})(\\d+)?)$";
     private final String royaltyReg = "^[1]?\\.[0]{1,10}$||^[1]$||^\\.[0-9]{1,10}$";
     private final String integerReg = "^[0-9]{1,3}$";
+    private final String parcelReg = "^[0-9]{1,20}";
     private final String zipCodeReg = "^[0-9]{1,6}";
     private final String dateReg = "^(0?[1-9]|1[0-2])/(0?[1-9]|1[0-9]|2[0-9]|3[01])/\\d{4}$";
     private final String streetReg = "^(\\d{3,})\\s?(\\w{0,5})\\s([a-zA-Z]{2,30})\\s([a-zA-Z]{2,15})\\.?\\s?(\\w{0,5})$";
     private final String stringReg = "^[a-zA-Z0-9\\040]+$";
     private final String stateReg = "^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$";
+    private final String townshipReg = ""; // ## + W|West E|East S|South N|North
+    private final String rangeReg = "";   // ## + W|West E|East S|South N|North
+    private final String sectionReg = "^[1-6]$|^[1][0-9]$|^[2][0-9]$|^[3][0-6]$"; // 1 - 36 only
 
     void addModel(UC002Model m) {
         this.model = m;
@@ -91,7 +94,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         if(e.getActionCommand().equals(UserActions.INSERT_PROPERTY.name())){
             System.out.println("Action Triggered: Insert Property");
           
-            if(view.getXuc007_ParcelID().isEmpty() || !view.getXuc007_ParcelID().matches(integerReg)){
+            if(view.getXuc007_ParcelID().isEmpty() || !view.getXuc007_ParcelID().matches(parcelReg)){
                 view.setXuc007_lblParcelID(true);
             } else { view.setXuc007_lblParcelID(false); }
             if(view.getXuc007_TaxMapID().isEmpty() || !view.getXuc007_TaxMapID().matches(stringReg)){
@@ -106,10 +109,10 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             if (view.getXuc007_Acreage().isEmpty() || !view.getXuc007_Acreage().matches(doubleReg)){
                 view.setXuc007_lblAcreage(true);
             } else { view.setXuc007_lblAcreage(false); }
-            if(view.getXuc007_Township().isEmpty()|| !view.getXuc007_Township().matches(townshipReg)){
+            if(view.getXuc007_Township().isEmpty()|| !view.getXuc007_Township().matches(stringReg)){
                 view.setXuc007_lblTownship(true);
             } else { view.setXuc007_lblTownship(false); }
-            if(view.getXuc007_Range().isEmpty() || !view.getXuc007_Range().matches(rangeReg)){
+            if(view.getXuc007_Range().isEmpty() || !view.getXuc007_Range().matches(stringReg)){
                 view.setXuc007_lblRange(true);
             } else { view.setXuc007_lblRange(false); }
             if(view.getXuc007_Section().isEmpty() || !view.getXuc007_Section().matches(sectionReg)){
@@ -123,17 +126,27 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             } else { view.setXuc007_lblLeasedLegalDescriptions(false); }
             
             if (!view.getXuc007_cbxBounders()) {
-            if (!view.getXuc007_NorthBounder().isEmpty() && view.getXuc007_NorthBounder().matches(stringReg)) {
-                view.setXuc007_lblNorthBounder(true);
-            
+                if (!view.getXuc007_NorthBounder().isEmpty() || view.getXuc007_NorthBounder().matches(stringReg)){
+                    view.setXuc007_cbxBounders(true);
+                } else if (!view.getXuc007_EastBounder().isEmpty() || view.getXuc007_EastBounder().matches(stringReg)){
+                    view.setXuc007_cbxBounders(true);
+                } else if (!view.getXuc007_SouthBounder().isEmpty() || view.getXuc007_SouthBounder().matches(stringReg)){
+                    view.setXuc007_cbxBounders(true);
+                } else if (!view.getXuc007_WestBounder().isEmpty() || view.getXuc007_WestBounder().matches(stringReg)) {
+                    view.setXuc007_cbxBounders(true);
+                }
             }
+            if (view.getXuc007_cbxBounders()) {
+                if (!view.getXuc007_NorthBounder().isEmpty() && view.getXuc007_NorthBounder().matches(stringReg)){
+                    view.setXuc007_cbxBounders(false);
+                } else if (!view.getXuc007_EastBounder().isEmpty() && view.getXuc007_EastBounder().matches(stringReg)){
+                    view.setXuc007_cbxBounders(false);
+                } else if (!view.getXuc007_SouthBounder().isEmpty() && view.getXuc007_SouthBounder().matches(stringReg)){
+                    view.setXuc007_cbxBounders(false);
+                } else if (!view.getXuc007_WestBounder().isEmpty() && view.getXuc007_WestBounder().matches(stringReg)) {
+                    view.setXuc007_cbxBounders(false);
+                }
             }
-        if (view.getXuc007_cbxBounders()) {
-            if (!view.getXuc005_AlternatePayee().isEmpty()
-                    && view.getXuc005_AlternatePayee().matches(stringReg)) {
-                view.setXuc005_cbxAlternatePayee(false);
-            }
-        }
             
         // Need boolean to trigger try/catch loop code.    
          try{
@@ -230,7 +243,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         } else {
             view.setUc002_lblCity(false);
         }
-        if (view.getUc002_State().isEmpty() || !view.getUc002_State().matches(stateReg)) {
+        if (view.getUc002_State().isEmpty() || !view.getUc002_State().toUpperCase().matches(stateReg)) {
             view.setUc002_lblState(true);
         } else {
             view.setUc002_lblState(false);
