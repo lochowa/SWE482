@@ -108,7 +108,16 @@ public class UC002Model extends java.util.Observable {
                 xuc007_WestBounder);
     }
     
-    private JPanel addComponent() {
+    public String createDescriptionString(XUC007Property property){
+        return String.format("%s %s %s %s : %s", 
+                property.getXuc007_Township(),
+                property.getXuc007_Range(),
+                property.getXuc007_Section(),
+                property.getXuc007_Meridian(),
+                property.getXuc007_LegalDescription()
+                );
+    }
+    public JPanel addComponent(String description){
         JPanel newProperty = new JPanel();
         JButton _remove = new JButton();
         JTextField _description = new JTextField();
@@ -129,6 +138,7 @@ public class UC002Model extends java.util.Observable {
 
         //---- _description ----
         _description.setMinimumSize(new Dimension(468, 22));
+        _description.setText(description);
         newProperty.add(_description, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 0, 5), 0, 0));

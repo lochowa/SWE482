@@ -1464,7 +1464,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         }
     }
     
-    private void addXuc007Pane_LeasedProperty(JPanel addProperty){
+    public void addXuc007Pane_LeasedProperty(JPanel addProperty){
         xuc007Pane_LeasedProperty.add(addProperty);
         xuc007Pane_LeasedProperty.revalidate();
         fUC002.revalidate();

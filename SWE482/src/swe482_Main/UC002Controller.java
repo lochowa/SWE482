@@ -111,6 +111,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                     view.getXuc007_SouthBounder(),
                     view.getXuc007_WestBounder()
             );
+            view.addXuc007Pane_LeasedProperty(model.addComponent(model.createDescriptionString(property)));
             model.addXuc007_LeasedProperty(property);
             model.incrementModCount();
         } catch (NumberFormatException f2) { 
