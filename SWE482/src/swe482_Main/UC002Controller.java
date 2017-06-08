@@ -11,7 +11,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
 
     UC002Model model;
     UC002View view;
-    
+                int gridY = 0;
     private final String doubleReg = "^(([1-9]{1}(\\d+)?)(\\.\\d+)?)|([0]\\.(\\d+)?([1-9]{1})(\\d+)?)$";
     private final String royaltyReg = "^[1]?\\.[0]{1,10}$||^[1]$||^\\.[0-9]{1,10}$";
     private final String integerReg = "^[0-9]{1,3}$";
@@ -89,6 +89,9 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         
         if(e.getActionCommand().equals(UserActions.SEARCH_PROPERTY.name())){
             System.out.println("Action Triggered: Search/Add Property");
+
+            view.addXuc007Pane_LeasedProperty("Test",gridY);
+            gridY++;
         }
         
         if(e.getActionCommand().equals(UserActions.INSERT_PROPERTY.name())){
@@ -167,7 +170,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                     view.getXuc007_SouthBounder(),
                     view.getXuc007_WestBounder()
             );
-            view.addXuc007Pane_LeasedProperty(model.addComponent(model.createDescriptionString(property)));
+//            view.addXuc007Pane_LeasedProperty(model.addComponent(model.createDescriptionString(property)));
             model.addXuc007_LeasedProperty(property);
             model.incrementModCount();
         } catch (NumberFormatException f2) { 
