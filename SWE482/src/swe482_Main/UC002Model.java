@@ -18,7 +18,7 @@ public class UC002Model extends java.util.Observable {
 //        START XUC-007 Operations, Variable, Mutators and Accessors
 
       private ArrayList<XUC007Property> xuc007_LeasedProperty = new ArrayList<>();
-    private int modCount;
+    private int modCount = 0;
     private XUC007Property property;
     private int xuc007_ParcelID;
     private String xuc007_TaxMapID;

@@ -1,11 +1,9 @@
 package swe482_Main;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.util.Objects;
 import java.util.Observable;
 import javax.swing.*;
@@ -38,7 +36,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     *   Select Queried Property Descriptions
     *   
      */
-
     UC002View() {
         buildGUI();
     }
@@ -50,10 +47,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                 + obj.getClass());
     }
 
-    private void _cbxBoundersActionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public static class CloseListener extends WindowAdapter {
 
         @Override
@@ -62,12 +55,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
             e.getWindow().dispose();
         }
     }
-    public final WindowListener CLOSE = new WindowAdapter() {
-        @Override
-        public void windowClosing(WindowEvent e) {
-            e.getWindow().dispose();
-        }
-    };
 
     void addController(ActionListener controller) {
 //        Insert UserActions events here.
@@ -78,6 +65,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc007_CloseAddProperty.addActionListener(controller);
         xuc007_InsertProperty.addActionListener(controller);
         xuc007_SearchProperty.addActionListener(controller);
+        _edit.addActionListener(controller);
     }
 
     @Override
@@ -110,7 +98,8 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         SAVE_LEASE,
         SEARCH_PROPERTY,
         INSERT_PROPERTY,
-        CLOSE_ADDPROPERTY
+        CLOSE_ADDPROPERTY,
+        DISPLAY_BOUNDERS
     }
 
     private JFrame fUC002;
@@ -137,7 +126,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         *   UC-002 Frame
          */
         fUC002 = new JFrame();
-        fUC002.addWindowListener(CLOSE);
         JPanel pUC002 = new JPanel();
 //        START Requires JPanel Form Insertion
         dpUC002 = new JPanel();
@@ -183,6 +171,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc005_cbxAlternativePayee = new JCheckBox();
         uc002_FindLessor = new JButton();
         uc002_FindLessor.setActionCommand(UserActions.SEARCH_PERSON.name());
+        uc002_FindLessor.setVisible(false);  /// FUTURE ENHANCEMENT
         xuc007_AddProperty = new JButton();
         xuc007_AddProperty.setActionCommand(UserActions.OPEN_ADDPROPERTY.name());
         uc002_SaveButton = new JButton();
@@ -441,17 +430,16 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(0, 0, 5, 5), 0, 0));
 
             //======== xuc007_scrollPanel ========
-            
-                        {
+            {
 
                 //======== xuc007Pane_LeasedProperty ========
                 {
                     xuc007Pane_LeasedProperty.setAutoscrolls(true);
                     xuc007Pane_LeasedProperty.setLayout(new GridBagLayout());
-                    ((GridBagLayout)xuc007Pane_LeasedProperty.getLayout()).columnWidths = new int[] {0, 0};
-                    ((GridBagLayout)xuc007Pane_LeasedProperty.getLayout()).rowHeights = new int[] {0, 0};
-                    ((GridBagLayout)xuc007Pane_LeasedProperty.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
-                    ((GridBagLayout)xuc007Pane_LeasedProperty.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
+                    ((GridBagLayout) xuc007Pane_LeasedProperty.getLayout()).columnWidths = new int[]{0, 0};
+                    ((GridBagLayout) xuc007Pane_LeasedProperty.getLayout()).rowHeights = new int[]{0, 0};
+                    ((GridBagLayout) xuc007Pane_LeasedProperty.getLayout()).columnWeights = new double[]{1.0, 1.0E-4};
+                    ((GridBagLayout) xuc007Pane_LeasedProperty.getLayout()).rowWeights = new double[]{1.0, 1.0E-4};
                 }
                 xuc007_scrollPanel.setViewportView(xuc007Pane_LeasedProperty);
             }
@@ -492,7 +480,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         *   DOCUMENT_MODAL to UC-002 Frame
          */
         dXUC007 = new JDialog(fUC002, null, Dialog.ModalityType.DOCUMENT_MODAL);
-        dXUC007.addWindowListener(CLOSE);
         dXUC007.setSize(460, 350);
         Container cpXUC007 = dXUC007.getContentPane();
         cpXUC007.setLayout(new BorderLayout());
@@ -503,38 +490,44 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc007_contentPanel = new JPanel();
         xuc007_paneProperty = new JPanel();
         xuc007_lblParcelID = new JLabel();
-        xuc007_ParcelID = new JTextField();
         xuc007_lblTownship = new JLabel();
-        xuc007_Township = new JTextField();
         xuc007_lblTaxMapID = new JLabel();
-        xuc007_TaxMapID = new JTextField();
         xuc007_lblRange = new JLabel();
-        xuc007_Range = new JTextField();
         xuc007_lblCounty = new JLabel();
-        xuc007_County = new JTextField();
-        xuc007_lblSection = new JLabel();
-        xuc007_Section = new JTextField();
         xuc007_lblState = new JLabel();
-        xuc007_State = new JTextField();
         xuc007_lblMeridian = new JLabel();
-        xuc007_Meridian = new JTextField();
+        xuc007_lblSection = new JLabel();
         xuc007_lblAcreage = new JLabel();
-        xuc007_Acreage = new JTextField();
         xuc007_lblLegalDescription = new JLabel();
-        xuc007_scrollPane = new JScrollPane();
-        xuc007_LegalDescription = new JTextArea();
-        xuc007_cbxBounders = new JCheckBox();
-        xuc007_paneBounders = new JPanel();
         xuc007_lblNorthBounder = new JLabel();
         xuc007_lblEastBounder = new JLabel();
         xuc007_lblSouthBounder = new JLabel();
         xuc007_lblWestBounder = new JLabel();
+
+        xuc007_ParcelID = new JTextField(null);
+        xuc007_Township = new JTextField(null);
+        xuc007_TaxMapID = new JTextField(null);
+        xuc007_Range = new JTextField(null);
+        xuc007_County = new JTextField(null);
+        xuc007_Section = new JTextField(null);
+        xuc007_State = new JTextField(null);
+        xuc007_Meridian = new JTextField(null);
+        xuc007_Acreage = new JTextField(null);
+
+        xuc007_scrollPane = new JScrollPane();
+        xuc007_LegalDescription = new JTextArea();
+        xuc007_LegalDescription.setText(null);
+
+        xuc007_cbxBounders = new JCheckBox();
+        xuc007_paneBounders = new JPanel();
         xuc007_NorthBounder = new JTextField();
         xuc007_EastBounder = new JTextField();
         xuc007_SouthBounder = new JTextField();
         xuc007_WestBounder = new JTextField();
+
         xuc007_ButtonBar = new JPanel();
         xuc007_SearchProperty = new JButton();
+        xuc007_SearchProperty.setVisible(false); // FUTURE ENHANCEMENT
         xuc007_InsertProperty = new JButton();
         xuc007_CloseAddProperty = new JButton();
 
@@ -727,9 +720,8 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     //---- xuc007_cbxBounders ----
                     xuc007_cbxBounders.setText("Property Bounders");
                     xuc007_cbxBounders.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    xuc007_cbxBounders.setActionCommand("addPropertyBounders");
+                    xuc007_cbxBounders.setActionCommand(UserActions.DISPLAY_BOUNDERS.name());
                     xuc007_cbxBounders.setFont(xuc007_cbxBounders.getFont().deriveFont(xuc007_cbxBounders.getFont().getSize() + 2f));
-                    xuc007_cbxBounders.addActionListener(e -> _cbxBoundersActionPerformed(e));
                     xuc007_paneProperty.add(xuc007_cbxBounders, new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 10, 5), 0, 0));
@@ -865,7 +857,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         pdXUC007.add(dpXUC007);
         cpXUC007.add(pdXUC007, BorderLayout.CENTER);
         dXUC007.setMinimumSize(new Dimension(680, 500));
-        dXUC007.addWindowListener(CLOSE);
     }
 
     private JPanel uc002_contentPane;
@@ -1051,8 +1042,8 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     public void setXuc007_WestBounder(String xuc007_WestBounder) {
         this.xuc007_WestBounder.setText(xuc007_WestBounder);
     }
-    
-      public String getXuc007_Section() {
+
+    public String getXuc007_Section() {
         return xuc007_Section.getText();
     }
 
@@ -1061,7 +1052,11 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     }
 
     public boolean getXuc007_cbxBounders() {
+        System.out.println(this.xuc007_cbxBounders.isSelected());
         return this.xuc007_cbxBounders.isSelected();
+    }
+    public void uncheckXuc007_cbxBounders(){
+        this.xuc007_cbxBounders.setSelected(false);
     }
 
     // START UC-002 Mutators and Accessors
@@ -1192,12 +1187,12 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         this.xuc005_AlternatePayee.setText(uc002_AlternatePayee);
     }
     // END UC-002 Mutators and Accessors
-    
-    public JDialog getDxuc007(){
+
+    public JDialog getDxuc007() {
         return dXUC007;
     }
-    
-    public JFrame getfUC002(){
+
+    public JFrame getfUC002() {
         return fUC002;
     }
     // START UC-002 Validation Feedback Mutators
@@ -1467,49 +1462,58 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
             xuc007_lblWestBounder.setForeground(Color.black);
         }
     }
-    
-    public void addXuc007Pane_LeasedProperty(String description, int gridY){
-        xuc007Pane_LeasedProperty.add(addComponent(description), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 5, 0), 0, 0));
+
+    public void addXuc007Pane_LeasedProperty(String description, int gridY) {
+        xuc007Pane_LeasedProperty.add(addComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
         xuc007Pane_LeasedProperty.revalidate();
 
     }
-    public JPanel addComponent(String description){
-        
+
+    public JPanel addComponent(String description, int index) {
+
         JPanel newProperty = new JPanel();
-        JButton _remove = new JButton();
+//        JButton _remove = new JButton();
         JTextField _description = new JTextField();
-        JButton _edit = new JButton();
+         _edit = new JButton();
 
         //======== this ========
         newProperty.setLayout(new GridBagLayout());
-        ((GridBagLayout)newProperty.getLayout()).columnWidths = new int[] {84, 390, 57, 0};
-        ((GridBagLayout)newProperty.getLayout()).rowHeights = new int[] {0, 0};
-        ((GridBagLayout)newProperty.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
-        ((GridBagLayout)newProperty.getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
+        ((GridBagLayout) newProperty.getLayout()).columnWidths = new int[]{84, 390, 57, 0};
+        ((GridBagLayout) newProperty.getLayout()).rowHeights = new int[]{0, 0};
+        ((GridBagLayout) newProperty.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
+        ((GridBagLayout) newProperty.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};
 
         //---- _remove ----
-        _remove.setText("Remove");
-        newProperty.add(_remove, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 5), 0, 0));
+//        _remove.setText("Remove");
+//        _remove.setVisible(false);
+//        newProperty.add(_remove, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+//                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+//                new Insets(0, 0, 0, 5), 0, 0));
 
         //---- _description ----
-        _description.setMinimumSize(new Dimension(300, 22));
+        _description.setMinimumSize(new Dimension(357, 22));
         _description.setText(description);
+        _description.setFont(_description.getFont().deriveFont(_description.getFont().getSize() + 2f));
         _description.setEditable(false);
-        newProperty.add(_description, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 5), 0, 0));
+        newProperty.add(_description, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 5), 0, 0));
 
         //---- _edit ----
         _edit.setText("Edit");
+        _edit.setName(Integer.toString(index));
         newProperty.add(_edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 0), 0, 0));
-        
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+
         return newProperty;
     }
     
+    JButton _edit;
+    
+    public String getEditButtonName(){
+        return this._edit.getName();
+    }
 }
