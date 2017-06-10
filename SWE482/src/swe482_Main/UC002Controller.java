@@ -83,7 +83,6 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
 
                 } catch (NumberFormatException f1) {
                     System.out.println(f1.getMessage());
-                    return;
                 }
             }
         }
@@ -127,7 +126,6 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
 
                 } catch (NumberFormatException f2) {
                     System.out.println(f2.getMessage());
-                    return;
                 }
             }
         }
@@ -146,7 +144,37 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.UPDATE_PROPERTY.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
-
+            if (this.validatePropertyForm()) {
+                try {
+                    model.getXuc007_LeasedProperty(index).setXuc007_ParcelID(Integer.parseInt(view.getXuc007_ParcelID()));
+                    model.getXuc007_LeasedProperty(index).setXuc007_TaxMapID(view.getXuc007_TaxMapID());
+                    model.getXuc007_LeasedProperty(index).setXuc007_County(view.getXuc007_County());
+                    model.getXuc007_LeasedProperty(index).setXuc007_State(view.getXuc007_State());
+                    model.getXuc007_LeasedProperty(index).setXuc007_Acreage(Double.parseDouble(view.getXuc007_Acreage()));
+                    model.getXuc007_LeasedProperty(index).setXuc007_Township(view.getXuc007_Township());
+                    model.getXuc007_LeasedProperty(index).setXuc007_Range(view.getXuc007_Range());
+                    model.getXuc007_LeasedProperty(index).setXuc007_Section(Integer.parseInt(view.getXuc007_Section()));
+                    model.getXuc007_LeasedProperty(index).setXuc007_LegalDescription(view.getXuc007_LegalDescription());
+                    if (view.getXuc007_cbxBounders()) {
+                        // True
+                        model.getXuc007_LeasedProperty(index).setIsPropertyBounders(view.getXuc007_cbxBounders());
+                        model.getXuc007_LeasedProperty(index).setXuc007_NorthBounder(view.getXuc007_NorthBounder());
+                        model.getXuc007_LeasedProperty(index).setXuc007_EastBounder(view.getXuc007_EastBounder());
+                        model.getXuc007_LeasedProperty(index).setXuc007_SouthBounder(view.getXuc007_SouthBounder());
+                        model.getXuc007_LeasedProperty(index).setXuc007_WestBounder(view.getXuc007_WestBounder());
+                    }
+                    if (!view.getXuc007_cbxBounders()) {
+                        model.getXuc007_LeasedProperty(index).setIsPropertyBounders(view.getXuc007_cbxBounders());
+                        model.getXuc007_LeasedProperty(index).setXuc007_NorthBounder(null);
+                        model.getXuc007_LeasedProperty(index).setXuc007_EastBounder(null);
+                        model.getXuc007_LeasedProperty(index).setXuc007_SouthBounder(null);
+                        model.getXuc007_LeasedProperty(index).setXuc007_WestBounder(null);
+                    }
+                    view.getDxuc007().dispose();
+                } catch (NumberFormatException f3) {
+                    System.out.println(f3.getMessage());
+                }
+            }
         }
     }
 
@@ -460,10 +488,12 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         view.setXuc007_Acreage(Double.toString(property.getXuc007_Acreage()));
         view.setXuc007_LegalDescription(property.getXuc007_LegalDescription());
         view.uncheckXuc007_cbxBounders(property.isIsPropertyBounders());
-        view.setXuc007_NorthBounder(property.getXuc007_NorthBounder());
-        view.setXuc007_EastBounder(property.getXuc007_EastBounder());
-        view.setXuc007_SouthBounder(property.getXuc007_SouthBounder());
-        view.setXuc007_WestBounder(property.getXuc007_WestBounder());
+        if (property.isIsPropertyBounders()) {
+            view.setXuc007_NorthBounder(property.getXuc007_NorthBounder());
+            view.setXuc007_EastBounder(property.getXuc007_EastBounder());
+            view.setXuc007_SouthBounder(property.getXuc007_SouthBounder());
+            view.setXuc007_WestBounder(property.getXuc007_WestBounder());
+        }
         view.importButtonProperties(true, index);
         view.displayAddProperty(true);
     }

@@ -320,6 +320,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                             xuc005_AlternatePayee.setEditable(true);
                         } else {
                             xuc005_AlternatePayee.setEditable(false);
+                            this.setXuc005_AlternatePayee(null);
                         }
                     });
 
@@ -733,16 +734,20 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     xuc007_cbxBounders.setText("Property Bounders");
                     xuc007_cbxBounders.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                     xuc007_cbxBounders.addChangeListener((ChangeEvent e) -> {
-                        if(xuc007_cbxBounders.isSelected()){
+                        if (xuc007_cbxBounders.isSelected()) {
                             xuc007_NorthBounder.setEditable(true);
                             xuc007_EastBounder.setEditable(true);
                             xuc007_SouthBounder.setEditable(true);
                             xuc007_WestBounder.setEditable(true);
                         } else {
                             xuc007_NorthBounder.setEditable(false);
+                            this.setXuc007_NorthBounder(null);
                             xuc007_EastBounder.setEditable(false);
+                            this.setXuc007_EastBounder(null);
                             xuc007_SouthBounder.setEditable(false);
+                            this.setXuc007_SouthBounder(null);
                             xuc007_WestBounder.setEditable(false);
+                            this.setXuc007_WestBounder(null);
                         }
                     });
                     xuc007_cbxBounders.setFont(xuc007_cbxBounders.getFont().deriveFont(xuc007_cbxBounders.getFont().getSize() + 2f));
