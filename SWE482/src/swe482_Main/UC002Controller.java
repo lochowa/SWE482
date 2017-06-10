@@ -124,7 +124,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                     model.addXuc007_LeasedProperty(property);
                     model.incrementModCount();
                     view.getDxuc007().dispose();
-                    
+
                 } catch (NumberFormatException f2) {
                     System.out.println(f2.getMessage());
                     return;
@@ -141,7 +141,12 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             int index = Integer.parseInt(source.getName());
             XUC007Property property = model.getXuc007_LeasedProperty(index);
             this.clearAddPropertyForm();
-            this.importPropertyData(property);
+            this.importPropertyData(property, source.getName());
+        }
+        if (e.getActionCommand().equals(UserActions.UPDATE_PROPERTY.name())) {
+            JButton source = (JButton) e.getSource();
+            int index = Integer.parseInt(source.getName());
+
         }
     }
 
@@ -154,7 +159,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         INSERT_PROPERTY,
         CLOSE_ADDPROPERTY,
         DISPLAY_BOUNDERS,
-        EDIT_PROPERTY
+        EDIT_PROPERTY,
+        UPDATE_PROPERTY
     }
 
     private boolean validatePropertyForm() {
@@ -286,8 +292,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
 
         if (view.getXuc007_cbxBounders() && validFields == 14) {
             return true;
-        }
-        else if (!view.getXuc007_cbxBounders() & validFields == 10) {
+        } else if (!view.getXuc007_cbxBounders() & validFields == 10) {
             return true;
         }
         return false;
@@ -417,11 +422,10 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
 
         if (view.getXuc005_cbxAlternativePayee() && validFields == 16) {
             return true;
-        }
-        else if (!view.getXuc005_cbxAlternativePayee() && validFields == 15) {
+        } else if (!view.getXuc005_cbxAlternativePayee() && validFields == 15) {
             return true;
         }
-        
+
         return false;
     }
 
@@ -441,9 +445,10 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         view.setXuc007_EastBounder(null);
         view.setXuc007_SouthBounder(null);
         view.setXuc007_WestBounder(null);
+        view.importButtonProperties(false, null);
     }
-    
-    private void importPropertyData(XUC007Property property){
+
+    private void importPropertyData(XUC007Property property, String index) {
         view.setXuc007_ParcelID(Integer.toString(property.getXuc007_ParcelID()));
         view.setXuc007_Township(property.getXuc007_Township());
         view.setXuc007_TaxMapID(property.getXuc007_TaxMapID());
@@ -459,6 +464,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         view.setXuc007_EastBounder(property.getXuc007_EastBounder());
         view.setXuc007_SouthBounder(property.getXuc007_SouthBounder());
         view.setXuc007_WestBounder(property.getXuc007_WestBounder());
+        view.importButtonProperties(true, index);
         view.displayAddProperty(true);
     }
 }

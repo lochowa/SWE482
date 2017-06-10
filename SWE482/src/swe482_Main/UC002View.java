@@ -104,7 +104,8 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         INSERT_PROPERTY,
         CLOSE_ADDPROPERTY,
         DISPLAY_BOUNDERS,
-        EDIT_PROPERTY
+        EDIT_PROPERTY,
+        UPDATE_PROPERTY
     }
 
     private JFrame fUC002;
@@ -966,6 +967,18 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     private JButton xuc007_InsertProperty;
     private JButton xuc007_CloseAddProperty;
 
+   
+    public void importButtonProperties(boolean toggle, String index) {
+        if (toggle) {
+            xuc007_InsertProperty.setText("UPDATE");
+            xuc007_InsertProperty.setName(index);
+            xuc007_InsertProperty.setActionCommand(UserActions.UPDATE_PROPERTY.name());
+        } else {
+            xuc007_InsertProperty.setText("INSERT");
+            xuc007_InsertProperty.setActionCommand(UserActions.INSERT_PROPERTY.name());
+        }
+    }
+    
     public String getXuc007_ParcelID() {
         return xuc007_ParcelID.getText();
     }
