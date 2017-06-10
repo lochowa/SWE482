@@ -57,7 +57,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     }
 
     void addController(ActionListener controller) {
-//        Insert UserActions events here.
+        try{
         uc002_SaveButton.addActionListener(controller);
         uc002_CancelButton.addActionListener(controller);
         xuc007_AddProperty.addActionListener(controller);
@@ -65,7 +65,10 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc007_CloseAddProperty.addActionListener(controller);
         xuc007_InsertProperty.addActionListener(controller);
         xuc007_SearchProperty.addActionListener(controller);
-        _edit.addActionListener(controller);
+        xuc007_EditProperty.addActionListener(controller);
+        } catch (NullPointerException ne){
+            System.out.println(ne.toString());
+        }
     }
 
     @Override
@@ -99,7 +102,8 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         SEARCH_PROPERTY,
         INSERT_PROPERTY,
         CLOSE_ADDPROPERTY,
-        DISPLAY_BOUNDERS
+        DISPLAY_BOUNDERS,
+        EDIT_PROPERTY
     }
 
     private JFrame fUC002;
@@ -720,7 +724,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     //---- xuc007_cbxBounders ----
                     xuc007_cbxBounders.setText("Property Bounders");
                     xuc007_cbxBounders.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    xuc007_cbxBounders.setActionCommand(UserActions.DISPLAY_BOUNDERS.name());
+//                    xuc007_cbxBounders.addChangeListener(l);
                     xuc007_cbxBounders.setFont(xuc007_cbxBounders.getFont().deriveFont(xuc007_cbxBounders.getFont().getSize() + 2f));
                     xuc007_paneProperty.add(xuc007_cbxBounders, new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -1462,6 +1466,10 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
             xuc007_lblWestBounder.setForeground(Color.black);
         }
     }
+    
+    public void setBoundersVisibile(boolean visible){
+            this.xuc007_paneBounders.setVisible(visible);
+    }
 
     public void addXuc007Pane_LeasedProperty(String description, int gridY) {
         xuc007Pane_LeasedProperty.add(addComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
@@ -1474,9 +1482,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     public JPanel addComponent(String description, int index) {
 
         JPanel newProperty = new JPanel();
-//        JButton _remove = new JButton();
         JTextField _description = new JTextField();
-         _edit = new JButton();
 
         //======== this ========
         newProperty.setLayout(new GridBagLayout());
@@ -1484,13 +1490,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         ((GridBagLayout) newProperty.getLayout()).rowHeights = new int[]{0, 0};
         ((GridBagLayout) newProperty.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
         ((GridBagLayout) newProperty.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};
-
-        //---- _remove ----
-//        _remove.setText("Remove");
-//        _remove.setVisible(false);
-//        newProperty.add(_remove, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-//                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-//                new Insets(0, 0, 0, 5), 0, 0));
 
         //---- _description ----
         _description.setMinimumSize(new Dimension(357, 22));
@@ -1501,19 +1500,20 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 5), 0, 0));
 
-        //---- _edit ----
-        _edit.setText("Edit");
-        _edit.setName(Integer.toString(index));
-        newProperty.add(_edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+        //---- xuc007_EditProperty ----
+        xuc007_EditProperty.setText("Edit");
+        xuc007_EditProperty.setName(Integer.toString(index));
+        xuc007_EditProperty.setActionCommand(UserActions.EDIT_PROPERTY.name());
+        newProperty.add(xuc007_EditProperty, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
 
         return newProperty;
     }
     
-    JButton _edit;
+    JButton xuc007_EditProperty = new JButton();
     
     public String getEditButtonName(){
-        return this._edit.getName();
+        return this.xuc007_EditProperty.getName();
     }
 }

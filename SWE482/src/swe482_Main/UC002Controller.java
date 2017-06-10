@@ -131,6 +131,11 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             System.out.println("Action Triggered: Close Add Property Window");
             view.getDxuc007().dispose();
         }
+        if (e.getActionCommand().equals(UserActions.DISPLAY_BOUNDERS.name())){
+            if(view.getXuc007_cbxBounders()){
+            view.setBoundersVisibile(true);
+            } else view.setBoundersVisibile(false);
+        }
     }
 
     private enum UserActions {
@@ -140,7 +145,9 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         SAVE_LEASE,
         SEARCH_PROPERTY,
         INSERT_PROPERTY,
-        CLOSE_ADDPROPERTY
+        CLOSE_ADDPROPERTY,
+        DISPLAY_BOUNDERS,
+        EDIT_PROPERTY
     }
 
     private boolean validatePropertyForm() {
