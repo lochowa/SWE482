@@ -460,7 +460,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
             uc002_contentPane.add(xuc007_scrollPanel, new GridBagConstraints(0, 12, 8, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
-
+            
             //======== uc002_ButtonBar ========
             {
                 uc002_ButtonBar.setLayout(new GridLayout(1, 2));
@@ -478,9 +478,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     new Insets(10, 0, 10, 0), 0, 0));
         }
         dpUC002.add(uc002_contentPane, BorderLayout.CENTER);
-        dpUC002.add(uc002_ButtonBar, BorderLayout.SOUTH);
         dpUC002.setVisible(true);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
 //        END JPanel Form Insertion
         pUC002.add(dpUC002);
         fUC002.add(pUC002);
@@ -852,7 +850,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 0), 0, 0));
 
-            //======== xuc007_ButtonBar ========
+            //======== xuc007_ButtonBar ========            
             {
                 xuc007_ButtonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
                 xuc007_ButtonBar.setLayout(new GridBagLayout());
@@ -1514,40 +1512,47 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc007Pane_LeasedProperty.revalidate();
 
     }
+    
+    public void updateXuc007Pane_LeasedProperty(String description, int gridY){
+        JPanel test = (JPanel) xuc007Pane_LeasedProperty.getComponent(gridY);
+        JTextField field = (JTextField) test.getComponent(0);
+        field.setText(description);
+    }
 
     public JPanel addComponent(String description, int index) {
 
-        JPanel newProperty = new JPanel();
+        JPanel property = new JPanel();
         JTextField _description = new JTextField();
+        _description.setName(Integer.toString(index));
         JButton edit = new JButton();
         edit.setText("Edit");
         edit.setActionCommand(UserActions.EDIT_PROPERTY.name());
         edit.setName(Integer.toString(index));
 
         //======== this ========
-        newProperty.setLayout(new GridBagLayout());
-        ((GridBagLayout) newProperty.getLayout()).columnWidths = new int[]{84, 390, 57, 0};
-        ((GridBagLayout) newProperty.getLayout()).rowHeights = new int[]{0, 0};
-        ((GridBagLayout) newProperty.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
-        ((GridBagLayout) newProperty.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};
+        property.setLayout(new GridBagLayout());
+        ((GridBagLayout) property.getLayout()).columnWidths = new int[]{84, 390, 57, 0};
+        ((GridBagLayout) property.getLayout()).rowHeights = new int[]{0, 0};
+        ((GridBagLayout) property.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
+        ((GridBagLayout) property.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};
 
         //---- _description ----
         _description.setMinimumSize(new Dimension(357, 22));
         _description.setText(description);
         _description.setFont(_description.getFont().deriveFont(_description.getFont().getSize() + 2f));
         _description.setEditable(false);
-        newProperty.add(_description, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0,
+        property.add(_description, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 5), 0, 0));
 
         //---- xuc007_EditProperty ----
 
-        newProperty.add(edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+        property.add(edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
         
         this.xuc007_EditPropertyButton = edit;
-        return newProperty;
+        return property;
     }
     
     JButton xuc007_EditPropertyButton = new JButton();
