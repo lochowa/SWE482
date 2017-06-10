@@ -1,6 +1,7 @@
 package swe482_Main;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 /**
  *
@@ -81,6 +82,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                     model.sqlStatement();
 
                 } catch (NumberFormatException f1) {
+                    System.out.println(f1.getMessage());
                     return;
                 }
             }
@@ -124,7 +126,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                     view.getDxuc007().dispose();
                     
                 } catch (NumberFormatException f2) {
-
+                    System.out.println(f2.getMessage());
+                    return;
                 }
             }
         }
@@ -134,7 +137,11 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             view.getDxuc007().dispose();
         }
         if (e.getActionCommand().equals(UserActions.EDIT_PROPERTY.name())) {
-            
+            JButton source = (JButton) e.getSource();
+            int index = Integer.parseInt(source.getName());
+            XUC007Property property = model.getXuc007_LeasedProperty(index);
+            this.clearAddPropertyForm();
+            this.importPropertyData(property);
         }
     }
 
@@ -428,10 +435,30 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         view.setXuc007_State(null);
         view.setXuc007_Meridian(null);
         view.setXuc007_Acreage(null);
-        view.uncheckXuc007_cbxBounders();
+        view.setXuc007_LegalDescription(null);
+        view.uncheckXuc007_cbxBounders(false);
         view.setXuc007_NorthBounder(null);
         view.setXuc007_EastBounder(null);
         view.setXuc007_SouthBounder(null);
         view.setXuc007_WestBounder(null);
+    }
+    
+    private void importPropertyData(XUC007Property property){
+        view.setXuc007_ParcelID(Integer.toString(property.getXuc007_ParcelID()));
+        view.setXuc007_Township(property.getXuc007_Township());
+        view.setXuc007_TaxMapID(property.getXuc007_TaxMapID());
+        view.setXuc007_Range(property.getXuc007_Range());
+        view.setXuc007_County(property.getXuc007_County());
+        view.setXuc007_Section(Integer.toString(property.getXuc007_Section()));
+        view.setXuc007_State(property.getXuc007_State());
+        view.setXuc007_Meridian(property.getXuc007_Meridian());
+        view.setXuc007_Acreage(Double.toString(property.getXuc007_Acreage()));
+        view.setXuc007_LegalDescription(property.getXuc007_LegalDescription());
+        view.uncheckXuc007_cbxBounders(property.isIsPropertyBounders());
+        view.setXuc007_NorthBounder(property.getXuc007_NorthBounder());
+        view.setXuc007_EastBounder(property.getXuc007_EastBounder());
+        view.setXuc007_SouthBounder(property.getXuc007_SouthBounder());
+        view.setXuc007_WestBounder(property.getXuc007_WestBounder());
+        view.displayAddProperty(true);
     }
 }

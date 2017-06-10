@@ -1081,8 +1081,8 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     public boolean getXuc007_cbxBounders() {
         return this.xuc007_cbxBounders.isSelected();
     }
-    public void uncheckXuc007_cbxBounders(){
-        this.xuc007_cbxBounders.setSelected(false);
+    public void uncheckXuc007_cbxBounders(boolean condition){
+        this.xuc007_cbxBounders.setSelected(condition);
     }
 
     // START UC-002 Mutators and Accessors
