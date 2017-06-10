@@ -1,5 +1,6 @@
 package swe482_Main;
 
+import Create_Database.DBConnect;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -201,6 +202,7 @@ public class UC002Model extends java.util.Observable {
 
     public void sqlStatement() {
         // TO DO: Write SQL INSERT Statement to schema.
+        DBConnect.connect();
 
     }
 

@@ -80,7 +80,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                     System.out.println("Valid Data\n");
                     model.printUC002Values();
                     model.sqlStatement();
-
+                    view.dispose();
                 } catch (NumberFormatException f1) {
                     System.out.println(f1.getMessage());
                 }
@@ -171,7 +171,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                         model.getXuc007_LeasedProperty(index).setXuc007_WestBounder(null);
                     }
                     view.updateXuc007Pane_LeasedProperty(model.createDescriptionString(model.getXuc007_LeasedProperty(index)), index);
-                    view.getDxuc007().dispose();
+                view.getDxuc007().dispose();
                 } catch (NumberFormatException f3) {
                     System.out.println(f3.getMessage());
                 }
@@ -318,12 +318,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                 view.setXuc007_cbxBounders(false);
             }
         }
-
-        if (view.getXuc007_cbxBounders() && validFields == 14) {
-            return true;
-        } else if (!view.getXuc007_cbxBounders() & validFields == 10) {
-            return true;
-        }
+        if (view.getXuc007_cbxBounders() && validFields == 14) { return true; }
+        if (!view.getXuc007_cbxBounders() & validFields == 10) { return true; }
         return false;
     }
 
@@ -358,14 +354,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             view.setXuc005_lblBonusSubtotal(false);
             validFields++;
         }
-        if (view.getXuc005_AlternatePayee().isEmpty() || !view.getXuc005_AlternatePayee().matches(stringReg)) {
-            view.setXuc005_lblAlternativePayee(true);
-
-        } else {
-            view.setXuc005_lblAlternativePayee(false);
-            validFields++;
-        }
-
+        
         if (!view.getXuc005_cbxAlternativePayee()) {
             if (!view.getXuc005_AlternatePayee().isEmpty() && view.getXuc005_AlternatePayee().matches(stringReg)) {
                 view.setXuc005_cbxAlternatePayee(true);
@@ -373,9 +362,15 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             }
         }
         if (view.getXuc005_cbxAlternativePayee()) {
-            if (!view.getXuc005_AlternatePayee().isEmpty()
-                    && view.getXuc005_AlternatePayee().matches(stringReg)) {
+            if (!view.getXuc005_AlternatePayee().isEmpty() && view.getXuc005_AlternatePayee().matches(stringReg)) {
                 view.setXuc005_cbxAlternatePayee(false);
+
+            }
+            if (view.getXuc005_AlternatePayee().isEmpty() || !view.getXuc005_AlternatePayee().matches(stringReg)) {
+                view.setXuc005_lblAlternativePayee(true);
+
+            } else {
+                view.setXuc005_lblAlternativePayee(false);
                 validFields++;
             }
         }
@@ -449,12 +444,9 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             validFields++;
         }
 
-        if (view.getXuc005_cbxAlternativePayee() && validFields == 16) {
-            return true;
-        } else if (!view.getXuc005_cbxAlternativePayee() && validFields == 15) {
-            return true;
-        }
-
+        if (!view.getXuc005_cbxAlternativePayee() && validFields == 14) { return true; }
+        if (view.getXuc005_cbxAlternativePayee() && validFields == 15) { return true; }
+        
         return false;
     }
 
