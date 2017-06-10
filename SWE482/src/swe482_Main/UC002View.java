@@ -9,6 +9,7 @@ import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
+import javax.swing.event.ChangeEvent;
 
 /**
  * @author Michael Barth UC-002 UC002View Design Implementing XUC-005, XUC-006,
@@ -57,7 +58,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     }
 
     void addController(ActionListener controller) {
-        try{
         uc002_SaveButton.addActionListener(controller);
         uc002_CancelButton.addActionListener(controller);
         xuc007_AddProperty.addActionListener(controller);
@@ -65,10 +65,11 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc007_CloseAddProperty.addActionListener(controller);
         xuc007_InsertProperty.addActionListener(controller);
         xuc007_SearchProperty.addActionListener(controller);
-        xuc007_EditProperty.addActionListener(controller);
-        } catch (NullPointerException ne){
-            System.out.println(ne.toString());
-        }
+
+    }
+    
+    void addButtonController(ActionListener controller, JButton button){
+        button.addActionListener(controller);
     }
 
     @Override
@@ -107,12 +108,10 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     }
 
     private JFrame fUC002;
-    private JDialog dUC002;
     private JPanel dpUC002;     // Replaces IDE JPanel
     /*
     *   XUC-007 Dialog
      */
-    private JFrame fXUC007;
 
     private JDialog dXUC007;
     private JPanel dpXUC007;    // Replaces IDE JPanel
@@ -315,6 +314,13 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
             uc002_contentPane.add(xuc005_cbxAlternativePayee, new GridBagConstraints(0, 5, 3, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 10, 5), 0, 0));
+            xuc005_cbxAlternativePayee.addChangeListener((ChangeEvent e) -> {
+                        if(xuc005_cbxAlternativePayee.isSelected()){
+                            xuc005_AlternatePayee.setEditable(true);
+                        } else {
+                            xuc005_AlternatePayee.setEditable(false);
+                        }
+                    });
 
             //---- xuc005_lblAlternativePayee ----
             xuc005_lblAlternativePayee.setText("Alternate Payee");
@@ -326,6 +332,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
             //---- xuc005_AlternatePayee ----
             xuc005_AlternatePayee.setFont(xuc005_AlternatePayee.getFont().deriveFont(xuc005_AlternatePayee.getFont().getSize() + 1f));
             xuc005_AlternatePayee.setAutoscrolls(false);
+            xuc005_AlternatePayee.setEditable(false);
             uc002_contentPane.add(xuc005_AlternatePayee, new GridBagConstraints(2, 6, 6, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 10, 0), 0, 0));
@@ -724,7 +731,19 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                     //---- xuc007_cbxBounders ----
                     xuc007_cbxBounders.setText("Property Bounders");
                     xuc007_cbxBounders.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-//                    xuc007_cbxBounders.addChangeListener(l);
+                    xuc007_cbxBounders.addChangeListener((ChangeEvent e) -> {
+                        if(xuc007_cbxBounders.isSelected()){
+                            xuc007_NorthBounder.setEditable(true);
+                            xuc007_EastBounder.setEditable(true);
+                            xuc007_SouthBounder.setEditable(true);
+                            xuc007_WestBounder.setEditable(true);
+                        } else {
+                            xuc007_NorthBounder.setEditable(false);
+                            xuc007_EastBounder.setEditable(false);
+                            xuc007_SouthBounder.setEditable(false);
+                            xuc007_WestBounder.setEditable(false);
+                        }
+                    });
                     xuc007_cbxBounders.setFont(xuc007_cbxBounders.getFont().deriveFont(xuc007_cbxBounders.getFont().getSize() + 2f));
                     xuc007_paneProperty.add(xuc007_cbxBounders, new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -769,6 +788,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                         //---- xuc007_NorthBounder ----
                         xuc007_NorthBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                         xuc007_NorthBounder.setAutoscrolls(false);
+                        xuc007_NorthBounder.setEditable(false);
                         xuc007_NorthBounder.setFont(xuc007_NorthBounder.getFont().deriveFont(xuc007_NorthBounder.getFont().getSize() + 1f));
                         xuc007_paneBounders.add(xuc007_NorthBounder, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -777,6 +797,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                         //---- xuc007_EastBounder ----
                         xuc007_EastBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                         xuc007_EastBounder.setAutoscrolls(false);
+                        xuc007_EastBounder.setEditable(false);
                         xuc007_EastBounder.setFont(xuc007_EastBounder.getFont().deriveFont(xuc007_EastBounder.getFont().getSize() + 1f));
                         xuc007_paneBounders.add(xuc007_EastBounder, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -785,6 +806,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                         //---- xuc007_SouthBounder ----
                         xuc007_SouthBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                         xuc007_SouthBounder.setAutoscrolls(false);
+                        xuc007_SouthBounder.setEditable(false);
                         xuc007_SouthBounder.setFont(xuc007_SouthBounder.getFont().deriveFont(xuc007_SouthBounder.getFont().getSize() + 1f));
                         xuc007_paneBounders.add(xuc007_SouthBounder, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -793,6 +815,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                         //---- xuc007_WestBounder ----
                         xuc007_WestBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                         xuc007_WestBounder.setAutoscrolls(false);
+                        xuc007_WestBounder.setEditable(false);
                         xuc007_WestBounder.setFont(xuc007_WestBounder.getFont().deriveFont(xuc007_WestBounder.getFont().getSize() + 1f));
                         xuc007_paneBounders.add(xuc007_WestBounder, new GridBagConstraints(3, 1, 1, 1, 0.0, 0.0,
                                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -1056,7 +1079,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     }
 
     public boolean getXuc007_cbxBounders() {
-        System.out.println(this.xuc007_cbxBounders.isSelected());
         return this.xuc007_cbxBounders.isSelected();
     }
     public void uncheckXuc007_cbxBounders(){
@@ -1182,7 +1204,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
 
     public String getXuc005_AlternatePayee() {
         if (this.xuc005_AlternatePayee == null) {
-            System.out.println("NULL PAYEE");
         }
         return this.xuc005_AlternatePayee.getText();
     }
@@ -1467,9 +1488,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         }
     }
     
-    public void setBoundersVisibile(boolean visible){
-            this.xuc007_paneBounders.setVisible(visible);
-    }
 
     public void addXuc007Pane_LeasedProperty(String description, int gridY) {
         xuc007Pane_LeasedProperty.add(addComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
@@ -1483,6 +1501,10 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
 
         JPanel newProperty = new JPanel();
         JTextField _description = new JTextField();
+        JButton edit = new JButton();
+        edit.setText("Edit");
+        edit.setActionCommand(UserActions.EDIT_PROPERTY.name());
+        edit.setName(Integer.toString(index));
 
         //======== this ========
         newProperty.setLayout(new GridBagLayout());
@@ -1501,19 +1523,18 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                 new Insets(0, 0, 0, 5), 0, 0));
 
         //---- xuc007_EditProperty ----
-        xuc007_EditProperty.setText("Edit");
-        xuc007_EditProperty.setName(Integer.toString(index));
-        xuc007_EditProperty.setActionCommand(UserActions.EDIT_PROPERTY.name());
-        newProperty.add(xuc007_EditProperty, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+
+        newProperty.add(edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
-
+        
+        this.xuc007_EditPropertyButton = edit;
         return newProperty;
     }
     
-    JButton xuc007_EditProperty = new JButton();
+    JButton xuc007_EditPropertyButton = new JButton();
     
-    public String getEditButtonName(){
-        return this.xuc007_EditProperty.getName();
+    public JButton getXuc007_EditPropertyButton(){
+        return this.xuc007_EditPropertyButton;
     }
 }

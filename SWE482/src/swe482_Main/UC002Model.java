@@ -11,13 +11,13 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Michael Barth 
- UC-002 UC002Model Class Object
+ * @author Michael Barth UC-002 UC002Model Class Object
  */
 public class UC002Model extends java.util.Observable {
 //        START XUC-007 Operations, Variable, Mutators and Accessors
 
-      private ArrayList<XUC007Property> xuc007_LeasedProperty = new ArrayList<>();
+    private ArrayList<XUC007Property> xuc007_LeasedProperty = new ArrayList<>();
+    private ArrayList<JButton> ButtonArray = new ArrayList();
     private int modCount = 0;
     private XUC007Property property;
     private int xuc007_ParcelID;
@@ -39,21 +39,31 @@ public class UC002Model extends java.util.Observable {
     public int getModCount() {
         return this.modCount;
     }
-    
-    public void incrementModCount(){
+
+    public void incrementModCount() {
         this.modCount++;
     }
-    
+
     public XUC007Property getXuc007_LeasedProperty(int index) {
-        return xuc007_LeasedProperty.get(index);
+        return this.xuc007_LeasedProperty.get(index);
     }
 
     public void addXuc007_LeasedProperty(XUC007Property property) {
-        xuc007_LeasedProperty.add(property);
+        this.xuc007_LeasedProperty.add(property);
     }
 
     public void removeXuc_LeasedProperty(int index) {
-        xuc007_LeasedProperty.remove(index);
+        this.xuc007_LeasedProperty.remove(index);
+    }
+    public void addButtonToArray(JButton button){
+        this.ButtonArray.add(button);
+    }
+    
+    public JButton getButtonFromArray(int index){
+        return this.ButtonArray.get(index);
+    }
+    public void removeButtonFromArray(int index){
+        this.ButtonArray.remove(index);
     }
 
     public void parseXUCProperty(XUC007Property property) {
@@ -71,8 +81,8 @@ public class UC002Model extends java.util.Observable {
         this.setXuc007_EastBounder(property.getXuc007_EastBounder());
         this.setXuc007_SouthBounder(property.getXuc007_SouthBounder());
         this.setXuc007_WestBounder(property.getXuc007_WestBounder());
-      }
-    
+    }
+
     public XUC007Property createXUCProperty(
             int xuc007_ParcelID,
             String xuc007_TaxMapID,
@@ -107,17 +117,18 @@ public class UC002Model extends java.util.Observable {
                 xuc007_SouthBounder,
                 xuc007_WestBounder);
     }
-    
-    public String createDescriptionString(XUC007Property property){
-        return String.format("%s %s %s %s : %s", 
+
+    public String createDescriptionString(XUC007Property property) {
+        return String.format("%s %s %s %s : %s",
                 property.getXuc007_Township(),
                 property.getXuc007_Range(),
                 property.getXuc007_Section(),
                 property.getXuc007_Meridian(),
                 property.getXuc007_LegalDescription()
-                );
+        );
     }
-    public JPanel addComponent(String description){
+
+    public JPanel addComponent(String description) {
         JPanel newProperty = new JPanel();
         JButton _remove = new JButton();
         JTextField _description = new JTextField();
@@ -125,30 +136,30 @@ public class UC002Model extends java.util.Observable {
 
         //======== this ========
         newProperty.setLayout(new GridBagLayout());
-        ((GridBagLayout)newProperty.getLayout()).columnWidths = new int[] {84, 454, 57, 0};
-        ((GridBagLayout)newProperty.getLayout()).rowHeights = new int[] {0, 0};
-        ((GridBagLayout)newProperty.getLayout()).columnWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
-        ((GridBagLayout)newProperty.getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
+        ((GridBagLayout) newProperty.getLayout()).columnWidths = new int[]{84, 454, 57, 0};
+        ((GridBagLayout) newProperty.getLayout()).rowHeights = new int[]{0, 0};
+        ((GridBagLayout) newProperty.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
+        ((GridBagLayout) newProperty.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};
 
         //---- _remove ----
         _remove.setText("Remove");
         newProperty.add(_remove, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 5), 0, 0));
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 5), 0, 0));
 
         //---- _description ----
         _description.setMinimumSize(new Dimension(468, 22));
         _description.setText(description);
         newProperty.add(_description, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 5), 0, 0));
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 5), 0, 0));
 
         //---- _edit ----
         _edit.setText("Edit");
         newProperty.add(_edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(0, 0, 0, 0), 0, 0));
-        
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+
         return newProperty;
     }
 //        END XUC-007 UC002Model Operations, Variables, Mutators and Accessors
@@ -210,9 +221,10 @@ public class UC002Model extends java.util.Observable {
     private int uc002_ZipCode;
     private String uc002_Lessee;
 
-    public void setIsAlternativePayee(boolean xuc005_cbxAlternatePayee){
+    public void setIsAlternativePayee(boolean xuc005_cbxAlternatePayee) {
         this.isAlternativePayee = xuc005_cbxAlternatePayee;
     }
+
     public String getXuc005_OOPDate() {
         return xuc005_OOPDate;
     }
@@ -336,8 +348,8 @@ public class UC002Model extends java.util.Observable {
     public void setUc002_Lessee(String uc002_Lessee) {
         this.uc002_Lessee = uc002_Lessee;
     }
-    
-    public void printUC002Values(){
+
+    public void printUC002Values() {
         System.out.println("ORDER PAYMENT INFORMATION");
         System.out.println("Order Payment Date: " + this.xuc005_OOPDate);
         System.out.println("Bonus per Acre (BPA): " + this.xuc005_BPA);
@@ -487,5 +499,4 @@ public class UC002Model extends java.util.Observable {
         this.xuc007_WestBounder = xuc007_WestBounder;
     }
 
-    
 }

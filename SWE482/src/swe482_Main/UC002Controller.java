@@ -49,7 +49,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         }
         if (e.getActionCommand().equals(UserActions.SAVE_LEASE.name())) {
             System.out.println("Action Triggered: Save Lease");
-            if (this.validateLeaseForm()) { // TO DO: Need correct boolean return.
+            if (this.validateLeaseForm()) {
                 try {
                     if (view.getXuc005_cbxAlternativePayee()) {
                         if (!view.getXuc005_AlternatePayee().isEmpty() && !view.getXuc005_AlternatePayee().matches(stringReg)) {
@@ -87,43 +87,45 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         }
         if (e.getActionCommand().equals(UserActions.SEARCH_PERSON.name())) {
             System.out.println("Action Triggered: Search/Add Lessor");
+            // TO DO:   FUTURE ENHANCEMENT
         }
 
         if (e.getActionCommand().equals(UserActions.SEARCH_PROPERTY.name())) {
             System.out.println("Action Triggered: Search/Add Property");
-
-            view.addXuc007Pane_LeasedProperty("Test", gridY);
-            gridY++;
+            // TO DO:   FUTURE ENHANCEMENT
         }
 
         if (e.getActionCommand().equals(UserActions.INSERT_PROPERTY.name())) {
             System.out.println("Action Triggered: Insert Property");
-            if(this.validatePropertyForm()){  // TO DO: Need correct boolean return.
-            try {
-                XUC007Property property = model.createXUCProperty(
-                        Integer.parseInt(view.getXuc007_ParcelID()),
-                        view.getXuc007_TaxMapID(),
-                        view.getXuc007_County(),
-                        view.getXuc007_State(),
-                        Double.parseDouble(view.getXuc007_Acreage()),
-                        view.getXuc007_Township(),
-                        view.getXuc007_Range(),
-                        Integer.parseInt(view.getXuc007_Section()),
-                        view.getXuc007_Meridian(),
-                        view.getXuc007_LegalDescription(),
-                        view.getXuc007_cbxBounders(),
-                        view.getXuc007_NorthBounder(),
-                        view.getXuc007_EastBounder(),
-                        view.getXuc007_SouthBounder(),
-                        view.getXuc007_WestBounder()
-                );
-            view.addXuc007Pane_LeasedProperty(model.createDescriptionString(property),model.getModCount());
-            model.addXuc007_LeasedProperty(property);
-            model.incrementModCount();
-            view.getDxuc007().dispose();
-            } catch (NumberFormatException f2) {
+            if (this.validatePropertyForm()) {
+                try {
+                    XUC007Property property = model.createXUCProperty(
+                            Integer.parseInt(view.getXuc007_ParcelID()),
+                            view.getXuc007_TaxMapID(),
+                            view.getXuc007_County(),
+                            view.getXuc007_State(),
+                            Double.parseDouble(view.getXuc007_Acreage()),
+                            view.getXuc007_Township(),
+                            view.getXuc007_Range(),
+                            Integer.parseInt(view.getXuc007_Section()),
+                            view.getXuc007_Meridian(),
+                            view.getXuc007_LegalDescription(),
+                            view.getXuc007_cbxBounders(),
+                            view.getXuc007_NorthBounder(),
+                            view.getXuc007_EastBounder(),
+                            view.getXuc007_SouthBounder(),
+                            view.getXuc007_WestBounder()
+                    );
+                    view.addXuc007Pane_LeasedProperty(model.createDescriptionString(property), model.getModCount());
+                    model.addButtonToArray(view.getXuc007_EditPropertyButton());
+                    view.addButtonController(this, model.getButtonFromArray(model.getModCount()));
+                    model.addXuc007_LeasedProperty(property);
+                    model.incrementModCount();
+                    view.getDxuc007().dispose();
+                    
+                } catch (NumberFormatException f2) {
 
-            }
+                }
             }
         }
 
@@ -131,10 +133,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             System.out.println("Action Triggered: Close Add Property Window");
             view.getDxuc007().dispose();
         }
-        if (e.getActionCommand().equals(UserActions.DISPLAY_BOUNDERS.name())){
-            if(view.getXuc007_cbxBounders()){
-            view.setBoundersVisibile(true);
-            } else view.setBoundersVisibile(false);
+        if (e.getActionCommand().equals(UserActions.EDIT_PROPERTY.name())) {
+            
         }
     }
 
@@ -157,52 +157,62 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             view.setXuc007_lblParcelID(true);
 
         } else {
-            view.setXuc007_lblParcelID(false); validFields++;
+            view.setXuc007_lblParcelID(false);
+            validFields++;
         }
         if (view.getXuc007_TaxMapID().isEmpty() || !view.getXuc007_TaxMapID().matches(stringReg)) {
             view.setXuc007_lblTaxMapID(true);
         } else {
-            view.setXuc007_lblTaxMapID(false); validFields++;
+            view.setXuc007_lblTaxMapID(false);
+            validFields++;
         }
         if (view.getXuc007_County().isEmpty() || !view.getXuc007_County().matches(stringReg)) {
             view.setXuc007_lblCounty(true);
         } else {
-            view.setXuc007_lblCounty(false); validFields++;
+            view.setXuc007_lblCounty(false);
+            validFields++;
         }
         if (view.getXuc007_State().isEmpty() || !view.getXuc007_State().toUpperCase().matches(stateReg)) {
             view.setXuc007_lblState(true);
         } else {
-            view.setXuc007_lblState(false); validFields++;
+            view.setXuc007_lblState(false);
+            validFields++;
         }
         if (view.getXuc007_Acreage().isEmpty() || !view.getXuc007_Acreage().matches(doubleReg)) {
             view.setXuc007_lblAcreage(true);
         } else {
-            view.setXuc007_lblAcreage(false); validFields++;
+            view.setXuc007_lblAcreage(false);
+            validFields++;
         }
         if (view.getXuc007_Township().isEmpty() || !view.getXuc007_Township().matches(stringReg)) {
             view.setXuc007_lblTownship(true);
         } else {
-            view.setXuc007_lblTownship(false); validFields++;
+            view.setXuc007_lblTownship(false);
+            validFields++;
         }
         if (view.getXuc007_Range().isEmpty() || !view.getXuc007_Range().matches(stringReg)) {
             view.setXuc007_lblRange(true);
-        } else { 
-            view.setXuc007_lblRange(false); validFields++;
+        } else {
+            view.setXuc007_lblRange(false);
+            validFields++;
         }
         if (view.getXuc007_Section().isEmpty() || !view.getXuc007_Section().matches(sectionReg)) {
             view.setXuc007_lblSection(true);
         } else {
-            view.setXuc007_lblSection(false); validFields++;
+            view.setXuc007_lblSection(false);
+            validFields++;
         }
         if (view.getXuc007_Meridian().isEmpty() || !view.getXuc007_Meridian().matches(stringReg)) {
             view.setXuc007_lblMeridian(true);
         } else {
-            view.setXuc007_lblMeridian(false); validFields++;
+            view.setXuc007_lblMeridian(false);
+            validFields++;
         }
         if (view.getXuc007_LegalDescription().isEmpty() || !view.getXuc007_LegalDescription().matches(descriptionReg)) {
             view.setXuc007_lblLegalDescription(true);
         } else {
-            view.setXuc007_lblLeasedLegalDescriptions(false); validFields++;
+            view.setXuc007_lblLeasedLegalDescriptions(false);
+            validFields++;
         }
         if (!view.getXuc007_cbxBounders()) {
             if (!view.getXuc007_NorthBounder().isEmpty() && view.getXuc007_NorthBounder().matches(stringReg)) {
@@ -214,7 +224,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                 view.setXuc007_lblNorthBounder(true);
                 view.setXuc007_cbxBounders(false);
             } else {
-                view.setXuc007_lblNorthBounder(false); validFields++;
+                view.setXuc007_lblNorthBounder(false);
+                validFields++;
                 view.setXuc007_cbxBounders(false);
             }
         }
@@ -228,7 +239,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                 view.setXuc007_lblEastBounder(true);
                 view.setXuc007_cbxBounders(false);
             } else {
-                view.setXuc007_lblEastBounder(false); validFields++;
+                view.setXuc007_lblEastBounder(false);
+                validFields++;
                 view.setXuc007_cbxBounders(false);
             }
         }
@@ -243,7 +255,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                 view.setXuc007_lblSouthBounder(true);
                 view.setXuc007_cbxBounders(false);
             } else {
-                view.setXuc007_lblSouthBounder(false); validFields++;
+                view.setXuc007_lblSouthBounder(false);
+                validFields++;
                 view.setXuc007_cbxBounders(false);
             }
         }
@@ -258,15 +271,16 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                 view.setXuc007_lblWestBounder(true);
                 view.setXuc007_cbxBounders(false);
             } else {
-                view.setXuc007_lblWestBounder(false); validFields++;
+                view.setXuc007_lblWestBounder(false);
+                validFields++;
                 view.setXuc007_cbxBounders(false);
             }
         }
 
-        if(view.getXuc007_cbxBounders() && validFields == 14){
+        if (view.getXuc007_cbxBounders() && validFields == 14) {
             return true;
         }
-        if(!view.getXuc007_cbxBounders() & validFields == 10){
+        else if (!view.getXuc007_cbxBounders() & validFields == 10) {
             return true;
         }
         return false;
@@ -279,31 +293,36 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             view.setXuc005_lblOOPDate(true);
 
         } else {
-            view.setXuc005_lblOOPDate(false); validFields++;
+            view.setXuc005_lblOOPDate(false);
+            validFields++;
         }
         if (view.getXuc005_BPA().isEmpty() || !view.getXuc005_BPA().matches(doubleReg)) {
             view.setXuc005_lblBPA(true);
 
         } else {
-            view.setXuc005_lblBPA(false); validFields++;
+            view.setXuc005_lblBPA(false);
+            validFields++;
         }
         if (view.getXuc005_PaymentTerms().isEmpty() || !view.getXuc005_PaymentTerms().matches(integerReg)) {
             view.setXuc005_lblPaymentTerms(true);
 
         } else {
-            view.setXuc005_lblPaymentTerms(false); validFields++;
+            view.setXuc005_lblPaymentTerms(false);
+            validFields++;
         }
         if (view.getXuc005_BonusSubtotal().isEmpty() || !view.getXuc005_BonusSubtotal().matches(doubleReg)) {
             view.setXuc005_lblBonusSubtotal(true);
 
         } else {
-            view.setXuc005_lblBonusSubtotal(false); validFields++;
+            view.setXuc005_lblBonusSubtotal(false);
+            validFields++;
         }
         if (view.getXuc005_AlternatePayee().isEmpty() || !view.getXuc005_AlternatePayee().matches(stringReg)) {
             view.setXuc005_lblAlternativePayee(true);
 
         } else {
-            view.setXuc005_lblAlternativePayee(false); validFields++;
+            view.setXuc005_lblAlternativePayee(false);
+            validFields++;
         }
 
         if (!view.getXuc005_cbxAlternativePayee()) {
@@ -315,80 +334,91 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         if (view.getXuc005_cbxAlternativePayee()) {
             if (!view.getXuc005_AlternatePayee().isEmpty()
                     && view.getXuc005_AlternatePayee().matches(stringReg)) {
-                view.setXuc005_cbxAlternatePayee(false); validFields++;
+                view.setXuc005_cbxAlternatePayee(false);
+                validFields++;
             }
         }
         if (view.getUc002_Lessor().isEmpty() || !view.getUc002_Lessor().matches(stringReg)) {
             view.setUc002_lblLessor(true);
         } else {
-            view.setUc002_lblLessor(false); validFields++;
+            view.setUc002_lblLessor(false);
+            validFields++;
         }
         if (view.getUc002_Address().isEmpty() || !view.getUc002_Address().matches(streetReg)) {
             view.setUc002_lblAddress(true);
 
         } else {
-            view.setUc002_lblAddress(false); validFields++;
+            view.setUc002_lblAddress(false);
+            validFields++;
         }
         if (view.getUc002_City().isEmpty() || !view.getUc002_City().matches(stringReg)) {
             view.setUc002_lblCity(true);
 
         } else {
-            view.setUc002_lblCity(false); validFields++;
+            view.setUc002_lblCity(false);
+            validFields++;
         }
         if (view.getUc002_State().isEmpty() || !view.getUc002_State().toUpperCase().matches(stateReg)) {
             view.setUc002_lblState(true);
 
         } else {
-            view.setUc002_lblState(false); validFields++;
+            view.setUc002_lblState(false);
+            validFields++;
         }
         if (view.getUc002_ZipCode().isEmpty() || !view.getUc002_ZipCode().matches(zipCodeReg)) {
             view.setUc002_lblZipCode(true);
 
         } else {
-            view.setUc002_lblZipCode(false); validFields++;
+            view.setUc002_lblZipCode(false);
+            validFields++;
         }
         if (view.getUc002_Lessee().isEmpty() || !view.getUc002_Lessee().matches(stringReg)) {
             view.setUc002_lblLessee(true);
 
         } else {
-            view.setUc002_lblLessee(false); validFields++;
+            view.setUc002_lblLessee(false);
+            validFields++;
         }
         if (view.getUc002_LeaseDate().isEmpty() || !view.getUc002_LeaseDate().matches(dateReg)) {
             view.setUc002_lblLeaseDate(true);
 
         } else {
-            view.setUc002_lblLeaseDate(false); validFields++;
+            view.setUc002_lblLeaseDate(false);
+            validFields++;
         }
         if (view.getUc002_PrimaryTerm().isEmpty() || !view.getUc002_PrimaryTerm().matches(integerReg)) {
             view.setUc002_lblPrimaryTerm(true);
 
         } else {
-            view.setUc002_lblPrimaryTerm(false); validFields++;
+            view.setUc002_lblPrimaryTerm(false);
+            validFields++;
         }
         if (view.getUc002_SecondaryTerm().isEmpty() || !view.getUc002_SecondaryTerm().matches(integerReg)) {
             view.setUc002_lblSecondaryTerm(true);
 
         } else {
-            view.setUc002_lblSecondaryTerm(false); validFields++;
+            view.setUc002_lblSecondaryTerm(false);
+            validFields++;
         }
         if (view.getUc002_Royalty().isEmpty() || !view.getUc002_Royalty().matches(royaltyReg)) {
             view.setUc002_lblRoyalty(true);
 
         } else {
-            view.setUc002_lblRoyalty(false); validFields++;
-        }
-        
-        if(view.getXuc005_cbxAlternativePayee() && validFields == 16){
-            return true;
-        }
-        if(!view.getXuc005_cbxAlternativePayee() && validFields ==15){
-            return true;
+            view.setUc002_lblRoyalty(false);
+            validFields++;
         }
 
+        if (view.getXuc005_cbxAlternativePayee() && validFields == 16) {
+            return true;
+        }
+        else if (!view.getXuc005_cbxAlternativePayee() && validFields == 15) {
+            return true;
+        }
+        
         return false;
     }
 
-    void clearAddPropertyForm(){       
+    void clearAddPropertyForm() {
         view.setXuc007_ParcelID(null);
         view.setXuc007_Township(null);
         view.setXuc007_TaxMapID(null);
