@@ -18,11 +18,11 @@ public class UC002Model extends java.util.Observable {
 //        START XUC-007 Operations, Variable, Mutators and Accessors
 
     private ArrayList<XUC007Property> xuc007_LeasedProperty = new ArrayList<>();
-    private ArrayList<JButton> ButtonArray = new ArrayList();
+    private final ArrayList<JButton> ButtonArray = new ArrayList();
     private int modCount = 0;
     private XUC007Property property;
     private int xuc007_ParcelID;
-    private String xuc007_TaxMapID;
+    private String xuc007_TaxAccountID;
     private String xuc007_County;
     private String xuc007_State;
     private double xuc007_Acreage;
@@ -66,10 +66,17 @@ public class UC002Model extends java.util.Observable {
     public void removeButtonFromArray(int index){
         this.ButtonArray.remove(index);
     }
+    
+    public void setXUC007Property(XUC007Property property){
+        this.property = property;
+    }
+    public XUC007Property getXUC007Property(){
+        return this.property;
+    }
 
     public void parseXUCProperty(XUC007Property property) {
         this.setXuc007_ParcelID(property.getXuc007_ParcelID());
-        this.setXuc007_TaxMapID(property.getXuc007_TaxMapID());
+        this.setXuc007_TaxAccountID(property.getXuc007_TaxMapID());
         this.setXuc007_County(property.getXuc007_County());
         this.setXuc007_State(property.getXuc007_State());
         this.setXuc007_Acreage(property.getXuc007_Acreage());
@@ -101,7 +108,7 @@ public class UC002Model extends java.util.Observable {
             String xuc007_SouthBounder,
             String xuc007_WestBounder
     ) {
-        return property = new XUC007Property(
+        this.setXUC007Property(new XUC007Property(
                 xuc007_ParcelID,
                 xuc007_TaxMapID,
                 xuc007_County,
@@ -116,7 +123,8 @@ public class UC002Model extends java.util.Observable {
                 xuc007_NorthBounder,
                 xuc007_EastBounder,
                 xuc007_SouthBounder,
-                xuc007_WestBounder);
+                xuc007_WestBounder));
+        return this.getXUC007Property();
     }
 
     public String createDescriptionString(XUC007Property property) {
@@ -389,12 +397,12 @@ public class UC002Model extends java.util.Observable {
         this.xuc007_ParcelID = xuc007_ParcelID;
     }
 
-    public String getXuc007_TaxMapID() {
-        return xuc007_TaxMapID;
+    public String getXuc007_TaxAccountID() {
+        return xuc007_TaxAccountID;
     }
 
-    public void setXuc007_TaxMapID(String xuc007_TaxMapID) {
-        this.xuc007_TaxMapID = xuc007_TaxMapID;
+    public void setXuc007_TaxAccountID(String xuc007_TaxAccountID) {
+        this.xuc007_TaxAccountID = xuc007_TaxAccountID;
     }
 
     public String getXuc007_County() {

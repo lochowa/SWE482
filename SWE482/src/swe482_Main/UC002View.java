@@ -502,7 +502,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc007_paneProperty = new JPanel();
         xuc007_lblParcelID = new JLabel();
         xuc007_lblTownship = new JLabel();
-        xuc007_lblTaxMapID = new JLabel();
+        xuc007_lblTaxAccountID = new JLabel();
         xuc007_lblRange = new JLabel();
         xuc007_lblCounty = new JLabel();
         xuc007_lblState = new JLabel();
@@ -517,7 +517,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
 
         xuc007_ParcelID = new JTextField(null);
         xuc007_Township = new JTextField(null);
-        xuc007_TaxMapID = new JTextField(null);
+        xuc007_TaxAccountID = new JTextField(null);
         xuc007_Range = new JTextField(null);
         xuc007_County = new JTextField(null);
         xuc007_Section = new JTextField(null);
@@ -602,18 +602,18 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 10, 0), 0, 0));
 
-                    //---- xuc007_lblTaxMapID ----
-                    xuc007_lblTaxMapID.setText("Tax Map Identification");
-                    xuc007_lblTaxMapID.setFont(xuc007_lblTaxMapID.getFont().deriveFont(xuc007_lblTaxMapID.getFont().getSize() + 2f));
-                    xuc007_paneProperty.add(xuc007_lblTaxMapID, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                    //---- xuc007_lblTaxAccountID ----
+                    xuc007_lblTaxAccountID.setText("Tax Account ID");
+                    xuc007_lblTaxAccountID.setFont(xuc007_lblTaxAccountID.getFont().deriveFont(xuc007_lblTaxAccountID.getFont().getSize() + 2f));
+                    xuc007_paneProperty.add(xuc007_lblTaxAccountID, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 10, 5), 0, 0));
 
-                    //---- xuc007_TaxMapID ----
-//                    xuc007_TaxMapID.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    xuc007_TaxMapID.setAutoscrolls(false);
-                    xuc007_TaxMapID.setFont(xuc007_TaxMapID.getFont().deriveFont(xuc007_TaxMapID.getFont().getSize() + 1f));
-                    xuc007_paneProperty.add(xuc007_TaxMapID, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                    //---- xuc007_TaxAccountID ----
+//                    xuc007_TaxAccountID.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                    xuc007_TaxAccountID.setAutoscrolls(false);
+                    xuc007_TaxAccountID.setFont(xuc007_TaxAccountID.getFont().deriveFont(xuc007_TaxAccountID.getFont().getSize() + 1f));
+                    xuc007_paneProperty.add(xuc007_TaxAccountID, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 10, 5), 0, 0));
 
@@ -938,8 +938,8 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     private JTextField xuc007_ParcelID;
     private JLabel xuc007_lblTownship;
     private JTextField xuc007_Township;
-    private JLabel xuc007_lblTaxMapID;
-    private JTextField xuc007_TaxMapID;
+    private JLabel xuc007_lblTaxAccountID;
+    private JTextField xuc007_TaxAccountID;
     private JLabel xuc007_lblRange;
     private JTextField xuc007_Range;
     private JLabel xuc007_lblCounty;
@@ -998,12 +998,12 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         this.xuc007_Township.setText(xuc007_Township);
     }
 
-    public String getXuc007_TaxMapID() {
-        return xuc007_TaxMapID.getText();
+    public String getXuc007_TaxAccountID() {
+        return xuc007_TaxAccountID.getText();
     }
 
-    public void setXuc007_TaxMapID(String xuc007_TaxMapID) {
-        this.xuc007_TaxMapID.setText(xuc007_TaxMapID);
+    public void setXuc007_TaxAccountID(String xuc007_TaxMapID) {
+        this.xuc007_TaxAccountID.setText(xuc007_TaxMapID);
     }
 
     public String getXuc007_Range() {
@@ -1392,11 +1392,11 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         }
     }
 
-    public void setXuc007_lblTaxMapID(boolean feedback) {
+    public void setXuc007_lblTaxAccountID(boolean feedback) {
         if (feedback) {
-            xuc007_lblTaxMapID.setForeground(Color.RED);
+            xuc007_lblTaxAccountID.setForeground(Color.RED);
         } else {
-            xuc007_lblTaxMapID.setForeground(Color.black);
+            xuc007_lblTaxAccountID.setForeground(Color.black);
         }
     }
 

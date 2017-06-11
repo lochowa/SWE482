@@ -50,16 +50,17 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         }
         if (e.getActionCommand().equals(UserActions.SAVE_LEASE.name())) {
             System.out.println("Action Triggered: Save Lease");
-            if (this.validateLeaseForm()) {
+            if (this.validateLeaseForm() && model.getModCount()!= 0) {
                 try {
-                    if (view.getXuc005_cbxAlternativePayee()) {
-                        if (!view.getXuc005_AlternatePayee().isEmpty() && !view.getXuc005_AlternatePayee().matches(stringReg)) {
+                    if (!view.getXuc005_cbxAlternativePayee()) {
+                        model.setIsAlternativePayee(false);
+                        model.setXuc005_AlternatePayee(null);
+                    } else {
+                        if (view.getXuc005_AlternatePayee().isEmpty() || view.getXuc005_AlternatePayee().matches(stringReg)) {
+                        } else {
                             model.setIsAlternativePayee(view.getXuc005_cbxAlternativePayee());
                             model.setXuc005_AlternatePayee(view.getXuc005_AlternatePayee());
                         }
-                    } else {
-                        model.setIsAlternativePayee(false);
-                        model.setXuc005_AlternatePayee(null);
                     }
                     model.setUC002Values(
                             view.getXuc005_OOPDate().trim(),
@@ -102,7 +103,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                 try {
                     XUC007Property property = model.createXUCProperty(
                             Integer.parseInt(view.getXuc007_ParcelID()),
-                            view.getXuc007_TaxMapID(),
+                            view.getXuc007_TaxAccountID(),
                             view.getXuc007_County(),
                             view.getXuc007_State(),
                             Double.parseDouble(view.getXuc007_Acreage()),
@@ -147,7 +148,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             if (this.validatePropertyForm()) {
                 try {
                     model.getXuc007_LeasedProperty(index).setXuc007_ParcelID(Integer.parseInt(view.getXuc007_ParcelID()));
-                    model.getXuc007_LeasedProperty(index).setXuc007_TaxMapID(view.getXuc007_TaxMapID());
+                    model.getXuc007_LeasedProperty(index).setXuc007_TaxMapID(view.getXuc007_TaxAccountID());
                     model.getXuc007_LeasedProperty(index).setXuc007_County(view.getXuc007_County());
                     model.getXuc007_LeasedProperty(index).setXuc007_State(view.getXuc007_State());
                     model.getXuc007_LeasedProperty(index).setXuc007_Acreage(Double.parseDouble(view.getXuc007_Acreage()));
@@ -202,10 +203,10 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             view.setXuc007_lblParcelID(false);
             validFields++;
         }
-        if (view.getXuc007_TaxMapID().isEmpty() || !view.getXuc007_TaxMapID().matches(stringReg)) {
-            view.setXuc007_lblTaxMapID(true);
+        if (view.getXuc007_TaxAccountID().isEmpty() || !view.getXuc007_TaxAccountID().matches(stringReg)) {
+            view.setXuc007_lblTaxAccountID(true);
         } else {
-            view.setXuc007_lblTaxMapID(false);
+            view.setXuc007_lblTaxAccountID(false);
             validFields++;
         }
         if (view.getXuc007_County().isEmpty() || !view.getXuc007_County().matches(stringReg)) {
@@ -453,7 +454,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
     void clearAddPropertyForm() {
         view.setXuc007_ParcelID(null);
         view.setXuc007_Township(null);
-        view.setXuc007_TaxMapID(null);
+        view.setXuc007_TaxAccountID(null);
         view.setXuc007_Range(null);
         view.setXuc007_County(null);
         view.setXuc007_Section(null);
@@ -472,7 +473,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
     private void importPropertyData(XUC007Property property, String index) {
         view.setXuc007_ParcelID(Integer.toString(property.getXuc007_ParcelID()));
         view.setXuc007_Township(property.getXuc007_Township());
-        view.setXuc007_TaxMapID(property.getXuc007_TaxMapID());
+        view.setXuc007_TaxAccountID(property.getXuc007_TaxMapID());
         view.setXuc007_Range(property.getXuc007_Range());
         view.setXuc007_County(property.getXuc007_County());
         view.setXuc007_Section(Integer.toString(property.getXuc007_Section()));
