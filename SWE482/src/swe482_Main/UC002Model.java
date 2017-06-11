@@ -211,6 +211,16 @@ public class UC002Model extends java.util.Observable {
     public void sqlStatement() {
         // TO DO: Write SQL INSERT Statement to schema.
         DBConnect.connect();
+        /*
+        Drafting the SQL statement here.
+        IF Anyone is better than me, awesome.  Your help is needed.
+        
+        
+        
+        
+        
+        
+        */
 
     }
 
