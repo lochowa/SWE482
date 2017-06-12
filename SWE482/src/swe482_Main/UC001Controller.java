@@ -44,8 +44,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
             view.getdXUC002().setVisible(true);
         }
         if (e.getActionCommand().equals(UserActions.CLOSE_ABSTRACT.name())) {
-//            view.getdXUC002().dispose();
-//            view.getdXUC003().dispose();
+            view.getdXUC002().dispose();
+            view.getdXUC003().dispose();
             view.getfXUC001().dispose();
         }
         if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
