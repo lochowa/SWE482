@@ -2,10 +2,9 @@ package swe482_Main;
 
 /**
  *
- * @author Michael Barth
- * UC-001 UC001View Design Implementing XUC-001, XUC-002, XUC-003,
- * JDialog ModalityType.DOCUMENT_MODAL
- * 
+ * @author Michael Barth UC-001 UC001View Design Implementing XUC-001, XUC-002,
+ * XUC-003, JDialog ModalityType.DOCUMENT_MODAL
+ *
  * Add your @Author here.
  */
 import java.awt.*;
@@ -19,6 +18,7 @@ import java.util.UUID;
 import javax.swing.event.ChangeEvent;
 
 public class UC001View extends JFrame implements java.util.Observer {
+
     /*
         UC-001: Process Abstract Title Report
         - XUC-001 (Extends) Create Land Record
@@ -29,7 +29,6 @@ public class UC001View extends JFrame implements java.util.Observer {
          Not all abstract title reports report interest in decimal format.
         - XUC-004 (Extends) Checksum Mineral Interest
      */
-    
     @Override
     public void update(Observable obs, Object obj) {
         System.out.println("View : Observable is "
@@ -61,7 +60,12 @@ public class UC001View extends JFrame implements java.util.Observer {
         INSERT_MINERALOWNER,
         EDIT_SURFACEOWNER,
         EDIT_MINERALOWENR,
-        SAVE_ABSTRACT
+        SAVE_ABSTRACT,
+        REMOVE_SURFACEOWNER,
+        REMOVE_MINERALOWNER,
+        OPEN_DOCUMENT,
+        INSERT_DOCUMENT,
+        CLOSE_DOCUMENT
     }
 
     void addController(ActionListener controller) {
@@ -71,10 +75,14 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc001_SaveProperty.addActionListener(controller);
         this.xuc002_AddSurfaceOwner.addActionListener(controller);
         this.xuc003_AddMineralOwner.addActionListener(controller);
+        this.xuc002_InsertButton.addActionListener(controller);
+        this.xuc002_CancelButton.addActionListener(controller);
+        this.xuc004_SearchProperty.addActionListener(controller);
+        this.xuc002_AddDocument.addActionListener(controller);
     }
     /*
     *   XUC-001 Initial Dialog
-    */
+     */
     private JFrame fXUC001;
     private JDialog dXUC001;
     private JPanel dpXUC001;     // Replaces IDE uc002DialogPane
@@ -170,6 +178,7 @@ public class UC001View extends JFrame implements java.util.Observer {
 
                 //---- xuc004_SearchProperty ----
                 xuc004_SearchProperty.setText("Search Database");
+                xuc004_SearchProperty.setVisible(false); // FUTURE ENHANCEMENT
                 xuc001_contentPanel.add(xuc004_SearchProperty, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
@@ -312,23 +321,23 @@ public class UC001View extends JFrame implements java.util.Observer {
                 //---- xuc001_cbxBounders ----
                 xuc001_cbxBounders.setText("Property Bounders");
                 xuc001_cbxBounders.setFont(xuc001_cbxBounders.getFont().deriveFont(xuc001_cbxBounders.getFont().getSize() + 2f));
-                                    xuc001_cbxBounders.addChangeListener((ChangeEvent e) -> {
-                        if (xuc001_cbxBounders.isSelected()) {
-                            this.xuc001_NorthBounder.setEditable(true);
-                            this.xuc001_EastBounder.setEditable(true);
-                            this.xuc001_SouthBounder.setEditable(true);
-                            this.xuc001_WestBounder.setEditable(true);
-                        } else {
-                            this.xuc001_NorthBounder.setEditable(false);
-                            this.setXuc001NorthBounder(null);
-                            this.xuc001_EastBounder.setEditable(false);
-                            this.setXuc001EastBounder(null);
-                            this.xuc001_SouthBounder.setEditable(false);
-                            this.setXuc001SouthBounder(null);
-                            this.xuc001_WestBounder.setEditable(false);
-                            this.setXuc001WestBounder(null);
-                        }
-                    });
+                xuc001_cbxBounders.addChangeListener((ChangeEvent e) -> {
+                    if (xuc001_cbxBounders.isSelected()) {
+                        this.xuc001_NorthBounder.setEditable(true);
+                        this.xuc001_EastBounder.setEditable(true);
+                        this.xuc001_SouthBounder.setEditable(true);
+                        this.xuc001_WestBounder.setEditable(true);
+                    } else {
+                        this.xuc001_NorthBounder.setEditable(false);
+                        this.setXuc001NorthBounder(null);
+                        this.xuc001_EastBounder.setEditable(false);
+                        this.setXuc001EastBounder(null);
+                        this.xuc001_SouthBounder.setEditable(false);
+                        this.setXuc001SouthBounder(null);
+                        this.xuc001_WestBounder.setEditable(false);
+                        this.setXuc001WestBounder(null);
+                    }
+                });
                 xuc001_contentPanel.add(xuc001_cbxBounders, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
@@ -472,10 +481,10 @@ public class UC001View extends JFrame implements java.util.Observer {
         }
         dpXUC001.add(xuc001_dialogPane, BorderLayout.CENTER);
         dpXUC001.setVisible(true);
-        
+
         pXUC001.add(dpXUC001);
         fXUC001.add(pXUC001);
-        fXUC001.setSize(640, 920);
+        fXUC001.setSize(640, 880);
         fXUC001.setVisible(true);
         fXUC001.setLocationRelativeTo(getOwner());
 //        END XUC-003 Create Property Record
@@ -484,14 +493,251 @@ public class UC001View extends JFrame implements java.util.Observer {
         *   XUC-002 Dialog: Add Surface Owner
          */
         dXUC002 = new JDialog(fXUC001, null, Dialog.ModalityType.DOCUMENT_MODAL);
-        dXUC002.setSize(460, 350);
+
         Container cpXUC002 = dXUC002.getContentPane();
         cpXUC002.setLayout(new BorderLayout());
         JPanel pdXUC002 = new JPanel();
 //        ADD SURFACE OWNER JPANEL HERE
         dpXUC002 = new JPanel();
 
+        dialogPane = new JPanel();
+        contentPanel = new JPanel();
+        xuc002_NameQuery = new JTextField();
+        xuc002_NameQuery.setVisible(false); // FUTURE ENHANCEMENT
+        xuc002_SearchName = new JButton();
+        xuc002_SearchName.setVisible(false); // FUTURE ENHANCEMENT
+        xuc002_lblName1 = new JLabel();
+        xuc002_Name1 = new JTextField();
+        xuc002_lblName2 = new JLabel();
+        xuc002_Name2 = new JTextField();
+        xuc002_lblName3 = new JLabel();
+        xuc002_Name3 = new JTextField();
+        xuc002_lblName4 = new JLabel();
+        xuc002_Name4 = new JTextField();
+        xuc002_lblAddress = new JLabel();
+        xuc002_Address = new JTextField();
+        xuc002_lblCity = new JLabel();
+        xuc002_City = new JTextField();
+        xuc002_lblState = new JLabel();
+        xuc002_State = new JTextField();
+        xuc002_lblZipCode = new JLabel();
+        xuc002_ZipCode = new JTextField();
+        xuc002_lblContactNumber = new JLabel();
+        xuc002_ContactNumber = new JTextField();
+        xuc002_AddDocument = new JButton();
+        xuc002_AddDocument.setActionCommand(UserActions.OPEN_DOCUMENT.name());
+        xuc002_DocumentPane = new JPanel();
+        buttonBar = new JPanel();
+        xuc002_cbxActiveStatus = new JCheckBox();
+        xuc002_InsertButton = new JButton();
+        xuc002_InsertButton.setActionCommand(UserActions.INSERT_SURFACEOWNER.name());
+        xuc002_CancelButton = new JButton();
+        xuc002_CancelButton.setActionCommand(UserActions.CLOSE_SURFACEOWNER.name());
+
+        //======== this ========
+        dpXUC002.setBorder(new EmptyBorder(12, 12, 12, 12));
+        dpXUC002.setLayout(new BorderLayout());
+
+        //======== dialogPane ========
+        {
+            dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
+            dialogPane.setLayout(new BorderLayout());
+
+            //======== contentPanel ========
+            {
+                contentPanel.setFont(contentPanel.getFont().deriveFont(contentPanel.getFont().getSize() + 1f));
+                contentPanel.setLayout(new GridBagLayout());
+                ((GridBagLayout) contentPanel.getLayout()).columnWidths = new int[]{70, 70, 140, 135, 0};
+                ((GridBagLayout) contentPanel.getLayout()).rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                ((GridBagLayout) contentPanel.getLayout()).columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout) contentPanel.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+
+                //---- xuc002_NameQuery ----
+                xuc002_NameQuery.setAutoscrolls(false);
+                xuc002_NameQuery.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_NameQuery, new GridBagConstraints(0, 0, 4, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- xuc002_SearchName ----
+                xuc002_SearchName.setText("Search Database");
+                xuc002_SearchName.setActionCommand("SEARCHNAME");
+                xuc002_SearchName.setMargin(new Insets(2, 15, 2, 15));
+                xuc002_SearchName.setFont(xuc002_SearchName.getFont().deriveFont(xuc002_SearchName.getFont().getStyle() & ~Font.BOLD, xuc002_SearchName.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_SearchName, new GridBagConstraints(0, 1, 4, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 25, 0), 0, 0));
+
+                //---- xuc002_lblName1 ----
+                xuc002_lblName1.setText("Name #1");
+                xuc002_lblName1.setFont(xuc002_lblName1.getFont().deriveFont(xuc002_lblName1.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_lblName1, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_Name1 ----
+                xuc002_Name1.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_Name1, new GridBagConstraints(2, 2, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- xuc002_lblName2 ----
+                xuc002_lblName2.setText("Name #2");
+                xuc002_lblName2.setFont(xuc002_lblName2.getFont().deriveFont(xuc002_lblName2.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_lblName2, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_Name2 ----
+                xuc002_Name2.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_Name2, new GridBagConstraints(2, 3, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- xuc002_lblName3 ----
+                xuc002_lblName3.setText("Name #3");
+                xuc002_lblName3.setFont(xuc002_lblName3.getFont().deriveFont(xuc002_lblName3.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_lblName3, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_Name3 ----
+                xuc002_Name3.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_Name3, new GridBagConstraints(2, 4, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- xuc002_lblName4 ----
+                xuc002_lblName4.setText("Name #4");
+                xuc002_lblName4.setFont(xuc002_lblName4.getFont().deriveFont(xuc002_lblName4.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_lblName4, new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_Name4 ----
+                xuc002_Name4.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_Name4, new GridBagConstraints(2, 5, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- xuc002_lblAddress ----
+                xuc002_lblAddress.setText("Address");
+                xuc002_lblAddress.setFont(xuc002_lblAddress.getFont().deriveFont(xuc002_lblAddress.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_lblAddress, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_Address ----
+                xuc002_Address.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_Address, new GridBagConstraints(2, 6, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- xuc002_lblCity ----
+                xuc002_lblCity.setText("City");
+                xuc002_lblCity.setFont(xuc002_lblCity.getFont().deriveFont(xuc002_lblCity.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_lblCity, new GridBagConstraints(0, 7, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_City ----
+                xuc002_City.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_City, new GridBagConstraints(2, 7, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- xuc002_lblState ----
+                xuc002_lblState.setText("State");
+                xuc002_lblState.setFont(xuc002_lblState.getFont().deriveFont(xuc002_lblState.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_lblState, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_State ----
+                xuc002_State.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_State, new GridBagConstraints(2, 8, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_lblZipCode ----
+                xuc002_lblZipCode.setText("Zip Code");
+                xuc002_lblZipCode.setFont(xuc002_lblZipCode.getFont().deriveFont(xuc002_lblZipCode.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_lblZipCode, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_ZipCode ----
+                xuc002_ZipCode.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_ZipCode, new GridBagConstraints(2, 9, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_lblContactNumber ----
+                xuc002_lblContactNumber.setText("Contact Number");
+                xuc002_lblContactNumber.setFont(xuc002_lblContactNumber.getFont().deriveFont(xuc002_lblContactNumber.getFont().getSize() + 1f));
+                contentPanel.add(xuc002_lblContactNumber, new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- xuc002_ContactNumber ----
+                xuc002_ContactNumber.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                contentPanel.add(xuc002_ContactNumber, new GridBagConstraints(2, 10, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- xuc002_AddDocument ----
+                xuc002_AddDocument.setText("Add Document");
+                contentPanel.add(xuc002_AddDocument, new GridBagConstraints(0, 11, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 5), 0, 0));
+
+                //======== xuc002_DocumentPane ========
+                {
+                    xuc002_DocumentPane.setMinimumSize(new Dimension(0, 67));
+                    xuc002_DocumentPane.setBorder(new EtchedBorder());
+                    xuc002_DocumentPane.setPreferredSize(new Dimension(4, 67));
+                    xuc002_DocumentPane.setLayout(new GridLayout());
+                }
+                contentPanel.add(xuc002_DocumentPane, new GridBagConstraints(0, 12, 4, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 0), 0, 0));
+            }
+            dialogPane.add(contentPanel, BorderLayout.CENTER);
+
+            //======== buttonBar ========
+            {
+                buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
+                buttonBar.setLayout(new GridBagLayout());
+                ((GridBagLayout) buttonBar.getLayout()).columnWidths = new int[]{0, 85, 80};
+                ((GridBagLayout) buttonBar.getLayout()).columnWeights = new double[]{1.0, 0.0, 0.0};
+
+                //---- xuc002_cbxActiveStatus ----
+                xuc002_cbxActiveStatus.setText("Active?");
+                xuc002_cbxActiveStatus.setFont(xuc002_cbxActiveStatus.getFont().deriveFont(xuc002_cbxActiveStatus.getFont().getSize() + 2f));
+                xuc002_cbxActiveStatus.setSelected(true);
+                buttonBar.add(xuc002_cbxActiveStatus, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 5), 0, 0));
+
+                //---- xuc002_InsertButton ----
+                xuc002_InsertButton.setText("INSERT");
+
+                buttonBar.add(xuc002_InsertButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 5), 0, 0));
+
+                //---- xuc002_CancelButton ----
+                xuc002_CancelButton.setText("Cancel");
+                buttonBar.add(xuc002_CancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 0), 0, 0));
+            }
+            dialogPane.add(buttonBar, BorderLayout.SOUTH);
+        }
+        dpXUC002.add(dialogPane, BorderLayout.CENTER);
         pdXUC002.add(dpXUC002);
+        dXUC002.add(pdXUC002);
+        dXUC002.setSize(460, 520);
         dXUC002.setLocationRelativeTo(getOwner());
 
         /*
@@ -504,25 +750,23 @@ public class UC001View extends JFrame implements java.util.Observer {
         JPanel pdXUC003 = new JPanel();
 //        ADD MINERAL OWNER JPANEL HERE        
         dpXUC003 = new JPanel();
-        
-        
-        
         pdXUC003.add(dpXUC003);
         dXUC003.setLocationRelativeTo(getOwner());
     }
-    
-    public JDialog getdXUC002(){
+
+    public JDialog getdXUC002() {
         return this.dXUC002;
     }
-    
-    public JDialog getdXUC003(){
+
+    public JDialog getdXUC003() {
         return this.dXUC003;
     }
-    public JFrame getfXUC001(){
+
+    public JFrame getfXUC001() {
         return this.fXUC001;
     }
 
-// START XUC-003 Form Elements
+// START XUC-001 Form Elements
     private JPanel xuc001_dialogPane;
     private JPanel xuc001_contentPanel;
     private JButton xuc004_SearchProperty;
@@ -566,7 +810,36 @@ public class UC001View extends JFrame implements java.util.Observer {
     private JPanel xuc001_buttonBar;
     private JButton xuc001_SaveProperty;
     private JButton xuc001_CancelButton;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    // START XUC-002 Form Elements
+    private JPanel dialogPane;
+    private JPanel contentPanel;
+    private JTextField xuc002_NameQuery;
+    private JButton xuc002_SearchName;
+    private JLabel xuc002_lblName1;
+    private JTextField xuc002_Name1;
+    private JLabel xuc002_lblName2;
+    private JTextField xuc002_Name2;
+    private JLabel xuc002_lblName3;
+    private JTextField xuc002_Name3;
+    private JLabel xuc002_lblName4;
+    private JTextField xuc002_Name4;
+    private JLabel xuc002_lblAddress;
+    private JTextField xuc002_Address;
+    private JLabel xuc002_lblCity;
+    private JTextField xuc002_City;
+    private JLabel xuc002_lblState;
+    private JTextField xuc002_State;
+    private JLabel xuc002_lblZipCode;
+    private JTextField xuc002_ZipCode;
+    private JLabel xuc002_lblContactNumber;
+    private JTextField xuc002_ContactNumber;
+    private JButton xuc002_AddDocument;
+    private JPanel xuc002_DocumentPane;
+    private JPanel buttonBar;
+    private JCheckBox xuc002_cbxActiveStatus;
+    private JButton xuc002_InsertButton;
+    private JButton xuc002_CancelButton;
 
 // Getters for field values *Added by Andrew Lochow*
     public String getDBRecordID() {
@@ -635,19 +908,178 @@ public class UC001View extends JFrame implements java.util.Observer {
     public boolean getXuc001cbxBounders() {
         return xuc001_cbxBounders.isSelected();
     }
-    
-    public void setXuc001NorthBounder(String bounder){
+
+    public void setXuc001NorthBounder(String bounder) {
         this.xuc001_NorthBounder.setText(bounder);
     }
-    
-    public void setXuc001EastBounder(String bounder){
+
+    public void setXuc001EastBounder(String bounder) {
         this.xuc001_EastBounder.setText(bounder);
     }
-    public void setXuc001SouthBounder(String bounder){
+
+    public void setXuc001SouthBounder(String bounder) {
         this.xuc001_SouthBounder.setText(bounder);
     }
-    public void setXuc001WestBounder(String bounder){
+
+    public void setXuc001WestBounder(String bounder) {
         this.xuc001_WestBounder.setText(bounder);
     }
 
+    public void addSurfaceOwnery(String description, int gridY) {
+        xuc002_SurfaceOwnerPane.add(addComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+        xuc002_SurfaceOwnerPane.revalidate();
+    }
+
+    public void updateSurfaceOwner(String description, int gridY) {
+        JPanel test = (JPanel) xuc002_SurfaceOwnerPane.getComponent(gridY);
+        JTextField field = (JTextField) test.getComponent(0);
+        field.setText(description);
+    }
+
+    public void removeSurfaceOwner(int gridY) {
+        Component[] componentList = this.xuc002_SurfaceOwnerPane.getComponents();
+        for (Component c : componentList) {
+            if (c.getComponentAt(0, gridY).getName().equals(Integer.toString(gridY))) {
+                this.xuc002_SurfaceOwnerPane.remove(c);
+            }
+        }
+        this.xuc002_SurfaceOwnerPane.revalidate();
+        this.xuc002_SurfaceOwnerPane.repaint();
+    }
+
+    public JPanel addComponent(String owner, int index) {
+
+        JPanel surface = new JPanel();
+        JTextField _owner = new JTextField();
+        _owner.setName(Integer.toString(index));
+        JButton edit = new JButton();
+        edit.setText("Edit");
+        edit.setActionCommand(UserActions.EDIT_SURFACEOWNER.name());
+        edit.setName(Integer.toString(index));
+        JButton remove = new JButton();
+        remove.setText("Remove");
+        remove.setActionCommand(UserActions.REMOVE_SURFACEOWNER.name());
+        remove.setName(Integer.toString(index));
+
+        //======== this ========
+        surface.setLayout(new GridBagLayout());
+        ((GridBagLayout) surface.getLayout()).columnWidths = new int[]{440, 0, 0};
+        ((GridBagLayout) surface.getLayout()).rowHeights = new int[]{0, 0};
+        ((GridBagLayout) surface.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
+        ((GridBagLayout) surface.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};
+
+        //---- _owner ----
+        _owner.setText(owner);
+        _owner.setFont(_owner.getFont().deriveFont(_owner.getFont().getSize() + 2f));
+        _owner.setEditable(false);
+        surface.add(_owner, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+
+        // ---- _remove ----
+        surface.add(remove, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+
+        //---- xuc007_EditProperty ----
+        surface.add(edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+
+        this.xuc002_EditSurfaceOwner = edit;
+        this.xuc002_RemoveSurfaceOwner = remove;
+        return surface;
+    }
+
+    JButton xuc002_EditSurfaceOwner = new JButton();
+    JButton xuc002_RemoveSurfaceOwner = new JButton();
+
+    public JButton getEditSurfaceOwnerButton() {
+        return this.xuc002_EditSurfaceOwner;
+    }
+
+    public JButton getRemoveSurfaceOwnerButton() {
+        return this.xuc002_RemoveSurfaceOwner;
+    }
+
+    public void addMineralOwnery(String description, int gridY) {
+        xuc003_MineralOwnerPane.add(addComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+        xuc003_MineralOwnerPane.revalidate();
+    }
+
+    public void updateMineralOwner(String description, int gridY) {
+        JPanel test = (JPanel) xuc003_MineralOwnerPane.getComponent(gridY);
+        JTextField field = (JTextField) test.getComponent(0);
+        field.setText(description);
+    }
+
+    public void removeMineralOwner(int gridY) {
+        Component[] componentList = this.xuc003_MineralOwnerPane.getComponents();
+        for (Component c : componentList) {
+            if (c.getComponentAt(0, gridY).getName().equals(Integer.toString(gridY))) {
+                this.xuc003_MineralOwnerPane.remove(c);
+            }
+        }
+        this.xuc003_MineralOwnerPane.revalidate();
+        this.xuc003_MineralOwnerPane.repaint();
+    }
+
+    public JPanel addMineralComponent(String owner, int index) {
+
+        JPanel mineral = new JPanel();
+        JTextField _owner = new JTextField();
+        _owner.setName(Integer.toString(index));
+        JButton edit = new JButton();
+        edit.setText("Edit");
+        edit.setActionCommand(UserActions.EDIT_SURFACEOWNER.name());
+        edit.setName(Integer.toString(index));
+        JButton remove = new JButton();
+        remove.setText("Remove");
+        remove.setActionCommand(UserActions.REMOVE_SURFACEOWNER.name());
+        remove.setName(Integer.toString(index));
+
+        //======== this ========
+        mineral.setLayout(new GridBagLayout());
+        ((GridBagLayout) mineral.getLayout()).columnWidths = new int[]{440, 0, 0};
+        ((GridBagLayout) mineral.getLayout()).rowHeights = new int[]{0, 0};
+        ((GridBagLayout) mineral.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
+        ((GridBagLayout) mineral.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};
+
+        //---- _owner ----
+        _owner.setText(owner);
+        _owner.setFont(_owner.getFont().deriveFont(_owner.getFont().getSize() + 2f));
+        _owner.setEditable(false);
+        mineral.add(_owner, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+
+        // ---- _remove ----
+        mineral.add(remove, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+
+        //---- xuc007_EditProperty ----
+        mineral.add(edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+
+        this.xuc002_EditMineralOwner = edit;
+        this.xuc002_RemoveMineralOwner = remove;
+        return mineral;
+    }
+
+    JButton xuc002_EditMineralOwner = new JButton();
+    JButton xuc002_RemoveMineralOwner = new JButton();
+
+    public JButton getEditMineralOwnerButton() {
+        return this.xuc002_EditMineralOwner;
+    }
+
+    public JButton getRemoveMineralOwnerButton() {
+        return this.xuc002_RemoveMineralOwner;
+    }
 }

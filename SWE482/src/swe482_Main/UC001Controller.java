@@ -25,7 +25,12 @@ public class UC001Controller implements java.awt.event.ActionListener {
         INSERT_MINERALOWNER,
         EDIT_SURFACEOWNER,
         EDIT_MINERALOWENR,
-        SAVE_ABSTRACT
+        SAVE_ABSTRACT,
+        REMOVE_SURFACEOWNER,
+        REMOVE_MINERALOWNER,
+        OPEN_DOCUMENT,
+        INSERT_DOCUMENT,
+        CLOSE_DOCUMENT
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -47,6 +52,12 @@ public class UC001Controller implements java.awt.event.ActionListener {
             view.getdXUC002().dispose();
             view.getdXUC003().dispose();
             view.getfXUC001().dispose();
+        }
+        if (e.getActionCommand().equals(UserActions.CLOSE_SURFACEOWNER.name())){
+            view.getdXUC002().dispose();
+        }
+        if (e.getActionCommand().equals(UserActions.CLOSE_MINERALOWNER.name())){
+            view.getdXUC003().dispose();
         }
         if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
             System.out.print(view.getDBRecordID());
