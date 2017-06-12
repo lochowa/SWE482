@@ -8,13 +8,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class MProperty{
+public class UC001Model{
 
-    MProperty() {
+    UC001Model() {
         // Test Script:  Intercommunication Feedback.
         System.out.println("Model Property()");
 
-    }   // MProperty()
+    }   // UC001Model()
 
     // Variable Declaration Area:  Do not change.
 

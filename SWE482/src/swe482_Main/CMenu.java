@@ -30,7 +30,7 @@ public class CMenu implements java.awt.event.ActionListener {
 
             case "ADD_PROPERTY":
         // TO DO: Connect MVC Function class here.
-        MVCProperty mvcProperty = new MVCProperty();
+        UC001MVC mvcProperty = new UC001MVC();
                 break;
 
             case "ADD_LEASE":

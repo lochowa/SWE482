@@ -3,20 +3,20 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-public class MVCProperty {
+public class UC001MVC {
     
     public static void main(String[] args) {
         // TODO code application logic here
-        new MVCProperty();
+        new UC001MVC();
     }
     
 
-    public MVCProperty(){
+    public UC001MVC(){
         
-        MProperty model = new MProperty();
-        VProperty view = new VProperty();
+        UC001Model model = new UC001Model();
+        UC001View view = new UC001View();
         
-        CProperty controller = new CProperty();
+        UC001Controller controller = new UC001Controller();
         controller.addModel(model);
         controller.addView(view);
         //  Initialise Model attribute values.

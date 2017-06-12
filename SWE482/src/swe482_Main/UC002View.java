@@ -38,7 +38,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     *   
      */
     UC002View() {
-        buildGUI();
+        initComponents();
     }
 
     @Override
@@ -119,7 +119,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
 
 //    private JPanel dpXUC007;    // Replaces IDE uc002DialogPane
 //    private JPanel dpdXUC007;   // Replaces IDE uc002DialogPane
-    private void buildGUI() {
+    private void initComponents() {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice gd = ge.getDefaultScreenDevice();
         GraphicsConfiguration gc = gd.getDefaultConfiguration();
