@@ -37,14 +37,16 @@ public class UC001Controller implements java.awt.event.ActionListener {
         System.out.println("Controller: Acted on Property Model");
         
         if((e.getActionCommand().equals(UserActions.OPEN_MINERALOWNER.name()))){
-            new MVCMineralRTI();
+            view.getdXUC003().setVisible(true);
         }
         
         if (e.getActionCommand().equals(UserActions.OPEN_SURFACEOWNER.name())){
-            new MVCSurfaceRTI();
+            view.getdXUC002().setVisible(true);
         }
         if (e.getActionCommand().equals(UserActions.CLOSE_ABSTRACT.name())) {
-            view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
+//            view.getdXUC002().dispose();
+//            view.getdXUC003().dispose();
+            view.getfXUC001().dispose();
         }
         if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
             System.out.print(view.getDBRecordID());

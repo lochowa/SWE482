@@ -3,6 +3,10 @@ package swe482_Main;
 /**
  *
  * @author Michael Barth
+ * UC-001 UC001View Design Implementing XUC-001, XUC-002, XUC-003,
+ * JDialog ModalityType.DOCUMENT_MODAL
+ * 
+ * Add your @Author here.
  */
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -12,6 +16,7 @@ import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.util.UUID;
+import javax.swing.event.ChangeEvent;
 
 public class UC001View extends JFrame implements java.util.Observer {
     /*
@@ -67,8 +72,9 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc002_AddSurfaceOwner.addActionListener(controller);
         this.xuc003_AddMineralOwner.addActionListener(controller);
     }
-
-
+    /*
+    *   XUC-001 Initial Dialog
+    */
     private JFrame fXUC001;
     private JDialog dXUC001;
     private JPanel dpXUC001;     // Replaces IDE uc002DialogPane
@@ -99,6 +105,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc001_dialogPane = new JPanel();
         xuc001_contentPanel = new JPanel();
         xuc004_SearchProperty = new JButton();
+        xuc004_SearchProperty.setActionCommand(UserActions.SEARCH_PROPERTY.name());
         xuc001_lblParcelID = new JLabel();
         xuc001_ParcelID = new JTextField();
         xuc001_lblTownship = new JLabel();
@@ -131,18 +138,22 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc001_SouthBounder = new JTextField();
         xuc001_WestBounder = new JTextField();
         xuc002_AddSurfaceOwner = new JButton();
+        xuc002_AddSurfaceOwner.setActionCommand(UserActions.OPEN_SURFACEOWNER.name());
         xuc002_lblSurfaceOwnership = new JLabel();
         xuc002_SurfaceOwnerPane = new JPanel();
         xuc003_AddMineralOwner = new JButton();
+        xuc003_AddMineralOwner.setActionCommand(UserActions.OPEN_MINERALOWNER.name());
         xuc003_lblMineralOwnership = new JLabel();
         xuc003_MineralOwnerPane = new JPanel();
         xuc001_buttonBar = new JPanel();
         xuc001_SaveProperty = new JButton();
+        xuc001_SaveProperty.setActionCommand(UserActions.SAVE_ABSTRACT.name());
         xuc001_CancelButton = new JButton();
+        xuc001_CancelButton.setActionCommand(UserActions.CLOSE_ABSTRACT.name());
 
         //======== this ========
-        Container contentPane = fXUC001.getContentPane();
-        contentPane.setLayout(new BorderLayout());
+        dpXUC001.setBorder(new EmptyBorder(12, 12, 12, 12));
+        dpXUC001.setLayout(new BorderLayout());
 
         //======== xuc001_dialogPane ========
         {
@@ -301,6 +312,23 @@ public class UC001View extends JFrame implements java.util.Observer {
                 //---- xuc001_cbxBounders ----
                 xuc001_cbxBounders.setText("Property Bounders");
                 xuc001_cbxBounders.setFont(xuc001_cbxBounders.getFont().deriveFont(xuc001_cbxBounders.getFont().getSize() + 2f));
+                                    xuc001_cbxBounders.addChangeListener((ChangeEvent e) -> {
+                        if (xuc001_cbxBounders.isSelected()) {
+                            this.xuc001_NorthBounder.setEditable(true);
+                            this.xuc001_EastBounder.setEditable(true);
+                            this.xuc001_SouthBounder.setEditable(true);
+                            this.xuc001_WestBounder.setEditable(true);
+                        } else {
+                            this.xuc001_NorthBounder.setEditable(false);
+                            this.setXuc001NorthBounder(null);
+                            this.xuc001_EastBounder.setEditable(false);
+                            this.setXuc001EastBounder(null);
+                            this.xuc001_SouthBounder.setEditable(false);
+                            this.setXuc001SouthBounder(null);
+                            this.xuc001_WestBounder.setEditable(false);
+                            this.setXuc001WestBounder(null);
+                        }
+                    });
                 xuc001_contentPanel.add(xuc001_cbxBounders, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
@@ -442,11 +470,12 @@ public class UC001View extends JFrame implements java.util.Observer {
             }
             xuc001_dialogPane.add(xuc001_buttonBar, BorderLayout.SOUTH);
         }
-        contentPane.add(xuc001_dialogPane, BorderLayout.CENTER);
-        dpXUC001.add(contentPane);
+        dpXUC001.add(xuc001_dialogPane, BorderLayout.CENTER);
+        dpXUC001.setVisible(true);
+        
         pXUC001.add(dpXUC001);
         fXUC001.add(pXUC001);
-        fXUC001.setSize(600, 840);
+        fXUC001.setSize(640, 920);
         fXUC001.setVisible(true);
         fXUC001.setLocationRelativeTo(getOwner());
 //        END XUC-003 Create Property Record
@@ -460,10 +489,9 @@ public class UC001View extends JFrame implements java.util.Observer {
         cpXUC002.setLayout(new BorderLayout());
         JPanel pdXUC002 = new JPanel();
 //        ADD SURFACE OWNER JPANEL HERE
-
+        dpXUC002 = new JPanel();
 
         pdXUC002.add(dpXUC002);
-        dXUC002.setVisible(true);
         dXUC002.setLocationRelativeTo(getOwner());
 
         /*
@@ -475,13 +503,23 @@ public class UC001View extends JFrame implements java.util.Observer {
         cpXUC003.setLayout(new BorderLayout());
         JPanel pdXUC003 = new JPanel();
 //        ADD MINERAL OWNER JPANEL HERE        
-        
+        dpXUC003 = new JPanel();
         
         
         
         pdXUC003.add(dpXUC003);
-        dXUC003.setVisible(true);
         dXUC003.setLocationRelativeTo(getOwner());
+    }
+    
+    public JDialog getdXUC002(){
+        return this.dXUC002;
+    }
+    
+    public JDialog getdXUC003(){
+        return this.dXUC003;
+    }
+    public JFrame getfXUC001(){
+        return this.fXUC001;
     }
 
 // START XUC-003 Form Elements
@@ -596,6 +634,20 @@ public class UC001View extends JFrame implements java.util.Observer {
 
     public boolean getXuc001cbxBounders() {
         return xuc001_cbxBounders.isSelected();
+    }
+    
+    public void setXuc001NorthBounder(String bounder){
+        this.xuc001_NorthBounder.setText(bounder);
+    }
+    
+    public void setXuc001EastBounder(String bounder){
+        this.xuc001_EastBounder.setText(bounder);
+    }
+    public void setXuc001SouthBounder(String bounder){
+        this.xuc001_SouthBounder.setText(bounder);
+    }
+    public void setXuc001WestBounder(String bounder){
+        this.xuc001_WestBounder.setText(bounder);
     }
 
 }

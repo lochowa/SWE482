@@ -12,9 +12,12 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.event.ChangeEvent;
 
 /**
- * @author Michael Barth UC-002 UC002View Design Implementing XUC-005, XUC-006,
+ * @author Michael Barth 
+ * UC-002 UC002View Design Implementing XUC-005, XUC-006,
  * XUC-007 Implementing XUC-008 (Under Construction) UC002View implementing
  * JDialog ModalityType.DOCUMENT_MODAL
+ * 
+ * Add your @author here.
  */
 public class UC002View extends javax.swing.JFrame implements java.util.Observer {
 

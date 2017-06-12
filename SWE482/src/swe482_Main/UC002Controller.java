@@ -320,8 +320,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             }
         }
         if (view.getXuc007_cbxBounders() && validFields == 14) { return true; }
-        if (!view.getXuc007_cbxBounders() & validFields == 10) { return true; }
-        return false;
+        return !view.getXuc007_cbxBounders() & validFields == 10;
     }
 
     private boolean validateLeaseForm() {
@@ -446,9 +445,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         }
 
         if (!view.getXuc005_cbxAlternativePayee() && validFields == 14) { return true; }
-        if (view.getXuc005_cbxAlternativePayee() && validFields == 15) { return true; }
-        
-        return false;
+        return view.getXuc005_cbxAlternativePayee() && validFields == 15;
     }
 
     void clearAddPropertyForm() {
