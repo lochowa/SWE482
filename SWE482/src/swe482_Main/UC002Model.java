@@ -53,7 +53,7 @@ public class UC002Model extends java.util.Observable {
         this.xuc007_LeasedProperty.add(property);
     }
 
-    public void removeXuc_LeasedProperty(int index) {
+    public void removeXuc007_LeasedProperty(int index) {
         this.xuc007_LeasedProperty.remove(index);
     }
     public void addButtonToArray(JButton button){
@@ -93,7 +93,7 @@ public class UC002Model extends java.util.Observable {
 
     public XUC007Property createXUCProperty(
             int xuc007_ParcelID,
-            String xuc007_TaxMapID,
+            String xuc007_TaxAccountID,
             String xuc007_County,
             String xuc007_State,
             double xuc007_Acreage,
@@ -110,7 +110,7 @@ public class UC002Model extends java.util.Observable {
     ) {
         this.setXUC007Property(new XUC007Property(
                 xuc007_ParcelID,
-                xuc007_TaxMapID,
+                xuc007_TaxAccountID,
                 xuc007_County,
                 xuc007_State,
                 xuc007_Acreage,
@@ -137,40 +137,6 @@ public class UC002Model extends java.util.Observable {
         );
     }
 
-    public JPanel addComponent(String description) {
-        JPanel newProperty = new JPanel();
-        JButton _remove = new JButton();
-        JTextField _description = new JTextField();
-        JButton _edit = new JButton();
-
-        //======== this ========
-        newProperty.setLayout(new GridBagLayout());
-        ((GridBagLayout) newProperty.getLayout()).columnWidths = new int[]{84, 454, 57, 0};
-        ((GridBagLayout) newProperty.getLayout()).rowHeights = new int[]{0, 0};
-        ((GridBagLayout) newProperty.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
-        ((GridBagLayout) newProperty.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};
-
-        //---- _remove ----
-        _remove.setText("Remove");
-        newProperty.add(_remove, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 5), 0, 0));
-
-        //---- _description ----
-        _description.setMinimumSize(new Dimension(468, 22));
-        _description.setText(description);
-        newProperty.add(_description, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 5), 0, 0));
-
-        //---- _edit ----
-        _edit.setText("Edit");
-        newProperty.add(_edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0), 0, 0));
-
-        return newProperty;
-    }
 //        END XUC-007 UC002Model Operations, Variables, Mutators and Accessors
 //        START UC-002 / XUC-005 Operations, Variables, Mutators and Accessors
 
