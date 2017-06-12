@@ -12,7 +12,6 @@ public class UC002Model extends java.util.Observable {
 //        START XUC-007 Operations, Variable, Mutators and Accessors
 
     private ArrayList<XUC007Property> xuc007_LeasedProperty = new ArrayList<>();
-    private final ArrayList<JButton> ButtonArray = new ArrayList();
     private int modCount = 0;
     private XUC007Property property;
     private int xuc007_ParcelID;
@@ -48,17 +47,11 @@ public class UC002Model extends java.util.Observable {
     }
 
     public void removeXuc007_LeasedProperty(int index) {
-        this.xuc007_LeasedProperty.remove(index);
-    }
-    public void addButtonToArray(JButton button){
-        this.ButtonArray.add(button);
-    }
-    
-    public JButton getButtonFromArray(int index){
-        return this.ButtonArray.get(index);
-    }
-    public void removeButtonFromArray(int index){
-        this.ButtonArray.remove(index);
+        for (int i = 0; i < xuc007_LeasedProperty.size(); i++){
+            if(xuc007_LeasedProperty.get(i).getInsertModCount() == index){
+                xuc007_LeasedProperty.remove(i);
+            }
+        }
     }
     
     public void setXUC007Property(XUC007Property property){
@@ -86,6 +79,7 @@ public class UC002Model extends java.util.Observable {
     }
 
     public XUC007Property createXUCProperty(
+            int insertModCount,
             int xuc007_ParcelID,
             String xuc007_TaxAccountID,
             String xuc007_County,
@@ -103,6 +97,7 @@ public class UC002Model extends java.util.Observable {
             String xuc007_WestBounder
     ) {
         this.setXUC007Property(new XUC007Property(
+                insertModCount,
                 xuc007_ParcelID,
                 xuc007_TaxAccountID,
                 xuc007_County,

@@ -27,7 +27,7 @@ public class UC001Model{
     private String township;
     private String range;
     private int section;
-    private String PM;
+    private String Meridian;
     private String description;
     private final String[] bounders = new String[4];
     // TO DO: Create List<E> to hold RTI MInterest recods
@@ -84,7 +84,7 @@ public class UC001Model{
         this.township = township;
         this.range = range;
         this.section = section;
-        this.PM = PM;
+        this.Meridian = PM;
         this.description = description;
         this.bounders[0] = b_north;
         this.bounders[1] = b_east;

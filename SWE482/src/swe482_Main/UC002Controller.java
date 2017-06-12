@@ -102,6 +102,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             if (this.validatePropertyForm()) {
                 try {
                     XUC007Property property = model.createXUCProperty(
+                            model.getModCount(),
                             Integer.parseInt(view.getXuc007_ParcelID()),
                             view.getXuc007_TaxAccountID(),
                             view.getXuc007_County(),
@@ -119,8 +120,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                             view.getXuc007_WestBounder()
                     );
                     view.addXuc007Pane_LeasedProperty(model.createDescriptionString(property), model.getModCount());
-                    model.addButtonToArray(view.getXuc007_EditPropertyButton());
-                    view.addButtonController(this, model.getButtonFromArray(model.getModCount()));
+                    view.addButtonController(this, view.getXuc007_EditPropertyButton());
+                    view.addButtonController(this, view.getXuc007_RemovePropertyButton());
                     model.addXuc007_LeasedProperty(property);
                     model.incrementModCount();
                     view.getDxuc007().dispose();
@@ -178,6 +179,13 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                 }
             }
         }
+        if (e.getActionCommand().equals(UserActions.REMOVE_PROPERTY.name())){
+            JButton source = (JButton) e.getSource();
+            int index = Integer.parseInt(source.getName());
+            System.out.println("Removing JPanel: " + index);
+            view.removeXuc007Pane_LeasedProperty(index);
+            model.removeXuc007_LeasedProperty(index);
+        }
     }
 
     private enum UserActions {
@@ -190,7 +198,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         CLOSE_ADDPROPERTY,
         DISPLAY_BOUNDERS,
         EDIT_PROPERTY,
-        UPDATE_PROPERTY
+        UPDATE_PROPERTY,
+        REMOVE_PROPERTY
     }
 
     private boolean validatePropertyForm() {
