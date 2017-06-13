@@ -95,7 +95,7 @@ public class UC001Model{
     
     //Commit Section Added 6/7/2017 by Andrew Lochow
     
-    public void committoDB() throws SQLException {
+    public void committoDB(){
         Connection con = null;
         PreparedStatement pstmt = null;
         String sql = "INSERT INTO Property"
