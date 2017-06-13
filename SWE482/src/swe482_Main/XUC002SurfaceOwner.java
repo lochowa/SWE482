@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class XUC002SurfaceOwner extends UC001Owner {
     
     private final String OWNERSHIP = "SURFACE";
-    ArrayList<UC001Document> deedList = new ArrayList<>();
+    private int insertModCount;
+    private ArrayList<UC001Document> deedList = new ArrayList<>();
     private int modCount;
     private double interest;
     
@@ -39,5 +40,21 @@ public class XUC002SurfaceOwner extends UC001Owner {
     
     private String getOwnershipType(){
         return this.OWNERSHIP;
+    }
+
+    public ArrayList<UC001Document> getDeedList() {
+        return deedList;
+    }
+
+    public void setDeedList(ArrayList<UC001Document> deedList) {
+        this.deedList = deedList;
+    }
+
+    public int getInsertModCount() {
+        return insertModCount;
+    }
+
+    public void setInsertModCount(int insertModCount) {
+        this.insertModCount = insertModCount;
     }
 }

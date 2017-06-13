@@ -7,6 +7,7 @@ package swe482_Main;
  */
 public class UC001Document {
     
+    private int insertModCount;
     private String deedType;
     private String effectiveDate;
     private String recordingDate;
@@ -60,5 +61,13 @@ public class UC001Document {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public int getInsertModCount() {
+        return insertModCount;
+    }
+
+    public void setInsertModCount(int insertModCount) {
+        this.insertModCount = insertModCount;
     }
 }

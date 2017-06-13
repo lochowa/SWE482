@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class XUC003MineralOwner extends UC001Owner {
     
     private final String OWNERSHIP = "MINERAL";
+    private int insertModCount;
     ArrayList<UC001Document> deedList = new ArrayList<>();
     private int modCount;
     private double interest;
@@ -57,5 +58,13 @@ public class XUC003MineralOwner extends UC001Owner {
 
     public void setBurden(XUC003Burden burden) {
         this.burden = burden;
+    }
+
+    public int getInsertModCount() {
+        return insertModCount;
+    }
+
+    public void setInsertModCount(int insertModCount) {
+        this.insertModCount = insertModCount;
     }
 }

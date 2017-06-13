@@ -62,5 +62,5 @@ public class UC001Owner {
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
     }
-    
-}
+
+    }
