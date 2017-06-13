@@ -101,17 +101,15 @@ public class UC001Model{
     //CommittoDB Method Added 6/7/2017 by Andrew Lochow
     
     public void committoDB(){
-        Connection con = null;
-        PreparedStatement istmt = null;
-        PreparedStatement sstmt = null;
-        PreparedStatement ustmt = null;
-        ResultSet rs = null;
-        String select = "SELECT ID_Parcel from Property Where LandRecordID = ?";
+        Connection con;
+        PreparedStatement istmt;
+        PreparedStatement sstmt;
+        PreparedStatement ustmt;
+        ResultSet rs;
         
-        String update = "UPDATE PROPERTY SET ID_Tax =? ,"
-                +"Description = ?"
-                +"Acres = ?"
-                +"WHERE LandRecordID = ?";
+        String select = "SELECT LandRecordID from Property Where ID_Parcel = ?";
+        
+        String update = "UPDATE Property SET ID_Tax = ? , Description = ? , Acres = ? WHERE LandRecordID = ?";
         
         String insert = "INSERT INTO Property"
                 + "(LandRecordID,ID_Parcel,ID_Tax, Description, Acres)"
@@ -121,20 +119,26 @@ public class UC001Model{
         try{
             con = this.connect();
             sstmt = con.prepareStatement(select);
-            sstmt.setString(1,this.dbRecordID);
+            sstmt.setInt(1,this.parcelID);
             rs = sstmt.executeQuery();
-            int PID = 0;
+            String PID;
             if(rs.next()){
-                PID = rs.getInt(1);
-                System.out.println("Record Exists under Parcel no.: " + PID + "Updating Record");
+                PID = rs.getString(1);
+                System.out.println("Record Exists under Record ID: " + PID + ". Updating Record instead.");
                 ustmt = con.prepareStatement(update);
-                ustmt.setString(1, this.taxMapID);
-                ustmt.setString(2,this.description);
-                ustmt.setInt(3,this.acreage);
-                ustmt.setString(4,this.dbRecordID);
-                ustmt.executeUpdate();
+                System.out.println("Test: " + description);
+                ustmt.setString(1, taxMapID);
+                ustmt.setString(2,description);
+                ustmt.setInt(3, acreage);
+                ustmt.setString(4, PID);
+                ustmt.addBatch();
+                
+                con.setAutoCommit(false);
+                ustmt.executeBatch();
+                con.setAutoCommit(true);
                 System.out.println("Record Updated Successfully.");
-                con.close();                
+                con.close();
+                              
             }
             else{
             System.out.println("Record does not exist, creating new record");
@@ -146,14 +150,14 @@ public class UC001Model{
             istmt.setInt(5,this.acreage);        
             istmt.executeUpdate();
             System.out.println("Record is inserted into Property table!");
-            con.close();
+            
             }
         }
 
         catch(SQLException e){
             System.out.println(e.getMessage());
         }       
-        
+       
     }
     
 }
