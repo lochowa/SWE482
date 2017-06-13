@@ -12,6 +12,7 @@ package swe482_Main;
 public class XUC007Property {
     
     XUC007Property(
+            int insertModCount,
             int xuc007_ParcelID,
             String xuc007_TaxMapID,
             String xuc007_County,
@@ -28,6 +29,7 @@ public class XUC007Property {
             String xuc007_SouthBounder,
             String xuc007_WestBounder
     ) {
+        this.insertModCount = insertModCount;
         this.xuc007_ParcelID = xuc007_ParcelID;
         this.xuc007_TaxMapID = xuc007_TaxMapID;
         this.xuc007_County = xuc007_County;
@@ -45,6 +47,7 @@ public class XUC007Property {
         this.xuc007_WestBounder = xuc007_WestBounder;
     }
     
+    private int insertModCount;
     private int xuc007_ParcelID;
     private String xuc007_TaxMapID;
     private String xuc007_County;
@@ -179,6 +182,14 @@ public class XUC007Property {
 
     public void setXuc007_WestBounder(String xuc007_WestBounder) {
         this.xuc007_WestBounder = xuc007_WestBounder;
+    }
+
+    public int getInsertModCount() {
+        return insertModCount;
+    }
+
+    public void setInsertModCount(int insertModCount) {
+        this.insertModCount = insertModCount;
     }
 
 }
