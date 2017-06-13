@@ -38,9 +38,6 @@ public class UC001View extends JFrame implements java.util.Observer {
                 + obj.getClass());
     }
 
-
-
-
     public static class CloseListener extends WindowAdapter {
 
         @Override
