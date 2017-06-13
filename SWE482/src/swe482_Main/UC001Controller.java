@@ -12,7 +12,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
     UC001Model model;
     UC001View view;
-    //String viewID = view.getDBRecordID();
+    String viewID = view.getDBRecordID();
     
     UC001Controller(){ }
     
@@ -68,7 +68,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         //Save actions modified by Andrew Lochow for managing Database input
         if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
                      
-            model.setValues(view.getDBRecordID(), Integer.parseInt(view.geXuc001tParcelID()),view.getXuc001TaxAccountID()
+            model.setValues(viewID, Integer.parseInt(view.geXuc001tParcelID()),view.getXuc001TaxAccountID()
                     ,view.getXuc001County(),view.getXuc001State(),view.getXuc001Acreage(),view.getXuc001Township()
                     ,view.getXuc001Range(),Integer.parseInt(view.getXuc001Section()),view.getXuc001Meridian(),view.getXuc001Description()
                     ,view.getXuc001NorthBounder(),view.getXuc001EastBounder(),view.getXuc001SouthBounder(), view.getXuc001WestBounder());
