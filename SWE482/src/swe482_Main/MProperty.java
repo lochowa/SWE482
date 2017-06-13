@@ -34,6 +34,7 @@ public class MProperty{
     
     private Connection connect() {
         // SQLite connection string
+        //Commit Section Added 6/7/2017 by Andrew Lochow
         String url = "jdbc:sqlite:./db/landman.db";
         Connection conn = null;
         try {

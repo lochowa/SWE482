@@ -1,6 +1,5 @@
 package swe482_Main;
 
-import Create_Database.DBConnect;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.sql.*;
 
 /**
  *
@@ -208,9 +208,10 @@ public class UC002Model extends java.util.Observable {
         this.setUc002_Lessee(uc002_Lessee);
     }
 
-    public void sqlStatement() {
+    public void sqlStatement(){
         // TO DO: Write SQL INSERT Statement to schema.
-        DBConnect.connect();
+        DB.conn;
+        
 
     }
 

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SWE482">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/SWE482/dist/SWE482.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

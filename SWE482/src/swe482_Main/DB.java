@@ -18,7 +18,7 @@ import java.sql.Statement;
 
 /** Database connection class & utilities **/
 
-abstract class DB {
+public class DB {
 
     public  String sDriver = ""; 
     public  String sUrl = null;
