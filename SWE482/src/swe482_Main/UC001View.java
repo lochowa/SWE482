@@ -486,6 +486,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         fXUC001.add(pXUC001);
         fXUC001.setSize(640, 880);
         fXUC001.setVisible(true);
+        fXUC001.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fXUC001.setLocationRelativeTo(getOwner());
 //        END XUC-003 Create Property Record
 
@@ -738,6 +739,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         pdXUC002.add(dpXUC002);
         dXUC002.add(pdXUC002);
         dXUC002.setSize(460, 520);
+        dXUC002.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dXUC002.setLocationRelativeTo(getOwner());
 
         /*
@@ -751,6 +753,7 @@ public class UC001View extends JFrame implements java.util.Observer {
 //        ADD MINERAL OWNER JPANEL HERE        
         dpXUC003 = new JPanel();
         pdXUC003.add(dpXUC003);
+        dXUC003.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dXUC003.setLocationRelativeTo(getOwner());
     }
 
