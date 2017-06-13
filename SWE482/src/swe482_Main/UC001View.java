@@ -29,9 +29,6 @@ public class UC001View extends JFrame implements java.util.Observer {
         - XUC-001 (Extends) Create Land Record
         - XUC-002 (Extends) Create Surface Owner Record
         - XUC-003 (Extends) Create Mineral Owner Record
-        o Addendum XUC-003: Create Leasehold Record on NON-Open Status RTI (“Right Title Interest”
-        o Addendum XUC-003 (Self-Help Feature): Convert Fractions to Decimals
-         Not all abstract title reports report interest in decimal format.
         - XUC-004 (Extends) Checksum Mineral Interest
      */
     @Override
