@@ -480,7 +480,7 @@ public class UC002Model extends java.util.Observable {
     public void setXuc007_WestBounder(String xuc007_WestBounder) {
         this.xuc007_WestBounder = xuc007_WestBounder;
     }
-    
+    // committoDB Section Added and Configured by Andrew Lochow
     public void committoDB(){
         Connection con = null;
         PreparedStatement istmt = null;
