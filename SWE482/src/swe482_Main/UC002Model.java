@@ -1,23 +1,14 @@
 package swe482_Main;
 
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import java.sql.*;
-
-import Create_Database.DBConnect;
+import java.util.UUID;
 import java.util.ArrayList;
-import javax.swing.JButton;
 
 /**
  *
  * @author Michael Barth UC-002 UC002Model Class Object
+ * @Updated by Andrew Lochow to support DB Connectivity
  */
 public class UC002Model extends java.util.Observable {
 //        START XUC-007 Operations, Variable, Mutators and Accessors
@@ -41,6 +32,26 @@ public class UC002Model extends java.util.Observable {
     private String xuc007_EastBounder;
     private String xuc007_SouthBounder;
     private String xuc007_WestBounder;
+    
+    public String getDBRecordID() {
+        UUID UrecID = UUID.randomUUID();
+        String recID = UrecID.toString();
+        return recID;
+    }
+    
+    private Connection connect() {
+        // SQLite connection string
+        //Commit Section Added 6/7/2017 by Andrew Lochow
+        String url = "jdbc:sqlite:./db/landman.db";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+            return conn;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
 
     public int getModCount() {
         return this.modCount;
@@ -173,23 +184,6 @@ public class UC002Model extends java.util.Observable {
         this.setUc002_State(uc002_State);
         this.setUc002_ZipCode(uc002_ZipCode);
         this.setUc002_Lessee(uc002_Lessee);
-    }
-
-    public void sqlStatement(){
-        // TO DO: Write SQL INSERT Statement to schema.
-
-        DBConnect.connect();
-        /*
-        Drafting the SQL statement here.
-        IF Anyone is better than me, awesome.  Your help is needed.
-        
-        
-        
-        
-        
-        
-        */
-
     }
 
     private String xuc005_OOPDate;
@@ -485,6 +479,56 @@ public class UC002Model extends java.util.Observable {
 
     public void setXuc007_WestBounder(String xuc007_WestBounder) {
         this.xuc007_WestBounder = xuc007_WestBounder;
+    }
+    
+    public void committoDB(){
+        Connection con = null;
+        PreparedStatement istmt = null;
+        PreparedStatement sstmt = null;
+        PreparedStatement ustmt = null;
+        ResultSet rs = null;
+        String select = "SELECT ...";
+        
+        String update = "UPDATE ...";
+        
+        String insert = "INSERT INTO ...";
+
+        try{
+            con = this.connect();
+            sstmt = con.prepareStatement(select);
+            //sstmt.setString(1,this.dbRecordID);
+            rs = sstmt.executeQuery();
+            int PID = 0;
+            if(rs.next()){
+                PID = rs.getInt(1);
+                System.out.println("Record Exists under Blah... : " + PID + "Updating Record");
+                ustmt = con.prepareStatement(update);
+                //ustmt.setString(1, this.taxMapID);
+                //ustmt.setString(2,this.description);
+                //ustmt.setInt(3,this.acreage);
+                //ustmt.setString(4,this.dbRecordID);
+                ustmt.executeUpdate();
+                System.out.println("Record Updated Successfully.");
+                con.close();                
+            }
+            else{
+            System.out.println("Record does not exist, creating new record");
+            istmt = con.prepareStatement(insert);
+            //istmt.setString(1,this.dbRecordID);
+            //istmt.setInt(2,this.parcelID);
+            //istmt.setString(3, this.taxMapID);
+            //istmt.setString(4,this.description);
+            //istmt.setInt(5,this.acreage);        
+            istmt.executeUpdate();
+            System.out.println("Record is inserted into Property table!");
+            con.close();
+            }
+        }
+
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }       
+        
     }
 
 }

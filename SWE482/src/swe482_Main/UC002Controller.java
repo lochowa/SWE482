@@ -80,7 +80,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
 
                     System.out.println("Valid Data\n");
                     model.printUC002Values();
-                    model.sqlStatement();
+                    model.committoDB();
                     view.dispose();
                 } catch (NumberFormatException f1) {
                     System.out.println(f1.getMessage());
