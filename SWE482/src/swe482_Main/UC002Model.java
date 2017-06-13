@@ -1,6 +1,6 @@
 package swe482_Main;
 
-<<<<<<< HEAD
+
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,11 +10,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.sql.*;
-=======
+
 import Create_Database.DBConnect;
 import java.util.ArrayList;
 import javax.swing.JButton;
->>>>>>> b3d54f878993e20f28399a3472f05a0ced4e765b
 
 /**
  *
@@ -178,10 +177,7 @@ public class UC002Model extends java.util.Observable {
 
     public void sqlStatement(){
         // TO DO: Write SQL INSERT Statement to schema.
-<<<<<<< HEAD
-        DB.conn;
-        
-=======
+
         DBConnect.connect();
         /*
         Drafting the SQL statement here.
@@ -193,7 +189,6 @@ public class UC002Model extends java.util.Observable {
         
         
         */
->>>>>>> b3d54f878993e20f28399a3472f05a0ced4e765b
 
     }
 
