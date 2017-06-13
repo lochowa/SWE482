@@ -488,6 +488,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         fUC002.add(pUC002);
         fUC002.setMinimumSize(new Dimension(650, 600));
         fUC002.setVisible(true);
+        fUC002.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fUC002.setLocationRelativeTo(getOwner());
 
         /*
@@ -892,6 +893,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         pdXUC007.add(dpXUC007);
         cpXUC007.add(pdXUC007, BorderLayout.CENTER);
         dXUC007.setMinimumSize(new Dimension(680, 500));
+        dXUC007.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dXUC007.setLocationRelativeTo(getOwner());
     }
 
