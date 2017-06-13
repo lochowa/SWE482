@@ -3,10 +3,7 @@ package swe482_Main;
  *
  * @author by Michael Barth
  */
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UC001Model{
 
@@ -68,7 +65,7 @@ public class UC001Model{
             String b_east,
             String b_south,
             String b_west
-    // TO DO: Integrate List<E>
+    // Setters added by Andrew Lochow
     ) {
         this.dbRecordID = dbRecordID;
         this.parcelID = parcelID;
@@ -97,22 +94,52 @@ public class UC001Model{
     
     public void committoDB(){
         Connection con = null;
-        PreparedStatement pstmt = null;
-        String sql = "INSERT INTO Property"
+        PreparedStatement istmt = null;
+        PreparedStatement sstmt = null;
+        PreparedStatement ustmt = null;
+        ResultSet rs = null;
+        String select = "SELECT ID_Parcel from Property Where LandRecordID = ?";
+        
+        String update = "UPDATE PROPERTY SET ID_Tax =? ,"
+                +"Description = ?"
+                +"Acres = ?"
+                +"WHERE LandRecordID = ?";
+        
+        String insert = "INSERT INTO Property"
                 + "(LandRecordID,ID_Parcel,ID_Tax, Description, Acres)"
                 + "VALUES(?,?,?,?,?)";
+        
 
         try{
             con = this.connect();
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1,this.dbRecordID);
-            pstmt.setInt(2,this.parcelID);
-            pstmt.setString(3, this.taxMapID);
-            pstmt.setString(4,this.description);
-            pstmt.setInt(5,this.acreage);        
-            pstmt.executeUpdate();
+            sstmt = con.prepareStatement(select);
+            sstmt.setString(1,this.dbRecordID);
+            rs = sstmt.executeQuery();
+            int PID = 0;
+            if(rs.next()){
+                PID = rs.getInt(1);
+                System.out.println("Record Exists under Parcel no.: " + PID + "Updating Record");
+                ustmt = con.prepareStatement(update);
+                ustmt.setString(1, this.taxMapID);
+                ustmt.setString(2,this.description);
+                ustmt.setInt(3,this.acreage);
+                ustmt.setString(4,this.dbRecordID);
+                ustmt.executeUpdate();
+                System.out.println("Record Updated Successfully.");
+                con.close();                
+            }
+            else{
+            System.out.println("Record does not exist, creating new record");
+            istmt = con.prepareStatement(insert);
+            istmt.setString(1,this.dbRecordID);
+            istmt.setInt(2,this.parcelID);
+            istmt.setString(3, this.taxMapID);
+            istmt.setString(4,this.description);
+            istmt.setInt(5,this.acreage);        
+            istmt.executeUpdate();
             System.out.println("Record is inserted into Property table!");
-           
+            con.close();
+            }
         }
 
         catch(SQLException e){
