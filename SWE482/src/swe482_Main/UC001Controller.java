@@ -2,6 +2,7 @@ package swe482_Main;
 /**
  *
  * @author by Michael Barth
+ * @modifications by Andrew Lochow (See save button section)
  */
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
@@ -11,6 +12,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
     UC001Model model;
     UC001View view;
+    //String viewID = view.getDBRecordID();
     
     UC001Controller(){ }
     
@@ -44,6 +46,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         
         System.out.println("Controller: Acted on Property Model");
         
+        
         if((e.getActionCommand().equals(UserActions.OPEN_MINERALOWNER.name()))){
             view.getMineralDialog().setVisible(true);
         }
@@ -62,8 +65,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.CLOSE_MINERALOWNER.name())){
             view.getMineralDialog().dispose();
         }
+        //Save actions modified by Andrew Lochow for managing Database input
         if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
-            System.out.print(view.getDBRecordID());
+                     
             model.setValues(view.getDBRecordID(), Integer.parseInt(view.geXuc001tParcelID()),view.getXuc001TaxAccountID()
                     ,view.getXuc001County(),view.getXuc001State(),view.getXuc001Acreage(),view.getXuc001Township()
                     ,view.getXuc001Range(),Integer.parseInt(view.getXuc001Section()),view.getXuc001Meridian(),view.getXuc001Description()
@@ -86,7 +90,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
     
     void addView(UC001View v){
         // Test Script: Operation Feedback
-        System.out.println("Controller: Adding Property View");
+        System.out.println("Controller: Adding Property View");        
         this.view = v;
     }
 
