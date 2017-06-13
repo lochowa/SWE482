@@ -7,7 +7,7 @@ public class UC001MVC {
     
     public static void main(String[] args) {
         // TODO code application logic here
-        new UC001MVC();
+        UC001MVC uC001MVC = new UC001MVC();
     }
     
 
