@@ -1045,6 +1045,19 @@ public class UC001View extends JFrame implements java.util.Observer {
         /*
         *   XUC003 Add Leasehold Burder
         */
+        bXUC003 = new JDialog(dXUC003, null, Dialog.ModalityType.DOCUMENT_MODAL);
+        Container cpbXUC003 = bXUC003.getContentPane();
+        JPanel pbXUC003 = new JPanel();
+//        ADD MINERAL OWNER JPANEL HERE
+        bpXUC003 = new JPanel();
+        
+        
+        // INSERT new dialog UI above here.
+        pdXUC003.add(bpXUC003);
+        bXUC003.add(pdXUC003);
+        bXUC003.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        bXUC003.setSize(490, 600);
+        bXUC003.setLocationRelativeTo(getOwner());
         
     }
 
