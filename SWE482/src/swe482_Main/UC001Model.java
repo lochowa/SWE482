@@ -4,6 +4,7 @@ package swe482_Main;
  * @author by Michael Barth
  */
 import java.sql.*;
+import java.util.UUID;
 
 public class UC001Model{
 
@@ -15,7 +16,7 @@ public class UC001Model{
 
     // Variable Declaration Area:  Do not change.
 
-    private String dbRecordID;
+    private String dbRecordID = getDBRecordID();
     private int parcelID;
     private String taxMapID;
     private String county;
@@ -34,6 +35,12 @@ public class UC001Model{
     private final String[] bounders = new String[4];
     // TO DO: Create List<E> to hold RTI MInterest recods
     
+    public String getDBRecordID() {
+        UUID UrecID = UUID.randomUUID();
+        String recID = UrecID.toString();
+        return recID;
+    }
+    
     private Connection connect() {
         // SQLite connection string
         //Commit Section Added 6/7/2017 by Andrew Lochow
@@ -50,7 +57,7 @@ public class UC001Model{
     // END Variable Declaration Area
  
     void setValues(
-            String dbRecordID,
+            //String dbRecordID,
             int parcelID,
             String taxMapID,
             String county,
@@ -66,8 +73,9 @@ public class UC001Model{
             String b_south,
             String b_west
     // Setters added by Andrew Lochow
+            // setValues()
     ) {
-        this.dbRecordID = dbRecordID;
+        //this.dbRecordID = dbRecordID;
         this.parcelID = parcelID;
         this.taxMapID = taxMapID;
         this.county = county;
@@ -88,9 +96,9 @@ public class UC001Model{
          
 
     }
-    // setValues()
     
-    //Commit Section Added 6/7/2017 by Andrew Lochow
+    
+    //CommittoDB Method Added 6/7/2017 by Andrew Lochow
     
     public void committoDB(){
         Connection con = null;

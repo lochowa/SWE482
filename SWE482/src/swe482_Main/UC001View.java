@@ -1350,11 +1350,7 @@ public class UC001View extends JFrame implements java.util.Observer {
     //   START GETTERS/SETTERS
     
     // Getters for field values *Added by Andrew Lochow*
-    public String getDBRecordID() {
-        UUID UrecID = UUID.randomUUID();
-        String recID = UrecID.toString();
-        return recID;
-    }
+    
 
     public String geXuc001tParcelID() {
         return xuc001_ParcelID.getText();
