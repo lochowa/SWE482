@@ -32,7 +32,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
         OPEN_DOCUMENT,
         INSERT_DOCUMENT,
         CLOSE_DOCUMENT,
-        OPEN_BURDEN
+        OPEN_BURDEN,
+        CLOSE_BURDEN
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -44,22 +45,22 @@ public class UC001Controller implements java.awt.event.ActionListener {
         System.out.println("Controller: Acted on Property Model");
         
         if((e.getActionCommand().equals(UserActions.OPEN_MINERALOWNER.name()))){
-            view.getdXUC003().setVisible(true);
+            view.getMineralDialog().setVisible(true);
         }
         
         if (e.getActionCommand().equals(UserActions.OPEN_SURFACEOWNER.name())){
-            view.getdXUC002().setVisible(true);
+            view.getSurfaceDialog().setVisible(true);
         }
         if (e.getActionCommand().equals(UserActions.CLOSE_ABSTRACT.name())) {
-            view.getdXUC002().dispose();
-            view.getdXUC003().dispose();
-            view.getfXUC001().dispose();
+            view.getSurfaceDialog().dispose();
+            view.getMineralDialog().dispose();
+            view.getAbstractTitleFrame().dispose();
         }
         if (e.getActionCommand().equals(UserActions.CLOSE_SURFACEOWNER.name())){
-            view.getdXUC002().dispose();
+            view.getSurfaceDialog().dispose();
         }
         if (e.getActionCommand().equals(UserActions.CLOSE_MINERALOWNER.name())){
-            view.getdXUC003().dispose();
+            view.getMineralDialog().dispose();
         }
         if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
             System.out.print(view.getDBRecordID());
@@ -68,6 +69,12 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     ,view.getXuc001Range(),Integer.parseInt(view.getXuc001Section()),view.getXuc001Meridian(),view.getXuc001Description()
                     ,view.getXuc001NorthBounder(),view.getXuc001EastBounder(),view.getXuc001SouthBounder(), view.getXuc001WestBounder());
             model.committoDB();
+        }
+        if(e.getActionCommand().equals(UserActions.OPEN_BURDEN.name())){
+            view.getBurdenDialog().setVisible(true);
+        }
+        if(e.getActionCommand().equals(UserActions.CLOSE_BURDEN.name())){
+            view.getBurdenDialog().dispose();
         }
     }
     
