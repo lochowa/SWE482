@@ -68,6 +68,10 @@ public class UC001View extends JFrame implements java.util.Observer {
         INSERT_DOCUMENT,
         CLOSE_DOCUMENT,
         OPEN_BURDEN
+        
+        // OPEN means you're opening a dialog box.
+        // CLOSE means you're closing a dialog box.
+        // INSERT is the actio to save the dialog user input to XZY
     }
 
     void addController(ActionListener controller) {
@@ -85,6 +89,8 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc003_CancelButton.addActionListener(controller);
         this.xuc003_AttachBurden.addActionListener(controller);
     }
+    
+    
     /*
     *   XUC-001 Initial Dialog
      */
@@ -1045,19 +1051,19 @@ public class UC001View extends JFrame implements java.util.Observer {
         /*
         *   XUC003 Add Leasehold Burder
         */
-        bXUC003 = new JDialog(dXUC003, null, Dialog.ModalityType.DOCUMENT_MODAL);
-        Container cpbXUC003 = bXUC003.getContentPane();
-        JPanel pbXUC003 = new JPanel();
-//        ADD MINERAL OWNER JPANEL HERE
-        bpXUC003 = new JPanel();
-        
-        
-        // INSERT new dialog UI above here.
-        pdXUC003.add(bpXUC003);
-        bXUC003.add(pdXUC003);
-        bXUC003.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        bXUC003.setSize(490, 600);
-        bXUC003.setLocationRelativeTo(getOwner());
+//        bXUC003 = new JDialog(dXUC003, null, Dialog.ModalityType.DOCUMENT_MODAL);
+//        Container cpbXUC003 = bXUC003.getContentPane();
+//        JPanel pbXUC003 = new JPanel();
+////        ADD MINERAL OWNER JPANEL HERE
+//        bpXUC003 = new JPanel();
+//        
+//        
+//        // INSERT new dialog UI above here.
+//        pdXUC003.add(bpXUC003);
+//        bXUC003.add(pdXUC003);
+//        bXUC003.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//        bXUC003.setSize(490, 600);
+//        bXUC003.setLocationRelativeTo(getOwner());
         
     }
 
@@ -1188,6 +1194,9 @@ public class UC001View extends JFrame implements java.util.Observer {
     private JButton xuc003_InsertButton;
     private JButton xuc003_CancelButton;
 
+    // START XUC-003 Add Burden Form Elements
+    
+    
 // Getters for field values *Added by Andrew Lochow*
     public String getDBRecordID() {
         UUID UrecID = UUID.randomUUID();
@@ -1197,6 +1206,10 @@ public class UC001View extends JFrame implements java.util.Observer {
 
     public String geXuc001tParcelID() {
         return xuc001_ParcelID.getText();
+    }
+    
+    public void setXuc001ParcelID(String parcelID){
+        this.xuc001_ParcelID.setText(parcelID);
     }
 
     public String getXuc001TaxAccountID() {

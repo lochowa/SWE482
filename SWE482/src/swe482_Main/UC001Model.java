@@ -74,23 +74,6 @@ public class UC001Model{
             String b_west
     // TO DO: Integrate List<E>
     ) {
-
-        this.dbRecordID = dbRecordID;
-        this.parcelID = parcelID;
-        this.taxMapID = taxMapID;
-        this.county = county;
-        this.state = state;
-        this.acreage = acreage;
-        this.township = township;
-        this.range = range;
-        this.section = section;
-        this.Meridian = PM;
-        this.description = description;
-        this.bounders[0] = b_north;
-        this.bounders[1] = b_east;
-        this.bounders[2] = b_south;
-        this.bounders[3] = b_west;
-        
         
         // TO DO: Create List<E> to hold RTI MInterest recods
         

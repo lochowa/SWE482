@@ -8,6 +8,18 @@ import java.util.ArrayList;
  */
 public class XUC002SurfaceOwner extends UC001Owner {
     
+
+
+    @Override
+    public String getOwnerName(int index) {
+        return super.getOwnerName(index); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean addOwnerName(String name) {
+        return super.addOwnerName(name); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     private final String OWNERSHIP = "SURFACE";
     private int insertModCount;
     private ArrayList<UC001Document> deedList = new ArrayList<>();

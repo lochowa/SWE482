@@ -27,10 +27,6 @@ public class UC001Owner {
         return false;
     }
 
-    public void setOwnerName(String[] ownerName) {
-        this.ownerName = ownerName;
-    }
-
     public String getAddress() {
         return address;
     }

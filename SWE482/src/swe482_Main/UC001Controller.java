@@ -18,6 +18,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         OPEN_SURFACEOWNER,
         OPEN_MINERALOWNER,
         SEARCH_PROPERTY,
+        SEARCH_PERSON,
         CLOSE_ABSTRACT,
         CLOSE_SURFACEOWNER,
         CLOSE_MINERALOWNER,
@@ -30,7 +31,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
         REMOVE_MINERALOWNER,
         OPEN_DOCUMENT,
         INSERT_DOCUMENT,
-        CLOSE_DOCUMENT
+        CLOSE_DOCUMENT,
+        OPEN_BURDEN
     }
     @Override
     public void actionPerformed(ActionEvent e) {
