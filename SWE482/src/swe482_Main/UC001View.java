@@ -90,16 +90,23 @@ public class UC001View extends JFrame implements java.util.Observer {
      */
     private JFrame fXUC001;
     private JDialog dXUC001;
-    private JPanel dpXUC001;     // Replaces IDE uc002DialogPane
+    private JPanel dpXUC001;     // Replaces IDE contentPane
     /*
     *   XUC-002 Dialog
      */
     private JDialog dXUC002;
-    private JPanel dpXUC002;    // Replaces IDE uc002DialogPane
-
+    private JPanel dpXUC002;    // Replaces IDE contentPane
+    /*
+    *  XUC-003 Dialog
+    */
     private JDialog dXUC003;
-    private JPanel dpXUC003;   // Replaces IDE uc002DialogPane
-
+    private JPanel dpXUC003;   // Replaces IDE contentPane
+    /*
+    *  XUC-003 Burden Dialog
+    */
+    private JDialog bXUC003;
+    private JPanel bpXUC003;    //  Replace IDE d
+    
     private void initComponents() {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice gd = ge.getDefaultScreenDevice();
@@ -765,7 +772,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc003_SearchName.setActionCommand(UserActions.SEARCH_PERSON.name());
         xuc003_SearchName.setVisible(false);    // FUTURE ENHANCEMENT
         xuc003_lblStatus = new JLabel();
-        xuc003_cboStatus = new JComboBox();
+        xuc003_cboStatus = new JComboBox(statusOptions);
         xuc003_lblInterest = new JLabel();
         xuc003_Interest = new JTextField();
         xuc003_AttachBurden = new JButton();
@@ -1032,8 +1039,13 @@ public class UC001View extends JFrame implements java.util.Observer {
         pdXUC003.add(dpXUC003);
         dXUC003.add(pdXUC003);
         dXUC003.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dXUC003.setSize(460, 650);
+        dXUC003.setSize(490, 600);
         dXUC003.setLocationRelativeTo(getOwner());
+        
+        /*
+        *   XUC003 Add Leasehold Burder
+        */
+        
     }
 
     public JDialog getdXUC002() {
@@ -1124,6 +1136,11 @@ public class UC001View extends JFrame implements java.util.Observer {
     private JButton xuc002_CancelButton;
 
     // START XUC003 Form Elements
+    private String[] statusOptions = {
+        "OPEN",
+        "HELD BY PRODUCTION",
+        "STORAGE"
+    };
     private JButton xuc003_AttachBurden;
     private JPanel xuc003_dialogPane;
     private JPanel xuc003_contentPanel;
