@@ -504,9 +504,7 @@ public class UC002Model extends java.util.Observable {
                 System.out.println("Record Exists under Blah... : " + PID + "Updating Record");
                 ustmt = con.prepareStatement(update);
                 //ustmt.setString(1, this.taxMapID);
-                //ustmt.setString(2,this.description);
-                //ustmt.setInt(3,this.acreage);
-                //ustmt.setString(4,this.dbRecordID);
+
                 ustmt.executeUpdate();
                 System.out.println("Record Updated Successfully.");
                 con.close();                
@@ -515,10 +513,7 @@ public class UC002Model extends java.util.Observable {
             System.out.println("Record does not exist, creating new record");
             istmt = con.prepareStatement(insert);
             //istmt.setString(1,this.dbRecordID);
-            //istmt.setInt(2,this.parcelID);
-            //istmt.setString(3, this.taxMapID);
-            //istmt.setString(4,this.description);
-            //istmt.setInt(5,this.acreage);        
+       
             istmt.executeUpdate();
             System.out.println("Record is inserted into Property table!");
             con.close();
