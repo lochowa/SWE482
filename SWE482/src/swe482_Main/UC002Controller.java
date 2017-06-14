@@ -20,11 +20,11 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
     private final String zipCodeRegEx = "^[0-9]{1,6}";
     private final String dateRegEx = "^(0?[1-9]|1[0-2])/(0?[1-9]|1[0-9]|2[0-9]|3[01])/\\d{4}$";
     private final String streetAddressRegEx = "^(\\d{3,})\\s?(\\w{0,5})\\s([a-zA-Z]{2,30})\\s([a-zA-Z]{2,15})\\.?\\s?(\\w{0,5})$";
-    private final String descriptionRegEx = "^(a-z|A-Z|0-9)*[^#$%^&*()']*$";
+    private final String descriptionRegEx = "^(a-z|A-Z|0-9)*[^#$%^&*()']*";
     private final String stringRegEx = "^[a-zA-Z0-9\\040]+$";
     private final String stateAbbreviationRegEx = "^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$";
-//    private final String townshipReg = ""; // ## + W|West E|East S|South N|North
-//    private final String rangeReg = "";   // ## + W|West E|East S|South N|North
+    private final String townshipRegEx = "^([1-9][0-9]{1,2})[N|S]$"; // ## + W|West E|East S|South N|North
+    private final String rangeRegEx = "^([1-9][0-9]{1,2})[E|W]$";   // ## + W|West E|East S|South N|North
     private final String sectionRegEx = "^[1-6]$|^[1][0-9]$|^[2][0-9]$|^[3][0-6]$"; // 1 - 36 only
 
     void addModel(UC002Model m) {
@@ -236,13 +236,13 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             view.setXuc007_lblAcreage(false);
             validFields++;
         }
-        if (view.getXuc007_Township().isEmpty() || !view.getXuc007_Township().matches(stringRegEx)) {
+        if (view.getXuc007_Township().isEmpty() || !view.getXuc007_Township().matches(townshipRegEx)) {
             view.setXuc007_lblTownship(true);
         } else {
             view.setXuc007_lblTownship(false);
             validFields++;
         }
-        if (view.getXuc007_Range().isEmpty() || !view.getXuc007_Range().matches(stringRegEx)) {
+        if (view.getXuc007_Range().isEmpty() || !view.getXuc007_Range().matches(rangeRegEx)) {
             view.setXuc007_lblRange(true);
         } else {
             view.setXuc007_lblRange(false);
