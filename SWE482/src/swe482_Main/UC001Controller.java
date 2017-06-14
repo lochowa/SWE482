@@ -6,6 +6,7 @@ package swe482_Main;
  * @modifications by Andrew Lochow (See save button section)
  */
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 public class UC001Controller implements java.awt.event.ActionListener {
 
@@ -103,10 +104,23 @@ public class UC001Controller implements java.awt.event.ActionListener {
             view.getBurdenDialog().dispose();
         }
         if (e.getActionCommand().equals(UserActions.OPEN_DOCUMENT.name())){
+//          SETS DOCUMENT CALLER ATTRIBUTE VALUE
+            JButton source = (JButton) e.getSource();
+            view.setDocumentCaller(source.getName());
             view.getDocumentDialog().setVisible(true);
         }
-        if (e.getActionCommand().equals(UserActions.CLOSE_DOCUMENT.name()))
+        if (e.getActionCommand().equals(UserActions.CLOSE_DOCUMENT.name())){
             view.getDocumentDialog().dispose();
+        }
+        if (e.getActionCommand().equals(UserActions.INSERT_DOCUMENT.name())){
+//          REUSES ADD DOCUMENT DIALOG CODE TO DISTINGUISH WHERE TO INSERT THE DOCUMENT
+            if(view.getDocumentCaller().equals("Mineral")){
+                
+            }
+            if(view.getDocumentCaller().equals("Surface")){
+                
+            }
+        }
     }
 
     void addModel(UC001Model m) {

@@ -86,9 +86,12 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc002_CancelButton.addActionListener(controller);
         this.xuc004_SearchProperty.addActionListener(controller);
         this.xuc002_AddDocument.addActionListener(controller);
+        this.xuc003_AddDocument.addActionListener(controller);
         this.xuc003_InsertButton.addActionListener(controller);
         this.xuc003_CancelButton.addActionListener(controller);
         this.xuc003_AttachBurden.addActionListener(controller);
+        this.uc001_InsertDocument.addActionListener(controller);
+        this.uc001_CancelButton.addActionListener(controller);
     }
 
     /*
@@ -124,10 +127,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         *   UC-001 Process Abstract Title Report
         *   XUC-003 Create Property Record
          */
-        fXUC001 = new JFrame();
-//        JPanel pXUC001 = new JPanel();
-//        dpXUC001 = new JPanel();
-//        START XUC-003 Create Property Record        
+        fXUC001 = new JFrame();      
         xuc001_dialogPane = new JPanel();
         xuc001_contentPanel = new JPanel();
         xuc004_SearchProperty = new JButton();
@@ -178,9 +178,9 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc001_CancelButton.setActionCommand(UserActions.CLOSE_ABSTRACT.name());
 
         //======== this ========
-//        dpXUC001.setBorder(new EmptyBorder(12, 12, 12, 12));
-//        dpXUC001.setLayout(new BorderLayout());
+
         fXUC001.setLayout(new BorderLayout());
+        
         //======== xuc001_dialogPane ========
         {
             xuc001_dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
@@ -542,6 +542,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc002_lblContactNumber = new JLabel();
         xuc002_ContactNumber = new JTextField();
         xuc002_AddDocument = new JButton();
+        xuc002_AddDocument.setName("Surface");
         xuc002_AddDocument.setActionCommand(UserActions.OPEN_DOCUMENT.name());
         xuc002_DocumentPane = new JPanel();
         xuc002_ButtonBar = new JPanel();
@@ -797,6 +798,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc003_lblContactNumber = new JLabel();
         xuc003_ContactNumber = new JTextField();
         xuc003_AddDocument = new JButton();
+        xuc003_AddDocument.setName("Mineral");
         xuc003_AddDocument.setActionCommand(UserActions.OPEN_DOCUMENT.name());
         xuc003_DocumentPane = new JPanel();
         xuc003_buttonBar = new JPanel();
