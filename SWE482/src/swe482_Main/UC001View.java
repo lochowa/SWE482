@@ -143,7 +143,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc001_County = new JTextField();
         xuc001_lblSection = new JLabel();
         xuc001_Section = new JTextField();
-        xuc001_state = new JLabel();
+        xuc001_lblState = new JLabel();
         xuc001_State = new JTextField();
         xuc001_lblMeridian = new JLabel();
         xuc001_Meridian = new JTextField();
@@ -278,10 +278,10 @@ public class UC001View extends JFrame implements java.util.Observer {
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
-                //---- xuc001_state ----
-                xuc001_state.setText("State");
-                xuc001_state.setFont(xuc001_state.getFont().deriveFont(xuc001_state.getFont().getSize() + 2f));
-                xuc001_contentPanel.add(xuc001_state, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0,
+                //---- xuc001_lblState ----
+                xuc001_lblState.setText("State");
+                xuc001_lblState.setFont(xuc001_lblState.getFont().deriveFont(xuc001_lblState.getFont().getSize() + 2f));
+                xuc001_contentPanel.add(xuc001_lblState, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
@@ -346,13 +346,13 @@ public class UC001View extends JFrame implements java.util.Observer {
                         this.xuc001_WestBounder.setEditable(true);
                     } else {
                         this.xuc001_NorthBounder.setEditable(false);
-                        this.setXuc001NorthBounder(null);
+                        this.setXuc001_NorthBounder(null);
                         this.xuc001_EastBounder.setEditable(false);
-                        this.setXuc001EastBounder(null);
+                        this.setXuc001_EastBounder(null);
                         this.xuc001_SouthBounder.setEditable(false);
-                        this.setXuc001SouthBounder(null);
+                        this.setXuc001_SouthBounder(null);
                         this.xuc001_WestBounder.setEditable(false);
-                        this.setXuc001WestBounder(null);
+                        this.setXuc001_WestBounder(null);
                     }
                 });
                 xuc001_contentPanel.add(xuc001_cbxBounders, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0,
@@ -1088,7 +1088,7 @@ public class UC001View extends JFrame implements java.util.Observer {
     private JTextField xuc001_County;
     private JLabel xuc001_lblSection;
     private JTextField xuc001_Section;
-    private JLabel xuc001_state;
+    private JLabel xuc001_lblState;
     private JTextField xuc001_State;
     private JLabel xuc001_lblMeridian;
     private JTextField xuc001_Meridian;
@@ -1352,84 +1352,83 @@ public class UC001View extends JFrame implements java.util.Observer {
     // Getters for field values *Added by Andrew Lochow*
     
 
-    public String geXuc001tParcelID() {
+    public String geXuc001_ParcelID() {
         return xuc001_ParcelID.getText();
     }
     
-    public void setXuc001ParcelID(String parcelID){
+    public void setXuc00_ParcelID(String parcelID){
         this.xuc001_ParcelID.setText(parcelID);
     }
 
-    public String getXuc001TaxAccountID() {
+    public String getXuc001_TaxAccountID() {
         return xuc001_TaxAccountID.getText();
     }
 
-    public String getXuc001County() {
+    public String getXuc001_County() {
         return xuc001_County.getText();
     }
 
-    public String getXuc001State() {
+    public String getXuc001_State() {
         return xuc001_State.getText();
     }
 
-    public int getXuc001Acreage() {
-        return Integer.parseInt(xuc001_Acreage.getText());
+    public String getXuc001_Acreage() {
+        return this.xuc001_Acreage.getText();
     }
 
-    public String getXuc001Township() {
+    public String getXuc001_Township() {
         return xuc001_Township.getText();
-
     }
 
-    public String getXuc001Range() {
+    public String getXuc001_Range() {
         return xuc001_Range.getText();
     }
 
-    public String getXuc001Section() {
+    public String getXuc001_Section() {
         return xuc001_Section.getText();
     }
 
-    public String getXuc001Description() {
+    public String getXuc001_LegalDescription() {
         return xuc001_LegalDescription.getText();
     }
 
-    public String getXuc001Meridian() {
+    public String getXuc001_Meridian() {
         return xuc001_Meridian.getText();
     }
 
-    public String getXuc001NorthBounder() {
+    public String getXuc001_NorthBounder() {
         return xuc001_NorthBounder.getText();
     }
 
-    public String getXuc001SouthBounder() {
+    public String getXuc001_SouthBounder() {
         return xuc001_SouthBounder.getText();
     }
 
-    public String getXuc001EastBounder() {
+    public String getXuc001_EastBounder() {
         return xuc001_EastBounder.getText();
     }
 
-    public String getXuc001WestBounder() {
+    public String getXuc001_WestBounder() {
         return xuc001_WestBounder.getText();
     }
 
-    public boolean getXuc001cbxBounders() {
+    public boolean getXuc001_cbxBounders() {
         return xuc001_cbxBounders.isSelected();
     }
 
-    public void setXuc001NorthBounder(String bounder) {
+    public void setXuc001_NorthBounder(String bounder) {
         this.xuc001_NorthBounder.setText(bounder);
     }
 
-    public void setXuc001EastBounder(String bounder) {
+    public void setXuc001_EastBounder(String bounder) {
         this.xuc001_EastBounder.setText(bounder);
     }
 
-    public void setXuc001SouthBounder(String bounder) {
+    public void setXuc001_SouthBounder(String bounder) {
         this.xuc001_SouthBounder.setText(bounder);
     }
 
-    public void setXuc001WestBounder(String bounder) {
+    public void setXuc001_WestBounder(String bounder) {
         this.xuc001_WestBounder.setText(bounder);
 }
         public String getXuc001_ParcelID() {
@@ -1440,43 +1439,123 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc001_ParcelID.setText(xuc001_ParcelID);
     }
 
-    public String getXuc001_County() {
-        return xuc001_County.getText();
+    public void setXuc001_lblParcelID(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblParcelID.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblParcelID.setForeground(Color.black);
+        }
     }
 
-    public void setXuc001_County(String xuc001_County) {
-        this.xuc001_County.setText(xuc001_County);
+    public void setXuc001_lblTownship(boolean feedback) {
+               if (feedback) {
+            this.xuc001_lblTownship.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblTownship.setForeground(Color.black);
+        }
     }
 
-    public String getXuc001_Meridian() {
-        return xuc001_Meridian.getText();
+    public void setXuc001_lblTaxAccountID(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblTaxAccountID.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblTaxAccountID.setForeground(Color.black);
+        }
     }
 
-    public void setXuc001_Meridian(String xuc001_Meridian) {
-        this.xuc001_Meridian.setText(xuc001_Meridian);
+    public void setXuc001_lblRange(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblRange.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblRange.setForeground(Color.black);
+        }
     }
 
-    public String getXuc001_Acreage() {
-        return xuc001_Acreage.getText();
+    public void setXuc001_lblCounty(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblCounty.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblCounty.setForeground(Color.black);
+        }
+    }
+    public void setXuc001_lblState(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblState.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblState.setForeground(Color.black);
+        }
+    }
+    public void setXuc001_lblSection(boolean feedback) {
+               if (feedback) {
+            this.xuc001_lblSection.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblSection.setForeground(Color.black);
+        }
     }
 
-    public void setXuc001_Acreage(String xuc001_Acreage) {
-        this.xuc001_Acreage.setText(xuc001_Acreage);
+    public void setXuc001_lblMeridian(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblMeridian.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblMeridian.setForeground(Color.black);
+        }
     }
 
-    public String getXuc001_NorthBounder() {
-        return xuc001_NorthBounder.getText();
+    public void setXuc001_lblAcreage(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblAcreage.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblAcreage.setForeground(Color.black);
+        }
     }
 
-    public void setXuc001_NorthBounder(String xuc001_NorthBounder) {
-        this.xuc001_NorthBounder.setText(xuc001_NorthBounder);
+    public void setXuc001_lblLegalDescription(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblLegalDescription.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblLegalDescription.setForeground(Color.black);
+        }
     }
 
-    public String getXuc001_EastBounder() {
-        return xuc001_EastBounder.getText();
+    public void setXuc001_cbxBounders(boolean feedback) {
+                if (feedback) {
+            this.xuc001_cbxBounders.setForeground(Color.RED);
+        } else {
+            this.xuc001_cbxBounders.setForeground(Color.black);
+        }
     }
 
-    public void setXuc001_EastBounder(String xuc001_EastBounder) {
-        this.xuc001_EastBounder.setText(xuc001_EastBounder);
+    public void setXuc001_lblNorthBounder(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblNorthBounder.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblNorthBounder.setForeground(Color.black);
+        }
     }
+
+    public void setXuc001_lblEastBounder(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblEastBounder.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblEastBounder.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc001_lblSouthBounder(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblSouthBounder.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblSouthBounder.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc001_lblWestBounder(boolean feedback) {
+                if (feedback) {
+            this.xuc001_lblWestBounder.setForeground(Color.RED);
+        } else {
+            this.xuc001_lblWestBounder.setForeground(Color.black);
+        }
+    }
+
+    
 }

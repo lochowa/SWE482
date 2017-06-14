@@ -12,7 +12,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
 
     UC002Model model;
     UC002View view;
-    int gridY = 0;
+    
     private final String doubleRegEx = "^(([1-9]{1}(\\d+)?)(\\.\\d+)?)|([0]\\.(\\d+)?([1-9]{1})(\\d+)?)$";
     private final String royaltyRegEx = "^[1]?\\.[0]{1,10}$||^[1]$||^\\.[0-9]{1,10}$";
     private final String integerRegEx = "^[0-9]{1,3}$";

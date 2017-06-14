@@ -21,7 +21,7 @@ public class UC001Model{
     private String taxMapID;
     private String county;
     private String state;
-    private int acreage;
+    private double acreage;
     private String township;
     private String range;
     private int section;
@@ -62,7 +62,7 @@ public class UC001Model{
             String taxMapID,
             String county,
             String state,
-            int acreage,
+            double acreage,
             String township,
             String range,
             int section,

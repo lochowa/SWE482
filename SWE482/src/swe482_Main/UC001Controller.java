@@ -11,6 +11,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
     UC001Model model;
     UC001View view;
+    
     private final String doubleRegEx = "^(([1-9]{1}(\\d+)?)(\\.\\d+)?)|([0]\\.(\\d+)?([1-9]{1})(\\d+)?)$";
     private final String royaltyRegEx = "^[1]?\\.[0]{1,10}$||^[1]$||^\\.[0-9]{1,10}$";
     private final String integerRegEx = "^[0-9]{1,3}$";
@@ -24,7 +25,6 @@ public class UC001Controller implements java.awt.event.ActionListener {
     private final String townshipRegEx = "^([1-9][0-9]{1,2})[N|S]$"; // ## + W|West E|East S|South N|North
     private final String rangeRegEx = "^([1-9][0-9]{1,2})[E|W]$";   // ## + W|West E|East S|South N|North
     private final String sectionRegEx = "^[1-6]$|^[1][0-9]$|^[2][0-9]$|^[3][0-6]$"; // 1 - 36 only
-    UC001Controller(){ }
     
     public enum UserActions {
         OPEN_SURFACEOWNER,
@@ -78,10 +78,21 @@ public class UC001Controller implements java.awt.event.ActionListener {
         //Save actions modified by Andrew Lochow for managing Database input
         if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
                      
-            model.setValues(Integer.parseInt(view.geXuc001tParcelID()),view.getXuc001TaxAccountID()
-                    ,view.getXuc001County(),view.getXuc001State(),view.getXuc001Acreage(),view.getXuc001Township()
-                    ,view.getXuc001Range(),Integer.parseInt(view.getXuc001Section()),view.getXuc001Meridian(),view.getXuc001Description()
-                    ,view.getXuc001NorthBounder(),view.getXuc001EastBounder(),view.getXuc001SouthBounder(), view.getXuc001WestBounder());
+            model.setValues(
+                    Integer.parseInt(view.geXuc001_ParcelID()),
+                    view.getXuc001_TaxAccountID(),
+                    view.getXuc001_County(),
+                    view.getXuc001_State(),
+                    Double.parseDouble(view.getXuc001_Acreage()),
+                    view.getXuc001_Township(),
+                    view.getXuc001_Range(),
+                    Integer.parseInt(view.getXuc001_Section()),
+                    view.getXuc001_Meridian(),
+                    view.getXuc001_LegalDescription(),
+                    view.getXuc001_NorthBounder(),
+                    view.getXuc001_EastBounder(),
+                    view.getXuc001_SouthBounder(), 
+                    view.getXuc001_WestBounder());
             model.committoDB();
         }
         if(e.getActionCommand().equals(UserActions.OPEN_BURDEN.name())){
@@ -139,5 +150,134 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     b_south,
                     b_west);
     }
+private boolean validatePropertyForm() {
+        int validFields = 0;
 
+        if (view.getXuc001_ParcelID().isEmpty() || !view.getXuc001_ParcelID().matches(parcelIDRegEx)) {
+            view.setXuc001_lblParcelID(true);
+
+        } else {
+            view.setXuc001_lblParcelID(false);
+            validFields++;
+        }
+        if (view.getXuc001_TaxAccountID().isEmpty() || !view.getXuc001_TaxAccountID().matches(stringRegEx)) {
+            view.setXuc001_lblTaxAccountID(true);
+        } else {
+            view.setXuc001_lblTaxAccountID(false);
+            validFields++;
+        }
+        if (view.getXuc001_County().isEmpty() || !view.getXuc001_County().matches(stringRegEx)) {
+            view.setXuc001_lblCounty(true);
+        } else {
+            view.setXuc001_lblCounty(false);
+            validFields++;
+        }
+        if (view.getXuc001_State().isEmpty() || !view.getXuc001_State().toUpperCase().matches(stateAbbreviationRegEx)) {
+            view.setXuc001_lblState(true);
+        } else {
+            view.setXuc001_lblState(false);
+            validFields++;
+        }
+        if (view.getXuc001_Acreage().isEmpty() || !view.getXuc001_Acreage().matches(doubleRegEx)) {
+            view.setXuc001_lblAcreage(true);
+        } else {
+            view.setXuc001_lblAcreage(false);
+            validFields++;
+        }
+        if (view.getXuc001_Township().isEmpty() || !view.getXuc001_Township().matches(townshipRegEx)) {
+            view.setXuc001_lblTownship(true);
+        } else {
+            view.setXuc001_lblTownship(false);
+            validFields++;
+        }
+        if (view.getXuc001_Range().isEmpty() || !view.getXuc001_Range().matches(rangeRegEx)) {
+            view.setXuc001_lblRange(true);
+        } else {
+            view.setXuc001_lblRange(false);
+            validFields++;
+        }
+        if (view.getXuc001_Section().isEmpty() || !view.getXuc001_Section().matches(sectionRegEx)) {
+            view.setXuc001_lblSection(true);
+        } else {
+            view.setXuc001_lblSection(false);
+            validFields++;
+        }
+        if (view.getXuc001_Meridian().isEmpty() || !view.getXuc001_Meridian().matches(stringRegEx)) {
+            view.setXuc001_lblMeridian(true);
+        } else {
+            view.setXuc001_lblMeridian(false);
+            validFields++;
+        }
+        if (view.getXuc001_LegalDescription().isEmpty() || !view.getXuc001_LegalDescription().matches(descriptionRegEx)) {
+            view.setXuc001_lblLegalDescription(true);
+        } else {
+            view.setXuc001_lblLegalDescription(false);
+            validFields++;
+        }
+        if (!view.getXuc001_cbxBounders()) {
+            if (!view.getXuc001_NorthBounder().isEmpty() && view.getXuc001_NorthBounder().matches(stringRegEx)) {
+                view.setXuc001_cbxBounders(true);
+            }
+        }
+        if (view.getXuc001_cbxBounders()) {
+            if (view.getXuc001_NorthBounder().isEmpty() || !view.getXuc001_NorthBounder().matches(stringRegEx)) {
+                view.setXuc001_lblNorthBounder(true);
+                view.setXuc001_cbxBounders(false);
+            } else {
+                view.setXuc001_lblNorthBounder(false);
+                validFields++;
+                view.setXuc001_cbxBounders(false);
+            }
+        }
+        if (!view.getXuc001_cbxBounders()) {
+            if (!view.getXuc001_EastBounder().isEmpty() && view.getXuc001_EastBounder().matches(stringRegEx)) {
+                view.setXuc001_cbxBounders(true);
+            }
+        }
+        if (view.getXuc001_cbxBounders()) {
+            if (view.getXuc001_EastBounder().isEmpty() || !view.getXuc001_EastBounder().matches(stringRegEx)) {
+                view.setXuc001_lblEastBounder(true);
+                view.setXuc001_cbxBounders(false);
+            } else {
+                view.setXuc001_lblEastBounder(false);
+                validFields++;
+                view.setXuc001_cbxBounders(false);
+            }
+        }
+
+        if (!view.getXuc001_cbxBounders()) {
+            if (!view.getXuc001_SouthBounder().isEmpty() && view.getXuc001_SouthBounder().matches(stringRegEx)) {
+                view.setXuc001_cbxBounders(true);
+            }
+        }
+        if (view.getXuc001_cbxBounders()) {
+            if (view.getXuc001_SouthBounder().isEmpty() || !view.getXuc001_SouthBounder().matches(stringRegEx)) {
+                view.setXuc001_lblSouthBounder(true);
+                view.setXuc001_cbxBounders(false);
+            } else {
+                view.setXuc001_lblSouthBounder(false);
+                validFields++;
+                view.setXuc001_cbxBounders(false);
+            }
+        }
+
+        if (!view.getXuc001_cbxBounders()) {
+            if (!view.getXuc001_WestBounder().isEmpty() && view.getXuc001_WestBounder().matches(stringRegEx)) {
+                view.setXuc001_cbxBounders(true);
+            }
+        }
+        if (view.getXuc001_cbxBounders()) {
+            if (view.getXuc001_WestBounder().isEmpty() || !view.getXuc001_WestBounder().matches(stringRegEx)) {
+                view.setXuc001_lblWestBounder(true);
+                view.setXuc001_cbxBounders(false);
+            } else {
+                view.setXuc001_lblWestBounder(false);
+                validFields++;
+                view.setXuc001_cbxBounders(false);
+            }
+        }
+        if (view.getXuc001_cbxBounders() && validFields == 14) { return true; }
+        return !view.getXuc001_cbxBounders() & validFields == 10;
+    }
+    
 }
