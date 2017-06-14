@@ -82,6 +82,20 @@ public class XUC002SurfaceOwner extends UC001Owner {
     private int modCount;
     private double xuc002_Interest;
     
+    public void addUC001Document(UC001Document document){
+        this.deedList.add(document);
+    }
+    
+    public UC001Document getUC001Document(int index){
+        return this.deedList.get(index);
+    }
+    public void removeUC001Docuemnt(int index){
+         for (int i = 0; i < deedList.size(); i++){
+            if(deedList.get(i).getInsertModCount() == index){
+                deedList.remove(i);
+            }
+        }
+    }
     public double getXuc002_Interest(){
         return this.xuc002_Interest;
     }

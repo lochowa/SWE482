@@ -15,6 +15,7 @@ public class UC001Model {
         System.out.println("Model Property()");
 
     }   // UC001Model()
+    private UC001Document Document;
 
     private final ArrayList<XUC002SurfaceOwner> sInterest = new ArrayList<>();
     private int sModCount;
@@ -45,6 +46,7 @@ public class UC001Model {
     }
     private final ArrayList<XUC003MineralOwner> mInterest = new ArrayList<>();
     private int mModCount;
+    private XUC003MineralOwner XUC003_MineralOwner;
 
     public void addXUC003MineralOwner(XUC003MineralOwner mInterest) {
         this.mInterest.add(mInterest);
@@ -196,7 +198,7 @@ public class UC001Model {
         }
 
     }
-    
+
     public XUC002SurfaceOwner createXUC002SurfaceOwner(
             String uc001_Name1,
             String uc001_Name2,
@@ -208,8 +210,8 @@ public class UC001Model {
             int uc001_ZipCode,
             int insertModCount,
             double xuc002_Interest
-    ){
-        XUC002_SurfaceOwner = new XUC002SurfaceOwner(
+    ) {
+        this.XUC002_SurfaceOwner = new XUC002SurfaceOwner(
                 uc001_Name1,
                 uc001_Name2,
                 uc001_Name3,
@@ -223,12 +225,62 @@ public class UC001Model {
         );
         return this.XUC002_SurfaceOwner;
     }
-    
+
+    public XUC003MineralOwner createXUC003MineralOwner(
+            String uc001_Name1,
+            String uc001_Name2,
+            String uc001_Name3,
+            String uc001_Name4,
+            String uc001_Address,
+            String uc001_City,
+            String uc001_State,
+            int uc001_ZipCode,
+            int insertModCount,
+            double xuc003_Interest,
+            String xuc003_InterestStatus
+    ) {
+        this.XUC003_MineralOwner = new XUC003MineralOwner(
+                uc001_Name1,
+                uc001_Name2,
+                uc001_Name3,
+                uc001_Name4,
+                uc001_Address,
+                uc001_City,
+                uc001_State,
+                uc001_ZipCode,
+                insertModCount,
+                xuc003_InterestStatus,
+                xuc003_Interest
+
+        );
+        return this.XUC003_MineralOwner;
+    }
+    public UC001Document createUC001Document(
+            int InsertModCount,
+            String uc001_DocumentType,
+            String uc001_EffectiveDate,
+            String uc001_RecordingDate,
+            int uc001_ReceptionID,
+            int uc001_Book,
+            int uc001_Page
+    ) {
+        this.Document = new UC001Document(
+                InsertModCount,
+                uc001_DocumentType,
+                uc001_EffectiveDate,
+                uc001_RecordingDate,
+                uc001_ReceptionID,
+                uc001_Book,
+                uc001_Page
+        );
+        return Document;
+    }
+
     public String getPropertyBounders(int index) {
         return PropertyBounders[index];
     }
-    
-    public void setPropertyBounders(String bounder, int index){
+
+    public void setPropertyBounders(String bounder, int index) {
         this.PropertyBounders[index] = bounder;
     }
 
