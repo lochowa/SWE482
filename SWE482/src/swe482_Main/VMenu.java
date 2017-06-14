@@ -27,19 +27,16 @@ public class VMenu extends JFrame  {
     VMenu() {
         initComponents();
     }
+    
+    public enum UserActions {
+        START_FUNCTION,
+        CLOSE_MENU
+    }
 
     void addController(ActionListener controller) {
         System.out.println("View: Adding Menu Controller");
         _StartFunction.addActionListener(controller);
         _CancelButton.addActionListener(controller);
-    }
-
-    private void _StartFunctionActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void _CancelButtonActionPerformed(ActionEvent e) {
-        // TODO add your code here
     }
 
     private void initComponents() {
@@ -87,16 +84,13 @@ public class VMenu extends JFrame  {
 
                 //---- _StartFunction ----
                 _StartFunction.setText("Start Function");
-
-                _StartFunction.addActionListener(e -> _StartFunctionActionPerformed(e));
                 buttonBar.add(_StartFunction, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 5), 0, 0));
 
                 //---- _CancelButton ----
                 _CancelButton.setText("Cancel");
-                _CancelButton.setActionCommand("CLOSEWINDOW");
-                _CancelButton.addActionListener(e -> _CancelButtonActionPerformed(e));
+                _CancelButton.setActionCommand(UserActions.CLOSE_MENU.name());
                 buttonBar.add(_CancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));

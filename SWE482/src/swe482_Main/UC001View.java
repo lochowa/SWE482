@@ -1188,17 +1188,17 @@ public class UC001View extends JFrame implements java.util.Observer {
 
     // START XUC-003 Add Burden Form Elements
 
-    public void addSurfaceOwnery(String description, int gridY) {
-        xuc002_SurfaceOwnerPane.add(addSurfaceComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
+    public void addSurfaceOwner(String owner, int gridY) {
+        xuc002_SurfaceOwnerPane.add(addSurfaceOwnerPane(owner, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
         xuc002_SurfaceOwnerPane.revalidate();
     }
 
-    public void updateSurfaceOwner(String description, int gridY) {
+    public void updateSurfaceOwner(String owner, int gridY) {
         JPanel test = (JPanel) xuc002_SurfaceOwnerPane.getComponent(gridY);
         JTextField field = (JTextField) test.getComponent(0);
-        field.setText(description);
+        field.setText(owner);
     }
 
     public void removeSurfaceOwner(int gridY) {
@@ -1212,7 +1212,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc002_SurfaceOwnerPane.repaint();
     }
 
-    public JPanel addSurfaceComponent(String owner, int index) {
+    public JPanel addSurfaceOwnerPane(String owner, int index) {
 
         JPanel surface = new JPanel();
         JTextField _owner = new JTextField();
@@ -1267,17 +1267,17 @@ public class UC001View extends JFrame implements java.util.Observer {
         return this.xuc002_RemoveSurfaceOwner;
     }
 
-    public void addMineralOwnery(String description, int gridY) {
-        xuc003_MineralOwnerPane.add(addSurfaceComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
+    public void addMineralOwner(String owner, int gridY) {
+        xuc003_MineralOwnerPane.add(addSurfaceOwnerPane(owner, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
         xuc003_MineralOwnerPane.revalidate();
     }
 
-    public void updateMineralOwner(String description, int gridY) {
+    public void updateMineralOwner(String owner, int gridY) {
         JPanel test = (JPanel) xuc003_MineralOwnerPane.getComponent(gridY);
         JTextField field = (JTextField) test.getComponent(0);
-        field.setText(description);
+        field.setText(owner);
     }
 
     public void removeMineralOwner(int gridY) {
@@ -1291,7 +1291,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc003_MineralOwnerPane.repaint();
     }
 
-    public JPanel addMineralComponent(String owner, int index) {
+    public JPanel addMineralOwnerPane(String owner, int index) {
 
         JPanel mineral = new JPanel();
         JTextField _owner = new JTextField();

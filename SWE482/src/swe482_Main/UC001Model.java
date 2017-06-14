@@ -17,7 +17,7 @@ public class UC001Model {
     }   // UC001Model()
     private UC001Document Document;
 
-    private final ArrayList<XUC002SurfaceOwner> sInterest = new ArrayList<>();
+    private final ArrayList<XUC002SurfaceOwner> SurfaceOwnerList = new ArrayList<>();
     private int sModCount;
     private XUC002SurfaceOwner XUC002_SurfaceOwner;
 
@@ -30,36 +30,36 @@ public class UC001Model {
     }
 
     public void addXUC002SurfaceOwner(XUC002SurfaceOwner sInterest) {
-        this.sInterest.add(sInterest);
+        this.SurfaceOwnerList.add(sInterest);
     }
 
     public XUC002SurfaceOwner getXUC002SurfaceOwner(int index) {
-        return sInterest.get(index);
+        return SurfaceOwnerList.get(index);
     }
 
     public void removeXUC002SurfaceOwner(int index) {
-        for (int i = 0; i < sInterest.size(); i++) {
-            if (sInterest.get(i).getInsertModCount() == index) {
-                sInterest.remove(i);
+        for (int i = 0; i < SurfaceOwnerList.size(); i++) {
+            if (SurfaceOwnerList.get(i).getInsertModCount() == index) {
+                SurfaceOwnerList.remove(i);
             }
         }
     }
-    private final ArrayList<XUC003MineralOwner> mInterest = new ArrayList<>();
+    private final ArrayList<XUC003MineralOwner> MineralOwnerList = new ArrayList<>();
     private int mModCount;
     private XUC003MineralOwner XUC003_MineralOwner;
 
     public void addXUC003MineralOwner(XUC003MineralOwner mInterest) {
-        this.mInterest.add(mInterest);
+        this.MineralOwnerList.add(mInterest);
     }
 
     public XUC003MineralOwner getXUC003MineralOwner(int index) {
-        return mInterest.get(index);
+        return MineralOwnerList.get(index);
     }
 
     public void removeXUC003MineralOwner(int index) {
-        for (int i = 0; i < mInterest.size(); i++) {
-            if (mInterest.get(i).getInsertModCount() == index) {
-                mInterest.remove(i);
+        for (int i = 0; i < MineralOwnerList.size(); i++) {
+            if (MineralOwnerList.get(i).getInsertModCount() == index) {
+                MineralOwnerList.remove(i);
             }
         }
     }
@@ -81,7 +81,6 @@ public class UC001Model {
     private String xuc001_Township;
     private String xuc001_Range;
     private int xuc001_Section;
-    private String Meridian;
     private String xuc001_LegalDescription;
     private String xuc001_Meridian;
     private final String[] PropertyBounders = new String[4];
@@ -346,14 +345,6 @@ public class UC001Model {
 
     public void setXuc001_Section(int xuc001_Section) {
         this.xuc001_Section = xuc001_Section;
-    }
-
-    public String getMeridian() {
-        return Meridian;
-    }
-
-    public void setMeridian(String Meridian) {
-        this.Meridian = Meridian;
     }
 
     public String getXuc001_LegalDescription() {

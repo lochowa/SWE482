@@ -8,7 +8,11 @@ import java.awt.event.ActionEvent;
 public class CMenu implements java.awt.event.ActionListener {
     MMenu model;
     VMenu view;
-
+    
+    public enum UserActions {
+        START_FUNCTION,
+        CLOSE_MENU
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         // Test Script:  Interobject Communication Feedback
@@ -18,7 +22,7 @@ public class CMenu implements java.awt.event.ActionListener {
 
         System.out.println("Controller: Received Action Command: " + e.getActionCommand());
         
-        if(e.getActionCommand().equals("CLOSEWINDOW")){
+        if(e.getActionCommand().equals(UserActions.CLOSE_MENU.name())){
             System.exit(0);
         }
         

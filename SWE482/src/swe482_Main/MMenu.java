@@ -15,7 +15,6 @@ public class MMenu extends java.util.Observable {
         this.command = command;
     }
     // Variable Declaration Area:  Do not change.
-    private int counter;
     private String command;
 
     // END Variable Declaration Area
