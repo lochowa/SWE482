@@ -7,18 +7,18 @@ package swe482_Main;
 public class XUC003Burden {
     
     private UC001Document documentReference;
-    private String lessee;
-    private int primaryTerm;
-    private int secondaryTerm;
-    private double royalty;
-    private String pTermEndDate;
-    private String sTermEndDate;
-    private int acreage;
-    private String currentLessee;
-    private String shallowRights;
-    private String shallowDepthRestriction;
-    private String deeepRights;
-    private String deepDepthRestriction;
+    private String burden_Lessee;
+    private int burden_PrimaryTerm;
+    private int burden_SecondaryTerm;
+    private double burden_Royalty;
+    private String burden_pTermEndDate;
+    private String burden_sTermEndDate;
+    private double burden_Acreage;
+    private String burden_CurrentLessee;
+    private String burden_ShallowRights;
+    private String burden_ShallowDepthRestriction;
+    private String burden_DeepRights;
+    private String burden_DeepDepthRestriction;
 
     public UC001Document getDocumentReference() {
         return documentReference;
@@ -28,100 +28,100 @@ public class XUC003Burden {
         this.documentReference = documentReference;
     }
 
-    public String getLessee() {
-        return lessee;
+    public String getBurden_Lessee() {
+        return burden_Lessee;
     }
 
-    public void setLessee(String lessee) {
-        this.lessee = lessee;
+    public void setBurden_Lessee(String burden_Lessee) {
+        this.burden_Lessee = burden_Lessee;
     }
 
-    public int getPrimaryTerm() {
-        return primaryTerm;
+    public int getBurden_PrimaryTerm() {
+        return burden_PrimaryTerm;
     }
 
-    public void setPrimaryTerm(int primaryTerm) {
-        this.primaryTerm = primaryTerm;
+    public void setBurden_PrimaryTerm(int burden_PrimaryTerm) {
+        this.burden_PrimaryTerm = burden_PrimaryTerm;
     }
 
-    public int getSecondaryTerm() {
-        return secondaryTerm;
+    public int getBurden_SecondaryTerm() {
+        return burden_SecondaryTerm;
     }
 
-    public void setSecondaryTerm(int secondaryTerm) {
-        this.secondaryTerm = secondaryTerm;
+    public void setBurden_SecondaryTerm(int burden_SecondaryTerm) {
+        this.burden_SecondaryTerm = burden_SecondaryTerm;
     }
 
-    public double getRoyalty() {
-        return royalty;
+    public double getBurden_Royalty() {
+        return burden_Royalty;
     }
 
-    public void setRoyalty(double royalty) {
-        this.royalty = royalty;
+    public void setBurden_Royalty(double burden_Royalty) {
+        this.burden_Royalty = burden_Royalty;
     }
 
-    public String getpTermEndDate() {
-        return pTermEndDate;
+    public String getBurden_pTermEndDate() {
+        return burden_pTermEndDate;
     }
 
-    public void setpTermEndDate(String pTermEndDate) {
-        this.pTermEndDate = pTermEndDate;
+    public void setBurden_pTermEndDate(String burden_pTermEndDate) {
+        this.burden_pTermEndDate = burden_pTermEndDate;
     }
 
-    public String getsTermEndDate() {
-        return sTermEndDate;
+    public String getBurden_sTermEndDate() {
+        return burden_sTermEndDate;
     }
 
-    public void setsTermEndDate(String sTermEndDate) {
-        this.sTermEndDate = sTermEndDate;
+    public void setBurden_sTermEndDate(String burden_sTermEndDate) {
+        this.burden_sTermEndDate = burden_sTermEndDate;
     }
 
-    public int getAcreage() {
-        return acreage;
+    public double getBurden_Acreage() {
+        return burden_Acreage;
     }
 
-    public void setAcreage(int acreage) {
-        this.acreage = acreage;
+    public void setBurden_Acreage(double burden_Acreage) {
+        this.burden_Acreage = burden_Acreage;
     }
 
-    public String getCurrentLessee() {
-        return currentLessee;
+    public String getBurden_CurrentLessee() {
+        return burden_CurrentLessee;
     }
 
-    public void setCurrentLessee(String currentLessee) {
-        this.currentLessee = currentLessee;
+    public void setBurden_CurrentLessee(String burden_CurrentLessee) {
+        this.burden_CurrentLessee = burden_CurrentLessee;
     }
 
-    public String getShallowRights() {
-        return shallowRights;
+    public String getBurden_ShallowRights() {
+        return burden_ShallowRights;
     }
 
-    public void setShallowRights(String shallowRights) {
-        this.shallowRights = shallowRights;
+    public void setBurden_ShallowRights(String burden_ShallowRights) {
+        this.burden_ShallowRights = burden_ShallowRights;
     }
 
-    public String getShallowDepthRestriction() {
-        return shallowDepthRestriction;
+    public String getBurden_ShallowDepthRestriction() {
+        return burden_ShallowDepthRestriction;
     }
 
-    public void setShallowDepthRestriction(String shallowDepthRestriction) {
-        this.shallowDepthRestriction = shallowDepthRestriction;
+    public void setBurden_ShallowDepthRestriction(String burden_ShallowDepthRestriction) {
+        this.burden_ShallowDepthRestriction = burden_ShallowDepthRestriction;
     }
 
-    public String getDeeepRights() {
-        return deeepRights;
+    public String getBurden_DeepRights() {
+        return burden_DeepRights;
     }
 
-    public void setDeeepRights(String deeepRights) {
-        this.deeepRights = deeepRights;
+    public void setBurden_DeepRights(String burden_DeepRights) {
+        this.burden_DeepRights = burden_DeepRights;
     }
 
-    public String getDeepDepthRestriction() {
-        return deepDepthRestriction;
+    public String getBurden_DeepDepthRestriction() {
+        return burden_DeepDepthRestriction;
     }
 
-    public void setDeepDepthRestriction(String deepDepthRestriction) {
-        this.deepDepthRestriction = deepDepthRestriction;
+    public void setBurden_DeepDepthRestriction(String burden_DeepDepthRestriction) {
+        this.burden_DeepDepthRestriction = burden_DeepDepthRestriction;
     }
     
 }

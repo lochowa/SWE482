@@ -19,7 +19,6 @@ import java.awt.event.WindowEvent;
 import java.util.Observable;
 import javax.swing.*;
 import javax.swing.border.*;
-import java.util.UUID;
 import javax.swing.event.ChangeEvent;
 
 public class UC001View extends JFrame implements java.util.Observer {

@@ -78,21 +78,21 @@ public class XUC002SurfaceOwner extends UC001Owner {
 
     private final String OWNERSHIP = "SURFACE";
     private int insertModCount;
-    private ArrayList<UC001Document> deedList = new ArrayList<>();
+    private ArrayList<UC001Document> UC001DocumentList = new ArrayList<>();
     private int modCount;
     private double xuc002_Interest;
     
     public void addUC001Document(UC001Document document){
-        this.deedList.add(document);
+        this.UC001DocumentList.add(document);
     }
     
     public UC001Document getUC001Document(int index){
-        return this.deedList.get(index);
+        return this.UC001DocumentList.get(index);
     }
     public void removeUC001Docuemnt(int index){
-         for (int i = 0; i < deedList.size(); i++){
-            if(deedList.get(i).getInsertModCount() == index){
-                deedList.remove(i);
+         for (int i = 0; i < UC001DocumentList.size(); i++){
+            if(UC001DocumentList.get(i).getInsertModCount() == index){
+                UC001DocumentList.remove(i);
             }
         }
     }
@@ -105,11 +105,11 @@ public class XUC002SurfaceOwner extends UC001Owner {
     }
     
     public void addDocument(UC001Document document){
-        this.deedList.add(document); 
+        this.UC001DocumentList.add(document); 
     }
     
     public void getDocument(int index){
-        this.deedList.get(index);
+        this.UC001DocumentList.get(index);
     }
     
     public int getModCount(){
@@ -124,12 +124,12 @@ public class XUC002SurfaceOwner extends UC001Owner {
         return this.OWNERSHIP;
     }
 
-    public ArrayList<UC001Document> getDeedList() {
-        return deedList;
+    public ArrayList<UC001Document> getUC001DocumentList() {
+        return UC001DocumentList;
     }
 
-    public void setDeedList(ArrayList<UC001Document> deedList) {
-        this.deedList = deedList;
+    public void setUC001DocumentList(ArrayList<UC001Document> UC001DocumentList) {
+        this.UC001DocumentList = UC001DocumentList;
     }
 
     public int getInsertModCount() {
