@@ -110,6 +110,10 @@ public class UC001View extends JFrame implements java.util.Observer {
     *  XUC-003 Burden Dialog
     */
     private JDialog bXUC003;
+    /*
+    *  UC-001 Document Dialog
+    */
+    private JDialog dUC001;
     
     private void initComponents() {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -1053,6 +1057,156 @@ public class UC001View extends JFrame implements java.util.Observer {
         bXUC003.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         bXUC003.setSize(490, 600);
         bXUC003.setLocationRelativeTo(getOwner()); 
+        
+        /*
+        *   UC-001 Document dialog
+        */    
+        dUC001 = new JDialog(fXUC001, null, Dialog.ModalityType.DOCUMENT_MODAL);
+        JPanel pdUC001 = new JPanel();
+        // ADD DOCUMENT DIALOG PANEL HERE
+        uc001_dialogPane = new JPanel();
+        uc001_contentPanel = new JPanel();
+        lblDocumentType = new JLabel();
+        uc001_cboDocumentType = new JComboBox(DeedList);
+        uc001_lblEffectiveDate = new JLabel();
+        uc001_EffectiveDate = new JTextField();
+        uc001_lblRecordedDate = new JLabel();
+        uc001_RecordingDate = new JTextField();
+        uc001_lblDocumentID = new JLabel();
+        uc001_DocumentID = new JTextField();
+        uc001_lblBook = new JLabel();
+        uc001_Book = new JTextField();
+        uc001_lblPage = new JLabel();
+        uc001_Page = new JTextField();
+        uc001_ButtonBar = new JPanel();
+        uc001_InsertDocument = new JButton();
+        uc001_CancelButton = new JButton();
+
+        //======== this ========
+        pdUC001.setBorder(new EmptyBorder(12, 12, 12, 12));
+        pdUC001.setLayout(new BorderLayout());
+
+        //======== uc001_dialogPane ========
+        {
+            uc001_dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
+            uc001_dialogPane.setLayout(new BorderLayout());
+
+            //======== uc001_contentPanel ========
+            {
+                uc001_contentPanel.setLayout(new GridBagLayout());
+                ((GridBagLayout)uc001_contentPanel.getLayout()).columnWidths = new int[] {140, 140, 135, 0};
+                ((GridBagLayout)uc001_contentPanel.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0};
+                ((GridBagLayout)uc001_contentPanel.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout)uc001_contentPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+
+                //---- lblDocumentType ----
+                lblDocumentType.setText("Document Type");
+                lblDocumentType.setFont(lblDocumentType.getFont().deriveFont(lblDocumentType.getFont().getSize() + 1f));
+                uc001_contentPanel.add(lblDocumentType, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- uc001_cboDocumentType ----
+                uc001_cboDocumentType.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                uc001_contentPanel.add(uc001_cboDocumentType, new GridBagConstraints(1, 0, 2, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- uc001_lblEffectiveDate ----
+                uc001_lblEffectiveDate.setText("Effective Date");
+                uc001_lblEffectiveDate.setFont(uc001_lblEffectiveDate.getFont().deriveFont(uc001_lblEffectiveDate.getFont().getSize() + 1f));
+                uc001_contentPanel.add(uc001_lblEffectiveDate, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- uc001_EffectiveDate ----
+                uc001_EffectiveDate.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                uc001_contentPanel.add(uc001_EffectiveDate, new GridBagConstraints(1, 1, 2, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- uc001_lblRecordedDate ----
+                uc001_lblRecordedDate.setText("Recording Date");
+                uc001_lblRecordedDate.setFont(uc001_lblRecordedDate.getFont().deriveFont(uc001_lblRecordedDate.getFont().getSize() + 1f));
+                uc001_contentPanel.add(uc001_lblRecordedDate, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- uc001_RecordingDate ----
+                uc001_RecordingDate.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                uc001_contentPanel.add(uc001_RecordingDate, new GridBagConstraints(1, 2, 2, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- uc001_lblDocumentID ----
+                uc001_lblDocumentID.setText("Document Number");
+                uc001_lblDocumentID.setFont(uc001_lblDocumentID.getFont().deriveFont(uc001_lblDocumentID.getFont().getSize() + 1f));
+                uc001_contentPanel.add(uc001_lblDocumentID, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- uc001_DocumentID ----
+                uc001_DocumentID.setFont(uc001_DocumentID.getFont().deriveFont(uc001_DocumentID.getFont().getSize() + 1f));
+                uc001_DocumentID.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                uc001_contentPanel.add(uc001_DocumentID, new GridBagConstraints(1, 3, 2, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- uc001_lblBook ----
+                uc001_lblBook.setText("Book");
+                uc001_lblBook.setFont(uc001_lblBook.getFont().deriveFont(uc001_lblBook.getFont().getSize() + 1f));
+                uc001_contentPanel.add(uc001_lblBook, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 5), 0, 0));
+
+                //---- uc001_Book ----
+                uc001_Book.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                uc001_contentPanel.add(uc001_Book, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- uc001_lblPage ----
+                uc001_lblPage.setText("Page");
+                uc001_lblPage.setFont(uc001_lblPage.getFont().deriveFont(uc001_lblPage.getFont().getSize() + 1f));
+                uc001_contentPanel.add(uc001_lblPage, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 0, 5), 0, 0));
+
+                //---- uc001_Page ----
+                uc001_Page.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                uc001_contentPanel.add(uc001_Page, new GridBagConstraints(1, 5, 2, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 0, 0), 0, 0));
+            }
+            uc001_dialogPane.add(uc001_contentPanel, BorderLayout.CENTER);
+
+            //======== uc001_ButtonBar ========
+            {
+                uc001_ButtonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
+                uc001_ButtonBar.setLayout(new GridBagLayout());
+                ((GridBagLayout)uc001_ButtonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
+                ((GridBagLayout)uc001_ButtonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
+
+                //---- uc001_InsertDocument ----
+                uc001_InsertDocument.setText("INSERT");
+                uc001_ButtonBar.add(uc001_InsertDocument, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 0, 5), 0, 0));
+
+                //---- uc001_CancelButton ----
+                uc001_CancelButton.setText("Cancel");
+                uc001_ButtonBar.add(uc001_CancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 0, 0), 0, 0));
+            }
+            uc001_dialogPane.add(uc001_ButtonBar, BorderLayout.SOUTH);
+        }
+        pdUC001.add(uc001_dialogPane, BorderLayout.CENTER);
+        // INSERT new dialog UI above here.
+        dUC001.add(pdUC001);
+        dUC001.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dUC001.setSize(460, 260);
+        dUC001.setLocationRelativeTo(getOwner()); 
     }
 
     public JDialog getSurfaceDialog() {
@@ -1069,6 +1223,10 @@ public class UC001View extends JFrame implements java.util.Observer {
     
     public JDialog getBurdenDialog(){
         return this.bXUC003;
+    }
+    
+    public JDialog getDocumentDialog(){
+        return this.dUC001;
     }
 
 // START XUC-001 Form Elements
@@ -1187,18 +1345,50 @@ public class UC001View extends JFrame implements java.util.Observer {
     private JButton xuc003_CancelButton;
 
     // START XUC-003 Add Burden Form Elements
-
-    public void addSurfaceOwnery(String description, int gridY) {
-        xuc002_SurfaceOwnerPane.add(addSurfaceComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
+    
+    // START UC-001 Add Document Form Elements
+    private JPanel uc001_dialogPane;
+    private JPanel uc001_contentPanel;
+    private JLabel lblDocumentType;
+    private JComboBox uc001_cboDocumentType;
+    private JLabel uc001_lblEffectiveDate;
+    private JTextField uc001_EffectiveDate;
+    private JLabel uc001_lblRecordedDate;
+    private JTextField uc001_RecordingDate;
+    private JLabel uc001_lblDocumentID;
+    private JTextField uc001_DocumentID;
+    private JLabel uc001_lblBook;
+    private JTextField uc001_Book;
+    private JLabel uc001_lblPage;
+    private JTextField uc001_Page;
+    private JPanel uc001_ButtonBar;
+    private JButton uc001_InsertDocument;
+    private JButton uc001_CancelButton;
+    private final String[] DeedList = {
+        "WD  - Warranty Deed",
+        "SWD - Special Warranty Deed",
+        "BS  - Bargain and Sale",
+        "QCD - Quitclaim",
+        "GD  - Grant Deed",
+        "PRD - Personal Representative Deed",
+        "FD  - Fiduciary Deed",
+        "ST  - Survivorship Tenancy",
+        "TDT - Transfer on Death Tenancy",
+        "DD  - Dower"
+    };
+        
+        
+    public void addSurfaceOwner(String owner, int gridY) {
+        xuc002_SurfaceOwnerPane.add(addSurfaceOwnerPane(owner, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
         xuc002_SurfaceOwnerPane.revalidate();
     }
 
-    public void updateSurfaceOwner(String description, int gridY) {
+    public void updateSurfaceOwner(String owner, int gridY) {
         JPanel test = (JPanel) xuc002_SurfaceOwnerPane.getComponent(gridY);
         JTextField field = (JTextField) test.getComponent(0);
-        field.setText(description);
+        field.setText(owner);
     }
 
     public void removeSurfaceOwner(int gridY) {
@@ -1212,7 +1402,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc002_SurfaceOwnerPane.repaint();
     }
 
-    public JPanel addSurfaceComponent(String owner, int index) {
+    public JPanel addSurfaceOwnerPane(String owner, int index) {
 
         JPanel surface = new JPanel();
         JTextField _owner = new JTextField();
@@ -1267,17 +1457,17 @@ public class UC001View extends JFrame implements java.util.Observer {
         return this.xuc002_RemoveSurfaceOwner;
     }
 
-    public void addMineralOwnery(String description, int gridY) {
-        xuc003_MineralOwnerPane.add(addSurfaceComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
+    public void addMineralOwner(String owner, int gridY) {
+        xuc003_MineralOwnerPane.add(addSurfaceOwnerPane(owner, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
         xuc003_MineralOwnerPane.revalidate();
     }
 
-    public void updateMineralOwner(String description, int gridY) {
+    public void updateMineralOwner(String owner, int gridY) {
         JPanel test = (JPanel) xuc003_MineralOwnerPane.getComponent(gridY);
         JTextField field = (JTextField) test.getComponent(0);
-        field.setText(description);
+        field.setText(owner);
     }
 
     public void removeMineralOwner(int gridY) {
@@ -1291,7 +1481,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc003_MineralOwnerPane.repaint();
     }
 
-    public JPanel addMineralComponent(String owner, int index) {
+    public JPanel addMineralOwnerPane(String owner, int index) {
 
         JPanel mineral = new JPanel();
         JTextField _owner = new JTextField();

@@ -102,6 +102,11 @@ public class UC001Controller implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.CLOSE_BURDEN.name())) {
             view.getBurdenDialog().dispose();
         }
+        if (e.getActionCommand().equals(UserActions.OPEN_DOCUMENT.name())){
+            view.getDocumentDialog().setVisible(true);
+        }
+        if (e.getActionCommand().equals(UserActions.CLOSE_DOCUMENT.name()))
+            view.getDocumentDialog().dispose();
     }
 
     void addModel(UC001Model m) {

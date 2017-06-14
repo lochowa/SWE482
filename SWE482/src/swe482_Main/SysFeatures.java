@@ -10,12 +10,12 @@ public class SysFeatures {
         ADD_PROPERTY,
 //        ADD_PLACEHOLDER_PROPERTY,
         ADD_LEASE,
-        DISTRIBUTE_OWNERSHIP_RTI,
-        MODIFY_OWNER_RECORD,
-        CREATE_PROJECT_REPORT,
-        CREATE_LEASE_PURCHASE_REPORT,
-        PROJECT_CONFIGURATION,
-        QUERY_RECORDS
+//        DISTRIBUTE_OWNERSHIP_RTI,
+//        MODIFY_OWNER_RECORD,
+//        CREATE_PROJECT_REPORT,
+//        CREATE_LEASE_PURCHASE_REPORT,
+//        PROJECT_CONFIGURATION,
+//        QUERY_RECORDS
     }
 
     private static final String[] List = new String[Features.values().length];
