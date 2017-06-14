@@ -46,7 +46,7 @@ public class VMenu extends JFrame  {
         contentPanel = new JPanel();
         scrollPane = new JScrollPane();
         scrollPane.setPreferredSize(new Dimension(240, 320));
-        _FunctionList = new JList(new SysFeatures().buildList());
+        _FunctionList = new JList(FunctionList);
         _FunctionList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         _FunctionList.setAutoscrolls(false);
         _FunctionList.addListSelectionListener(e -> _FunctionListValueChanged(e));
@@ -114,6 +114,10 @@ public class VMenu extends JFrame  {
     private JPanel buttonBar;
     private JButton _StartFunction;
     private JButton _CancelButton;
+    private String[] FunctionList = {
+        "PROCESS ABSTRACT TITLE REPORT",
+        "PROCESS PAID-UP LEASE"
+    };
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     private void _FunctionListValueChanged(ListSelectionEvent e) {

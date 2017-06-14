@@ -26,46 +26,15 @@ public class CMenu implements java.awt.event.ActionListener {
             System.exit(0);
         }
         
-        switch (e.getActionCommand()) {
-
-            case "PROJECT_CONFIGURATION":
-                // TO DO: Connect MVC Function class here.
-                break;
-
-            case "ADD_PROPERTY":
-        // TO DO: Connect MVC Function class here.
-        UC001MVC mvcProperty = new UC001MVC();
-                break;
-
-            case "ADD_LEASE":
-        // TO DO: Connect MVC Function class here.
-        UC002MVC uC002MVC = new UC002MVC();
-                break;
-
-            case "DISTRIBUTE_OWNERSHIP_RTI":
-                // TO DO: Connect MVC Function class here.
-                break;
-
-            case "MODIFY_OWNER_RECORD":
-                // TO DO: Connect MVC Function class here.
-                break;
-
-            case "CREATE_PROJECT_REPORT":
-                // TO DO: Connect MVC Function class here.
-                break;
-
-            case "CREATE_LEASE_PURCHASE_REPORT":
-                // TO DO: Connect MVC Function class here.
-                break;
-
-            case "QUERY_RECORDS":
-                // TO DO: Connect MVC Function class here.
-                break;
-
-            default:
-                break;
-            
+        if (e.getActionCommand().equals("PROCESS ABSTRACT TITLE REPORT")){
+                    UC001MVC mvcProperty = new UC001MVC();
         }
+        
+        if (e.getActionCommand().equals("PROCESS PAID-UP LEASE")){
+                    UC002MVC uC002MVC = new UC002MVC();
+        }
+        
+
     }
 
     void addModel(MMenu m) {
