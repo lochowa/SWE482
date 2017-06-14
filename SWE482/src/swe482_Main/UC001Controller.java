@@ -78,7 +78,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         //Save actions modified by Andrew Lochow for managing Database input
         if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())) {
         if (validatePropertyForm()){
-            model.setValues(
+            model.setUC001PropertyValues(
                     Integer.parseInt(view.getXuc001_ParcelID()),
                     view.getXuc001_TaxAccountID(),
                     view.getXuc001_County(),
