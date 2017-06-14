@@ -43,7 +43,7 @@ public class CMineralRTI implements java.awt.event.ActionListener {
             new MVCDocument();
         }
         if(e.getActionCommand().equals(Actions.CONVERTFRACTION.name())){
-            this.updateOwnerRTI(Double.toString(new MVCFractionTool().returnDouble()));
+//            this.updateOwnerRTI(Double.toString(new MVCFractionTool().returnDouble()));
         }
     }
     
