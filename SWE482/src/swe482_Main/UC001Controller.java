@@ -1,4 +1,5 @@
 package swe482_Main;
+
 /**
  *
  * @author by Michael Barth
@@ -6,12 +7,11 @@ package swe482_Main;
  */
 import java.awt.event.ActionEvent;
 
-
 public class UC001Controller implements java.awt.event.ActionListener {
 
     UC001Model model;
     UC001View view;
-    
+
     private final String doubleRegEx = "^(([1-9]{1}(\\d+)?)(\\.\\d+)?)|([0]\\.(\\d+)?([1-9]{1})(\\d+)?)$";
     private final String royaltyRegEx = "^[1]?\\.[0]{1,10}$||^[1]$||^\\.[0-9]{1,10}$";
     private final String integerRegEx = "^[0-9]{1,3}$";
@@ -25,7 +25,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
     private final String townshipRegEx = "^([1-9][0-9]{1,2})[N|S]$"; // ## + W|West E|East S|South N|North
     private final String rangeRegEx = "^([1-9][0-9]{1,2})[E|W]$";   // ## + W|West E|East S|South N|North
     private final String sectionRegEx = "^[1-6]$|^[1][0-9]$|^[2][0-9]$|^[3][0-6]$"; // 1 - 36 only
-    
+
     public enum UserActions {
         OPEN_SURFACEOWNER,
         OPEN_MINERALOWNER,
@@ -47,21 +47,21 @@ public class UC001Controller implements java.awt.event.ActionListener {
         OPEN_BURDEN,
         CLOSE_BURDEN
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // Test Script:  Interobject Communication Feedback
         System.out.println("Propety Controller: The " + e.getActionCommand()
-        + " button is clicked at " + new java.util.Date(e.getWhen())
+                + " button is clicked at " + new java.util.Date(e.getWhen())
                 + " with e.paramString: " + e.paramString());
-        
+
         System.out.println("Controller: Acted on Property Model");
-        
-        
-        if((e.getActionCommand().equals(UserActions.OPEN_MINERALOWNER.name()))){
+
+        if ((e.getActionCommand().equals(UserActions.OPEN_MINERALOWNER.name()))) {
             view.getMineralDialog().setVisible(true);
         }
-        
-        if (e.getActionCommand().equals(UserActions.OPEN_SURFACEOWNER.name())){
+
+        if (e.getActionCommand().equals(UserActions.OPEN_SURFACEOWNER.name())) {
             view.getSurfaceDialog().setVisible(true);
         }
         if (e.getActionCommand().equals(UserActions.CLOSE_ABSTRACT.name())) {
@@ -69,17 +69,17 @@ public class UC001Controller implements java.awt.event.ActionListener {
             view.getMineralDialog().dispose();
             view.getAbstractTitleFrame().dispose();
         }
-        if (e.getActionCommand().equals(UserActions.CLOSE_SURFACEOWNER.name())){
+        if (e.getActionCommand().equals(UserActions.CLOSE_SURFACEOWNER.name())) {
             view.getSurfaceDialog().dispose();
         }
-        if (e.getActionCommand().equals(UserActions.CLOSE_MINERALOWNER.name())){
+        if (e.getActionCommand().equals(UserActions.CLOSE_MINERALOWNER.name())) {
             view.getMineralDialog().dispose();
         }
         //Save actions modified by Andrew Lochow for managing Database input
-        if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
-                     
+        if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())) {
+        if (validatePropertyForm()){
             model.setValues(
-                    Integer.parseInt(view.geXuc001_ParcelID()),
+                    Integer.parseInt(view.getXuc001_ParcelID()),
                     view.getXuc001_TaxAccountID(),
                     view.getXuc001_County(),
                     view.getXuc001_State(),
@@ -91,66 +91,32 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     view.getXuc001_LegalDescription(),
                     view.getXuc001_NorthBounder(),
                     view.getXuc001_EastBounder(),
-                    view.getXuc001_SouthBounder(), 
+                    view.getXuc001_SouthBounder(),
                     view.getXuc001_WestBounder());
             model.committoDB();
         }
-        if(e.getActionCommand().equals(UserActions.OPEN_BURDEN.name())){
+        }
+        if (e.getActionCommand().equals(UserActions.OPEN_BURDEN.name())) {
             view.getBurdenDialog().setVisible(true);
         }
-        if(e.getActionCommand().equals(UserActions.CLOSE_BURDEN.name())){
+        if (e.getActionCommand().equals(UserActions.CLOSE_BURDEN.name())) {
             view.getBurdenDialog().dispose();
         }
     }
-    
-    void addModel(UC001Model m){
+
+    void addModel(UC001Model m) {
         // Test Script: Operation Feedback
         System.out.println("Controller: Adding Property Model");
-        this.model = m;       
+        this.model = m;
     }
-    
-    void addView(UC001View v){
+
+    void addView(UC001View v) {
         // Test Script: Operation Feedback
-        System.out.println("Controller: Adding Property View");        
+        System.out.println("Controller: Adding Property View");
         this.view = v;
     }
 
-    void initModel(
-            String dbRecordID,
-            int parcelID,
-            String taxMapID,
-            String county,
-            String state,
-            int acreage,
-            String township,
-            String range,
-            int section,
-            String PM,
-            String description,
-            String b_north,
-            String b_east,
-            String b_south,
-            String b_west){
-            // TO DO: Include List<E> Parameter Here.
-            
-            model.setValues(
-                    //dbRecordID,
-                    parcelID,
-                    taxMapID,
-                    county,
-                    state,
-                    acreage,
-                    township,
-                    range,
-                    section,
-                    PM,
-                    description,
-                    b_north,
-                    b_east,
-                    b_south,
-                    b_west);
-    }
-private boolean validatePropertyForm() {
+    private boolean validatePropertyForm() {
         int validFields = 0;
 
         if (view.getXuc001_ParcelID().isEmpty() || !view.getXuc001_ParcelID().matches(parcelIDRegEx)) {
@@ -276,8 +242,10 @@ private boolean validatePropertyForm() {
                 view.setXuc001_cbxBounders(false);
             }
         }
-        if (view.getXuc001_cbxBounders() && validFields == 14) { return true; }
+        if (view.getXuc001_cbxBounders() && validFields == 14) {
+            return true;
+        }
         return !view.getXuc001_cbxBounders() & validFields == 10;
     }
-    
+
 }

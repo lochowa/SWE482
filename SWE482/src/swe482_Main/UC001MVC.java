@@ -21,7 +21,6 @@ public class UC001MVC {
         controller.addView(view);
         view.addController(controller);
         //  Initialise Model attribute values.
-        controller.initModel(null, 0, null, null, null, 0, null, null, 0, null, null, null, null, null, null);
                 
     }
 }

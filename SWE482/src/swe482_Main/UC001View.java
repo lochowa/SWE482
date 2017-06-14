@@ -1352,7 +1352,7 @@ public class UC001View extends JFrame implements java.util.Observer {
     // Getters for field values *Added by Andrew Lochow*
     
 
-    public String geXuc001_ParcelID() {
+    public String getXuc001_ParcelID() {
         return xuc001_ParcelID.getText();
     }
     
@@ -1363,80 +1363,104 @@ public class UC001View extends JFrame implements java.util.Observer {
     public String getXuc001_TaxAccountID() {
         return xuc001_TaxAccountID.getText();
     }
+    
+    public void setXuc001_TaxAccountID(String xuc001_TaxAccountID){
+        this.xuc001_TaxAccountID.setText(xuc001_TaxAccountID);
+    }
 
     public String getXuc001_County() {
         return xuc001_County.getText();
+    }
+    
+    public void setXuc001_County(String xuc001_County){
+        this.xuc001_County.setText(xuc001_County);
     }
 
     public String getXuc001_State() {
         return xuc001_State.getText();
     }
+    
+    public void setXuc001_State(String xuc001_State){
+        this.xuc001_State.setText(xuc001_State);
+    }
 
     public String getXuc001_Acreage() {
         return this.xuc001_Acreage.getText();
+    }
+    
+    public void setXuc001_Acrage(String xuc001_Acreage){
+        this.xuc001_Acreage.setText(xuc001_Acreage);
     }
 
     public String getXuc001_Township() {
         return xuc001_Township.getText();
     }
+    
+    public void setXuc001_Township(String xuc001_Township){
+        this.xuc001_Township.setText(xuc001_Township);
+    }
 
     public String getXuc001_Range() {
         return xuc001_Range.getText();
+    }
+    
+    public void setXuc001_Range(String xuc001_Range){
+        this.xuc001_Range.setText(xuc001_Range);
     }
 
     public String getXuc001_Section() {
         return xuc001_Section.getText();
     }
+    
+    public void setXuc001_Section(String xuc001_Section){
+        this.xuc001_Section.setText(xuc001_Section);
+    }
 
     public String getXuc001_LegalDescription() {
         return xuc001_LegalDescription.getText();
+    }
+    
+    public void setXuc001_LegalDescription(String xuc001_LegalDescription){
+        this.xuc001_LegalDescription.setText(xuc001_LegalDescription);
     }
 
     public String getXuc001_Meridian() {
         return xuc001_Meridian.getText();
     }
+    
+    public void setXuc001_Meridian(String xuc001_Meridian){
+        this.xuc001_Meridian.setText(xuc001_Meridian);
+    }
 
     public String getXuc001_NorthBounder() {
         return xuc001_NorthBounder.getText();
+    }
+    
+    public void setXuc001_NorthBounder(String xuc001_NorthBounder){
+        this.xuc001_NorthBounder.setText(xuc001_NorthBounder);
     }
 
     public String getXuc001_SouthBounder() {
         return xuc001_SouthBounder.getText();
     }
-
+    public void setXuc001_SouthBounder(String xuc001_SouthBounder) {
+        this.xuc001_SouthBounder.setText(xuc001_SouthBounder);
+    }
     public String getXuc001_EastBounder() {
         return xuc001_EastBounder.getText();
     }
-
+    public void setXuc001_EastBounder(String xuc001_EastBounder) {
+        this.xuc001_EastBounder.setText(xuc001_EastBounder);
+    }
     public String getXuc001_WestBounder() {
         return xuc001_WestBounder.getText();
     }
-
+    public void setXuc001_WestBounder(String xuc001_WestBounder) {
+        this.xuc001_WestBounder.setText(xuc001_WestBounder);
+}
+    
     public boolean getXuc001_cbxBounders() {
         return xuc001_cbxBounders.isSelected();
-    }
-
-    public void setXuc001_NorthBounder(String bounder) {
-        this.xuc001_NorthBounder.setText(bounder);
-    }
-
-    public void setXuc001_EastBounder(String bounder) {
-        this.xuc001_EastBounder.setText(bounder);
-    }
-
-    public void setXuc001_SouthBounder(String bounder) {
-        this.xuc001_SouthBounder.setText(bounder);
-    }
-
-    public void setXuc001_WestBounder(String bounder) {
-        this.xuc001_WestBounder.setText(bounder);
-}
-        public String getXuc001_ParcelID() {
-        return xuc001_ParcelID.getText();
-    }
-
-    public void setXuc001_ParcelID(String xuc001_ParcelID) {
-        this.xuc001_ParcelID.setText(xuc001_ParcelID);
     }
 
     public void setXuc001_lblParcelID(boolean feedback) {
