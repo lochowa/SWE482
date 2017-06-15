@@ -167,4 +167,15 @@ public class XUC003MineralOwner extends UC001Owner {
     public String getUc001_Address() {
         return super.getUc001_Address(); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void setUc001_ContactNumber(String uc001_ContactNumber) {
+        super.setUc001_ContactNumber(uc001_ContactNumber); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getUc001_ContactNumber() {
+        return super.getUc001_ContactNumber(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

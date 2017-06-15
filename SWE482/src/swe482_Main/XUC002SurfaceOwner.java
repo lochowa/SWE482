@@ -182,4 +182,15 @@ public class XUC002SurfaceOwner extends UC001Owner {
         return super.getUc001_Address(); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void setUc001_ContactNumber(String uc001_ContactNumber) {
+        super.setUc001_ContactNumber(uc001_ContactNumber); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getUc001_ContactNumber() {
+        return super.getUc001_ContactNumber(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }

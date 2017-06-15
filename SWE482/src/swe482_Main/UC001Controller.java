@@ -160,6 +160,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     view.setXuc002_Name4(model.getXUC002SurfaceOwner(index).getUc001_Name4());
                     view.setXuc002_Address(model.getXUC002SurfaceOwner(index).getUc001_Address());
                     view.setXuc002_City(model.getXUC002SurfaceOwner(index).getUc001_City());
+                    view.setXuc002_State(model.getXUC002SurfaceOwner(index).getUc001_State());
                     view.setXuc002_ZipCode(Integer.toString(model.getXUC002SurfaceOwner(index).getUc001_ZipCode()));
                     view.setXuc002_ContactNumber(model.getXUC002SurfaceOwner(index).getUc001_ContactNumber());                                 
                 } catch (NumberFormatException nf3){
@@ -202,6 +203,24 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     System.out.println(nf4.toString());
                 }
 //            }
+            }
+        }
+        
+        if (e.getActionCommand().equals(UserActions.EDIT_MINERALOWENR.name())){
+             JButton source = (JButton) e.getSource();
+            int index = Integer.parseInt(source.getName());
+            if (validateMineralOwnerForm()){
+                view.setXuc003_InterestStatus(model.getXUC003MineralOwner(index).getXuc003_InterestStatus());
+                view.setXuc003_Interest(Double.toString(model.getXUC003MineralOwner(index).getXuc003_Interest()));
+                view.setXuc003_Name1(model.getXUC003MineralOwner(index).getUc001_Name1());
+                view.setXuc003_Name2(model.getXUC003MineralOwner(index).getUc001_Name2());
+                view.setXuc003_Name3(model.getXUC003MineralOwner(index).getUc001_Name3());
+                view.setXuc003_Name4(model.getXUC003MineralOwner(index).getUc001_Name4());
+                view.setXuc003_Address(model.getXUC003MineralOwner(index).getUc001_Address());
+                view.setXuc003_City(model.getXUC003MineralOwner(index).getUc001_City());
+                view.setXuc003_State(model.getXUC003MineralOwner(index).getUc001_State());
+                view.setXuc003_ZipCode(Integer.toString(model.getXUC003MineralOwner(index).getUc001_ZipCode()));
+                view.setXuc003_ContactNumber(model.getXUC003MineralOwner(index).getUc001_ContactNumber());  
             }
         }
     }

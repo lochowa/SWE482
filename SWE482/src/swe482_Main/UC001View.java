@@ -1640,7 +1640,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         return xuc001_ParcelID.getText();
     }
 
-    public void setXuc00_ParcelID(String parcelID) {
+    public void setXuc001_ParcelID(String parcelID) {
         this.xuc001_ParcelID.setText(parcelID);
     }
 
@@ -1854,6 +1854,14 @@ public class UC001View extends JFrame implements java.util.Observer {
         return this.xuc003_cboStatus.getSelectedItem().toString();
     }
 
+    public void setXuc003_InterestStatus(String status) {
+        for (int i = 0; i < xuc003_cboStatus.getItemCount(); i++) {
+            if (xuc003_cboStatus.getItemAt(i).equals(status)) {
+                this.xuc003_cboStatus.setSelectedIndex(i);
+            }
+        }
+    }
+    
     public void setXuc003_Interest(String Interest) {
         this.xuc003_Interest.setText(Interest);
     }
