@@ -149,11 +149,11 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
         }
 
-        if (e.getActionCommand().equals(UserActions.EDIT_SURFACEOWNER.name())){
+        if (e.getActionCommand().equals(UserActions.EDIT_SURFACEOWNER.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
-            if (validateSurfaceOwnerForm()){
-                try{
+            if (validateSurfaceOwnerForm()) {
+                try {
                     view.setXuc002_Name1(model.getXUC002SurfaceOwner(index).getUc001_Name1());
                     view.setXuc002_Name2(model.getXUC002SurfaceOwner(index).getUc001_Name2());
                     view.setXuc002_Name3(model.getXUC002SurfaceOwner(index).getUc001_Name3());
@@ -162,20 +162,20 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     view.setXuc002_City(model.getXUC002SurfaceOwner(index).getUc001_City());
                     view.setXuc002_State(model.getXUC002SurfaceOwner(index).getUc001_State());
                     view.setXuc002_ZipCode(Integer.toString(model.getXUC002SurfaceOwner(index).getUc001_ZipCode()));
-                    view.setXuc002_ContactNumber(model.getXUC002SurfaceOwner(index).getUc001_ContactNumber());                                 
-                } catch (NumberFormatException nf3){
-                    
+                    view.setXuc002_ContactNumber(model.getXUC002SurfaceOwner(index).getUc001_ContactNumber());
+                } catch (NumberFormatException nf3) {
+                    System.out.println(nf3.getMessage());
                 }
-                
+
             }
         }
-        
+
         if (e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())) {
             System.out.println(validateMineralOwnerForm());
             int varZipCode;
             if (validateMineralOwnerForm()) {
                 try {
-                    if(view.getXuc003_ZipCode().isEmpty()){
+                    if (view.getXuc003_ZipCode().isEmpty()) {
                         varZipCode = 0;
                     } else {
                         varZipCode = Integer.parseInt(view.getXuc003_ZipCode());
@@ -194,9 +194,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
                             Double.parseDouble(view.getXuc003_Interest()),
                             view.getXuc003_InterestStatus());
                     System.out.println("Owner Object Created");
-                view.addMineralOwner(model.createMineralOwnerString(mineral),mineral.getXuc003_InterestStatus(),Double.toString(mineral.getXuc003_Interest()), model.getMModCount());
-                view.addButtonController(this, view.getEditMineralOwnerButton());
-                view.addButtonController(this, view.getRemoveMineralOwnerButton());
+                    view.addMineralOwner(model.createMineralOwnerString(mineral), mineral.getXuc003_InterestStatus(), Double.toString(mineral.getXuc003_Interest()), model.getMModCount());
+                    view.addButtonController(this, view.getEditMineralOwnerButton());
+                    view.addButtonController(this, view.getRemoveMineralOwnerButton());
                     model.addXUC003MineralOwner(mineral);
                     model.incrementMModCount();
                 } catch (NumberFormatException nf4) {
@@ -205,22 +205,26 @@ public class UC001Controller implements java.awt.event.ActionListener {
 //            }
             }
         }
-        
-        if (e.getActionCommand().equals(UserActions.EDIT_MINERALOWENR.name())){
-             JButton source = (JButton) e.getSource();
+
+        if (e.getActionCommand().equals(UserActions.EDIT_MINERALOWENR.name())) {
+            JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
-            if (validateMineralOwnerForm()){
-                view.setXuc003_InterestStatus(model.getXUC003MineralOwner(index).getXuc003_InterestStatus());
-                view.setXuc003_Interest(Double.toString(model.getXUC003MineralOwner(index).getXuc003_Interest()));
-                view.setXuc003_Name1(model.getXUC003MineralOwner(index).getUc001_Name1());
-                view.setXuc003_Name2(model.getXUC003MineralOwner(index).getUc001_Name2());
-                view.setXuc003_Name3(model.getXUC003MineralOwner(index).getUc001_Name3());
-                view.setXuc003_Name4(model.getXUC003MineralOwner(index).getUc001_Name4());
-                view.setXuc003_Address(model.getXUC003MineralOwner(index).getUc001_Address());
-                view.setXuc003_City(model.getXUC003MineralOwner(index).getUc001_City());
-                view.setXuc003_State(model.getXUC003MineralOwner(index).getUc001_State());
-                view.setXuc003_ZipCode(Integer.toString(model.getXUC003MineralOwner(index).getUc001_ZipCode()));
-                view.setXuc003_ContactNumber(model.getXUC003MineralOwner(index).getUc001_ContactNumber());  
+            if (validateMineralOwnerForm()) {
+                try {
+                    view.setXuc003_InterestStatus(model.getXUC003MineralOwner(index).getXuc003_InterestStatus());
+                    view.setXuc003_Interest(Double.toString(model.getXUC003MineralOwner(index).getXuc003_Interest()));
+                    view.setXuc003_Name1(model.getXUC003MineralOwner(index).getUc001_Name1());
+                    view.setXuc003_Name2(model.getXUC003MineralOwner(index).getUc001_Name2());
+                    view.setXuc003_Name3(model.getXUC003MineralOwner(index).getUc001_Name3());
+                    view.setXuc003_Name4(model.getXUC003MineralOwner(index).getUc001_Name4());
+                    view.setXuc003_Address(model.getXUC003MineralOwner(index).getUc001_Address());
+                    view.setXuc003_City(model.getXUC003MineralOwner(index).getUc001_City());
+                    view.setXuc003_State(model.getXUC003MineralOwner(index).getUc001_State());
+                    view.setXuc003_ZipCode(Integer.toString(model.getXUC003MineralOwner(index).getUc001_ZipCode()));
+                    view.setXuc003_ContactNumber(model.getXUC003MineralOwner(index).getUc001_ContactNumber());
+                } catch (NumberFormatException nf5) {
+                    System.out.println(nf5.getMessage());
+                }
             }
         }
     }
