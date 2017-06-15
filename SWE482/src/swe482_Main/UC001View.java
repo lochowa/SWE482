@@ -2275,6 +2275,4 @@ public class UC001View extends JFrame implements java.util.Observer {
         }
     }
 
-// this is to test push and pulling code    
-    
 }
