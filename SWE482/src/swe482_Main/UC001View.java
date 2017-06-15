@@ -7,10 +7,10 @@ package swe482_Main;
  * @author Andrew Lochow Lines 1369 to 1502
  *
  *
- * @author Jeff Reifler - added lines 1704 to 2177
- * created getters and setters for JText XUC-002, XUC-003 and 
- * Validation Feedback Mutators for XUC-001, XUC-002, XUC-003 
- * 
+ * @author Jeff Reifler - added lines 1704 to 2177 created getters and setters
+ * for JText XUC-002, XUC-003 and Validation Feedback Mutators for XUC-001,
+ * XUC-002, XUC-003
+ *
  */
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -128,7 +128,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         *   UC-001 Process Abstract Title Report
         *   XUC-003 Create Property Record
          */
-        fXUC001 = new JFrame();      
+        fXUC001 = new JFrame();
         xuc001_dialogPane = new JPanel();
         xuc001_contentPanel = new JPanel();
         xuc004_SearchProperty = new JButton();
@@ -180,9 +180,8 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc001_CancelButton.setActionCommand(UserActions.CLOSE_ABSTRACT.name());
 
         //======== this ========
-
         fXUC001.setLayout(new BorderLayout());
-        
+
         //======== xuc001_dialogPane ========
         {
             xuc001_dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
@@ -796,27 +795,31 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc003_Name4 = new JTextField();
         xuc003_lblAddress = new JLabel();
         xuc003_Address = new JTextField();
+        xuc003_Address.setEditable(false);
         xuc003_lblCity = new JLabel();
         xuc003_City = new JTextField();
+        xuc003_City.setEditable(false);
         xuc003_lblState = new JLabel();
         xuc003_State = new JTextField();
+        xuc003_State.setEditable(false);
         xuc003_lblZipCode = new JLabel();
         xuc003_ZipCode = new JTextField();
+        xuc003_ZipCode.setEditable(false);
         xuc003_lblContactNumber = new JLabel();
         xuc003_ContactNumber = new JTextField();
         xuc003_AddDocument = new JButton();
         xuc003_AddDocument.setName("Mineral");
         xuc003_AddDocument.setActionCommand(UserActions.OPEN_DOCUMENT.name());
         xuc003_DocumentPane = new JPanel();
-        xuc003_buttonBar = new JPanel();
+        xuc003_ButtonBar = new JPanel();
         xuc003_cbxActiveStatus = new JCheckBox();
         xuc003_InsertButton = new JButton();
         xuc003_InsertButton.setActionCommand(UserActions.INSERT_MINERALOWNER.name());
         xuc003_CancelButton = new JButton();
         xuc003_CancelButton.setActionCommand(UserActions.CLOSE_MINERALOWNER.name());
+        xuc003_cbxLastKnownAddress = new JCheckBox();
 
         //======== this ========
-        pdXUC003.setBorder(new EmptyBorder(12, 12, 12, 12));
         pdXUC003.setLayout(new BorderLayout());
 
         //======== xuc003_dialogPane ========
@@ -828,176 +831,202 @@ public class UC001View extends JFrame implements java.util.Observer {
             {
                 xuc003_contentPanel.setFont(xuc003_contentPanel.getFont().deriveFont(xuc003_contentPanel.getFont().getSize() + 1f));
                 xuc003_contentPanel.setLayout(new GridBagLayout());
-                ((GridBagLayout) xuc003_contentPanel.getLayout()).columnWidths = new int[]{70, 70, 140, 140, 0};
-                ((GridBagLayout) xuc003_contentPanel.getLayout()).rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-                ((GridBagLayout) xuc003_contentPanel.getLayout()).columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0E-4};
-                ((GridBagLayout) xuc003_contentPanel.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout) xuc003_contentPanel.getLayout()).columnWidths = new int[]{140, 140, 135, 0};
+                ((GridBagLayout) xuc003_contentPanel.getLayout()).rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                ((GridBagLayout) xuc003_contentPanel.getLayout()).columnWeights = new double[]{0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout) xuc003_contentPanel.getLayout()).rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
                 //---- xuc003_NameQuery ----
                 xuc003_NameQuery.setAutoscrolls(false);
                 xuc003_NameQuery.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_NameQuery, new GridBagConstraints(0, 0, 4, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_NameQuery, new GridBagConstraints(0, 0, 3, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- xuc003_SearchName ----
-                xuc003_SearchName.setText("Search Database");
-                xuc003_SearchName.setActionCommand("SEARCHNAME");
+                xuc003_SearchName.setText("Name Verification");
                 xuc003_SearchName.setMargin(new Insets(2, 15, 2, 15));
                 xuc003_SearchName.setFont(xuc003_SearchName.getFont().deriveFont(xuc003_SearchName.getFont().getStyle() & ~Font.BOLD, xuc003_SearchName.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_SearchName, new GridBagConstraints(0, 1, 4, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_SearchName, new GridBagConstraints(0, 1, 3, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 25, 0), 0, 0));
+                        new Insets(0, 0, 20, 0), 0, 0));
 
                 //---- xuc003_lblStatus ----
                 xuc003_lblStatus.setText("Status");
-                xuc003_lblStatus.setFont(xuc003_lblStatus.getFont().deriveFont(xuc003_lblStatus.getFont().getSize() + 2f));
-                xuc003_contentPanel.add(xuc003_lblStatus, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0,
+                xuc003_lblStatus.setFont(xuc003_lblStatus.getFont().deriveFont(xuc003_lblStatus.getFont().getSize() + 1f));
+                xuc003_contentPanel.add(xuc003_lblStatus, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
-                xuc003_contentPanel.add(xuc003_cboStatus, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0,
+
+                //---- xuc003_cboStatus ----
+                xuc003_cboStatus.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                xuc003_contentPanel.add(xuc003_cboStatus, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_lblInterest ----
-                xuc003_lblInterest.setText("Net Interest");
-                xuc003_lblInterest.setFont(xuc003_lblInterest.getFont().deriveFont(xuc003_lblInterest.getFont().getSize() + 2f));
-                xuc003_contentPanel.add(xuc003_lblInterest, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0,
+                xuc003_lblInterest.setText("Net Interesst");
+                xuc003_lblInterest.setFont(xuc003_lblInterest.getFont().deriveFont(xuc003_lblInterest.getFont().getSize() + 1f));
+                xuc003_contentPanel.add(xuc003_lblInterest, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_Interest ----
-                xuc003_Interest.setFont(xuc003_Interest.getFont().deriveFont(xuc003_Interest.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_Interest, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0,
+                xuc003_Interest.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                xuc003_contentPanel.add(xuc003_Interest, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
-                //---- xuc003_AttachBurden ----
-                xuc003_AttachBurden.setText("Add Burden");
-                xuc003_contentPanel.add(xuc003_AttachBurden, new GridBagConstraints(3, 3, 1, 1, 0.0, 0.0,
+                //---- _AddLeaseBurden ----
+                xuc003_AttachBurden.setText("Attach Burden");
+                xuc003_contentPanel.add(xuc003_AttachBurden, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- xuc003_lblName1 ----
                 xuc003_lblName1.setText("Name #1");
                 xuc003_lblName1.setFont(xuc003_lblName1.getFont().deriveFont(xuc003_lblName1.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_lblName1, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblName1, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_Name1 ----
                 xuc003_Name1.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_Name1, new GridBagConstraints(2, 4, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_Name1, new GridBagConstraints(1, 4, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- xuc003_lblName2 ----
                 xuc003_lblName2.setText("Name #2");
                 xuc003_lblName2.setFont(xuc003_lblName2.getFont().deriveFont(xuc003_lblName2.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_lblName2, new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblName2, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_Name2 ----
                 xuc003_Name2.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_Name2, new GridBagConstraints(2, 5, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_Name2, new GridBagConstraints(1, 5, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- xuc003_lblName3 ----
                 xuc003_lblName3.setText("Name #3");
                 xuc003_lblName3.setFont(xuc003_lblName3.getFont().deriveFont(xuc003_lblName3.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_lblName3, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblName3, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_Name3 ----
                 xuc003_Name3.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_Name3, new GridBagConstraints(2, 6, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_Name3, new GridBagConstraints(1, 6, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- xuc003_lblName4 ----
                 xuc003_lblName4.setText("Name #4");
                 xuc003_lblName4.setFont(xuc003_lblName4.getFont().deriveFont(xuc003_lblName4.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_lblName4, new GridBagConstraints(0, 7, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblName4, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_Name4 ----
                 xuc003_Name4.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_Name4, new GridBagConstraints(2, 7, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_Name4, new GridBagConstraints(1, 7, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                //---- xuc003_cbxLastKnownAddress ----
+                xuc003_cbxLastKnownAddress.setText("Last Known Address?");
+                xuc003_cbxLastKnownAddress.setFont(xuc003_cbxLastKnownAddress.getFont().deriveFont(xuc003_cbxLastKnownAddress.getFont().getSize() + 2f));
+                xuc003_cbxLastKnownAddress.addChangeListener((ChangeEvent e) -> {
+                    if (xuc003_cbxLastKnownAddress.isSelected()) {
+                        this.xuc003_Address.setEditable(true);
+                        this.xuc003_City.setEditable(true);
+                        this.xuc003_State.setEditable(true);
+                        this.xuc003_ZipCode.setEditable(true);
+                    } else {
+                        this.xuc003_Address.setEditable(false);
+                        this.setXuc003_Address(null);
+                        this.xuc003_City.setEditable(false);
+                        this.setXuc003_City(null);
+                        this.xuc003_State.setEditable(false);
+                        this.setXuc003_State(null);
+                        this.xuc003_ZipCode.setEditable(false);
+                        this.setXuc003_ZipCode(null);
+                    }
+                });
+                xuc003_contentPanel.add(xuc003_cbxLastKnownAddress, new GridBagConstraints(0, 8, 3, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- xuc003_lblAddress ----
                 xuc003_lblAddress.setText("Address");
                 xuc003_lblAddress.setFont(xuc003_lblAddress.getFont().deriveFont(xuc003_lblAddress.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_lblAddress, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblAddress, new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_Address ----
                 xuc003_Address.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_Address, new GridBagConstraints(2, 8, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_Address, new GridBagConstraints(1, 9, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- xuc003_lblCity ----
                 xuc003_lblCity.setText("City");
                 xuc003_lblCity.setFont(xuc003_lblCity.getFont().deriveFont(xuc003_lblCity.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_lblCity, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblCity, new GridBagConstraints(0, 10, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_City ----
                 xuc003_City.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_City, new GridBagConstraints(2, 9, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_City, new GridBagConstraints(1, 10, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- xuc003_lblState ----
                 xuc003_lblState.setText("State");
                 xuc003_lblState.setFont(xuc003_lblState.getFont().deriveFont(xuc003_lblState.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_lblState, new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblState, new GridBagConstraints(0, 11, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_State ----
                 xuc003_State.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_State, new GridBagConstraints(2, 10, 1, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_State, new GridBagConstraints(1, 11, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_lblZipCode ----
                 xuc003_lblZipCode.setText("Zip Code");
                 xuc003_lblZipCode.setFont(xuc003_lblZipCode.getFont().deriveFont(xuc003_lblZipCode.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_lblZipCode, new GridBagConstraints(0, 11, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblZipCode, new GridBagConstraints(0, 12, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_ZipCode ----
                 xuc003_ZipCode.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_ZipCode, new GridBagConstraints(2, 11, 1, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_ZipCode, new GridBagConstraints(1, 12, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_lblContactNumber ----
                 xuc003_lblContactNumber.setText("Contact Number");
                 xuc003_lblContactNumber.setFont(xuc003_lblContactNumber.getFont().deriveFont(xuc003_lblContactNumber.getFont().getSize() + 1f));
-                xuc003_contentPanel.add(xuc003_lblContactNumber, new GridBagConstraints(0, 12, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblContactNumber, new GridBagConstraints(0, 13, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
                 //---- xuc003_ContactNumber ----
                 xuc003_ContactNumber.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc003_contentPanel.add(xuc003_ContactNumber, new GridBagConstraints(2, 12, 2, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_ContactNumber, new GridBagConstraints(1, 13, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
                 //---- xuc003_AddDocument ----
-                xuc003_AddDocument.setText("Add Document");
-                xuc003_contentPanel.add(xuc003_AddDocument, new GridBagConstraints(0, 13, 2, 1, 0.0, 0.0,
+                xuc003_AddDocument.setText("Add Recorded Document");
+                xuc003_contentPanel.add(xuc003_AddDocument, new GridBagConstraints(0, 14, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 5), 0, 0));
 
@@ -1008,40 +1037,40 @@ public class UC001View extends JFrame implements java.util.Observer {
                     xuc003_DocumentPane.setPreferredSize(new Dimension(4, 67));
                     xuc003_DocumentPane.setLayout(new GridLayout());
                 }
-                xuc003_contentPanel.add(xuc003_DocumentPane, new GridBagConstraints(0, 14, 4, 1, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_DocumentPane, new GridBagConstraints(0, 15, 3, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));
             }
             xuc003_dialogPane.add(xuc003_contentPanel, BorderLayout.CENTER);
 
-            //======== xuc003_buttonBar ========
+            //======== xuc003_ButtonBar ========
             {
-                xuc003_buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
-                xuc003_buttonBar.setLayout(new GridBagLayout());
-                ((GridBagLayout) xuc003_buttonBar.getLayout()).columnWidths = new int[]{0, 85, 80};
-                ((GridBagLayout) xuc003_buttonBar.getLayout()).columnWeights = new double[]{1.0, 0.0, 0.0};
+                xuc003_ButtonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
+                xuc003_ButtonBar.setLayout(new GridBagLayout());
+                ((GridBagLayout) xuc003_ButtonBar.getLayout()).columnWidths = new int[]{0, 85, 80};
+                ((GridBagLayout) xuc003_ButtonBar.getLayout()).columnWeights = new double[]{1.0, 0.0, 0.0};
 
                 //---- xuc003_cbxActiveStatus ----
                 xuc003_cbxActiveStatus.setText("Active?");
                 xuc003_cbxActiveStatus.setFont(xuc003_cbxActiveStatus.getFont().deriveFont(xuc003_cbxActiveStatus.getFont().getSize() + 2f));
                 xuc003_cbxActiveStatus.setSelected(true);
-                xuc003_buttonBar.add(xuc003_cbxActiveStatus, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                xuc003_ButtonBar.add(xuc003_cbxActiveStatus, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 5), 0, 0));
 
                 //---- xuc003_InsertButton ----
                 xuc003_InsertButton.setText("INSERT");
-                xuc003_buttonBar.add(xuc003_InsertButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                xuc003_ButtonBar.add(xuc003_InsertButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 5), 0, 0));
 
                 //---- xuc003_CancelButton ----
-                xuc003_CancelButton.setText("Cancel");
-                xuc003_buttonBar.add(xuc003_CancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                xuc003_CancelButton.setText("CANCEL");
+                xuc003_ButtonBar.add(xuc003_CancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));
             }
-            xuc003_dialogPane.add(xuc003_buttonBar, BorderLayout.SOUTH);
+            xuc003_dialogPane.add(xuc003_ButtonBar, BorderLayout.SOUTH);
         }
 
         pdXUC003.add(xuc003_dialogPane, BorderLayout.CENTER);
@@ -1060,7 +1089,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         // INSERT new dialog UI above here.
         bXUC003.add(pbXUC003);
         bXUC003.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        bXUC003.setSize(490, 600);
+        bXUC003.setSize(490, 648);
         bXUC003.setLocationRelativeTo(getOwner());
 
         /*
@@ -1317,7 +1346,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         "Ute",
         "Washington (Mississippi)",
         "Willamette",
-        "Wind River"    
+        "Wind River"
     };
 
     // START XUC-002 Form Elements
@@ -1385,10 +1414,11 @@ public class UC001View extends JFrame implements java.util.Observer {
     private JTextField xuc003_ContactNumber;
     private JButton xuc003_AddDocument;
     private JPanel xuc003_DocumentPane;
-    private JPanel xuc003_buttonBar;
+    private JPanel xuc003_ButtonBar;
     private JCheckBox xuc003_cbxActiveStatus;
     private JButton xuc003_InsertButton;
     private JButton xuc003_CancelButton;
+    private JCheckBox xuc003_cbxLastKnownAddress;
 
     // START XUC-003 Add Burden Form Elements
     // START UC-001 Add Document Form Elements
@@ -1660,8 +1690,8 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
 
     public void setXuc001_Meridian(String xuc001_Meridian) {
-        for (int index = 0; index < MeridianList.length; index++){
-            if(this.MeridianList[index].equals(xuc001_Meridian)){
+        for (int index = 0; index < MeridianList.length; index++) {
+            if (this.MeridianList[index].equals(xuc001_Meridian)) {
                 this.xuc001_cboMeridian.setSelectedIndex(index);
             }
         }
@@ -1702,13 +1732,13 @@ public class UC001View extends JFrame implements java.util.Observer {
     public boolean getXuc001_cbxBounders() {
         return xuc001_cbxBounders.isSelected();
     }
-        //Getters and Setters for JText XUC-002 Form Elements created by Jeff Reifler
-    
+    //Getters and Setters for JText XUC-002 Form Elements created by Jeff Reifler
+
     public String getXuc002_NameQuery() {
         return xuc002_NameQuery.getText();
     }
 
-    public void setXuc002_NameQuery(String NameQuery){
+    public void setXuc002_NameQuery(String NameQuery) {
         this.xuc002_NameQuery.setText(NameQuery);
     }
 
@@ -1716,7 +1746,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         return xuc002_Name1.getText();
     }
 
-    public void setXuc002_Name1(String Name1){
+    public void setXuc002_Name1(String Name1) {
         this.xuc002_Name1.setText(Name1);
     }
 
@@ -1724,76 +1754,75 @@ public class UC001View extends JFrame implements java.util.Observer {
         return xuc002_Name2.getText();
     }
 
-    public void setXuc002_Name2(String Name2){
+    public void setXuc002_Name2(String Name2) {
         this.xuc002_Name2.setText(Name2);
     }
-    
+
     public String getXuc002_Name3() {
         return xuc002_Name3.getText();
     }
 
-    public void setXuc002_Name3(String Name3){
+    public void setXuc002_Name3(String Name3) {
         this.xuc002_Name3.setText(Name3);
     }
-    
+
     public String getXuc002_Name4() {
         return xuc002_Name4.getText();
     }
 
-    public void setXuc002_Name4(String Name4){
+    public void setXuc002_Name4(String Name4) {
         this.xuc002_Name4.setText(Name4);
     }
-    
+
     public String getXuc002_Address() {
         return xuc002_Address.getText();
     }
 
-    public void setXuc002_Address(String Address){
+    public void setXuc002_Address(String Address) {
         this.xuc002_Address.setText(Address);
     }
-    
+
     public String getXuc002_City() {
         return xuc002_City.getText();
     }
 
-    public void setXuc002_City(String City){
+    public void setXuc002_City(String City) {
         this.xuc002_City.setText(City);
     }
-    
+
     public String getXuc002_State() {
         return xuc002_State.getText();
     }
 
-    public void setXuc002_State(String State){
+    public void setXuc002_State(String State) {
         this.xuc002_State.setText(State);
-    }   
-    
+    }
+
     public String getXuc002_ZipCode() {
         return xuc002_ZipCode.getText();
     }
 
-    public void setXuc002_ZipCode(String ZipCode){
+    public void setXuc002_ZipCode(String ZipCode) {
         this.xuc002_ZipCode.setText(ZipCode);
-    }      
-    
+    }
+
     public String getXuc002_ContactNumber() {
         return xuc002_ContactNumber.getText();
     }
 
-    public void setXuc002_ContactNumber(String ContactNumber){
+    public void setXuc002_ContactNumber(String ContactNumber) {
         this.xuc002_ContactNumber.setText(ContactNumber);
-    }      
-        
+    }
+
     //Getters and Setters for JText XUC-003 Form Elements created by Jeff Reifler
-    
     public String getXuc003_NameQuery() {
         return xuc003_NameQuery.getText();
     }
 
-    public void setXuc003_NameQuery(String NameQuery){
+    public void setXuc003_NameQuery(String NameQuery) {
         this.xuc003_NameQuery.setText(NameQuery);
-    }     
-    
+    }
+
     public String getXuc003_Interest() {
         return xuc003_Interest.getText();
     }
@@ -1801,86 +1830,84 @@ public class UC001View extends JFrame implements java.util.Observer {
     public String getXuc003_InterestStatus() {
         return this.xuc003_cboStatus.getSelectedItem().toString();
     }
-    
-    public void setXuc003_Interest(String Interest){
+
+    public void setXuc003_Interest(String Interest) {
         this.xuc003_Interest.setText(Interest);
-    } 
+    }
 
     public String getXuc003_Name1() {
         return xuc003_Name1.getText();
     }
 
-    public void setXuc003_Name1(String Name1){
+    public void setXuc003_Name1(String Name1) {
         this.xuc003_Name1.setText(Name1);
-    } 
+    }
 
     public String getXuc003_Name2() {
         return xuc003_Name2.getText();
     }
 
-    public void setXuc003_Name2(String Name2){
+    public void setXuc003_Name2(String Name2) {
         this.xuc003_Name2.setText(Name2);
-    } 
+    }
 
     public String getXuc003_Name3() {
         return xuc003_Name3.getText();
     }
 
-    public void setXuc003_Name3(String Name3){
+    public void setXuc003_Name3(String Name3) {
         this.xuc003_Name3.setText(Name3);
-    } 
+    }
 
     public String getXuc003_Name4() {
         return xuc003_Name4.getText();
     }
 
-    public void setXuc003_Name4(String Name4){
+    public void setXuc003_Name4(String Name4) {
         this.xuc003_Name4.setText(Name4);
-    } 
+    }
 
     public String getXuc003_Address() {
         return xuc003_Address.getText();
     }
 
-    public void setXuc003_Address(String Address){
+    public void setXuc003_Address(String Address) {
         this.xuc003_Address.setText(Address);
-    } 
+    }
 
     public String getXuc003_City() {
         return xuc003_City.getText();
     }
 
-    public void setXuc003_City(String City){
+    public void setXuc003_City(String City) {
         this.xuc003_City.setText(City);
-    } 
+    }
 
     public String getXuc003_State() {
         return xuc003_State.getText();
     }
 
-    public void setXuc003_State(String State){
+    public void setXuc003_State(String State) {
         this.xuc003_State.setText(State);
-    }  
-    
+    }
+
     public String getXuc003_ZipCode() {
         return xuc003_ZipCode.getText();
     }
 
-    public void setXuc003_ZipCode(String ZipCode){
+    public void setXuc003_ZipCode(String ZipCode) {
         this.xuc003_ZipCode.setText(ZipCode);
-    } 
+    }
 
     public String getXuc003_ContactNumber() {
         return xuc003_ContactNumber.getText();
     }
 
-    public void setXuc003_ContactNumber(String ContactNumber){
+    public void setXuc003_ContactNumber(String ContactNumber) {
         this.xuc003_ContactNumber.setText(ContactNumber);
-    } 
+    }
 
     // START XUC-001 Validation Feedback Mutators by Jeff Reifler
-    
-    
     public void setXuc001_lblParcelID(boolean feedback) {
         if (feedback) {
             this.xuc001_lblParcelID.setForeground(Color.RED);
@@ -2001,14 +2028,14 @@ public class UC001View extends JFrame implements java.util.Observer {
         }
     }
 
-        public void setXuc002_lblSurfaceOwnership(boolean feedback) {
+    public void setXuc002_lblSurfaceOwnership(boolean feedback) {
         if (feedback) {
             this.xuc002_lblSurfaceOwnership.setForeground(Color.RED);
         } else {
             this.xuc002_lblSurfaceOwnership.setForeground(Color.black);
         }
     }
-        
+
     public void setXuc003_lblMineralOwnership(boolean feedback) {
         if (feedback) {
             this.xuc003_lblMineralOwnership.setForeground(Color.RED);
@@ -2016,9 +2043,8 @@ public class UC001View extends JFrame implements java.util.Observer {
             this.xuc003_lblMineralOwnership.setForeground(Color.black);
         }
     }
-        
+
     // START XUC-002 Validation Feedback Mutators by Jeff Reifler
-        
     public void setXuc002_lblName1(boolean feedback) {
         if (feedback) {
             this.xuc002_lblName1.setForeground(Color.RED);
@@ -2090,9 +2116,8 @@ public class UC001View extends JFrame implements java.util.Observer {
             this.xuc002_lblContactNumber.setForeground(Color.black);
         }
     }
-       
-        // START XUC-003 Validation Feedback Mutators by Jeff Reifler
-        
+
+    // START XUC-003 Validation Feedback Mutators by Jeff Reifler
     public void setXuc003_lblStatus(boolean feedback) {
         if (feedback) {
             this.xuc003_lblStatus.setForeground(Color.RED);
@@ -2132,54 +2157,55 @@ public class UC001View extends JFrame implements java.util.Observer {
             this.xuc003_lblName3.setForeground(Color.black);
         }
     }
-        
-        public void setXuc003_lblName4(boolean feedback) {
+
+    public void setXuc003_lblName4(boolean feedback) {
         if (feedback) {
             this.xuc003_lblName4.setForeground(Color.RED);
         } else {
             this.xuc003_lblName4.setForeground(Color.black);
         }
-    } 
-        
-        public void setXuc003_lblAddress(boolean feedback) {
+    }
+
+    public void setXuc003_lblAddress(boolean feedback) {
         if (feedback) {
             this.xuc003_lblAddress.setForeground(Color.RED);
         } else {
             this.xuc003_lblAddress.setForeground(Color.black);
         }
     }
-        
-        public void setXuc003_lblCity(boolean feedback) {
+
+    public void setXuc003_lblCity(boolean feedback) {
         if (feedback) {
             this.xuc003_lblCity.setForeground(Color.RED);
         } else {
             this.xuc003_lblCity.setForeground(Color.black);
         }
     }
-        
-        public void setXuc003_lblState(boolean feedback) {
+
+    public void setXuc003_lblState(boolean feedback) {
         if (feedback) {
             this.xuc003_lblState.setForeground(Color.RED);
         } else {
             this.xuc003_lblState.setForeground(Color.black);
         }
     }
-        
-        public void setXuc003_lblZipCode(boolean feedback) {
+
+    public void setXuc003_lblZipCode(boolean feedback) {
         if (feedback) {
             this.xuc003_lblZipCode.setForeground(Color.RED);
         } else {
             this.xuc003_lblZipCode.setForeground(Color.black);
         }
     }
-        
-        public void setXuc003_lblContactNumber(boolean feedback) {
+
+    public void setXuc003_lblContactNumber(boolean feedback) {
         if (feedback) {
             this.xuc003_lblContactNumber.setForeground(Color.RED);
         } else {
             this.xuc003_lblContactNumber.setForeground(Color.black);
         }
-    } 
+    }
+
     public String getDocumentCaller() {
         return documentCaller;
     }
@@ -2213,8 +2239,8 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
 
     public void setUc001_cboDocumentType(String uc001_cboDocumentType) {
-           for (int index = 0; index < DeedList.length; index++){
-            if(this.DeedList[index].equals(uc001_cboDocumentType)){
+        for (int index = 0; index < DeedList.length; index++) {
+            if (this.DeedList[index].equals(uc001_cboDocumentType)) {
                 this.uc001_cboDocumentType.setSelectedIndex(index);
             }
         }
@@ -2241,42 +2267,42 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
 
     public void setUc001_lblEffectiveDate(boolean feedback) {
-        if(feedback){
+        if (feedback) {
             this.uc001_lblEffectiveDate.setForeground(Color.RED);
         } else {
-        this.uc001_lblEffectiveDate.setForeground(Color.black);
+            this.uc001_lblEffectiveDate.setForeground(Color.black);
         }
     }
 
     public void setUc001_lblRecordedDate(boolean feedback) {
-      if(feedback){
+        if (feedback) {
             this.uc001_lblRecordedDate.setForeground(Color.RED);
         } else {
-        this.uc001_lblRecordedDate.setForeground(Color.black);
+            this.uc001_lblRecordedDate.setForeground(Color.black);
         }
     }
 
     public void setUc001_lblDocumentID(boolean feedback) {
-      if(feedback){
+        if (feedback) {
             this.uc001_lblDocumentID.setForeground(Color.RED);
         } else {
-        this.uc001_lblDocumentID.setForeground(Color.black);
+            this.uc001_lblDocumentID.setForeground(Color.black);
         }
     }
 
     public void setUc001_lblBook(boolean feedback) {
-      if(feedback){
+        if (feedback) {
             this.uc001_lblBook.setForeground(Color.RED);
         } else {
-        this.uc001_lblBook.setForeground(Color.black);
+            this.uc001_lblBook.setForeground(Color.black);
         }
     }
 
     public void setUc001_lblPage(boolean feedback) {
-      if(feedback){
+        if (feedback) {
             this.uc001_lblPage.setForeground(Color.RED);
         } else {
-        this.uc001_lblPage.setForeground(Color.black);
+            this.uc001_lblPage.setForeground(Color.black);
         }
     }
 
