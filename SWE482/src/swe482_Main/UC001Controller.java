@@ -162,6 +162,14 @@ public class UC001Controller implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.UPDATE_SURFACEOWNER.name())){
             
         }
+        
+        if (e.getActionCommand().equals(UserActions.REMOVE_SURFACEOWNER.name())){
+            JButton source = (JButton) e.getSource();
+            int index = Integer.parseInt(source.getName());
+            System.out.println("Removing JPanel: " + index);
+            view.removeSurfaceOwner(index);
+            model.removeXUC002SurfaceOwner(index);
+        }
 
         if (e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())) {
             System.out.println(validateMineralOwnerForm());
@@ -195,7 +203,6 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 } catch (NumberFormatException nf4) {
                     System.out.println(nf4.toString());
                 }
-//            }
             }
         }
 
@@ -205,6 +212,14 @@ public class UC001Controller implements java.awt.event.ActionListener {
             XUC003MineralOwner editMineral = model.getXUC003MineralOwner(index);
             this.clearMineralOwnerForm();
             this.importMineralOwner(editMineral, source.getName());
+        }
+        
+        if (e.getActionCommand().equals(UserActions.REMOVE_MINERALOWNER.name())){
+            JButton source = (JButton) e.getSource();
+            int index = Integer.parseInt(source.getName());
+            System.out.println("Removing JPanel: " + index);
+            view.removeMineralOwner(index);
+            model.removeXUC003MineralOwner(index);
         }
     }
 

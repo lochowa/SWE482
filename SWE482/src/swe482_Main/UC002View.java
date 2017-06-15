@@ -1566,7 +1566,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         field.setText(description);
     }
     
-    public void removeXuc007Pane_LeasedProperty(int gridY) {
+    public void removeXuc007_LeasedPropertyPane(int gridY) {
         Component[] componentList = xuc007Pane_LeasedProperty.getComponents();
         for(Component c : componentList){
             if (c.getComponentAt(0, gridY).getName().equals(Integer.toString(gridY))){

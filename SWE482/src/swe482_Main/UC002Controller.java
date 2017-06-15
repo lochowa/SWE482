@@ -183,7 +183,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
             System.out.println("Removing JPanel: " + index);
-            view.removeXuc007Pane_LeasedProperty(index);
+            view.removeXuc007_LeasedPropertyPane(index);
             model.removeXuc007_LeasedProperty(index);
         }
     }
