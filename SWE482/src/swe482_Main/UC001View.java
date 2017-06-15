@@ -7,9 +7,9 @@ package swe482_Main;
  * @author Andrew Lochow Lines 1369 to 1502
  *
  *
- * @author Jeff Riefler
- *
- *
+ * @author Jeff Reifler Added lines 1704 to 2177
+ * created getters and setters for JText XUC-002, XUC-003 and 
+ * Validation Feedback Mutators for XUC-001, XUC-002, XUC-003 
  */
 import java.awt.*;
 import java.awt.event.ActionListener;
