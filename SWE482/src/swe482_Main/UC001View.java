@@ -28,7 +28,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         - XUC-001 (Extends) Create Land Record
         - XUC-002 (Extends) Create Surface Owner Record
         - XUC-003 (Extends) Create Mineral Owner Record
-        - XUC-004 (Extends) Checksum Mineral Interest
+        - XUC-004 (Extends) Checksum Mineral netInterest
      */
     @Override
     public void update(Observable obs, Object obj) {
@@ -1535,14 +1535,14 @@ public class UC001View extends JFrame implements java.util.Observer {
         return this.xuc002_RemoveSurfaceOwner;
     }
 
-    public void addMineralOwner(String owner, int gridY) {
-        xuc003_MineralOwnerPane.add(addSurfaceOwnerPane(owner, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
+    public void addMineralOwner(String owner, String status, String interest, int gridY) {
+        xuc003_MineralOwnerPane.add(addMineralOwnerPane(owner, status, interest, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
         xuc003_MineralOwnerPane.revalidate();
     }
 
-    public void updateMineralOwner(String owner, int gridY) {
+    public void updateMineralOwner(String owner, String status, String interest, int gridY) {
         JPanel test = (JPanel) xuc003_MineralOwnerPane.getComponent(gridY);
         JTextField field = (JTextField) test.getComponent(0);
         field.setText(owner);
@@ -1559,11 +1559,11 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.xuc003_MineralOwnerPane.repaint();
     }
 
-    public JPanel addMineralOwnerPane(String owner, int index) {
+    public JPanel addMineralOwnerPane(String owner, String status, String interest, int index) {
 
         JPanel mineral = new JPanel();
-        JTextField _owner = new JTextField();
-        _owner.setName(Integer.toString(index));
+        JTextField Owner = new JTextField();
+        Owner.setName(Integer.toString(index));
         JButton edit = new JButton();
         edit.setText("Edit");
         edit.setActionCommand(UserActions.EDIT_SURFACEOWNER.name());
@@ -1572,31 +1572,51 @@ public class UC001View extends JFrame implements java.util.Observer {
         remove.setText("Remove");
         remove.setActionCommand(UserActions.REMOVE_SURFACEOWNER.name());
         remove.setName(Integer.toString(index));
-
+        JTextField intStatus = new JTextField();
+        intStatus.setText(status);
+        JTextField netInterest = new JTextField();
+        netInterest.setText(interest);
+        
         //======== this ========
-        mineral.setLayout(new GridBagLayout());
-        ((GridBagLayout) mineral.getLayout()).columnWidths = new int[]{440, 0, 0};
-        ((GridBagLayout) mineral.getLayout()).rowHeights = new int[]{0, 0};
-        ((GridBagLayout) mineral.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
-        ((GridBagLayout) mineral.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};
+        setLayout(new GridBagLayout());
+        ((GridBagLayout)getLayout()).columnWidths = new int[] {72, 109, 305, 0, 0, 0};
+        ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0};
+        ((GridBagLayout)getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+        ((GridBagLayout)getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
 
-        //---- _owner ----
-        _owner.setText(owner);
-        _owner.setFont(_owner.getFont().deriveFont(_owner.getFont().getSize() + 2f));
-        _owner.setEditable(false);
-        mineral.add(_owner, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0), 0, 0));
+        //---- intStatus ----
+        intStatus.setFont(intStatus.getFont().deriveFont(intStatus.getFont().getSize() + 1f));
+        intStatus.setAutoscrolls(false);
+        intStatus.setEditable(false);
+        add(intStatus, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 5), 0, 0));
 
-        // ---- _remove ----
-        mineral.add(remove, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0), 0, 0));
+        //---- netInterest ----
+        netInterest.setFont(netInterest.getFont().deriveFont(netInterest.getFont().getSize() + 1f));
+        netInterest.setAutoscrolls(false);
+        netInterest.setEditable(false);
+        add(netInterest, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 5), 0, 0));
 
-        //---- xuc007_EditProperty ----
-        mineral.add(edit, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0), 0, 0));
+        //---- Owner ----
+        Owner.setFont(Owner.getFont().deriveFont(Owner.getFont().getSize() + 1f));
+        Owner.setAutoscrolls(false);
+        Owner.setEditable(false);
+        add(Owner, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 5), 0, 0));
+
+        //---- button2 ----
+        add(remove, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 5), 0, 0));
+
+        //---- button1 ----
+        add(edit, new GridBagConstraints(4, 0, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 0, 0), 0, 0));
 
         this.xuc002_EditMineralOwner = edit;
         this.xuc002_RemoveMineralOwner = remove;

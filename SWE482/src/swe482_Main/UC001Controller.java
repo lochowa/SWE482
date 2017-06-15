@@ -168,7 +168,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                             model.getMModCount(),
                             Integer.parseInt(view.getXuc003_Interest()),
                             view.getXuc003_InterestStatus());
-                view.addMineralOwner(model.createMineralOwnerString(owner), model.getMModCount());
+                view.addMineralOwner(model.createMineralOwnerString(owner),owner.getXuc003_InterestStatus(),Double.toString(owner.getXuc003_Interest()), model.getMModCount());
                 view.addButtonController(this, view.getEditMineralOwnerButton());
                 view.addButtonController(this, view.getRemoveMineralOwnerButton());
                 model.addXUC003MineralOwner(owner);
