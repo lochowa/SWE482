@@ -2206,6 +2206,10 @@ public class UC001View extends JFrame implements java.util.Observer {
         }
     }
 
+    public boolean getXuc003_cbxLastKnownAddress(){
+        return this.xuc003_cbxLastKnownAddress.isSelected();
+    }
+    
     public String getDocumentCaller() {
         return documentCaller;
     }

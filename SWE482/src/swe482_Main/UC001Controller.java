@@ -326,27 +326,33 @@ public class UC001Controller implements java.awt.event.ActionListener {
             validFields++;
         }
 
-        if (view.getXuc002_Name2().isEmpty() || !view.getXuc002_Name2().matches(stringRegEx)) {
-            view.setXuc002_lblName2(true);
+        if (!view.getXuc002_Name2().isEmpty()) {
+            if (!view.getXuc002_Name2().matches(stringRegEx)) {
+                view.setXuc002_lblName2(true);
 
-        } else {
-            view.setXuc002_lblName2(false);
-            validFields++;
+            } else {
+                view.setXuc002_lblName2(false);
+                validFields++;
+            }
         }
-        if (view.getXuc002_Name3().isEmpty() || !view.getXuc002_Name3().matches(stringRegEx)) {
-            view.setXuc003_lblName2(true);
+        if (!view.getXuc002_Name3().isEmpty()) {
+            if (!view.getXuc002_Name3().matches(stringRegEx)) {
+                view.setXuc002_lblName3(true);
 
-        } else {
-            view.setXuc003_lblName2(false);
-            validFields++;
+            } else {
+                view.setXuc002_lblName3(false);
+                validFields++;
+            }
         }
+        if (!view.getXuc002_Name4().isEmpty()) {
+            if (!view.getXuc002_Name4().matches(stringRegEx)) {
 
-        if (view.getXuc002_Name4().isEmpty() || !view.getXuc002_Name4().matches(stringRegEx)) {
-            view.setXuc002_lblName4(true);
+                view.setXuc002_lblName4(true);
 
-        } else {
-            view.setXuc002_lblName4(false);
-            validFields++;
+            } else {
+                view.setXuc002_lblName4(false);
+                validFields++;
+            }
         }
         if (view.getXuc002_Address().isEmpty() || !view.getXuc002_Address().matches(streetAddressRegEx)) {
             view.setXuc002_lblAddress(true);
@@ -389,7 +395,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
     } // END validateSurfaceOwnerForm()
 
     public void validateMineralOwnerForm() {
-       int validFields = 0;
+        int validFields = 0;
 
         if (view.getXuc003_Name1().isEmpty() || !view.getXuc003_Name1().matches(stringRegEx)) {
             view.setXuc003_lblName1(true);
@@ -399,56 +405,73 @@ public class UC001Controller implements java.awt.event.ActionListener {
             validFields++;
         }
 
-        if (view.getXuc003_Name2().isEmpty() || !view.getXuc003_Name2().matches(stringRegEx)) {
-            view.setXuc003_lblName2(true);
+        if (!view.getXuc003_Name2().isEmpty()) {
+            if (!view.getXuc003_Name2().matches(stringRegEx)) {
+                view.setXuc003_lblName2(true);
 
-        } else {
-            view.setXuc003_lblName2(false);
-            validFields++;
+            } else {
+                view.setXuc003_lblName2(false);
+                validFields++;
+            }
         }
-        if (view.getXuc003_Name3().isEmpty() || !view.getXuc003_Name3().matches(stringRegEx)) {
-            view.setXuc003_lblName2(true);
+        if (!view.getXuc003_Name3().isEmpty()) {
+            if (!view.getXuc003_Name3().matches(stringRegEx)) {
+                view.setXuc003_lblName2(true);
 
-        } else {
-            view.setXuc003_lblName2(false);
-            validFields++;
+            } else {
+                view.setXuc003_lblName2(false);
+                validFields++;
+            }
+        }
+        if (!view.getXuc002_Name4().isEmpty()) {
+            if (!view.getXuc003_Name4().matches(stringRegEx)) {
+
+                view.setXuc003_lblName4(true);
+
+            } else {
+                view.setXuc003_lblName4(false);
+                validFields++;
+            }
         }
 
-        if (view.getXuc003_Name4().isEmpty() || !view.getXuc003_Name4().matches(stringRegEx)) {
-            view.setXuc003_lblName4(true);
+        if (view.getXuc003_cbxLastKnownAddress()) {
+            if (!view.getXuc003_Address().isEmpty()) {
+                if (!view.getXuc003_Address().matches(streetAddressRegEx)) {
+                    view.setXuc003_lblAddress(true);
 
-        } else {
-            view.setXuc003_lblName4(false);
-            validFields++;
-        }
-        if (view.getXuc003_Address().isEmpty() || !view.getXuc003_Address().matches(streetAddressRegEx)) {
-            view.setXuc003_lblAddress(true);
+                } else {
+                    view.setXuc003_lblAddress(false);
+                    validFields++;
+                }
+            }
+            if (!view.getXuc003_City().isEmpty()) {
+                if (!view.getXuc003_City().matches(stringRegEx)) {
+                    view.setXuc003_lblCity(true);
 
-        } else {
-            view.setXuc003_lblAddress(false);
-            validFields++;
-        }
+                } else {
+                    view.setXuc003_lblCity(false);
+                    validFields++;
+                }
+            }
+            if (!view.getXuc003_State().isEmpty()) {
+                if (!view.getXuc003_State().matches(stateAbbreviationRegEx)) {
+                    view.setXuc003_lblState(true);
 
-        if (view.getXuc003_City().isEmpty() || !view.getXuc003_City().matches(stringRegEx)) {
-            view.setXuc003_lblCity(true);
+                } else {
+                    view.setXuc003_lblState(false);
+                    validFields++;
+                }
+            }
+            if (!view.getXuc003_ZipCode().isEmpty()) {
+                if (!view.getXuc003_ZipCode().matches(zipCodeRegEx)) {
 
-        } else {
-            view.setXuc003_lblCity(false);
-            validFields++;
-        }
-        if (view.getXuc003_State().isEmpty() || !view.getXuc003_State().matches(stateAbbreviationRegEx)) {
-            view.setXuc003_lblState(true);
+                    view.setXuc002_lblZipCode(true);
 
-        } else {
-            view.setXuc003_lblState(false);
-            validFields++;
-        }
-        if (view.getXuc003_ZipCode().isEmpty() || !view.getXuc003_ZipCode().matches(zipCodeRegEx)) {
-            view.setXuc002_lblZipCode(true);
-
-        } else {
-            view.setXuc003_lblZipCode(false);
-            validFields++;
+                } else {
+                    view.setXuc003_lblZipCode(false);
+                    validFields++;
+                }
+            }
         }
         if (!view.getXuc003_ContactNumber().isEmpty()) {
             if (!view.getXuc003_ContactNumber().matches(stringRegEx)) {
