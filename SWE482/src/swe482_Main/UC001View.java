@@ -148,6 +148,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc001_State = new JTextField();
         xuc001_lblMeridian = new JLabel();
         xuc001_Meridian = new JTextField();
+        xuc001_cboMeridian = new JComboBox(MeridianList);
         xuc001_lblAcreage = new JLabel();
         xuc001_Acreage = new JTextField();
         xuc001_lblLegalDescription = new JLabel();
@@ -300,7 +301,8 @@ public class UC001View extends JFrame implements java.util.Observer {
                         new Insets(0, 5, 10, 5), 0, 0));
 
                 //---- xuc001_Meridian ----
-                xuc001_Meridian.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+//                xuc001_Meridian.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                xuc001_cboMeridian.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                 xuc001_contentPanel.add(xuc001_Meridian, new GridBagConstraints(4, 4, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
@@ -1250,6 +1252,7 @@ public class UC001View extends JFrame implements java.util.Observer {
     private JTextField xuc001_State;
     private JLabel xuc001_lblMeridian;
     private JTextField xuc001_Meridian;
+    private JComboBox xuc001_cboMeridian;
     private JLabel xuc001_lblAcreage;
     private JTextField xuc001_Acreage;
     private JLabel xuc001_lblLegalDescription;
@@ -1274,6 +1277,43 @@ public class UC001View extends JFrame implements java.util.Observer {
     private JPanel xuc001_buttonBar;
     private JButton xuc001_SaveProperty;
     private JButton xuc001_CancelButton;
+    private final String[] MeridianList = {
+        "1st P.M.",
+        "2nd P.M.",
+        "3rd P.M.",
+        "4th P.M.",
+        "5th P.M.",
+        "6th P.M.",
+        "Black Hills",
+        "Boise",
+        "Chicksaw",
+        "Cimarron",
+        "Copper River",
+        "Fairbanks",
+        "Gila and Salt River",
+        "Humboldt",
+        "Huntsville",
+        "Indian",
+        "Kateel River",
+        "Louisiana",
+        "Michigan",
+        "Montana",
+        "Mount Diablo",
+        "Navajo",
+        "New Mexico Principal",
+        "St. Helena",
+        "St. Stephens",
+        "Salt Lake",
+        "San Bernardino",
+        "Seward",
+        "Tallahassee",
+        "Uintah",
+        "Umiat",
+        "Ute",
+        "Washington (Mississippi)",
+        "Willamette",
+        "Wind River"    
+    };
 
     // START XUC-002 Form Elements
     private JPanel xuc002_dialogPane;
@@ -1611,11 +1651,15 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
 
     public String getXuc001_Meridian() {
-        return xuc001_Meridian.getText();
+        return xuc001_cboMeridian.getSelectedItem().toString();
     }
 
     public void setXuc001_Meridian(String xuc001_Meridian) {
-        this.xuc001_Meridian.setText(xuc001_Meridian);
+        for (int index = 0; index < MeridianList.length; index++){
+            if(this.MeridianList[index].equals(xuc001_Meridian)){
+                this.xuc001_cboMeridian.setSelectedIndex(index);
+            }
+        }
     }
 
     public String getXuc001_NorthBounder() {

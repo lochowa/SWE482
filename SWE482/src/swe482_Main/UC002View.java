@@ -528,6 +528,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc007_Section = new JTextField(null);
         xuc007_State = new JTextField(null);
         xuc007_Meridian = new JTextField(null);
+        xuc007_cboMeridian = new JComboBox(MeridianList);
         xuc007_Acreage = new JTextField(null);
 
         xuc007_scrollPane = new JScrollPane();
@@ -957,6 +958,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     private JTextField xuc007_State;
     private JLabel xuc007_lblMeridian;
     private JTextField xuc007_Meridian;
+    private JComboBox xuc007_cboMeridian;
     private JLabel xuc007_lblAcreage;
     private JTextField xuc007_Acreage;
     private JLabel xuc007_lblLegalDescription;
@@ -976,7 +978,43 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     private JButton xuc007_SearchProperty;
     private JButton xuc007_InsertProperty;
     private JButton xuc007_CloseAddProperty;
-
+    private final String[] MeridianList = {
+        "1st P.M.",
+        "2nd P.M.",
+        "3rd P.M.",
+        "4th P.M.",
+        "5th P.M.",
+        "6th P.M.",
+        "Black Hills",
+        "Boise",
+        "Chicksaw",
+        "Cimarron",
+        "Copper River",
+        "Fairbanks",
+        "Gila and Salt River",
+        "Humboldt",
+        "Huntsville",
+        "Indian",
+        "Kateel River",
+        "Louisiana",
+        "Michigan",
+        "Montana",
+        "Mount Diablo",
+        "Navajo",
+        "New Mexico Principal",
+        "St. Helena",
+        "St. Stephens",
+        "Salt Lake",
+        "San Bernardino",
+        "Seward",
+        "Tallahassee",
+        "Uintah",
+        "Umiat",
+        "Ute",
+        "Washington (Mississippi)",
+        "Willamette",
+        "Wind River"    
+    };
    
     public void importButtonProperties(boolean toggle, String index) {
         if (toggle) {
@@ -1038,11 +1076,15 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     }
 
     public String getXuc007_Meridian() {
-        return xuc007_Meridian.getText();
+        return xuc007_cboMeridian.getSelectedItem().toString();
     }
 
-    public void setXuc007_Meridian(String xuc007_Meridian) {
-        this.xuc007_Meridian.setText(xuc007_Meridian);
+    public void setXuc007_Meridian(String xuc001_Meridian) {
+        for (int index = 0; index < MeridianList.length; index++){
+            if(this.MeridianList[index].equals(xuc001_Meridian)){
+                this.xuc007_cboMeridian.setSelectedIndex(index);
+            }
+        }
     }
 
     public String getXuc007_Acreage() {
