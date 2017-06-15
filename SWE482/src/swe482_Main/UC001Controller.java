@@ -147,9 +147,25 @@ public class UC001Controller implements java.awt.event.ActionListener {
         
         if(e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())){
             
-        }
-    }
+            try{
+                model.addXUC003MineralOwner(model.createXUC003MineralOwner(
+                    Integer.parseInt(view.getXuc003Interest()),
+                    view.getXuc003Name1(),
+                    view.getXuc003Name2(),
+                    view.getXuc003Name3(),
+                    view.getXuc003Name4(),
+                    view.getXuc003Address(),
+                    view.getXuc003City(),
+                    view.getXuc003State(),
+                    Integer.parseInt(view.getXuc003ZipCode()),
+                    view.getXuc003ContactNumber()));
+                }
+            catch (NumberFormatException f1){
+            }
 
+            }
+        }
+    
     void addModel(UC001Model m) {
         // Test Script: Operation Feedback
         System.out.println("Controller: Adding Property Model");
