@@ -4,6 +4,9 @@ package swe482_Main;
  *
  * @author by Michael Barth
  * @modifications by Andrew Lochow (See save button section)
+ * 
+ * @author Jeff
+ * Event Action method writing.
  */
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
