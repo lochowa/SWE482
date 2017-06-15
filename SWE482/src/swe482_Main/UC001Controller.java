@@ -131,7 +131,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
             // TO DO: Add boolean check here.
             this.validateSurfaceOwnerForm();
             try {
-                model.addXUC002SurfaceOwner(model.createXUC002SurfaceOwner(
+                XUC002SurfaceOwner owner = model.createXUC002SurfaceOwner(
                         view.getXuc002_Name1(),
                         view.getXuc002_Name2(),
                         view.getXuc002_Name3(),
@@ -141,8 +141,13 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         view.getXuc002_State(),
                         Integer.parseInt(view.getXuc002_ZipCode()),
                         100,
-                        model.getSModCount()));
-                
+                        model.getSModCount());
+                view.addSurfaceOwnerPane(model.createSurfaceOwnerString(owner), model.getSModCount());
+                view.addButtonController(this, view.getEditSurfaceOwnerButton());
+                view.addButtonController(this, view.getRemoveSurfaceOwnerButton());
+                model.addXUC002SurfaceOwner(owner);
+                model.incrementSModCount();
+                view.getSurfaceDialog().dispose();
             } catch (NumberFormatException f1) {
             }
 
@@ -151,7 +156,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())) {
             if (validateMineralOwnerForm()) {
                 try {
-                    model.addXUC003MineralOwner(model.createXUC003MineralOwner(
+                    XUC003MineralOwner owner = model.createXUC003MineralOwner(
                             view.getXuc003_Name1(),
                             view.getXuc003_Name2(),
                             view.getXuc003_Name3(),
@@ -162,7 +167,12 @@ public class UC001Controller implements java.awt.event.ActionListener {
                             Integer.parseInt(view.getXuc003_ZipCode()),
                             model.getMModCount(),
                             Integer.parseInt(view.getXuc003_Interest()),
-                            view.getXuc003_InterestStatus()));
+                            view.getXuc003_InterestStatus());
+                view.addMineralOwnerPane(model.createMineralOwnerString(owner), model.getMModCount());
+                view.addButtonController(this, view.getEditMineralOwnerButton());
+                view.addButtonController(this, view.getRemoveMineralOwnerButton());
+                model.addXUC003MineralOwner(owner);
+                model.incrementMModCount();
                 } catch (NumberFormatException f1) {
                 }
             }

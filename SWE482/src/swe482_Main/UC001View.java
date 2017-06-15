@@ -95,6 +95,9 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.uc001_CancelButton.addActionListener(controller);
     }
 
+    void addButtonController(ActionListener controller, JButton button) {
+        button.addActionListener(controller);
+    }
     /*
     *   XUC-001 Initial Dialog
      */

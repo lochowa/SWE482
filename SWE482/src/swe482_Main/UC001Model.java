@@ -293,7 +293,7 @@ public class UC001Model {
         return string;
     }
 
-    public String createMineralOwnerString(XUC002SurfaceOwner owner) {
+    public String createMineralOwnerString(XUC003MineralOwner owner) {
         String string = owner.getUc001_Name1();
         if (!owner.getUc001_Name2().isEmpty()
                 && owner.getUc001_Name3().isEmpty()
