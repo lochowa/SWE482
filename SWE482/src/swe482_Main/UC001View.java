@@ -1798,6 +1798,10 @@ public class UC001View extends JFrame implements java.util.Observer {
         return xuc003_Interest.getText();
     }
 
+    public String getXuc003InterestStatus() {
+        return xuc003_Interest.getText();
+    }
+    
     public void setXuc003Interest(String Interest){
         this.xuc003_Interest.setText(Interest);
     } 
