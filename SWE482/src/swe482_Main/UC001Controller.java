@@ -79,6 +79,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         //Save actions modified by Andrew Lochow for managing Database input
         if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())) {
         if (validatePropertyForm()){
+            try{
             model.setUC001PropertyValues(
                     Integer.parseInt(view.getXuc001_ParcelID()),
                     view.getXuc001_TaxAccountID(),
@@ -95,6 +96,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     view.getXuc001_SouthBounder(),
                     view.getXuc001_WestBounder());
             model.committoDB();
+            } catch (NumberFormatException f2) {
+                System.out.println(f2.toString());
+            }
         }
         }
         if (e.getActionCommand().equals(UserActions.OPEN_BURDEN.name())) {
@@ -123,6 +127,22 @@ public class UC001Controller implements java.awt.event.ActionListener {
         }
         if(e.getActionCommand().equals(UserActions.INSERT_SURFACEOWNER.name())){
             
+            try{
+               model.addXUC002SurfaceOwner(model.createXUC002SurfaceOwner(
+                       view.getXuc002Name1(), 
+                       view.getXuc002Name2(), 
+                       view.getXuc002Name3(), 
+                       view.getXuc002Name4(), 
+                       view.getXuc002Address(), 
+                       view.getXuc002City(), 
+                       view.getXuc002State(), 
+                       Integer.parseInt(view.getXuc002ZipCode()), 
+                       100/model.getMModCount(), 
+                       model.getSModCount()));
+               
+            } catch (NumberFormatException f1){
+                
+            }
             
         }
         
