@@ -1701,7 +1701,181 @@ public class UC001View extends JFrame implements java.util.Observer {
     public boolean getXuc001_cbxBounders() {
         return xuc001_cbxBounders.isSelected();
     }
+        //Getters and Setters for JText XUC-002 Form Elements created by Jeff Reifler
+    
+    public String getXuc002NameQuery() {
+        return xuc002_NameQuery.getText();
+    }
 
+    public void setXuc002NameQuery(String NameQuery){
+        this.xuc002_NameQuery.setText(NameQuery);
+    }
+
+    public String getXuc002Name1() {
+        return xuc002_Name1.getText();
+    }
+
+    public void setXuc002Name1(String Name1){
+        this.xuc002_Name1.setText(Name1);
+    }
+
+    public String getXuc002Name2() {
+        return xuc002_Name2.getText();
+    }
+
+    public void setXuc002Name2(String Name2){
+        this.xuc002_Name2.setText(Name2);
+    }
+    
+    public String getXuc002Name3() {
+        return xuc002_Name3.getText();
+    }
+
+    public void setXuc002Name3(String Name3){
+        this.xuc002_Name3.setText(Name3);
+    }
+    
+    public String getXuc002Name4() {
+        return xuc002_Name4.getText();
+    }
+
+    public void setXuc002Name4(String Name4){
+        this.xuc002_Name4.setText(Name4);
+    }
+    
+    public String getXuc002Address() {
+        return xuc002_Address.getText();
+    }
+
+    public void setXuc002Address(String Address){
+        this.xuc002_Address.setText(Address);
+    }
+    
+    public String getXuc002City() {
+        return xuc002_City.getText();
+    }
+
+    public void setXuc002City(String City){
+        this.xuc002_City.setText(City);
+    }
+    
+    public String getXuc002State() {
+        return xuc002_State.getText();
+    }
+
+    public void setXuc002State(String State){
+        this.xuc002_State.setText(State);
+    }   
+    
+    public String getXuc002ZipCode() {
+        return xuc002_ZipCode.getText();
+    }
+
+    public void setXuc002ZipCode(String ZipCode){
+        this.xuc002_ZipCode.setText(ZipCode);
+    }      
+    
+    public String getXuc002ContactNumber() {
+        return xuc002_ContactNumber.getText();
+    }
+
+    public void setXuc002ContactNumber(String ContactNumber){
+        this.xuc002_ContactNumber.setText(ContactNumber);
+    }      
+        
+    //Getters and Setters for JText XUC-003 Form Elements created by Jeff Reifler
+    
+    public String getXuc003NameQuery() {
+        return xuc003_NameQuery.getText();
+    }
+
+    public void setXuc003NameQuery(String NameQuery){
+        this.xuc003_NameQuery.setText(NameQuery);
+    }     
+    
+    public String getXuc003Interest() {
+        return xuc003_Interest.getText();
+    }
+
+    public void setXuc003Interest(String Interest){
+        this.xuc003_Interest.setText(Interest);
+    } 
+
+    public String getXuc003Name1() {
+        return xuc003_Name1.getText();
+    }
+
+    public void setXuc003Name1(String Name1){
+        this.xuc003_Name1.setText(Name1);
+    } 
+
+    public String getXuc003Name2() {
+        return xuc003_Name2.getText();
+    }
+
+    public void setXuc003Name2(String Name2){
+        this.xuc003_Name2.setText(Name2);
+    } 
+
+    public String getXuc003Name3() {
+        return xuc003_Name3.getText();
+    }
+
+    public void setXuc003Name3(String Name3){
+        this.xuc003_Name3.setText(Name3);
+    } 
+
+    public String getXuc003Name4() {
+        return xuc003_Name4.getText();
+    }
+
+    public void setXuc003Name4(String Name4){
+        this.xuc003_Name4.setText(Name4);
+    } 
+
+    public String getXuc003Address() {
+        return xuc003_Address.getText();
+    }
+
+    public void setXuc003Address(String Address){
+        this.xuc003_Address.setText(Address);
+    } 
+
+    public String getXuc003City() {
+        return xuc003_City.getText();
+    }
+
+    public void setXuc003City(String City){
+        this.xuc003_City.setText(City);
+    } 
+
+    public String getXuc003State() {
+        return xuc003_State.getText();
+    }
+
+    public void setXuc003State(String State){
+        this.xuc003_State.setText(State);
+    }  
+    
+    public String getXuc003ZipCode() {
+        return xuc003_ZipCode.getText();
+    }
+
+    public void setXuc003ZipCode(String ZipCode){
+        this.xuc003_ZipCode.setText(ZipCode);
+    } 
+
+    public String getXuc003ContactNumber() {
+        return xuc003_ContactNumber.getText();
+    }
+
+    public void setXuc003ContactNumber(String ContactNumber){
+        this.xuc003_ContactNumber.setText(ContactNumber);
+    } 
+
+    // START XUC-001 Validation Feedback Mutators by Jeff Reifler
+    
+    
     public void setXuc001_lblParcelID(boolean feedback) {
         if (feedback) {
             this.xuc001_lblParcelID.setForeground(Color.RED);
@@ -1822,6 +1996,185 @@ public class UC001View extends JFrame implements java.util.Observer {
         }
     }
 
+        public void setXuc002_lblSurfaceOwnership(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblSurfaceOwnership.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblSurfaceOwnership.setForeground(Color.black);
+        }
+    }
+        
+    public void setXuc003_lblMineralOwnership(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblMineralOwnership.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblMineralOwnership.setForeground(Color.black);
+        }
+    }
+        
+    // START XUC-002 Validation Feedback Mutators by Jeff Reifler
+        
+    public void setXuc002_lblName1(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblName1.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblName1.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc002_lblName2(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblName2.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblName2.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc002_lblName3(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblName3.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblName3.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc002_lblName4(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblName4.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblName4.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc002_lblAddress(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblAddress.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblAddress.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc002_lblCity(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblCity.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblCity.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc002_lblState(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblState.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblState.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc002_lblZipCode(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblZipCode.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblZipCode.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc002_lblContactNumber(boolean feedback) {
+        if (feedback) {
+            this.xuc002_lblContactNumber.setForeground(Color.RED);
+        } else {
+            this.xuc002_lblContactNumber.setForeground(Color.black);
+        }
+    }
+       
+        // START XUC-003 Validation Feedback Mutators by Jeff Reifler
+        
+    public void setXuc003_lblStatus(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblStatus.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblStatus.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc003_lblInterest(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblInterest.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblInterest.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc003_lblName1(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblName1.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblName1.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc003_lblName2(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblName2.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblName2.setForeground(Color.black);
+        }
+    }
+
+    public void setXuc003_lblName3(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblName3.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblName3.setForeground(Color.black);
+        }
+    }
+        
+        public void setXuc003_lblName4(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblName4.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblName4.setForeground(Color.black);
+        }
+    } 
+        
+        public void setXuc003_lblAddress(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblAddress.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblAddress.setForeground(Color.black);
+        }
+    }
+        
+        public void setXuc003_lblCity(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblCity.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblCity.setForeground(Color.black);
+        }
+    }
+        
+        public void setXuc003_lblState(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblState.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblState.setForeground(Color.black);
+        }
+    }
+        
+        public void setXuc003_lblZipCode(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblZipCode.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblZipCode.setForeground(Color.black);
+        }
+    }
+        
+        public void setXuc003_lblContactNumber(boolean feedback) {
+        if (feedback) {
+            this.xuc003_lblContactNumber.setForeground(Color.RED);
+        } else {
+            this.xuc003_lblContactNumber.setForeground(Color.black);
+        }
+    } 
     public String getDocumentCaller() {
         return documentCaller;
     }
