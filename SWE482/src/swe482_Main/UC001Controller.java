@@ -159,8 +159,27 @@ public class UC001Controller implements java.awt.event.ActionListener {
             this.importSurfaceOwner(editsurface, source.getName());
         }
         
-        if (e.getActionCommand().equals(UserActions.UPDATE_SURFACEOWNER.name())){
-            
+        if (e.getActionCommand().equals(UserActions.UPDATE_SURFACEOWNER.name())) {
+            JButton source = (JButton) e.getSource();
+            int index = Integer.parseInt(source.getName());
+            if (this.validateSurfaceOwnerForm()) {
+                try {
+                    model.getXUC002SurfaceOwner(index).setUc001_Name1(view.getXuc002_Name1());
+                    model.getXUC002SurfaceOwner(index).setUc001_Name2(view.getXuc002_Name2());
+                    model.getXUC002SurfaceOwner(index).setUc001_Name3(view.getXuc002_Name3());
+                    model.getXUC002SurfaceOwner(index).setUc001_Name4(view.getXuc002_Name4());
+                    model.getXUC002SurfaceOwner(index).setUc001_Address(view.getXuc002_Address());
+                    model.getXUC002SurfaceOwner(index).setUc001_City(view.getXuc002_City());
+                    model.getXUC002SurfaceOwner(index).setUc001_State(view.getXuc002_State());
+                    model.getXUC002SurfaceOwner(index).setUc001_ZipCode(Integer.parseInt(view.getXuc002_ZipCode()));
+                    model.getXUC002SurfaceOwner(index).setUc001_ContactNumber(view.getXuc002_ContactNumber());
+
+                    view.updateSurfaceOwner(model.createSurfaceOwnerString(model.getXUC002SurfaceOwner(index)), index);
+                    view.getSurfaceDialog().dispose();
+                } catch (NumberFormatException nf3) {
+                    System.out.println(nf3.getMessage());
+                }
+            }
         }
         
         if (e.getActionCommand().equals(UserActions.REMOVE_SURFACEOWNER.name())){
@@ -202,6 +221,35 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     model.incrementMModCount();
                 } catch (NumberFormatException nf4) {
                     System.out.println(nf4.toString());
+                }
+            }
+        }
+        
+        if(e.getActionCommand().equals(UserActions.UPDATE_MINERALOWNER.name())){
+            JButton source = (JButton) e.getSource();
+            int index = Integer.parseInt(source.getName());
+            if (this.validateMineralOwnerForm()) {
+                try {
+                    model.getXUC003MineralOwner(index).setUc001_Name1(view.getXuc003_Name1());
+                    model.getXUC003MineralOwner(index).setUc001_Name2(view.getXuc003_Name2());
+                    model.getXUC003MineralOwner(index).setUc001_Name3(view.getXuc003_Name3());
+                    model.getXUC003MineralOwner(index).setUc001_Name4(view.getXuc003_Name4());
+                    model.getXUC003MineralOwner(index).setUc001_Address(view.getXuc003_Address());
+                    model.getXUC003MineralOwner(index).setUc001_City(view.getXuc003_City());
+                    model.getXUC003MineralOwner(index).setUc001_State(view.getXuc003_State());
+                    model.getXUC003MineralOwner(index).setUc001_ZipCode(Integer.parseInt(view.getXuc003_ZipCode()));
+                    model.getXUC003MineralOwner(index).setUc001_ContactNumber(view.getXuc003_ContactNumber());
+                    model.getXUC003MineralOwner(index).setXuc003_Interest(Double.parseDouble(view.getXuc003_Interest()));
+                    model.getXUC003MineralOwner(index).setXuc003_InterestStatus(view.getXuc003_InterestStatus());
+
+                    view.updateMineralOwner(
+                            model.createMineralOwnerString(model.getXUC003MineralOwner(index)),
+                            model.getXUC003MineralOwner(index).getXuc003_InterestStatus(),
+                            Double.toString(model.getXUC003MineralOwner(index).getXuc003_Interest()),
+                            index);
+                    view.getMineralDialog().dispose();
+                } catch (NumberFormatException nf3) {
+                    System.out.println(nf3.getMessage());
                 }
             }
         }
