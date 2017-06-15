@@ -54,12 +54,6 @@ public class UC001Controller implements java.awt.event.ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // Test Script:  Interobject Communication Feedback
-        System.out.println("Propety Controller: The " + e.getActionCommand()
-                + " button is clicked at " + new java.util.Date(e.getWhen())
-                + " with e.paramString: " + e.paramString());
-
-        System.out.println("Controller: Acted on Property Model");
-
         if ((e.getActionCommand().equals(UserActions.OPEN_MINERALOWNER.name()))) {
             view.getMineralDialog().setVisible(true);
         }
@@ -131,7 +125,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
             // TO DO: Add boolean check here.
             this.validateSurfaceOwnerForm();
             try {
-                XUC002SurfaceOwner owner = model.createXUC002SurfaceOwner(
+                XUC002SurfaceOwner surface = model.createXUC002SurfaceOwner(
                         view.getXuc002_Name1(),
                         view.getXuc002_Name2(),
                         view.getXuc002_Name3(),
@@ -142,10 +136,10 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         Integer.parseInt(view.getXuc002_ZipCode()),
                         100,
                         model.getSModCount());
-                view.addSurfaceOwner(model.createSurfaceOwnerString(owner), model.getSModCount());
+                view.addSurfaceOwner(model.createSurfaceOwnerString(surface), model.getSModCount());
                 view.addButtonController(this, view.getEditSurfaceOwnerButton());
                 view.addButtonController(this, view.getRemoveSurfaceOwnerButton());
-                model.addXUC002SurfaceOwner(owner);
+                model.addXUC002SurfaceOwner(surface);
                 model.incrementSModCount();
                 view.getSurfaceDialog().dispose();
             } catch (NumberFormatException f1) {
@@ -154,9 +148,16 @@ public class UC001Controller implements java.awt.event.ActionListener {
         }
 
         if (e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())) {
+            System.out.println(validateMineralOwnerForm());
+            int varZipCode;
             if (validateMineralOwnerForm()) {
                 try {
-                    XUC003MineralOwner owner = model.createXUC003MineralOwner(
+                    if(view.getXuc003_ZipCode().isEmpty()){
+                        varZipCode = 0;
+                    } else {
+                        varZipCode = Integer.parseInt(view.getXuc003_ZipCode());
+                    }
+                    XUC003MineralOwner mineral = model.createXUC003MineralOwner(
                             view.getXuc003_Name1(),
                             view.getXuc003_Name2(),
                             view.getXuc003_Name3(),
@@ -164,21 +165,24 @@ public class UC001Controller implements java.awt.event.ActionListener {
                             view.getXuc003_Address(),
                             view.getXuc003_City(),
                             view.getXuc003_State(),
-                            Integer.parseInt(view.getXuc003_ZipCode()),
+                            varZipCode,
                             model.getMModCount(),
-                            Integer.parseInt(view.getXuc003_Interest()),
+                            Double.parseDouble(view.getXuc003_Interest()),
                             view.getXuc003_InterestStatus());
-                view.addMineralOwner(model.createMineralOwnerString(owner),owner.getXuc003_InterestStatus(),Double.toString(owner.getXuc003_Interest()), model.getMModCount());
+                    System.out.println("Owner Object Created");
+                view.addMineralOwner(model.createMineralOwnerString(mineral),mineral.getXuc003_InterestStatus(),Double.toString(mineral.getXuc003_Interest()), model.getMModCount());
                 view.addButtonController(this, view.getEditMineralOwnerButton());
                 view.addButtonController(this, view.getRemoveMineralOwnerButton());
-                model.addXUC003MineralOwner(owner);
-                model.incrementMModCount();
-                } catch (NumberFormatException f1) {
+                    model.addXUC003MineralOwner(mineral);
+                    model.incrementMModCount();
+                } catch (NumberFormatException f2) {
+                    System.out.println(f2.toString());
                 }
+//            }
             }
         }
     }
-        
+
     void addModel(UC001Model m) {
         // Test Script: Operation Feedback
         System.out.println("Controller: Adding Property Model");
@@ -426,12 +430,13 @@ public class UC001Controller implements java.awt.event.ActionListener {
     public boolean validateMineralOwnerForm() {
         int validFields = 0;
 
-        if (view.getXuc003_Interest().isEmpty() || view.getXuc003_Interest().matches(royaltyRegEx)) {
+        if (view.getXuc003_Interest().isEmpty() || !view.getXuc003_Interest().matches(royaltyRegEx)) {
             view.setXuc003_lblInterest(true);
         } else {
             view.setXuc003_lblInterest(false);
+            validFields++;
         }
-        
+
         if (view.getXuc003_Name1().isEmpty() || !view.getXuc003_Name1().matches(stringRegEx)) {
             view.setXuc003_lblName1(true);
 
@@ -510,7 +515,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.setXuc003_lblState(false);
             }
         }
-
+        System.out.println(validFields);
         if (validFields == 2) {
             return true;
         } else if (!view.getXuc003_Name2().isEmpty()

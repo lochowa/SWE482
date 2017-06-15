@@ -18,8 +18,8 @@ public class XUC003MineralOwner extends UC001Owner {
                 String uc001_State,
                 int uc001_ZipCode,
                 int insertModCount,
-                String xuc003_InterestStatus,
-                double xuc003_Interest
+                double xuc003_Interest,
+                String xuc003_InterestStatus
     
     ){
         this.setUc001_Name1(uc001_Name1);

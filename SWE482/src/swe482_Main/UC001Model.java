@@ -248,8 +248,8 @@ public class UC001Model {
                 uc001_State,
                 uc001_ZipCode,
                 insertModCount,
-                xuc003_InterestStatus,
-                xuc003_Interest
+                xuc003_Interest,
+                xuc003_InterestStatus
         );
         return this.XUC003_MineralOwner;
     }
