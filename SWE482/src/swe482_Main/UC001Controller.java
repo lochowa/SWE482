@@ -121,6 +121,14 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 
             }
         }
+        if(e.getActionCommand().equals(UserActions.INSERT_SURFACEOWNER.name())){
+            
+            
+        }
+        
+        if(e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())){
+            
+        }
     }
 
     void addModel(UC001Model m) {
@@ -187,12 +195,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
             view.setXuc001_lblSection(false);
             validFields++;
         }
-        if (view.getXuc001_Meridian().isEmpty() || !view.getXuc001_Meridian().matches(stringRegEx)) {
-            view.setXuc001_lblMeridian(true);
-        } else {
-            view.setXuc001_lblMeridian(false);
-            validFields++;
-        }
+
         if (view.getXuc001_LegalDescription().isEmpty() || !view.getXuc001_LegalDescription().matches(descriptionRegEx)) {
             view.setXuc001_lblLegalDescription(true);
         } else {
@@ -261,10 +264,14 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.setXuc001_cbxBounders(false);
             }
         }
-        if (view.getXuc001_cbxBounders() && validFields == 14) {
+        
+        if (model.getMModCount() != 0) validFields++;
+        if (model.getSModCount() != 0) validFields++;
+        
+        if (view.getXuc001_cbxBounders() && validFields == 16) {
             return true;
         }
-        return !view.getXuc001_cbxBounders() & validFields == 10;
+        return !view.getXuc001_cbxBounders() & validFields == 12;
     }
 
 }
