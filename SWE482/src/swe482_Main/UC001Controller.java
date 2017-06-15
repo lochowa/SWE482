@@ -126,7 +126,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
             }
         }
         if(e.getActionCommand().equals(UserActions.INSERT_SURFACEOWNER.name())){
-            
+            // TO DO: Add boolean check here.
             try{
                model.addXUC002SurfaceOwner(model.createXUC002SurfaceOwner(
                        view.getXuc002Name1(), 
@@ -138,8 +138,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                        view.getXuc002State(), 
                        Integer.parseInt(view.getXuc002ZipCode()), 
                        100/model.getMModCount(), 
-                       model.getSModCount()));
-               
+                       model.getSModCount()));    
             } catch (NumberFormatException f1){
                 
             }
