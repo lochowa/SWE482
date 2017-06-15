@@ -1830,4 +1830,98 @@ public class UC001View extends JFrame implements java.util.Observer {
         this.documentCaller = documentCaller;
     }
 
+    public String getUc001_cboDocumentType() {
+        return this.uc001_cboDocumentType.getSelectedItem().toString();
+    }
+
+    public String getUc001_EffectiveDate() {
+        return this.uc001_EffectiveDate.getText();
+    }
+
+    public String getUc001_RecordingDate() {
+        return this.uc001_RecordingDate.getText();
+    }
+
+    public String getUc001_DocumentID() {
+        return this.uc001_DocumentID.getText();
+    }
+
+    public String getUc001_Book() {
+        return this.uc001_Book.getText();
+    }
+
+    public String getUc001_Page() {
+        return this.uc001_Page.getText();
+    }
+
+    public void setUc001_cboDocumentType(String uc001_cboDocumentType) {
+           for (int index = 0; index < DeedList.length; index++){
+            if(this.DeedList[index].equals(uc001_cboDocumentType)){
+                this.uc001_cboDocumentType.setSelectedIndex(index);
+            }
+        }
+    }
+
+    public void setUc001_EffectiveDate(String uc001_EffectiveDate) {
+        this.uc001_EffectiveDate.setText(documentCaller);
+    }
+
+    public void setUc001_RecordingDate(String uc001_RecordingDate) {
+        this.uc001_RecordingDate.setText(documentCaller);
+    }
+
+    public void setUc001_DocumentID(String uc001_DocumentID) {
+        this.uc001_DocumentID.setText(documentCaller);
+    }
+
+    public void setUc001_Book(String uc001_Book) {
+        this.uc001_Book.setText(uc001_Book);
+    }
+
+    public void setUc001_Page(String uc001_Page) {
+        this.uc001_Page.setText(uc001_Page);
+    }
+
+    public void setUc001_lblEffectiveDate(boolean feedback) {
+        if(feedback){
+            this.uc001_lblEffectiveDate.setForeground(Color.RED);
+        } else {
+        this.uc001_lblEffectiveDate.setForeground(Color.black);
+        }
+    }
+
+    public void setUc001_lblRecordedDate(boolean feedback) {
+      if(feedback){
+            this.uc001_lblRecordedDate.setForeground(Color.RED);
+        } else {
+        this.uc001_lblRecordedDate.setForeground(Color.black);
+        }
+    }
+
+    public void setUc001_lblDocumentID(boolean feedback) {
+      if(feedback){
+            this.uc001_lblDocumentID.setForeground(Color.RED);
+        } else {
+        this.uc001_lblDocumentID.setForeground(Color.black);
+        }
+    }
+
+    public void setUc001_lblBook(boolean feedback) {
+      if(feedback){
+            this.uc001_lblBook.setForeground(Color.RED);
+        } else {
+        this.uc001_lblBook.setForeground(Color.black);
+        }
+    }
+
+    public void setUc001_lblPage(boolean feedback) {
+      if(feedback){
+            this.uc001_lblPage.setForeground(Color.RED);
+        } else {
+        this.uc001_lblPage.setForeground(Color.black);
+        }
+    }
+
+    
+    
 }
