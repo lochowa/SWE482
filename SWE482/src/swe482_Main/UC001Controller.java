@@ -48,7 +48,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
         INSERT_DOCUMENT,
         CLOSE_DOCUMENT,
         OPEN_BURDEN,
-        CLOSE_BURDEN
+        CLOSE_BURDEN,
+        UPDATE_SURFACEOWNER,
+        UPDATE_MINERALOWNER
     }
 
     @Override
@@ -152,22 +154,13 @@ public class UC001Controller implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.EDIT_SURFACEOWNER.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
-            if (validateSurfaceOwnerForm()) {
-                try {
-                    view.setXuc002_Name1(model.getXUC002SurfaceOwner(index).getUc001_Name1());
-                    view.setXuc002_Name2(model.getXUC002SurfaceOwner(index).getUc001_Name2());
-                    view.setXuc002_Name3(model.getXUC002SurfaceOwner(index).getUc001_Name3());
-                    view.setXuc002_Name4(model.getXUC002SurfaceOwner(index).getUc001_Name4());
-                    view.setXuc002_Address(model.getXUC002SurfaceOwner(index).getUc001_Address());
-                    view.setXuc002_City(model.getXUC002SurfaceOwner(index).getUc001_City());
-                    view.setXuc002_State(model.getXUC002SurfaceOwner(index).getUc001_State());
-                    view.setXuc002_ZipCode(Integer.toString(model.getXUC002SurfaceOwner(index).getUc001_ZipCode()));
-                    view.setXuc002_ContactNumber(model.getXUC002SurfaceOwner(index).getUc001_ContactNumber());
-                } catch (NumberFormatException nf3) {
-                    System.out.println(nf3.getMessage());
-                }
-
-            }
+            XUC002SurfaceOwner editsurface = model.getXUC002SurfaceOwner(index);
+            this.clearSurfaceOwnerForm();
+            this.importSurfaceOwner(editsurface, source.getName());
+        }
+        
+        if (e.getActionCommand().equals(UserActions.UPDATE_SURFACEOWNER.name())){
+            
         }
 
         if (e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())) {
@@ -209,23 +202,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.EDIT_MINERALOWENR.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
-            if (validateMineralOwnerForm()) {
-                try {
-                    view.setXuc003_InterestStatus(model.getXUC003MineralOwner(index).getXuc003_InterestStatus());
-                    view.setXuc003_Interest(Double.toString(model.getXUC003MineralOwner(index).getXuc003_Interest()));
-                    view.setXuc003_Name1(model.getXUC003MineralOwner(index).getUc001_Name1());
-                    view.setXuc003_Name2(model.getXUC003MineralOwner(index).getUc001_Name2());
-                    view.setXuc003_Name3(model.getXUC003MineralOwner(index).getUc001_Name3());
-                    view.setXuc003_Name4(model.getXUC003MineralOwner(index).getUc001_Name4());
-                    view.setXuc003_Address(model.getXUC003MineralOwner(index).getUc001_Address());
-                    view.setXuc003_City(model.getXUC003MineralOwner(index).getUc001_City());
-                    view.setXuc003_State(model.getXUC003MineralOwner(index).getUc001_State());
-                    view.setXuc003_ZipCode(Integer.toString(model.getXUC003MineralOwner(index).getUc001_ZipCode()));
-                    view.setXuc003_ContactNumber(model.getXUC003MineralOwner(index).getUc001_ContactNumber());
-                } catch (NumberFormatException nf5) {
-                    System.out.println(nf5.getMessage());
-                }
-            }
+            XUC003MineralOwner editMineral = model.getXUC003MineralOwner(index);
+            this.clearMineralOwnerForm();
+            this.importMineralOwner(editMineral, source.getName());
         }
     }
 
@@ -584,6 +563,58 @@ public class UC001Controller implements java.awt.event.ActionListener {
         return false;
     }
 
+    private void importSurfaceOwner(XUC002SurfaceOwner owner, String index) {
+        view.setXuc002_Name1(owner.getUc001_Name1());
+        view.setXuc002_Name2(owner.getUc001_Name2());
+        view.setXuc002_Name3(owner.getUc001_Name3());
+        view.setXuc002_Name4(owner.getUc001_Name4());
+        view.setXuc002_Address(owner.getUc001_Address());
+        view.setXuc002_City(owner.getUc001_City());
+        view.setXuc002_State(owner.getUc001_State());
+        view.setXuc002_ZipCode(Integer.toString(owner.getUc001_ZipCode()));
+        view.setXuc002_ContactNumber(owner.getUc001_ContactNumber());
+        view.importSurfaceOwnerButtonProperties(true, index);
+    }
+
+    private void clearSurfaceOwnerForm() {
+        view.setXuc002_Name1(null);
+        view.setXuc002_Name2(null);
+        view.setXuc002_Name3(null);
+        view.setXuc002_Name4(null);
+        view.setXuc002_Address(null);
+        view.setXuc002_City(null);
+        view.setXuc002_State(null);
+        view.setXuc002_ZipCode(null);
+        view.setXuc002_ContactNumber(null);
+    }
+    private void importMineralOwner(XUC003MineralOwner owner, String index) {
+        view.setXuc003_InterestStatus(owner.getXuc003_InterestStatus());
+        view.setXuc003_Interest(Double.toString(owner.getXuc003_Interest()));
+        view.setXuc003_Name1(owner.getUc001_Name1());
+        view.setXuc003_Name2(owner.getUc001_Name2());
+        view.setXuc003_Name3(owner.getUc001_Name3());
+        view.setXuc003_Name4(owner.getUc001_Name4());
+        view.setXuc003_Address(owner.getUc001_Address());
+        view.setXuc003_City(owner.getUc001_City());
+        view.setXuc003_State(owner.getUc001_State());
+        view.setXuc003_ZipCode(Integer.toString(owner.getUc001_ZipCode()));
+        view.setXuc003_ContactNumber(owner.getUc001_ContactNumber());
+        view.importMineralOwnerButtonProperties(true, index);
+    }
+
+    private void clearMineralOwnerForm() {
+        view.setXuc003_InterestStatus("Open");
+        view.setXuc003_Interest(null);
+        view.setXuc003_Name1(null);
+        view.setXuc003_Name2(null);
+        view.setXuc003_Name3(null);
+        view.setXuc003_Name4(null);
+        view.setXuc003_Address(null);
+        view.setXuc003_City(null);
+        view.setXuc003_State(null);
+        view.setXuc003_ZipCode(null);
+        view.setXuc003_ContactNumber(null);
+    }
     public void validateDocumentForm() {
 
     }

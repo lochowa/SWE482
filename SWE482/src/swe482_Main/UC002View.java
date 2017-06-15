@@ -1560,7 +1560,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
 
     }
     
-    public void updateXuc007Pane_LeasedProperty(String description, int gridY){
+    public void updateXuc007_LeasedPropertyPane(String description, int gridY){
         JPanel test = (JPanel) xuc007Pane_LeasedProperty.getComponent(gridY);
         JTextField field = (JTextField) test.getComponent(0);
         field.setText(description);

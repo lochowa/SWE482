@@ -172,7 +172,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                         model.getXuc007_LeasedProperty(index).setXuc007_SouthBounder(null);
                         model.getXuc007_LeasedProperty(index).setXuc007_WestBounder(null);
                     }
-                    view.updateXuc007Pane_LeasedProperty(model.createDescriptionString(model.getXuc007_LeasedProperty(index)), index);
+                    view.updateXuc007_LeasedPropertyPane(model.createDescriptionString(model.getXuc007_LeasedProperty(index)), index);
                 view.getDxuc007().dispose();
                 } catch (NumberFormatException f3) {
                     System.out.println(f3.getMessage());

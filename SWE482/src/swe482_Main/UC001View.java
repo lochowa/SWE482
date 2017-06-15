@@ -69,7 +69,9 @@ public class UC001View extends JFrame implements java.util.Observer {
         INSERT_DOCUMENT,
         CLOSE_DOCUMENT,
         OPEN_BURDEN,
-        CLOSE_BURDEN
+        CLOSE_BURDEN,
+        UPDATE_SURFACEOWNER,
+        UPDATE_MINERALOWNER
 
         // OPEN means you're opening a dialog box.
         // CLOSE means you're closing a dialog box.
@@ -1623,8 +1625,30 @@ public class UC001View extends JFrame implements java.util.Observer {
         return mineral;
     }
 
-    JButton xuc002_EditMineralOwner = new JButton();
-    JButton xuc002_RemoveMineralOwner = new JButton();
+    private JButton xuc002_EditMineralOwner = new JButton();
+    private JButton xuc002_RemoveMineralOwner = new JButton();
+
+    public void importSurfaceOwnerButtonProperties(boolean toggle, String index) {
+        if (toggle) {
+            xuc002_InsertButton.setText("UPDATE");
+            xuc002_InsertButton.setName(index);
+            xuc002_InsertButton.setActionCommand(UserActions.UPDATE_SURFACEOWNER.name());
+        } else {
+            xuc002_InsertButton.setText("INSERT");
+            xuc002_InsertButton.setActionCommand(UserActions.INSERT_SURFACEOWNER.name());
+        }
+    }
+
+    public void importMineralOwnerButtonProperties(boolean toggle, String index) {
+        if (toggle) {
+            xuc003_InsertButton.setText("UPDATE");
+            xuc003_InsertButton.setName(index);
+            xuc003_InsertButton.setActionCommand(UserActions.UPDATE_MINERALOWNER.name());
+        } else {
+            xuc003_InsertButton.setText("INSERT");
+            xuc003_InsertButton.setActionCommand(UserActions.INSERT_SURFACEOWNER.name());
+        }
+    }
 
     public JButton getEditMineralOwnerButton() {
         return this.xuc002_EditMineralOwner;
