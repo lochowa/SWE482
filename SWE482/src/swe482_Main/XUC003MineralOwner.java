@@ -17,6 +17,7 @@ public class XUC003MineralOwner extends UC001Owner {
                 String uc001_City,
                 String uc001_State,
                 int uc001_ZipCode,
+                String uc001_ContactNumber,
                 int insertModCount,
                 double xuc003_Interest,
                 String xuc003_InterestStatus
@@ -30,6 +31,7 @@ public class XUC003MineralOwner extends UC001Owner {
         this.setUc001_City(uc001_City);
         this.setUc001_State(uc001_State);
         this.setUc001_ZipCode(uc001_ZipCode);
+        this.setUc001_ContactNumber(uc001_ContactNumber);
         this.setInsertModCount(insertModCount);
         this.setXuc003_Interest(xuc003_Interest);
         this.setXuc003_InterestStatus(xuc003_InterestStatus);

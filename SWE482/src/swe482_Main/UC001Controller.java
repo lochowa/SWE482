@@ -92,8 +92,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
                             view.getXuc001_SouthBounder(),
                             view.getXuc001_WestBounder());
                     model.committoDB();
-                } catch (NumberFormatException f2) {
-                    System.out.println(f2.toString());
+                } catch (NumberFormatException nf1) {
+                    System.out.println(nf1.toString());
                 }
             }
         }
@@ -134,6 +134,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         view.getXuc002_City(),
                         view.getXuc002_State(),
                         Integer.parseInt(view.getXuc002_ZipCode()),
+                        view.getXuc002_ContactNumber(),
                         100,
                         model.getSModCount());
                 view.addSurfaceOwner(model.createSurfaceOwnerString(surface), model.getSModCount());
@@ -142,11 +143,32 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 model.addXUC002SurfaceOwner(surface);
                 model.incrementSModCount();
                 view.getSurfaceDialog().dispose();
-            } catch (NumberFormatException f1) {
+            } catch (NumberFormatException nf2) {
+                System.out.println(nf2.getMessage());
             }
 
         }
 
+        if (e.getActionCommand().equals(UserActions.EDIT_SURFACEOWNER.name())){
+            JButton source = (JButton) e.getSource();
+            int index = Integer.parseInt(source.getName());
+            if (validateSurfaceOwnerForm()){
+                try{
+                    view.setXuc002_Name1(model.getXUC002SurfaceOwner(index).getUc001_Name1());
+                    view.setXuc002_Name2(model.getXUC002SurfaceOwner(index).getUc001_Name2());
+                    view.setXuc002_Name3(model.getXUC002SurfaceOwner(index).getUc001_Name3());
+                    view.setXuc002_Name4(model.getXUC002SurfaceOwner(index).getUc001_Name4());
+                    view.setXuc002_Address(model.getXUC002SurfaceOwner(index).getUc001_Address());
+                    view.setXuc002_City(model.getXUC002SurfaceOwner(index).getUc001_City());
+                    view.setXuc002_ZipCode(Integer.toString(model.getXUC002SurfaceOwner(index).getUc001_ZipCode()));
+                    view.setXuc002_ContactNumber(model.getXUC002SurfaceOwner(index).getUc001_ContactNumber());                                 
+                } catch (NumberFormatException nf3){
+                    
+                }
+                
+            }
+        }
+        
         if (e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())) {
             System.out.println(validateMineralOwnerForm());
             int varZipCode;
@@ -166,6 +188,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                             view.getXuc003_City(),
                             view.getXuc003_State(),
                             varZipCode,
+                            view.getXuc003_ContactNumber(),
                             model.getMModCount(),
                             Double.parseDouble(view.getXuc003_Interest()),
                             view.getXuc003_InterestStatus());
@@ -175,8 +198,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.addButtonController(this, view.getRemoveMineralOwnerButton());
                     model.addXUC003MineralOwner(mineral);
                     model.incrementMModCount();
-                } catch (NumberFormatException f2) {
-                    System.out.println(f2.toString());
+                } catch (NumberFormatException nf4) {
+                    System.out.println(nf4.toString());
                 }
 //            }
             }

@@ -207,6 +207,7 @@ public class UC001Model {
             String uc001_City,
             String uc001_State,
             int uc001_ZipCode,
+            String uc001_ContactNumber,
             int insertModCount,
             double xuc002_Interest
     ) {
@@ -219,6 +220,7 @@ public class UC001Model {
                 uc001_City,
                 uc001_State,
                 uc001_ZipCode,
+                uc001_ContactNumber,
                 xuc002_Interest,
                 insertModCount
         );
@@ -234,6 +236,7 @@ public class UC001Model {
             String uc001_City,
             String uc001_State,
             int uc001_ZipCode,
+            String uc001_ContactNumber,
             int insertModCount,
             double xuc003_Interest,
             String xuc003_InterestStatus
@@ -247,6 +250,7 @@ public class UC001Model {
                 uc001_City,
                 uc001_State,
                 uc001_ZipCode,
+                uc001_ContactNumber,
                 insertModCount,
                 xuc003_Interest,
                 xuc003_InterestStatus

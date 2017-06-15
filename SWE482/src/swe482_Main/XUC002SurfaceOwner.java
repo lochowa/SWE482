@@ -17,6 +17,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
             String uc001_City,
             String uc001_State,
             int uc001_ZipCode,
+            String uc001_ContactNumber,
             double xuc002_Interest,
             int insertModCount
     ){
@@ -28,6 +29,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
         this.setUc001_City(uc001_City);
         this.setUc001_State(uc001_State);
         this.setUc001_ZipCode(uc001_ZipCode);
+        this.setUc001_ContactNumber(uc001_ContactNumber);
         this.setXuc002_Interest(xuc002_Interest);
     }
 

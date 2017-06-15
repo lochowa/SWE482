@@ -15,6 +15,15 @@ public class UC001Owner {
     private String uc001_City;
     private String uc001_State;
     private int uc001_ZipCode;
+    private String uc001_ContactNumber;
+
+    public String getUc001_ContactNumber() {
+        return uc001_ContactNumber;
+    }
+
+    public void setUc001_ContactNumber(String uc001_ContactNumber) {
+        this.uc001_ContactNumber = uc001_ContactNumber;
+    }
 
 
 
