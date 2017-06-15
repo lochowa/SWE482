@@ -273,5 +273,5 @@ public class UC001Controller implements java.awt.event.ActionListener {
         }
         return !view.getXuc001_cbxBounders() & validFields == 12;
     }
-
+ 
 }
