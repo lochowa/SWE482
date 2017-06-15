@@ -303,7 +303,7 @@ public class UC001View extends JFrame implements java.util.Observer {
                 //---- xuc001_Meridian ----
 //                xuc001_Meridian.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                 xuc001_cboMeridian.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                xuc001_contentPanel.add(xuc001_Meridian, new GridBagConstraints(4, 4, 2, 1, 0.0, 0.0,
+                xuc001_contentPanel.add(xuc001_cboMeridian, new GridBagConstraints(4, 4, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
@@ -400,24 +400,28 @@ public class UC001View extends JFrame implements java.util.Observer {
 
                     //---- xuc001_NorthBounder ----
                     xuc001_NorthBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                    xuc001_NorthBounder.setEditable(false);
                     xuc001_boundersPanel.add(xuc001_NorthBounder, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 0, 5), 0, 0));
 
                     //---- xuc001_EastBounder ----
                     xuc001_EastBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                    xuc001_EastBounder.setEditable(false);
                     xuc001_boundersPanel.add(xuc001_EastBounder, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 0, 5), 0, 0));
 
                     //---- xuc001_SouthBounder ----
                     xuc001_SouthBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                    xuc001_SouthBounder.setEditable(false);
                     xuc001_boundersPanel.add(xuc001_SouthBounder, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 0, 5), 0, 0));
 
                     //---- xuc001_WestBounder ----
                     xuc001_WestBounder.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                    xuc001_WestBounder.setEditable(false);
                     xuc001_boundersPanel.add(xuc001_WestBounder, new GridBagConstraints(3, 1, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 0, 0), 0, 0));
@@ -504,7 +508,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         fXUC001.add(xuc001_dialogPane, BorderLayout.CENTER);
 //        pXUC001.add(dpXUC001);
 //        fXUC001.add(pXUC001);
-        fXUC001.setSize(640, 880);
+        fXUC001.setSize(660, 880);
         fXUC001.setVisible(true);
         fXUC001.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fXUC001.setLocationRelativeTo(getOwner());

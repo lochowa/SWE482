@@ -527,7 +527,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
         xuc007_County = new JTextField(null);
         xuc007_Section = new JTextField(null);
         xuc007_State = new JTextField(null);
-        xuc007_Meridian = new JTextField(null);
         xuc007_cboMeridian = new JComboBox(MeridianList);
         xuc007_Acreage = new JTextField(null);
 
@@ -690,8 +689,8 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
 
                     //---- xuc007_Meridian ----
 //                    xuc007_Meridian.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-                    xuc007_Meridian.setFont(xuc007_Meridian.getFont().deriveFont(xuc007_Meridian.getFont().getSize() + 1f));
-                    xuc007_paneProperty.add(xuc007_Meridian, new GridBagConstraints(3, 3, 1, 1, 0.0, 0.0,
+                    xuc007_cboMeridian.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+                    xuc007_paneProperty.add(xuc007_cboMeridian, new GridBagConstraints(3, 3, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 10, 0), 0, 0));
 
@@ -893,7 +892,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
 //        END JPanel Form Insertion
         pdXUC007.add(dpXUC007);
         cpXUC007.add(pdXUC007, BorderLayout.CENTER);
-        dXUC007.setMinimumSize(new Dimension(680, 500));
+        dXUC007.setMinimumSize(new Dimension(720, 500));
         dXUC007.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dXUC007.setLocationRelativeTo(getOwner());
     }
@@ -957,7 +956,6 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     private JLabel xuc007_lblState;
     private JTextField xuc007_State;
     private JLabel xuc007_lblMeridian;
-    private JTextField xuc007_Meridian;
     private JComboBox xuc007_cboMeridian;
     private JLabel xuc007_lblAcreage;
     private JTextField xuc007_Acreage;
