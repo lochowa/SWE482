@@ -6,7 +6,7 @@ package swe482_Main;
 public class MVCMenu {
     public static void main(String[] args) {
         // TODO code application logic here
-        new MVCMenu();
+        MVCMenu mvcMenu = new MVCMenu();
     }
 
     public MVCMenu() {
