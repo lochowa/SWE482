@@ -148,7 +148,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         }
 
         if (e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())) {
-
+            this.validateMineralOwnerForm();
             try {
                 model.addXUC003MineralOwner(model.createXUC003MineralOwner(
                         view.getXuc003_Name1(),
@@ -423,9 +423,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 validFields++;
             }
         }
-        if (!view.getXuc002_Name4().isEmpty()) {
+        if (!view.getXuc003_Name4().isEmpty()) {
             if (!view.getXuc003_Name4().matches(stringRegEx)) {
-
                 view.setXuc003_lblName4(true);
 
             } else {
@@ -481,6 +480,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 validFields++;
             }
         }
+        
+        System.out.println(validFields);
     }
 
     public void validateDocumentForm() {
