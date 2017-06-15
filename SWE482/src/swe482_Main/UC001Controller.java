@@ -129,6 +129,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         }
         if (e.getActionCommand().equals(UserActions.INSERT_SURFACEOWNER.name())) {
             // TO DO: Add boolean check here.
+            this.validateSurfaceOwnerForm();
             try {
                 model.addXUC002SurfaceOwner(model.createXUC002SurfaceOwner(
                         view.getXuc002_Name1(),
@@ -139,35 +140,35 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         view.getXuc002_City(),
                         view.getXuc002_State(),
                         Integer.parseInt(view.getXuc002_ZipCode()),
-                        100 / model.getMModCount(),
+                        100,
                         model.getSModCount()));
+                
             } catch (NumberFormatException f1) {
-
             }
 
         }
 
         if (e.getActionCommand().equals(UserActions.INSERT_MINERALOWNER.name())) {
-            this.validateMineralOwnerForm();
-            try {
-                model.addXUC003MineralOwner(model.createXUC003MineralOwner(
-                        view.getXuc003_Name1(),
-                        view.getXuc003_Name2(),
-                        view.getXuc003_Name3(),
-                        view.getXuc003_Name4(),
-                        view.getXuc003_Address(),
-                        view.getXuc003_City(),
-                        view.getXuc003_State(),
-                        Integer.parseInt(view.getXuc003_ZipCode()),
-                        model.getMModCount(),
-                        Integer.parseInt(view.getXuc003_Interest()),
-                        view.getXuc003_InterestStatus()));
-            } catch (NumberFormatException f1) {
+            if (validateMineralOwnerForm()) {
+                try {
+                    model.addXUC003MineralOwner(model.createXUC003MineralOwner(
+                            view.getXuc003_Name1(),
+                            view.getXuc003_Name2(),
+                            view.getXuc003_Name3(),
+                            view.getXuc003_Name4(),
+                            view.getXuc003_Address(),
+                            view.getXuc003_City(),
+                            view.getXuc003_State(),
+                            Integer.parseInt(view.getXuc003_ZipCode()),
+                            model.getMModCount(),
+                            Integer.parseInt(view.getXuc003_Interest()),
+                            view.getXuc003_InterestStatus()));
+                } catch (NumberFormatException f1) {
+                }
             }
-
         }
     }
-
+        
     void addModel(UC001Model m) {
         // Test Script: Operation Feedback
         System.out.println("Controller: Adding Property Model");
@@ -315,7 +316,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         return !view.getXuc001_cbxBounders() & validFields == 12;
     }
 
-    public void validateSurfaceOwnerForm() {
+    public boolean validateSurfaceOwnerForm() {
         int validFields = 0;
 
         if (view.getXuc002_Name1().isEmpty() || !view.getXuc002_Name1().matches(stringRegEx)) {
@@ -388,15 +389,39 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.setXuc002_lblState(true);
             } else {
                 view.setXuc002_lblState(false);
-                validFields++;
             }
         }
+        if (validFields == 5) {
+            return true;
+        } else if (!view.getXuc002_Name2().isEmpty()
+                && view.getXuc002_Name3().isEmpty()
+                && view.getXuc002_Name4().isEmpty()
+                && validFields == 6) {
+            return true;
+        } else if (!view.getXuc002_Name2().isEmpty()
+                && !view.getXuc002_Name3().isEmpty()
+                && view.getXuc002_Name4().isEmpty()
+                && validFields == 7) {
+            return true;
+        } else if (!view.getXuc002_Name2().isEmpty()
+                && !view.getXuc002_Name3().isEmpty()
+                && !view.getXuc002_Name4().isEmpty()
+                && validFields == 8) {
+            return true;
+        }
 
+        return false;
     } // END validateSurfaceOwnerForm()
 
-    public void validateMineralOwnerForm() {
+    public boolean validateMineralOwnerForm() {
         int validFields = 0;
 
+        if (view.getXuc003_Interest().isEmpty() || view.getXuc003_Interest().matches(royaltyRegEx)) {
+            view.setXuc003_lblInterest(true);
+        } else {
+            view.setXuc003_lblInterest(false);
+        }
+        
         if (view.getXuc003_Name1().isEmpty() || !view.getXuc003_Name1().matches(stringRegEx)) {
             view.setXuc003_lblName1(true);
 
@@ -440,7 +465,6 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
                 } else {
                     view.setXuc003_lblAddress(false);
-                    validFields++;
                 }
             }
             if (!view.getXuc003_City().isEmpty()) {
@@ -449,7 +473,6 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
                 } else {
                     view.setXuc003_lblCity(false);
-                    validFields++;
                 }
             }
             if (!view.getXuc003_State().isEmpty()) {
@@ -458,7 +481,6 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
                 } else {
                     view.setXuc003_lblState(false);
-                    validFields++;
                 }
             }
             if (!view.getXuc003_ZipCode().isEmpty()) {
@@ -468,7 +490,6 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
                 } else {
                     view.setXuc003_lblZipCode(false);
-                    validFields++;
                 }
             }
         }
@@ -477,11 +498,29 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.setXuc003_lblState(true);
             } else {
                 view.setXuc003_lblState(false);
-                validFields++;
             }
         }
-        
-        System.out.println(validFields);
+
+        if (validFields == 2) {
+            return true;
+        } else if (!view.getXuc003_Name2().isEmpty()
+                && view.getXuc003_Name3().isEmpty()
+                && view.getXuc003_Name4().isEmpty()
+                && validFields == 3) {
+            return true;
+        } else if (!view.getXuc003_Name2().isEmpty()
+                && !view.getXuc003_Name3().isEmpty()
+                && view.getXuc003_Name4().isEmpty()
+                && validFields == 4) {
+            return true;
+        } else if (!view.getXuc003_Name2().isEmpty()
+                && !view.getXuc003_Name3().isEmpty()
+                && !view.getXuc003_Name4().isEmpty()
+                && validFields == 5) {
+            return true;
+        }
+
+        return false;
     }
 
     public void validateDocumentForm() {

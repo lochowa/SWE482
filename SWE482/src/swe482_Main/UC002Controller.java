@@ -119,7 +119,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                             view.getXuc007_SouthBounder(),
                             view.getXuc007_WestBounder()
                     );
-                    view.addXuc007Pane_LeasedProperty(model.createDescriptionString(property), model.getModCount());
+                    view.addXuc007_LeasedPropertyPane(model.createDescriptionString(property), model.getModCount());
                     view.addButtonController(this, view.getXuc007_EditPropertyButton());
                     view.addButtonController(this, view.getXuc007_RemovePropertyButton());
                     model.addXuc007_LeasedProperty(property);

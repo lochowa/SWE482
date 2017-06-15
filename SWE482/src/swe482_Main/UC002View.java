@@ -1552,7 +1552,7 @@ public class UC002View extends javax.swing.JFrame implements java.util.Observer 
     }
     
 
-    public void addXuc007Pane_LeasedProperty(String description, int gridY) {
+    public void addXuc007_LeasedPropertyPane(String description, int gridY) {
         xuc007Pane_LeasedProperty.add(addComponent(description, gridY), new GridBagConstraints(0, gridY, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));

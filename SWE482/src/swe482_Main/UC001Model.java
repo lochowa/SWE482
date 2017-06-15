@@ -250,10 +250,10 @@ public class UC001Model {
                 insertModCount,
                 xuc003_InterestStatus,
                 xuc003_Interest
-
         );
         return this.XUC003_MineralOwner;
     }
+
     public UC001Document createUC001Document(
             int InsertModCount,
             String uc001_DocumentType,
@@ -273,6 +273,42 @@ public class UC001Model {
                 uc001_Page
         );
         return Document;
+    }
+
+    public String createSurfaceOwnerString(XUC002SurfaceOwner owner) {
+        String string = owner.getUc001_Name1();
+        if (!owner.getUc001_Name2().isEmpty()
+                && owner.getUc001_Name3().isEmpty()
+                && owner.getUc001_Name4().isEmpty()) {
+            string += String.format(" and %s", owner.getUc001_Name2());
+        } else if (!owner.getUc001_Name2().isEmpty()
+                && !owner.getUc001_Name3().isEmpty()
+                && owner.getUc001_Name4().isEmpty()) {
+            string += String.format(", %s, and %s", owner.getUc001_Name2(), owner.getUc001_Name3());
+        } else if (!owner.getUc001_Name2().isEmpty()
+                && !owner.getUc001_Name3().isEmpty()
+                && !owner.getUc001_Name4().isEmpty()) {
+            string += String.format(", %s, %s, and %s", owner.getUc001_Name2(), owner.getUc001_Name3(), owner.getUc001_Name4());
+        }
+        return string;
+    }
+
+    public String createMineralOwnerString(XUC002SurfaceOwner owner) {
+        String string = owner.getUc001_Name1();
+        if (!owner.getUc001_Name2().isEmpty()
+                && owner.getUc001_Name3().isEmpty()
+                && owner.getUc001_Name4().isEmpty()) {
+            string += String.format(" and %s", owner.getUc001_Name2());
+        } else if (!owner.getUc001_Name2().isEmpty()
+                && !owner.getUc001_Name3().isEmpty()
+                && owner.getUc001_Name4().isEmpty()) {
+            string += String.format(", %s, and %s", owner.getUc001_Name2(), owner.getUc001_Name3());
+        } else if (!owner.getUc001_Name2().isEmpty()
+                && !owner.getUc001_Name3().isEmpty()
+                && !owner.getUc001_Name4().isEmpty()) {
+            string += String.format(", %s, %s, and %s", owner.getUc001_Name2(), owner.getUc001_Name3(), owner.getUc001_Name4());
+        }
+        return string;
     }
 
     public String getPropertyBounders(int index) {
@@ -363,5 +399,4 @@ public class UC001Model {
         this.xuc001_Meridian = xuc001_Meridian;
     }
 
-    
 }
