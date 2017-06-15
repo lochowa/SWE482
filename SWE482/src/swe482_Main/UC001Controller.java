@@ -142,7 +142,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         Integer.parseInt(view.getXuc002_ZipCode()),
                         100,
                         model.getSModCount());
-                view.addSurfaceOwnerPane(model.createSurfaceOwnerString(owner), model.getSModCount());
+                view.addSurfaceOwner(model.createSurfaceOwnerString(owner), model.getSModCount());
                 view.addButtonController(this, view.getEditSurfaceOwnerButton());
                 view.addButtonController(this, view.getRemoveSurfaceOwnerButton());
                 model.addXUC002SurfaceOwner(owner);
@@ -168,7 +168,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                             model.getMModCount(),
                             Integer.parseInt(view.getXuc003_Interest()),
                             view.getXuc003_InterestStatus());
-                view.addMineralOwnerPane(model.createMineralOwnerString(owner), model.getMModCount());
+                view.addMineralOwner(model.createMineralOwnerString(owner), model.getMModCount());
                 view.addButtonController(this, view.getEditMineralOwnerButton());
                 view.addButtonController(this, view.getRemoveMineralOwnerButton());
                 model.addXUC003MineralOwner(owner);

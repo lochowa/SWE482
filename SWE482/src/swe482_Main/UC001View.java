@@ -1496,7 +1496,7 @@ public class UC001View extends JFrame implements java.util.Observer {
 
         //======== this ========
         surface.setLayout(new GridBagLayout());
-        ((GridBagLayout) surface.getLayout()).columnWidths = new int[]{440, 0, 0};
+        ((GridBagLayout) surface.getLayout()).columnWidths = new int[]{480, 0, 0};
         ((GridBagLayout) surface.getLayout()).rowHeights = new int[]{0, 0};
         ((GridBagLayout) surface.getLayout()).columnWeights = new double[]{0.0, 1.0, 0.0, 1.0E-4};
         ((GridBagLayout) surface.getLayout()).rowWeights = new double[]{0.0, 1.0E-4};

@@ -278,35 +278,23 @@ public class UC001Model {
     public String createSurfaceOwnerString(XUC002SurfaceOwner owner) {
         String string = owner.getUc001_Name1();
         if (!owner.getUc001_Name2().isEmpty()
-                && owner.getUc001_Name3().isEmpty()
-                && owner.getUc001_Name4().isEmpty()) {
-            string += String.format(" and %s", owner.getUc001_Name2());
-        } else if (!owner.getUc001_Name2().isEmpty()
-                && !owner.getUc001_Name3().isEmpty()
-                && owner.getUc001_Name4().isEmpty()) {
-            string += String.format(", %s, and %s", owner.getUc001_Name2(), owner.getUc001_Name3());
-        } else if (!owner.getUc001_Name2().isEmpty()
-                && !owner.getUc001_Name3().isEmpty()
-                && !owner.getUc001_Name4().isEmpty()) {
-            string += String.format(", %s, %s, and %s", owner.getUc001_Name2(), owner.getUc001_Name3(), owner.getUc001_Name4());
+                || !owner.getUc001_Name3().isEmpty()
+                || !owner.getUc001_Name4().isEmpty()) {
+           string += String.format(" et al"); 
         }
+        string += String.format(", %s", owner.getUc001_Address());
+        string += String.format(", %s", owner.getUc001_City());
+        string += String.format(", %s", owner.getUc001_State().toUpperCase());
+        string += String.format(", %s", owner.getUc001_ZipCode());
         return string;
     }
 
     public String createMineralOwnerString(XUC003MineralOwner owner) {
         String string = owner.getUc001_Name1();
         if (!owner.getUc001_Name2().isEmpty()
-                && owner.getUc001_Name3().isEmpty()
-                && owner.getUc001_Name4().isEmpty()) {
-            string += String.format(" and %s", owner.getUc001_Name2());
-        } else if (!owner.getUc001_Name2().isEmpty()
-                && !owner.getUc001_Name3().isEmpty()
-                && owner.getUc001_Name4().isEmpty()) {
-            string += String.format(", %s, and %s", owner.getUc001_Name2(), owner.getUc001_Name3());
-        } else if (!owner.getUc001_Name2().isEmpty()
-                && !owner.getUc001_Name3().isEmpty()
-                && !owner.getUc001_Name4().isEmpty()) {
-            string += String.format(", %s, %s, and %s", owner.getUc001_Name2(), owner.getUc001_Name3(), owner.getUc001_Name4());
+                || !owner.getUc001_Name3().isEmpty()
+                || !owner.getUc001_Name4().isEmpty()) {
+            string += String.format("et al");
         }
         return string;
     }
