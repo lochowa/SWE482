@@ -1704,177 +1704,177 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
         //Getters and Setters for JText XUC-002 Form Elements created by Jeff Reifler
     
-    public String getXuc002NameQuery() {
+    public String getXuc002_NameQuery() {
         return xuc002_NameQuery.getText();
     }
 
-    public void setXuc002NameQuery(String NameQuery){
+    public void setXuc002_NameQuery(String NameQuery){
         this.xuc002_NameQuery.setText(NameQuery);
     }
 
-    public String getXuc002Name1() {
+    public String getXuc002_Name1() {
         return xuc002_Name1.getText();
     }
 
-    public void setXuc002Name1(String Name1){
+    public void setXuc002_Name1(String Name1){
         this.xuc002_Name1.setText(Name1);
     }
 
-    public String getXuc002Name2() {
+    public String getXuc002_Name2() {
         return xuc002_Name2.getText();
     }
 
-    public void setXuc002Name2(String Name2){
+    public void setXuc002_Name2(String Name2){
         this.xuc002_Name2.setText(Name2);
     }
     
-    public String getXuc002Name3() {
+    public String getXuc002_Name3() {
         return xuc002_Name3.getText();
     }
 
-    public void setXuc002Name3(String Name3){
+    public void setXuc002_Name3(String Name3){
         this.xuc002_Name3.setText(Name3);
     }
     
-    public String getXuc002Name4() {
+    public String getXuc002_Name4() {
         return xuc002_Name4.getText();
     }
 
-    public void setXuc002Name4(String Name4){
+    public void setXuc002_Name4(String Name4){
         this.xuc002_Name4.setText(Name4);
     }
     
-    public String getXuc002Address() {
+    public String getXuc002_Address() {
         return xuc002_Address.getText();
     }
 
-    public void setXuc002Address(String Address){
+    public void setXuc002_Address(String Address){
         this.xuc002_Address.setText(Address);
     }
     
-    public String getXuc002City() {
+    public String getXuc002_City() {
         return xuc002_City.getText();
     }
 
-    public void setXuc002City(String City){
+    public void setXuc002_City(String City){
         this.xuc002_City.setText(City);
     }
     
-    public String getXuc002State() {
+    public String getXuc002_State() {
         return xuc002_State.getText();
     }
 
-    public void setXuc002State(String State){
+    public void setXuc002_State(String State){
         this.xuc002_State.setText(State);
     }   
     
-    public String getXuc002ZipCode() {
+    public String getXuc002_ZipCode() {
         return xuc002_ZipCode.getText();
     }
 
-    public void setXuc002ZipCode(String ZipCode){
+    public void setXuc002_ZipCode(String ZipCode){
         this.xuc002_ZipCode.setText(ZipCode);
     }      
     
-    public String getXuc002ContactNumber() {
+    public String getXuc002_ContactNumber() {
         return xuc002_ContactNumber.getText();
     }
 
-    public void setXuc002ContactNumber(String ContactNumber){
+    public void setXuc002_ContactNumber(String ContactNumber){
         this.xuc002_ContactNumber.setText(ContactNumber);
     }      
         
     //Getters and Setters for JText XUC-003 Form Elements created by Jeff Reifler
     
-    public String getXuc003NameQuery() {
+    public String getXuc003_NameQuery() {
         return xuc003_NameQuery.getText();
     }
 
-    public void setXuc003NameQuery(String NameQuery){
+    public void setXuc003_NameQuery(String NameQuery){
         this.xuc003_NameQuery.setText(NameQuery);
     }     
     
-    public String getXuc003Interest() {
+    public String getXuc003_Interest() {
         return xuc003_Interest.getText();
     }
 
-    public String getXuc003InterestStatus() {
-        return xuc003_Interest.getText();
+    public String getXuc003_InterestStatus() {
+        return this.xuc003_cboStatus.getSelectedItem().toString();
     }
     
-    public void setXuc003Interest(String Interest){
+    public void setXuc003_Interest(String Interest){
         this.xuc003_Interest.setText(Interest);
     } 
 
-    public String getXuc003Name1() {
+    public String getXuc003_Name1() {
         return xuc003_Name1.getText();
     }
 
-    public void setXuc003Name1(String Name1){
+    public void setXuc003_Name1(String Name1){
         this.xuc003_Name1.setText(Name1);
     } 
 
-    public String getXuc003Name2() {
+    public String getXuc003_Name2() {
         return xuc003_Name2.getText();
     }
 
-    public void setXuc003Name2(String Name2){
+    public void setXuc003_Name2(String Name2){
         this.xuc003_Name2.setText(Name2);
     } 
 
-    public String getXuc003Name3() {
+    public String getXuc003_Name3() {
         return xuc003_Name3.getText();
     }
 
-    public void setXuc003Name3(String Name3){
+    public void setXuc003_Name3(String Name3){
         this.xuc003_Name3.setText(Name3);
     } 
 
-    public String getXuc003Name4() {
+    public String getXuc003_Name4() {
         return xuc003_Name4.getText();
     }
 
-    public void setXuc003Name4(String Name4){
+    public void setXuc003_Name4(String Name4){
         this.xuc003_Name4.setText(Name4);
     } 
 
-    public String getXuc003Address() {
+    public String getXuc003_Address() {
         return xuc003_Address.getText();
     }
 
-    public void setXuc003Address(String Address){
+    public void setXuc003_Address(String Address){
         this.xuc003_Address.setText(Address);
     } 
 
-    public String getXuc003City() {
+    public String getXuc003_City() {
         return xuc003_City.getText();
     }
 
-    public void setXuc003City(String City){
+    public void setXuc003_City(String City){
         this.xuc003_City.setText(City);
     } 
 
-    public String getXuc003State() {
+    public String getXuc003_State() {
         return xuc003_State.getText();
     }
 
-    public void setXuc003State(String State){
+    public void setXuc003_State(String State){
         this.xuc003_State.setText(State);
     }  
     
-    public String getXuc003ZipCode() {
+    public String getXuc003_ZipCode() {
         return xuc003_ZipCode.getText();
     }
 
-    public void setXuc003ZipCode(String ZipCode){
+    public void setXuc003_ZipCode(String ZipCode){
         this.xuc003_ZipCode.setText(ZipCode);
     } 
 
-    public String getXuc003ContactNumber() {
+    public String getXuc003_ContactNumber() {
         return xuc003_ContactNumber.getText();
     }
 
-    public void setXuc003ContactNumber(String ContactNumber){
+    public void setXuc003_ContactNumber(String ContactNumber){
         this.xuc003_ContactNumber.setText(ContactNumber);
     } 
 
