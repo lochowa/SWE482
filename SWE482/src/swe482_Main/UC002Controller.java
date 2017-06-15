@@ -254,12 +254,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             view.setXuc007_lblSection(false);
             validFields++;
         }
-        if (view.getXuc007_Meridian().isEmpty() || !view.getXuc007_Meridian().matches(stringRegEx)) {
-            view.setXuc007_lblMeridian(true);
-        } else {
-            view.setXuc007_lblMeridian(false);
-            validFields++;
-        }
+
         if (view.getXuc007_LegalDescription().isEmpty() || !view.getXuc007_LegalDescription().matches(descriptionRegEx)) {
             view.setXuc007_lblLegalDescription(true);
         } else {
