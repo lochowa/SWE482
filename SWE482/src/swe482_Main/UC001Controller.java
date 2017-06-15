@@ -149,7 +149,6 @@ public class UC001Controller implements java.awt.event.ActionListener {
             
             try{
                 model.addXUC003MineralOwner(model.createXUC003MineralOwner(
-                    Integer.parseInt(view.getXuc003Interest()),
                     view.getXuc003Name1(),
                     view.getXuc003Name2(),
                     view.getXuc003Name3(),
@@ -158,7 +157,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     view.getXuc003City(),
                     view.getXuc003State(),
                     Integer.parseInt(view.getXuc003ZipCode()),
-                    view.getXuc003ContactNumber()));
+                    model.getMModCount(),
+                    Integer.parseInt(view.getXuc003Interest()),
+                    view.getXuc003InterestStatus()));
                 }
             catch (NumberFormatException f1){
             }
