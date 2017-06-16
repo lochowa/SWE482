@@ -34,7 +34,12 @@ public class UC001Model {
     }
 
     public XUC002SurfaceOwner getXUC002SurfaceOwner(int index) {
-        return SurfaceOwnerList.get(index);
+        for (int i = 0; i < SurfaceOwnerList.size(); i ++){
+            if (SurfaceOwnerList.get(i).getInsertModCount() == index){
+                return this.SurfaceOwnerList.get(i);
+            }
+        }
+        return null;
     }
 
     public void removeXUC002SurfaceOwner(int index) {

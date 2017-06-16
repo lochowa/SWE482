@@ -139,7 +139,6 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.EDIT_PROPERTY.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
-                        System.out.println(source.getName());
             XUC007Property property = model.getXuc007_LeasedProperty(index);
             this.clearAddPropertyForm();
             this.importPropertyData(property, source.getName());

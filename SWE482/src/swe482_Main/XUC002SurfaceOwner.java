@@ -21,6 +21,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
             double xuc002_Interest,
             int insertModCount
     ){
+        this.setInsertModCount(insertModCount);
         this.setUc001_Name1(uc001_Name1);
         this.setUc001_Name2(uc001_Name2);
         this.setUc001_Name3(uc001_Name3);
