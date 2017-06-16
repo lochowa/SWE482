@@ -62,7 +62,12 @@ public class UC002Model extends java.util.Observable {
     }
 
     public XUC007Property getXuc007_LeasedProperty(int index) {
-        return this.xuc007_LeasedProperty.get(index);
+        for (int i = 0; i < xuc007_LeasedProperty.size(); i ++){
+            if (xuc007_LeasedProperty.get(i).getInsertModCount() == index){
+                return this.xuc007_LeasedProperty.get(i);
+            }
+        }
+        return null;
     }
 
     public void addXuc007_LeasedProperty(XUC007Property property) {

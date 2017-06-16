@@ -139,6 +139,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.EDIT_PROPERTY.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
+                        System.out.println(source.getName());
             XUC007Property property = model.getXuc007_LeasedProperty(index);
             this.clearAddPropertyForm();
             this.importPropertyData(property, source.getName());
@@ -182,7 +183,6 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.REMOVE_PROPERTY.name())){
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
-            System.out.println("Removing JPanel: " + index);
             view.removeXuc007_LeasedPropertyPane(index);
             model.removeXuc007_LeasedProperty(index);
         }
@@ -323,8 +323,10 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                 view.setXuc007_cbxBounders(false);
             }
         }
-        if (view.getXuc007_cbxBounders() && validFields == 14) { return true; }
-        return !view.getXuc007_cbxBounders() & validFields == 10;
+        System.out.println(validFields);
+        if (view.getXuc007_cbxBounders() && validFields == 13) { return true; }
+        if (!view.getXuc007_cbxBounders() & validFields == 9) { return true; }
+        return false;
     }
 
     private boolean validateLeaseForm() {
