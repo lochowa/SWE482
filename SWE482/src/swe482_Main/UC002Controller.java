@@ -14,7 +14,7 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
     UC002View view;
     
     private final String doubleRegEx = "^(([1-9]{1}(\\d+)?)(\\.\\d+)?)|([0]\\.(\\d+)?([1-9]{1})(\\d+)?)$";
-    private final String royaltyRegEx = "^[1]?\\.[0]{1,10}$||^[1]$||^\\.[0-9]{1,10}$";
+    private final String royaltyRegEx = "^[1]\\.[0]{1,10}|[0]\\.\\d{1,10}|\\.\\d{1,10}$";
     private final String integerRegEx = "^[0-9]{1,3}$";
     private final String parcelIDRegEx = "^[0-9]{1,20}";
     private final String zipCodeRegEx = "^[0-9]{1,6}";
@@ -38,18 +38,15 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(UserActions.CLOSE_LEASE.name())) {
-            System.out.println("Action Triggered: Close Lease");
             view.getDxuc007().dispose();
             view.getfUC002().dispose();
         }
         if (e.getActionCommand().equals(UserActions.OPEN_ADDPROPERTY.name())) {
-            System.out.println("Action Triggered: Add Property");
             this.clearAddPropertyForm();
             view.displayAddProperty(true);
 
         }
         if (e.getActionCommand().equals(UserActions.SAVE_LEASE.name())) {
-            System.out.println("Action Triggered: Save Lease");
             if (this.validateLeaseForm() && model.getModCount()!= 0) {
                 try {
                     if (!view.getXuc005_cbxAlternativePayee()) {
@@ -77,8 +74,6 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                             view.getUc002_State().trim(),
                             Integer.parseInt(view.getUc002_ZipCode().trim()),
                             view.getUc002_Lessee().trim());
-
-                    System.out.println("Valid Data\n");
                     model.printUC002Values();
                     model.committoDB();
                     view.dispose();
@@ -88,17 +83,14 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
             }
         }
         if (e.getActionCommand().equals(UserActions.SEARCH_PERSON.name())) {
-            System.out.println("Action Triggered: Search/Add Lessor");
             // TO DO:   FUTURE ENHANCEMENT
         }
 
         if (e.getActionCommand().equals(UserActions.SEARCH_PROPERTY.name())) {
-            System.out.println("Action Triggered: Search/Add Property");
             // TO DO:   FUTURE ENHANCEMENT
         }
 
         if (e.getActionCommand().equals(UserActions.INSERT_PROPERTY.name())) {
-            System.out.println("Action Triggered: Insert Property");
             if (this.validatePropertyForm()) {
                 try {
                     XUC007Property property = model.createXUCProperty(
@@ -125,7 +117,6 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                     model.addXuc007_LeasedProperty(property);
                     model.incrementModCount();
                     view.getDxuc007().dispose();
-
                 } catch (NumberFormatException f2) {
                     System.out.println(f2.getMessage());
                 }
@@ -133,7 +124,6 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
         }
 
         if (e.getActionCommand().equals(UserActions.CLOSE_ADDPROPERTY.name())) {
-            System.out.println("Action Triggered: Close Add Property Window");
             view.getDxuc007().dispose();
         }
         if (e.getActionCommand().equals(UserActions.EDIT_PROPERTY.name())) {

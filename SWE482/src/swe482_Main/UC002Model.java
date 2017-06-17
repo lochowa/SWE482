@@ -145,7 +145,7 @@ public class UC002Model extends java.util.Observable {
     }
 
     public String createDescriptionString(XUC007Property property) {
-        return String.format("%s %s %s %s : %s",
+        return String.format("Twp: %s Rng: %s Sec.: %s of the %s : %s",
                 property.getXuc007_Township(),
                 property.getXuc007_Range(),
                 property.getXuc007_Section(),

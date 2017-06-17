@@ -16,7 +16,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
     UC001View view;
 
     private final String doubleRegEx = "^(([1-9]{1}(\\d+)?)(\\.\\d+)?)|([0]\\.(\\d+)?([1-9]{1})(\\d+)?)$";
-    private final String royaltyRegEx = "^[1]?\\.[0]{1,10}$||^[1]$||^\\.[0-9]{1,10}$";
+    private final String royaltyRegEx = "^[1]\\.[0]{1,10}|[0]\\.\\d{1,10}|\\.\\d{1,10}$";
     private final String integerRegEx = "^[0-9]{1,3}$";
     private final String parcelIDRegEx = "^[0-9]{1,20}";
     private final String zipCodeRegEx = "^[0-9]{1,6}";
