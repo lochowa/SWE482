@@ -17,7 +17,6 @@ public class UC001Model {
     private final ArrayList<XUC003MineralOwner> MineralOwnerList = new ArrayList<>();
     private XUC002SurfaceOwner XUC002_SurfaceOwner;
     private XUC003MineralOwner XUC003_MineralOwner;
-    private UC001Document Document;
     private int modCount;
 
     public void addXUC002SurfaceOwner(XUC002SurfaceOwner owner) {
@@ -227,7 +226,13 @@ public class UC001Model {
             String uc001_City,
             String uc001_State,
             int uc001_ZipCode,
-            String uc001_ContactNumber
+            String uc001_ContactNumber,
+            String uc001_DocumentType,
+            String uc001_EffectiveDate,
+            String uc001_RecordingDate,
+            int uc001_DocumentID,
+            int uc001_Book,
+            int uc001_Page
     ) {
         this.XUC002_SurfaceOwner = new XUC002SurfaceOwner(
                 insertModCount,
@@ -240,9 +245,33 @@ public class UC001Model {
                 uc001_City,
                 uc001_State,
                 uc001_ZipCode,
-                uc001_ContactNumber
+                uc001_ContactNumber,
+                uc001_DocumentType,
+                uc001_EffectiveDate,
+                uc001_RecordingDate,
+                uc001_DocumentID,
+                uc001_Book,
+                uc001_Page
         );
-
+        System.out.println("START Create Surface Owner");
+        System.out.println("Unique ID: " + insertModCount);
+        System.out.println("Name 1: " + uc001_Name1);
+        System.out.println("Name 2: " + uc001_Name2);
+        System.out.println("Name 3: " + uc001_Name3);
+        System.out.println("Name 4: " + uc001_Name4);
+        System.out.println("Address : " + uc001_Address);
+        System.out.println("City: " + uc001_City);
+        System.out.println("State: " + uc001_State);
+        System.out.println("ZipCode: " + uc001_ZipCode);
+        System.out.println("Contact Number: " + uc001_ContactNumber);
+        System.out.println("Interest: " + xuc002_Interest);
+        System.out.println("Document Type: " + uc001_DocumentType);
+        System.out.println("Effective Date: " + uc001_EffectiveDate);
+        System.out.println("Recording Date: " + uc001_RecordingDate);
+        System.out.println("Document Number: " + uc001_DocumentID);
+        System.out.println("Book: " + uc001_Book);
+        System.out.println("Page: " + uc001_Page);
+        System.out.println("END Creat Surface Owner");
         return this.XUC002_SurfaceOwner;
     }
 
@@ -258,7 +287,13 @@ public class UC001Model {
             String uc001_City,
             String uc001_State,
             int uc001_ZipCode,
-            String uc001_ContactNumber
+            String uc001_ContactNumber,
+            String uc001_DocumentType,
+            String uc001_EffectiveDate,
+            String uc001_RecordingDate,
+            int uc001_DocumentID,
+            int uc001_Book,
+            int uc001_Page
     ) {
         this.XUC003_MineralOwner = new XUC003MineralOwner(
                 insertModCount,
@@ -272,9 +307,16 @@ public class UC001Model {
                 uc001_City,
                 uc001_State,
                 uc001_ZipCode,
-                uc001_ContactNumber
+                uc001_ContactNumber,
+                uc001_DocumentType,
+                uc001_EffectiveDate,
+                uc001_RecordingDate,
+                uc001_DocumentID,
+                uc001_Book,
+                uc001_Page
         );
-        System.out.println("START Create Surface Owner");
+        System.out.println("START Create Mineral Owner");
+        System.out.println("Unique ID: " + insertModCount);
         System.out.println("Name 1: " + uc001_Name1);
         System.out.println("Name 2: " + uc001_Name2);
         System.out.println("Name 3: " + uc001_Name3);
@@ -286,30 +328,14 @@ public class UC001Model {
         System.out.println("Contact Number: " + uc001_ContactNumber);
         System.out.println("Interest: " + xuc003_Interest);
         System.out.println("Interest Status: " + xuc003_InterestStatus);
-        System.out.println("Unique ID: " + insertModCount);
-        System.out.println("END Creat Surface Owner");
+        System.out.println("Document Type: " + uc001_DocumentType);
+        System.out.println("Effective Date: " + uc001_EffectiveDate);
+        System.out.println("Recording Date: " + uc001_RecordingDate);
+        System.out.println("Document Number: " + uc001_DocumentID);
+        System.out.println("Book: " + uc001_Book);
+        System.out.println("Page: " + uc001_Page);
+        System.out.println("END Creat Mineral Owner");
         return this.XUC003_MineralOwner;
-    }
-
-    public UC001Document createUC001Document(
-            int InsertModCount,
-            String uc001_DocumentType,
-            String uc001_EffectiveDate,
-            String uc001_RecordingDate,
-            int uc001_ReceptionID,
-            int uc001_Book,
-            int uc001_Page
-    ) {
-        this.Document = new UC001Document(
-                InsertModCount,
-                uc001_DocumentType,
-                uc001_EffectiveDate,
-                uc001_RecordingDate,
-                uc001_ReceptionID,
-                uc001_Book,
-                uc001_Page
-        );
-        return Document;
     }
 
     public String createSurfaceOwnerString(XUC002SurfaceOwner owner) {

@@ -6,7 +6,6 @@ package swe482_Main;
  */
 public class XUC003Burden {
     
-    private UC001Document documentReference;
     private String burden_Lessee;
     private int burden_PrimaryTerm;
     private int burden_SecondaryTerm;
@@ -20,13 +19,7 @@ public class XUC003Burden {
     private String burden_DeepRights;
     private String burden_DeepDepthRestriction;
 
-    public UC001Document getDocumentReference() {
-        return documentReference;
-    }
 
-    public void setDocumentReference(UC001Document documentReference) {
-        this.documentReference = documentReference;
-    }
 
     public String getBurden_Lessee() {
         return burden_Lessee;
