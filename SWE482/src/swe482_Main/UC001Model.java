@@ -11,35 +11,36 @@ import java.util.UUID;
 public class UC001Model {
 
     UC001Model() {
-        // Test Script:  Intercommunication Feedback.
-        System.out.println("Model Property()");
-
     }   // UC001Model()
-    private UC001Document Document;
 
     private final ArrayList<XUC002SurfaceOwner> SurfaceOwnerList = new ArrayList<>();
-    private int sModCount;
+    private final ArrayList<XUC003MineralOwner> MineralOwnerList = new ArrayList<>();
     private XUC002SurfaceOwner XUC002_SurfaceOwner;
+    private XUC003MineralOwner XUC003_MineralOwner;
+    private UC001Document Document;
+    private int modCount;
 
-    public int getSModCount() {
-        return this.sModCount;
-    }
-
-    public void incrementSModCount() {
-        this.sModCount++;
-    }
-
-    public void addXUC002SurfaceOwner(XUC002SurfaceOwner sInterest) {
-        this.SurfaceOwnerList.add(sInterest);
+    public void addXUC002SurfaceOwner(XUC002SurfaceOwner owner) {
+        this.SurfaceOwnerList.add(owner);
     }
 
     public XUC002SurfaceOwner getXUC002SurfaceOwner(int index) {
-        for (int i = 0; i < SurfaceOwnerList.size(); i ++){
-            if (SurfaceOwnerList.get(i).getInsertModCount() == index){
+        for (int i = 0; i < SurfaceOwnerList.size(); i++) {
+            if (SurfaceOwnerList.get(i).getInsertModCount() == index) {
                 return this.SurfaceOwnerList.get(i);
             }
         }
         return null;
+    }
+
+    public int getXUC002SurfaceOwnerIndex(int index) {
+        int number = 0;
+        for (int i = 0; i < SurfaceOwnerList.size(); i++) {
+            if (SurfaceOwnerList.get(i).getInsertModCount() == index) {
+                number = i;
+            }
+        }
+        return number;
     }
 
     public void removeXUC002SurfaceOwner(int index) {
@@ -49,16 +50,28 @@ public class UC001Model {
             }
         }
     }
-    private final ArrayList<XUC003MineralOwner> MineralOwnerList = new ArrayList<>();
-    private int mModCount;
-    private XUC003MineralOwner XUC003_MineralOwner;
 
-    public void addXUC003MineralOwner(XUC003MineralOwner mInterest) {
-        this.MineralOwnerList.add(mInterest);
+    public void addXUC003MineralOwner(XUC003MineralOwner owner) {
+        this.MineralOwnerList.add(owner);
     }
 
     public XUC003MineralOwner getXUC003MineralOwner(int index) {
-        return MineralOwnerList.get(index);
+        for (int i = 0; i < MineralOwnerList.size(); i++) {
+            if (MineralOwnerList.get(i).getInsertModCount() == index) {
+                return this.MineralOwnerList.get(i);
+            }
+        }
+        return null;
+    }
+
+    public int getXUC003MineralOwnerIndex(int index) {
+        int number = 0;
+        for (int i = 0; i < SurfaceOwnerList.size(); i++) {
+            if (SurfaceOwnerList.get(i).getInsertModCount() == index) {
+                number = i;
+            }
+        }
+        return number;
     }
 
     public void removeXUC003MineralOwner(int index) {
@@ -69,12 +82,12 @@ public class UC001Model {
         }
     }
 
-    public int getMModCount() {
-        return this.mModCount;
+    public int getModCount() {
+        return this.modCount;
     }
 
     public void incrementMModCount() {
-        this.mModCount++;
+        this.modCount++;
     }
 
     private final String dbRecordID = getDBRecordID();
@@ -204,6 +217,8 @@ public class UC001Model {
     }
 
     public XUC002SurfaceOwner createXUC002SurfaceOwner(
+            int insertModCount,
+            double xuc002_Interest,
             String uc001_Name1,
             String uc001_Name2,
             String uc001_Name3,
@@ -212,11 +227,11 @@ public class UC001Model {
             String uc001_City,
             String uc001_State,
             int uc001_ZipCode,
-            String uc001_ContactNumber,
-            int insertModCount,
-            double xuc002_Interest
+            String uc001_ContactNumber
     ) {
         this.XUC002_SurfaceOwner = new XUC002SurfaceOwner(
+                insertModCount,
+                xuc002_Interest,
                 uc001_Name1,
                 uc001_Name2,
                 uc001_Name3,
@@ -225,14 +240,16 @@ public class UC001Model {
                 uc001_City,
                 uc001_State,
                 uc001_ZipCode,
-                uc001_ContactNumber,
-                xuc002_Interest,
-                insertModCount
+                uc001_ContactNumber
         );
+
         return this.XUC002_SurfaceOwner;
     }
 
     public XUC003MineralOwner createXUC003MineralOwner(
+            int insertModCount,
+            double xuc003_Interest,
+            String xuc003_InterestStatus,
             String uc001_Name1,
             String uc001_Name2,
             String uc001_Name3,
@@ -241,12 +258,12 @@ public class UC001Model {
             String uc001_City,
             String uc001_State,
             int uc001_ZipCode,
-            String uc001_ContactNumber,
-            int insertModCount,
-            double xuc003_Interest,
-            String xuc003_InterestStatus
+            String uc001_ContactNumber
     ) {
         this.XUC003_MineralOwner = new XUC003MineralOwner(
+                insertModCount,
+                xuc003_Interest,
+                xuc003_InterestStatus,
                 uc001_Name1,
                 uc001_Name2,
                 uc001_Name3,
@@ -255,11 +272,22 @@ public class UC001Model {
                 uc001_City,
                 uc001_State,
                 uc001_ZipCode,
-                uc001_ContactNumber,
-                insertModCount,
-                xuc003_Interest,
-                xuc003_InterestStatus
+                uc001_ContactNumber
         );
+        System.out.println("START Create Surface Owner");
+        System.out.println("Name 1: " + uc001_Name1);
+        System.out.println("Name 2: " + uc001_Name2);
+        System.out.println("Name 3: " + uc001_Name3);
+        System.out.println("Name 4: " + uc001_Name4);
+        System.out.println("Address : " + uc001_Address);
+        System.out.println("City: " + uc001_City);
+        System.out.println("State: " + uc001_State);
+        System.out.println("ZipCode: " + uc001_ZipCode);
+        System.out.println("Contact Number: " + uc001_ContactNumber);
+        System.out.println("Interest: " + xuc003_Interest);
+        System.out.println("Interest Status: " + xuc003_InterestStatus);
+        System.out.println("Unique ID: " + insertModCount);
+        System.out.println("END Creat Surface Owner");
         return this.XUC003_MineralOwner;
     }
 
@@ -289,7 +317,7 @@ public class UC001Model {
         if (!owner.getUc001_Name2().isEmpty()
                 || !owner.getUc001_Name3().isEmpty()
                 || !owner.getUc001_Name4().isEmpty()) {
-           string += String.format(" et al"); 
+            string += String.format(" et al");
         }
         string += String.format(", %s", owner.getUc001_Address());
         string += String.format(", %s", owner.getUc001_City());

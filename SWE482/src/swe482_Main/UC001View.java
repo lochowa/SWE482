@@ -1576,8 +1576,10 @@ public class UC001View extends JFrame implements java.util.Observer {
         remove.setName(Integer.toString(index));
         JTextField _status = new JTextField();
         _status.setText(status);
+        _status.setName(Integer.toString(index));
         JTextField _interest = new JTextField();
         _interest.setText(interest);
+        _interest.setName(Integer.toString(index));
         
         //======== this ========
         mineral.setLayout(new GridBagLayout());

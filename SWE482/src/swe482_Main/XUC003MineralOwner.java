@@ -9,20 +9,22 @@ import java.util.ArrayList;
 public class XUC003MineralOwner extends UC001Owner {
     
     XUC003MineralOwner(
-                String uc001_Name1,
-                String uc001_Name2,
-                String uc001_Name3,
-                String uc001_Name4,
-                String uc001_Address,
-                String uc001_City,
-                String uc001_State,
-                int uc001_ZipCode,
-                String uc001_ContactNumber,
-                int insertModCount,
-                double xuc003_Interest,
-                String xuc003_InterestStatus
-    
+            int insertModCount,
+            double xuc003_Interest,
+            String xuc003_InterestStatus,
+            String uc001_Name1,
+            String uc001_Name2,
+            String uc001_Name3,
+            String uc001_Name4,
+            String uc001_Address,
+            String uc001_City,
+            String uc001_State,
+            int uc001_ZipCode,
+            String uc001_ContactNumber
     ){
+         this.setInsertModCount(insertModCount);
+        this.setXuc003_Interest(xuc003_Interest);
+        this.setXuc003_InterestStatus(xuc003_InterestStatus);
         this.setUc001_Name1(uc001_Name1);
         this.setUc001_Name2(uc001_Name2);
         this.setUc001_Name3(uc001_Name3);
@@ -32,9 +34,6 @@ public class XUC003MineralOwner extends UC001Owner {
         this.setUc001_State(uc001_State);
         this.setUc001_ZipCode(uc001_ZipCode);
         this.setUc001_ContactNumber(uc001_ContactNumber);
-        this.setInsertModCount(insertModCount);
-        this.setXuc003_Interest(xuc003_Interest);
-        this.setXuc003_InterestStatus(xuc003_InterestStatus);
     }
 
     private final String OWNERSHIP = "MINERAL";

@@ -3,12 +3,14 @@ package swe482_Main;
 import java.util.ArrayList;
 
 /**
- * @author Michael Barth
- * This class object inherits attributes and mutators/accessors from UC001Owner
+ * @author Michael Barth This class object inherits attributes and
+ * mutators/accessors from UC001Owner
  */
 public class XUC002SurfaceOwner extends UC001Owner {
-    
+
     XUC002SurfaceOwner(
+            int insertModCount,
+            double xuc002_Interest,
             String uc001_Name1,
             String uc001_Name2,
             String uc001_Name3,
@@ -17,11 +19,10 @@ public class XUC002SurfaceOwner extends UC001Owner {
             String uc001_City,
             String uc001_State,
             int uc001_ZipCode,
-            String uc001_ContactNumber,
-            double xuc002_Interest,
-            int insertModCount
-    ){
+            String uc001_ContactNumber
+    ) {
         this.setInsertModCount(insertModCount);
+        this.setXuc002_Interest(xuc002_Interest);        
         this.setUc001_Name1(uc001_Name1);
         this.setUc001_Name2(uc001_Name2);
         this.setUc001_Name3(uc001_Name3);
@@ -30,8 +31,20 @@ public class XUC002SurfaceOwner extends UC001Owner {
         this.setUc001_City(uc001_City);
         this.setUc001_State(uc001_State);
         this.setUc001_ZipCode(uc001_ZipCode);
-        this.setUc001_ContactNumber(uc001_ContactNumber);
-        this.setXuc002_Interest(xuc002_Interest);
+        this.setUc001_ContactNumber(uc001_ContactNumber);       System.out.println("START Create Surface Owner");
+        System.out.println("Unique ID: " + this.insertModCount);
+        System.out.println("Interest: " + this.xuc002_Interest);
+        System.out.println("Name 1: " + this.getUc001_Name1());
+        System.out.println("Name 2: " + this.getUc001_Name2());
+        System.out.println("Name 3: " + this.getUc001_Name3());
+        System.out.println("Name 4: " + this.getUc001_Name4());
+        System.out.println("Address : " + this.getUc001_Address());
+        System.out.println("City: " + this.getUc001_City());
+        System.out.println("State: " + this.getUc001_State());
+        System.out.println("ZipCode: " + this.getUc001_ZipCode());
+        System.out.println("Contact Number: " + this.getUc001_ContactNumber());
+        System.out.println("END Creat Surface Owner");
+        
     }
 
     @Override
@@ -84,46 +97,48 @@ public class XUC002SurfaceOwner extends UC001Owner {
     private ArrayList<UC001Document> UC001DocumentList = new ArrayList<>();
     private int modCount;
     private double xuc002_Interest;
-    
-    public void addUC001Document(UC001Document document){
+
+    public void addUC001Document(UC001Document document) {
         this.UC001DocumentList.add(document);
     }
-    
-    public UC001Document getUC001Document(int index){
+
+    public UC001Document getUC001Document(int index) {
         return this.UC001DocumentList.get(index);
     }
-    public void removeUC001Docuemnt(int index){
-         for (int i = 0; i < UC001DocumentList.size(); i++){
-            if(UC001DocumentList.get(i).getInsertModCount() == index){
+
+    public void removeUC001Docuemnt(int index) {
+        for (int i = 0; i < UC001DocumentList.size(); i++) {
+            if (UC001DocumentList.get(i).getInsertModCount() == index) {
                 UC001DocumentList.remove(i);
             }
         }
     }
-    public double getXuc002_Interest(){
+
+    public double getXuc002_Interest() {
         return this.xuc002_Interest;
     }
-    
-    public void setXuc002_Interest(double xuc002_Interest){
+
+    public void setXuc002_Interest(double xuc002_Interest) {
         this.xuc002_Interest = xuc002_Interest;
     }
-    
-    public void addDocument(UC001Document document){
-        this.UC001DocumentList.add(document); 
+
+    public void addDocument(UC001Document document) {
+        this.UC001DocumentList.add(document);
     }
-    
-    public void getDocument(int index){
+
+    public void getDocument(int index) {
         this.UC001DocumentList.get(index);
     }
-    
-    public int getModCount(){
+
+    public int getModCount() {
         return this.modCount;
     }
-    
-    public void incrementModCount(){
+
+    public void incrementModCount() {
         this.modCount++;
     }
-    
-    private String getOwnershipType(){
+
+    private String getOwnershipType() {
         return this.OWNERSHIP;
     }
 
@@ -142,7 +157,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
     public void setInsertModCount(int insertModCount) {
         this.insertModCount = insertModCount;
     }
-    
+
     @Override
     public void setUc001_ZipCode(int uc001_ZipCode) {
         super.setUc001_ZipCode(uc001_ZipCode); //To change body of generated methods, choose Tools | Templates.
@@ -193,5 +208,4 @@ public class XUC002SurfaceOwner extends UC001Owner {
         return super.getUc001_ContactNumber(); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
 }

@@ -128,6 +128,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
             this.validateSurfaceOwnerForm();
             try {
                 XUC002SurfaceOwner surface = model.createXUC002SurfaceOwner(
+                        model.getModCount(),
+                        100,
                         view.getXuc002_Name1(),
                         view.getXuc002_Name2(),
                         view.getXuc002_Name3(),
@@ -136,53 +138,54 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         view.getXuc002_City(),
                         view.getXuc002_State(),
                         Integer.parseInt(view.getXuc002_ZipCode()),
-                        view.getXuc002_ContactNumber(),
-                        100,
-                        model.getSModCount());
-                view.addSurfaceOwner(model.createSurfaceOwnerString(surface), model.getSModCount());
+                        view.getXuc002_ContactNumber());
+                view.addSurfaceOwner(model.createSurfaceOwnerString(surface), model.getModCount());
+                view.getEditSurfaceOwnerButton().setActionCommand(UserActions.EDIT_SURFACEOWNER.name());
                 view.addButtonController(this, view.getEditSurfaceOwnerButton());
+                view.getRemoveSurfaceOwnerButton().setActionCommand(UserActions.REMOVE_SURFACEOWNER.name());
                 view.addButtonController(this, view.getRemoveSurfaceOwnerButton());
                 model.addXUC002SurfaceOwner(surface);
-                model.incrementSModCount();
+                model.incrementMModCount();
                 view.getSurfaceDialog().dispose();
             } catch (NumberFormatException nf2) {
                 System.out.println(nf2.getMessage());
             }
-
         }
 
         if (e.getActionCommand().equals(UserActions.EDIT_SURFACEOWNER.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
-            XUC002SurfaceOwner editsurface = model.getXUC002SurfaceOwner(index);
+            System.out.println("Action Command: EditSurfaceOwner");
+            XUC002SurfaceOwner surfaceOwwner = model.getXUC002SurfaceOwner(index);
             this.clearSurfaceOwnerForm();
-            this.importSurfaceOwner(editsurface, source.getName());
+            this.importSurfaceOwner(surfaceOwwner, source.getName());
+            view.getSurfaceDialog().setVisible(true);
         }
-        
+
         if (e.getActionCommand().equals(UserActions.UPDATE_SURFACEOWNER.name())) {
             JButton source = (JButton) e.getSource();
-            int index = Integer.parseInt(source.getName());
+            int updateSurfaceOwner = Integer.parseInt(source.getName());
             if (this.validateSurfaceOwnerForm()) {
                 try {
-                    model.getXUC002SurfaceOwner(index).setUc001_Name1(view.getXuc002_Name1());
-                    model.getXUC002SurfaceOwner(index).setUc001_Name2(view.getXuc002_Name2());
-                    model.getXUC002SurfaceOwner(index).setUc001_Name3(view.getXuc002_Name3());
-                    model.getXUC002SurfaceOwner(index).setUc001_Name4(view.getXuc002_Name4());
-                    model.getXUC002SurfaceOwner(index).setUc001_Address(view.getXuc002_Address());
-                    model.getXUC002SurfaceOwner(index).setUc001_City(view.getXuc002_City());
-                    model.getXUC002SurfaceOwner(index).setUc001_State(view.getXuc002_State());
-                    model.getXUC002SurfaceOwner(index).setUc001_ZipCode(Integer.parseInt(view.getXuc002_ZipCode()));
-                    model.getXUC002SurfaceOwner(index).setUc001_ContactNumber(view.getXuc002_ContactNumber());
-
-                    view.updateSurfaceOwner(model.createSurfaceOwnerString(model.getXUC002SurfaceOwner(index)), index);
+                    int getSurfaceOwnerIndex = model.getXUC002SurfaceOwnerIndex(updateSurfaceOwner);
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_Name1(view.getXuc002_Name1());
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_Name2(view.getXuc002_Name2());
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_Name3(view.getXuc002_Name3());
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_Name4(view.getXuc002_Name4());
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_Address(view.getXuc002_Address());
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_City(view.getXuc002_City());
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_State(view.getXuc002_State());
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_ZipCode(Integer.parseInt(view.getXuc002_ZipCode()));
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_ContactNumber(view.getXuc002_ContactNumber());
+                    view.updateSurfaceOwner(model.createSurfaceOwnerString(model.getXUC002SurfaceOwner(updateSurfaceOwner)), updateSurfaceOwner);
                     view.getSurfaceDialog().dispose();
                 } catch (NumberFormatException nf3) {
-                    System.out.println(nf3.getMessage());
+                    System.out.println("Update Surface Owner\n" + nf3.getMessage());
                 }
             }
         }
-        
-        if (e.getActionCommand().equals(UserActions.REMOVE_SURFACEOWNER.name())){
+
+        if (e.getActionCommand().equals(UserActions.REMOVE_SURFACEOWNER.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
             System.out.println("Removing JPanel: " + index);
@@ -201,6 +204,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         varZipCode = Integer.parseInt(view.getXuc003_ZipCode());
                     }
                     XUC003MineralOwner mineral = model.createXUC003MineralOwner(
+                            model.getModCount(),
+                            Double.parseDouble(view.getXuc003_Interest()),
+                            view.getXuc003_InterestStatus(),
                             view.getXuc003_Name1(),
                             view.getXuc003_Name2(),
                             view.getXuc003_Name3(),
@@ -209,47 +215,49 @@ public class UC001Controller implements java.awt.event.ActionListener {
                             view.getXuc003_City(),
                             view.getXuc003_State(),
                             varZipCode,
-                            view.getXuc003_ContactNumber(),
-                            model.getMModCount(),
-                            Double.parseDouble(view.getXuc003_Interest()),
-                            view.getXuc003_InterestStatus());
+                            view.getXuc003_ContactNumber());
                     System.out.println("Owner Object Created");
-                    view.addMineralOwner(model.createMineralOwnerString(mineral), mineral.getXuc003_InterestStatus(), Double.toString(mineral.getXuc003_Interest()), model.getMModCount());
+                    view.addMineralOwner(model.createMineralOwnerString(mineral), mineral.getXuc003_InterestStatus(), Double.toString(mineral.getXuc003_Interest()), model.getModCount());
+                    view.getEditMineralOwnerButton().setActionCommand(UserActions.EDIT_MINERALOWENR.name());
                     view.addButtonController(this, view.getEditMineralOwnerButton());
+                    view.getRemoveMineralOwnerButton().setActionCommand(UserActions.REMOVE_MINERALOWNER.name());
                     view.addButtonController(this, view.getRemoveMineralOwnerButton());
                     model.addXUC003MineralOwner(mineral);
                     model.incrementMModCount();
+                    view.getMineralDialog().dispose();
                 } catch (NumberFormatException nf4) {
                     System.out.println(nf4.toString());
                 }
             }
         }
-        
-        if(e.getActionCommand().equals(UserActions.UPDATE_MINERALOWNER.name())){
+
+        if (e.getActionCommand().equals(UserActions.UPDATE_MINERALOWNER.name())) {
             JButton source = (JButton) e.getSource();
-            int index = Integer.parseInt(source.getName());
+            int updateMineralOwnerIndex = Integer.parseInt(source.getName());
             if (this.validateMineralOwnerForm()) {
                 try {
-                    model.getXUC003MineralOwner(index).setUc001_Name1(view.getXuc003_Name1());
-                    model.getXUC003MineralOwner(index).setUc001_Name2(view.getXuc003_Name2());
-                    model.getXUC003MineralOwner(index).setUc001_Name3(view.getXuc003_Name3());
-                    model.getXUC003MineralOwner(index).setUc001_Name4(view.getXuc003_Name4());
-                    model.getXUC003MineralOwner(index).setUc001_Address(view.getXuc003_Address());
-                    model.getXUC003MineralOwner(index).setUc001_City(view.getXuc003_City());
-                    model.getXUC003MineralOwner(index).setUc001_State(view.getXuc003_State());
-                    model.getXUC003MineralOwner(index).setUc001_ZipCode(Integer.parseInt(view.getXuc003_ZipCode()));
-                    model.getXUC003MineralOwner(index).setUc001_ContactNumber(view.getXuc003_ContactNumber());
-                    model.getXUC003MineralOwner(index).setXuc003_Interest(Double.parseDouble(view.getXuc003_Interest()));
-                    model.getXUC003MineralOwner(index).setXuc003_InterestStatus(view.getXuc003_InterestStatus());
-
+                    int getMineralOwnerIndex = model.getXUC003MineralOwnerIndex(updateMineralOwnerIndex);
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_Name1(view.getXuc003_Name1());
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_Name2(view.getXuc003_Name2());
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_Name3(view.getXuc003_Name3());
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_Name4(view.getXuc003_Name4());
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_Address(view.getXuc003_Address());
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_City(view.getXuc003_City());
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_State(view.getXuc003_State());
+                    if (!view.getXuc003_ZipCode().isEmpty()) {
+                        model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_ZipCode(Integer.parseInt(view.getXuc003_ZipCode()));
+                    }
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_ContactNumber(view.getXuc003_ContactNumber());
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setXuc003_Interest(Double.parseDouble(view.getXuc003_Interest()));
+                    model.getXUC003MineralOwner(getMineralOwnerIndex).setXuc003_InterestStatus(view.getXuc003_InterestStatus());
                     view.updateMineralOwner(
-                            model.createMineralOwnerString(model.getXUC003MineralOwner(index)),
-                            model.getXUC003MineralOwner(index).getXuc003_InterestStatus(),
-                            Double.toString(model.getXUC003MineralOwner(index).getXuc003_Interest()),
-                            index);
+                            model.createMineralOwnerString(model.getXUC003MineralOwner(getMineralOwnerIndex)),
+                            model.getXUC003MineralOwner(getMineralOwnerIndex).getXuc003_InterestStatus(),
+                            Double.toString(model.getXUC003MineralOwner(getMineralOwnerIndex).getXuc003_Interest()),
+                            updateMineralOwnerIndex);
                     view.getMineralDialog().dispose();
                 } catch (NumberFormatException nf3) {
-                    System.out.println(nf3.getMessage());
+                    System.out.println("Update Mineral Owner\n" + nf3.getMessage());
                 }
             }
         }
@@ -257,15 +265,16 @@ public class UC001Controller implements java.awt.event.ActionListener {
         if (e.getActionCommand().equals(UserActions.EDIT_MINERALOWENR.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
+            System.out.println("Action Command: Edit MineralOwner");
             XUC003MineralOwner editMineral = model.getXUC003MineralOwner(index);
             this.clearMineralOwnerForm();
             this.importMineralOwner(editMineral, source.getName());
+            view.getMineralDialog().setVisible(true);
         }
-        
-        if (e.getActionCommand().equals(UserActions.REMOVE_MINERALOWNER.name())){
+
+        if (e.getActionCommand().equals(UserActions.REMOVE_MINERALOWNER.name())) {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
-            System.out.println("Removing JPanel: " + index);
             view.removeMineralOwner(index);
             model.removeXUC003MineralOwner(index);
         }
@@ -405,10 +414,10 @@ public class UC001Controller implements java.awt.event.ActionListener {
             }
         }
 
-        if (model.getMModCount() != 0) {
+        if (model.getModCount() != 0) {
             validFields++;
         }
-        if (model.getSModCount() != 0) {
+        if (model.getModCount() != 0) {
             validFields++;
         }
 
@@ -628,14 +637,30 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
     private void importSurfaceOwner(XUC002SurfaceOwner owner, String index) {
         view.setXuc002_Name1(owner.getUc001_Name1());
-        view.setXuc002_Name2(owner.getUc001_Name2());
-        view.setXuc002_Name3(owner.getUc001_Name3());
-        view.setXuc002_Name4(owner.getUc001_Name4());
+        if (owner.getUc001_Name2().isEmpty()) {
+            view.setXuc002_Name2(null);
+        } else {
+            view.setXuc002_Name2(owner.getUc001_Name2());
+        }
+        if (owner.getUc001_Name3().isEmpty()) {
+            view.setXuc002_Name3(null);
+        } else {
+            view.setXuc002_Name3(owner.getUc001_Name3());
+        }
+        if (owner.getUc001_Name4().isEmpty()) {
+            view.setXuc002_Name4(null);
+        } else {
+            view.setXuc002_Name4(owner.getUc001_Name4());
+        }
         view.setXuc002_Address(owner.getUc001_Address());
         view.setXuc002_City(owner.getUc001_City());
         view.setXuc002_State(owner.getUc001_State());
         view.setXuc002_ZipCode(Integer.toString(owner.getUc001_ZipCode()));
-        view.setXuc002_ContactNumber(owner.getUc001_ContactNumber());
+        if (owner.getUc001_ContactNumber().isEmpty()) {
+            view.setXuc002_ContactNumber(null);
+        } else {
+            view.setXuc002_ContactNumber(owner.getUc001_ContactNumber());
+        }
         view.importSurfaceOwnerButtonProperties(true, index);
     }
 
@@ -650,18 +675,51 @@ public class UC001Controller implements java.awt.event.ActionListener {
         view.setXuc002_ZipCode(null);
         view.setXuc002_ContactNumber(null);
     }
+
     private void importMineralOwner(XUC003MineralOwner owner, String index) {
         view.setXuc003_InterestStatus(owner.getXuc003_InterestStatus());
         view.setXuc003_Interest(Double.toString(owner.getXuc003_Interest()));
         view.setXuc003_Name1(owner.getUc001_Name1());
-        view.setXuc003_Name2(owner.getUc001_Name2());
-        view.setXuc003_Name3(owner.getUc001_Name3());
-        view.setXuc003_Name4(owner.getUc001_Name4());
-        view.setXuc003_Address(owner.getUc001_Address());
-        view.setXuc003_City(owner.getUc001_City());
-        view.setXuc003_State(owner.getUc001_State());
-        view.setXuc003_ZipCode(Integer.toString(owner.getUc001_ZipCode()));
-        view.setXuc003_ContactNumber(owner.getUc001_ContactNumber());
+        if (owner.getUc001_Name2().isEmpty()) {
+            view.setXuc003_Name2(null);
+        } else {
+            view.setXuc003_Name2(owner.getUc001_Name2());
+        }
+        if (owner.getUc001_Name3().isEmpty()) {
+            view.setXuc003_Name3(null);
+        } else {
+            view.setXuc003_Name3(owner.getUc001_Name3());
+        }
+        if (owner.getUc001_Name4().isEmpty()) {
+            view.setXuc003_Name4(null);
+        } else {
+            view.setXuc003_Name4(owner.getUc001_Name4());
+        }
+        if (owner.getUc001_Address().isEmpty()) {
+            view.setXuc003_Address(null);
+        } else {
+            view.setXuc003_Address(owner.getUc001_Address());
+        }
+        if (owner.getUc001_City().isEmpty()) {
+            view.setXuc003_City(null);
+        } else {
+            view.setXuc003_City(owner.getUc001_City());
+        }
+        if (owner.getUc001_State().isEmpty()) {
+            view.setXuc003_State(null);
+        } else {
+            view.setXuc003_State(owner.getUc001_State());
+        }
+        if (owner.getUc001_ZipCode() != 0) {
+            view.setXuc003_ZipCode(Integer.toString(owner.getUc001_ZipCode()));
+        } else {
+            view.setXuc003_ZipCode(null);
+        }
+        if (owner.getUc001_ContactNumber().isEmpty()) {
+            view.setXuc003_ContactNumber(null);
+        } else {
+            view.setXuc003_ContactNumber(owner.getUc001_ContactNumber());
+        }
         view.importMineralOwnerButtonProperties(true, index);
     }
 
@@ -678,6 +736,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         view.setXuc003_ZipCode(null);
         view.setXuc003_ContactNumber(null);
     }
+
     public void validateDocumentForm() {
 
     }
