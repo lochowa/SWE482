@@ -557,7 +557,6 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc002_lblDocumentID = new JLabel();
         xuc002_DocumentID = new JTextField();
         xuc002_lblValidationFeedback = new JTextArea();
-        xuc002_lblValidationFeedback.setVisible(false);
         xuc002_lblBook = new JLabel();
         xuc002_Book = new JTextField();
         xuc002_lblPage = new JLabel();
@@ -906,7 +905,6 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc003_lblDocumentID = new JLabel();
         xuc003_DocumentID = new JTextField();
         xuc003_lblValidationFeedback = new JTextArea();
-        xuc003_lblValidationFeedback.setVisible(false);
         xuc003_lblBook = new JLabel();
         xuc003_Book = new JTextField();
         xuc003_lblPage = new JLabel();
@@ -1164,7 +1162,7 @@ public class UC001View extends JFrame implements java.util.Observer {
                 xuc003_lblValidationFeedback.setOpaque(false);
                 xuc003_lblValidationFeedback.setEditable(false);
                 xuc003_lblValidationFeedback.setForeground(Color.red);
-                xuc003_contentPanel.add(xuc002_lblValidationFeedback, new GridBagConstraints(3, 17, 1, 3, 0.0, 0.0,
+                xuc003_contentPanel.add(xuc003_lblValidationFeedback, new GridBagConstraints(3, 17, 1, 3, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 5, 0, 0), 0, 0));
 
@@ -2305,15 +2303,15 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
 
     public void setXuc003_EffectiveDate(String uc001_EffectiveDate) {
-        this.xuc003_EffectiveDate.setText(documentCaller);
+        this.xuc003_EffectiveDate.setText(uc001_EffectiveDate);
     }
 
     public void setXuc003_RecordingDate(String uc001_RecordingDate) {
-        this.xuc003_RecordingDate.setText(documentCaller);
+        this.xuc003_RecordingDate.setText(uc001_RecordingDate);
     }
 
     public void setXuc003_DocumentID(String uc001_DocumentID) {
-        this.xuc003_DocumentID.setText(documentCaller);
+        this.xuc003_DocumentID.setText(uc001_DocumentID);
     }
 
     public void setXuc003_Book(String uc001_Book) {
@@ -2397,15 +2395,15 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
 
     public void setXuc002_EffectiveDate(String uc001_EffectiveDate) {
-        this.xuc002_EffectiveDate.setText(documentCaller);
+        this.xuc002_EffectiveDate.setText(uc001_EffectiveDate);
     }
 
     public void setXuc002_RecordingDate(String uc001_RecordingDate) {
-        this.xuc002_RecordingDate.setText(documentCaller);
+        this.xuc002_RecordingDate.setText(uc001_RecordingDate);
     }
 
     public void setXuc002_DocumentID(String uc001_DocumentID) {
-        this.xuc002_DocumentID.setText(documentCaller);
+        this.xuc002_DocumentID.setText(uc001_DocumentID);
     }
 
     public void setXuc002_Book(String uc001_Book) {
@@ -2455,14 +2453,5 @@ public class UC001View extends JFrame implements java.util.Observer {
             this.xuc002_lblPage.setForeground(Color.black);
         }
     }
-    
-    public void setXuc002_lblValidationFeedback(boolean feedback) {
-        this.xuc002_lblValidationFeedback.setVisible(feedback);
 
-    }
-
-    public void setXuc003_lblValidationFeedback(boolean feedback) {
-        this.xuc003_lblValidationFeedback.setVisible(feedback);
-
-    }
 }

@@ -46,6 +46,26 @@ public class XUC003MineralOwner extends UC001Owner {
         this.setUc001_DocumentID(uc001_DocumentID);
         this.setUc001_Book(uc001_Book);
         this.setUc001_Page(uc001_Page);
+        System.out.println("START Create Mineral Owner");
+        System.out.println("Unique ID: " + this.getInsertModCount());
+        System.out.println("Name 1: " + this.getUc001_Name1());
+        System.out.println("Name 2: " + this.getUc001_Name2());
+        System.out.println("Name 3: " + this.getUc001_Name3());
+        System.out.println("Name 4: " + this.getUc001_Name4());
+        System.out.println("Address : " + this.getUc001_Address());
+        System.out.println("City: " + this.getUc001_City());
+        System.out.println("State: " + this.getUc001_State());
+        System.out.println("ZipCode: " + this.getUc001_ZipCode());
+        System.out.println("Contact Number: " + this.getUc001_ContactNumber());
+        System.out.println("Interest: " + this.getXuc003_Interest());
+        System.out.println("Interest Status: " + this.getXuc003_InterestStatus());
+        System.out.println("Document Type: " + this.getUc001_DocumentType());
+        System.out.println("Effective Date: " + this.getUc001_EffectiveDate());
+        System.out.println("Recording Date: " + this.getUc001_RecordingDate());
+        System.out.println("Document Number: " + this.getUc001_DocumentID());
+        System.out.println("Book: " + this.getUc001_Book());
+        System.out.println("Page: " + this.getUc001_Page());
+        System.out.println("END Creat Mineral Owner");
     }
 
     private final String OWNERSHIP = "MINERAL";

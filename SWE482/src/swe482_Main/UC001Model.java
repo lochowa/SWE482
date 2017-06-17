@@ -253,25 +253,6 @@ public class UC001Model {
                 uc001_Book,
                 uc001_Page
         );
-        System.out.println("START Create Surface Owner");
-        System.out.println("Unique ID: " + insertModCount);
-        System.out.println("Name 1: " + uc001_Name1);
-        System.out.println("Name 2: " + uc001_Name2);
-        System.out.println("Name 3: " + uc001_Name3);
-        System.out.println("Name 4: " + uc001_Name4);
-        System.out.println("Address : " + uc001_Address);
-        System.out.println("City: " + uc001_City);
-        System.out.println("State: " + uc001_State);
-        System.out.println("ZipCode: " + uc001_ZipCode);
-        System.out.println("Contact Number: " + uc001_ContactNumber);
-        System.out.println("Interest: " + xuc002_Interest);
-        System.out.println("Document Type: " + uc001_DocumentType);
-        System.out.println("Effective Date: " + uc001_EffectiveDate);
-        System.out.println("Recording Date: " + uc001_RecordingDate);
-        System.out.println("Document Number: " + uc001_DocumentID);
-        System.out.println("Book: " + uc001_Book);
-        System.out.println("Page: " + uc001_Page);
-        System.out.println("END Creat Surface Owner");
         return this.XUC002_SurfaceOwner;
     }
 
@@ -315,26 +296,6 @@ public class UC001Model {
                 uc001_Book,
                 uc001_Page
         );
-        System.out.println("START Create Mineral Owner");
-        System.out.println("Unique ID: " + insertModCount);
-        System.out.println("Name 1: " + uc001_Name1);
-        System.out.println("Name 2: " + uc001_Name2);
-        System.out.println("Name 3: " + uc001_Name3);
-        System.out.println("Name 4: " + uc001_Name4);
-        System.out.println("Address : " + uc001_Address);
-        System.out.println("City: " + uc001_City);
-        System.out.println("State: " + uc001_State);
-        System.out.println("ZipCode: " + uc001_ZipCode);
-        System.out.println("Contact Number: " + uc001_ContactNumber);
-        System.out.println("Interest: " + xuc003_Interest);
-        System.out.println("Interest Status: " + xuc003_InterestStatus);
-        System.out.println("Document Type: " + uc001_DocumentType);
-        System.out.println("Effective Date: " + uc001_EffectiveDate);
-        System.out.println("Recording Date: " + uc001_RecordingDate);
-        System.out.println("Document Number: " + uc001_DocumentID);
-        System.out.println("Book: " + uc001_Book);
-        System.out.println("Page: " + uc001_Page);
-        System.out.println("END Creat Mineral Owner");
         return this.XUC003_MineralOwner;
     }
 
