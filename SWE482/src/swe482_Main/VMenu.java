@@ -114,7 +114,7 @@ public class VMenu extends JFrame  {
     private JPanel buttonBar;
     private JButton _StartFunction;
     private JButton _CancelButton;
-    private String[] FunctionList = {
+    private final String[] FunctionList = {
         "PROCESS ABSTRACT TITLE REPORT",
         "PROCESS PAID-UP LEASE"
     };
