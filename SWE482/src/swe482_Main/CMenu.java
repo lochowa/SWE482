@@ -26,11 +26,11 @@ public class CMenu implements java.awt.event.ActionListener {
             System.exit(0);
         }
         
-        if (e.getActionCommand().equals("PROCESS_ABSTRACT_TITLE_REPORT")){
+        if (e.getActionCommand().equals("ADD_ABSTRACT_TITLE_PACKAGE")){
                     UC001MVC mvcProperty = new UC001MVC();
         }
         
-        if (e.getActionCommand().equals("PROCESS_PAID-UP_LEASE")){
+        if (e.getActionCommand().equals("ADD_PAID-UP_LEASE")){
                     UC002MVC mvcLease = new UC002MVC();
         }
     }

@@ -115,8 +115,8 @@ public class VMenu extends JFrame  {
     private JButton _StartFunction;
     private JButton _CancelButton;
     private final String[] FunctionList = {
-        "PROCESS ABSTRACT TITLE REPORT",
-        "PROCESS PAID-UP LEASE"
+        "ADD ABSTRACT TITLE PACKAGE",
+        "ADD PAID-UP LEASE"
     };
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
