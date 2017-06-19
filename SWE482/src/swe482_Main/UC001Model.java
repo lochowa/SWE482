@@ -101,7 +101,7 @@ public class UC001Model {
     private String xuc001_LegalDescription;
     private String xuc001_Meridian;
     private final String[] PropertyBounders = new String[4];
-    // TO DO: Create List<E> to hold RTI MInterest recods
+    private double xuc001_InterestChecksum = 0;
 
     public String getDBRecordID() {
         UUID UrecID = UUID.randomUUID();
@@ -411,4 +411,23 @@ public class UC001Model {
         this.xuc001_Meridian = xuc001_Meridian;
     }
 
+    public double getXuc001_InterestChecksum() {
+        return xuc001_InterestChecksum;
+    }
+
+    public void incrementXuc001_InterestChecksum(double xuc001_InterestChecksum) {
+        this.xuc001_InterestChecksum += xuc001_InterestChecksum;
+    }
+
+    public void decrementXuc001_InterestChecksum(double xuc001_InterestChecksum){
+        this.xuc001_InterestChecksum -= xuc001_InterestChecksum;
+    }
+    
+    public String createInterestChecksumString(){
+        return String.format("Interest Checksum: %.10f", this.getXuc001_InterestChecksum());
+    }
+    
+    public boolean validateInterestChecksum(){
+        return this.xuc001_InterestChecksum <= 1 && this.xuc001_InterestChecksum > 0;
+    }
 }

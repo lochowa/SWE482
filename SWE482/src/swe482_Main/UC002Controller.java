@@ -1,6 +1,7 @@
 package swe482_Main;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 
 /**
@@ -76,7 +77,8 @@ public class UC002Controller<E> implements java.awt.event.ActionListener {
                             view.getUc002_Lessee().trim());
                     model.printUC002Values();
                     model.committoDB();
-                    view.dispose();
+                    view.getDxuc007().dispose();
+                    view.getfUC002().dispose();
                 } catch (NumberFormatException f1) {
                     System.out.println(f1.getMessage());
                 }

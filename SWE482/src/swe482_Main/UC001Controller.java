@@ -8,6 +8,7 @@ package swe482_Main;
  * @author Jeff Event Action method writing.
  */
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 
 public class UC001Controller implements java.awt.event.ActionListener {
@@ -104,7 +105,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
         if (e.getActionCommand().equals(UserActions.INSERT_SURFACEOWNER.name())) {
             int valDocumentID, valBook, valPage;
-            this.validateSurfaceOwnerForm();
+            if(this.validateSurfaceOwnerForm()){
             try {
                 if (view.getXuc002_DocumentID().isEmpty()){
                     valDocumentID = 0;
@@ -149,6 +150,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.getSurfaceDialog().dispose();
             } catch (NumberFormatException nf2) {
                 System.out.println(nf2.getMessage());
+            }
             }
         }
 
@@ -253,6 +255,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     view.addButtonController(this, view.getRemoveMineralOwnerButton());
                     model.addXUC003MineralOwner(mineral);
                     model.incrementMModCount();
+                    model.incrementXuc001_InterestChecksum(Double.parseDouble(view.getXuc003_Interest()));
+                    view.setXuc001_InterestChecksum(model.createInterestChecksumString());
+                    view.setXuc001_InterestChecksum(model.validateInterestChecksum());
                     view.getMineralDialog().dispose();
                 } catch (NumberFormatException nf4) {
                     System.out.println(nf4.toString());
@@ -277,6 +282,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_ZipCode(Integer.parseInt(view.getXuc003_ZipCode()));
                     }
                     model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_ContactNumber(view.getXuc003_ContactNumber());
+                    
+                    model.decrementXuc001_InterestChecksum(model.getXUC003MineralOwner(getMineralOwnerIndex).getXuc003_Interest());
+                    
                     model.getXUC003MineralOwner(getMineralOwnerIndex).setXuc003_Interest(Double.parseDouble(view.getXuc003_Interest()));
                     model.getXUC003MineralOwner(getMineralOwnerIndex).setXuc003_InterestStatus(view.getXuc003_InterestStatus());
                     model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_DocumentType(view.getXuc003_cboDocumentType());
@@ -291,11 +299,18 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     if (!view.getXuc003_Page().isEmpty()){
                         model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_Page(Integer.parseInt(view.getXuc003_Page()));
                     }
+                    model.incrementXuc001_InterestChecksum(Double.parseDouble(view.getXuc003_Interest()));
+                    view.setXuc001_InterestChecksum(model.createInterestChecksumString());
+                    view.setXuc001_InterestChecksum(model.validateInterestChecksum());
                     view.updateMineralOwner(
                             model.createMineralOwnerString(model.getXUC003MineralOwner(getMineralOwnerIndex)),
                             model.getXUC003MineralOwner(getMineralOwnerIndex).getXuc003_InterestStatus(),
                             Double.toString(model.getXUC003MineralOwner(getMineralOwnerIndex).getXuc003_Interest()),
                             updateMineralOwnerIndex);
+                    System.out.println(model.createMineralOwnerString(model.getXUC003MineralOwner(getMineralOwnerIndex)));
+                    System.out.println(model.getXUC003MineralOwner(getMineralOwnerIndex).getXuc003_InterestStatus());
+                    System.out.println(Double.toString(model.getXUC003MineralOwner(getMineralOwnerIndex).getXuc003_Interest()));
+                    System.out.println(updateMineralOwnerIndex);
                     view.getMineralDialog().dispose();
                 } catch (NumberFormatException nf3) {
                     System.out.println("Update Mineral Owner\n" + nf3.getMessage());
@@ -316,7 +331,19 @@ public class UC001Controller implements java.awt.event.ActionListener {
             JButton source = (JButton) e.getSource();
             int index = Integer.parseInt(source.getName());
             view.removeMineralOwner(index);
+            model.decrementXuc001_InterestChecksum(model.getXUC003MineralOwner(index).getXuc003_Interest());
+            view.setXuc001_InterestChecksum(model.createInterestChecksumString());
+            view.setXuc001_InterestChecksum(model.validateInterestChecksum());
             model.removeXUC003MineralOwner(index);
+        }
+        
+        if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
+            if (this.validatePropertyForm() && model.validateInterestChecksum()) {
+                model.committoDB();
+                view.getSurfaceDialog().dispose();
+                view.getMineralDialog().dispose();
+                view.getAbstractTitleFrame().dispose();
+            }
         }
     }
 
@@ -549,7 +576,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
             view.setXuc002_lblEffectiveDate(false);
             validFields++;
         }
-
+  
         if (view.getXuc002_RecordingDate().isEmpty() || !view.getXuc002_RecordingDate().matches(dateRegEx)) {
             view.setXuc002_lblRecordingDate(true);
         } else {
@@ -580,7 +607,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.setXuc002_lblPage(false);
             }
         }
-
+        
         if (!view.getXuc002_DocumentID().isEmpty()) {
             if (view.getXuc002_Book().isEmpty() && view.getXuc002_Page().isEmpty()) {
                 validFields++;
@@ -609,7 +636,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 && !view.getXuc002_Name4().isEmpty()
                 && validFields == 11) {
             return true;
-        }
+        } 
 
         return false;
     } // END validateSurfaceOwnerForm()

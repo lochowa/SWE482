@@ -179,6 +179,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc001_SaveProperty.setActionCommand(UserActions.SAVE_ABSTRACT.name());
         xuc001_CancelButton = new JButton();
         xuc001_CancelButton.setActionCommand(UserActions.CLOSE_ABSTRACT.name());
+        xuc001_InterestChecksum = new JLabel();
 
         //======== this ========
         fXUC001.setLayout(new BorderLayout());
@@ -489,7 +490,13 @@ public class UC001View extends JFrame implements java.util.Observer {
                 xuc001_buttonBar.setLayout(new GridBagLayout());
                 ((GridBagLayout) xuc001_buttonBar.getLayout()).columnWidths = new int[]{0, 85, 85, 0, 0};
                 ((GridBagLayout) xuc001_buttonBar.getLayout()).columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0};
-
+                
+                //---- xuc001_fractionalInterestChecksum ----
+                xuc001_InterestChecksum.setFont(xuc001_InterestChecksum.getFont().deriveFont(xuc001_InterestChecksum.getFont().getSize() + 1f));
+                xuc001_buttonBar.add(xuc001_InterestChecksum, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                    new Insets(0, 0, 0, 5), 0, 0));
+                
                 //---- xuc001_SaveProperty ----
                 xuc001_SaveProperty.setText("SAVE");
                 xuc001_buttonBar.add(xuc001_SaveProperty, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
@@ -509,7 +516,7 @@ public class UC001View extends JFrame implements java.util.Observer {
         fXUC001.add(xuc001_dialogPane, BorderLayout.CENTER);
 //        pXUC001.add(dpXUC001);
 //        fXUC001.add(pXUC001);
-        fXUC001.setSize(660, 880);
+        fXUC001.setSize(660, 900);
         fXUC001.setVisible(true);
         fXUC001.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fXUC001.setLocationRelativeTo(getOwner());
@@ -1243,6 +1250,22 @@ public class UC001View extends JFrame implements java.util.Observer {
 
     }
 
+    public String getXuc001_InterestChecksum() {
+        return xuc001_InterestChecksum.getText();
+    }
+
+    public void setXuc001_InterestChecksum(String xuc001_InterestChecksum) {
+        this.xuc001_InterestChecksum.setText(xuc001_InterestChecksum);
+    }
+    
+    public void setXuc001_InterestChecksum(boolean feedback){
+        if (feedback){
+            this.xuc001_InterestChecksum.setForeground(Color.RED);
+        } else {
+            this.xuc001_InterestChecksum.setForeground(Color.black);
+        }
+    }
+
     public JDialog getSurfaceDialog() {
         return this.dXUC002;
     }
@@ -1308,6 +1331,7 @@ public class UC001View extends JFrame implements java.util.Observer {
     private JPanel xuc001_buttonBar;
     private JButton xuc001_SaveProperty;
     private JButton xuc001_CancelButton;
+    private JLabel xuc001_InterestChecksum;
     private final String[] MeridianList = {
         "1st P.M.",
         "2nd P.M.",
@@ -1548,9 +1572,13 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
 
     public void updateMineralOwner(String owner, String status, String interest, int gridY) {
-        JPanel test = (JPanel) xuc003_MineralOwnerPane.getComponent(gridY);
-        JTextField field = (JTextField) test.getComponent(0);
-        field.setText(owner);
+        Component[] componentList = this.xuc003_MineralOwnerPane.getComponents();
+        for (Component c : componentList) {
+            if (c.getComponentAt(0, gridY).getName().equals(Integer.toString(gridY))) {
+                c = this.addMineralOwnerPane(owner, status, interest, gridY);
+            }
+        }
+        this.xuc003_MineralOwnerPane.revalidate();
     }
 
     public void removeMineralOwner(int gridY) {
@@ -1565,10 +1593,10 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
 
     public JPanel addMineralOwnerPane(String owner, String status, String interest, int index) {
-
         JPanel mineral = new JPanel();
         JTextField _owner = new JTextField();
         _owner.setName(Integer.toString(index));
+        _owner.setText(owner);
         JButton edit = new JButton();
         edit.setText("Edit");
         edit.setActionCommand(UserActions.EDIT_SURFACEOWNER.name());
