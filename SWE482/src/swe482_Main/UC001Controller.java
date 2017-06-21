@@ -104,52 +104,52 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
         if (e.getActionCommand().equals(UserActions.INSERT_SURFACEOWNER.name())) {
             int valDocumentID, valBook, valPage;
-            if(this.validateSurfaceOwnerForm()){
-            try {
-                if (view.getXuc002_DocumentID().isEmpty()){
-                    valDocumentID = 0;
-                } else {
-                    valDocumentID = Integer.parseInt(view.getXuc002_DocumentID());
+            if (this.validateSurfaceOwnerForm()) {
+                try {
+                    if (view.getXuc002_DocumentID().isEmpty()) {
+                        valDocumentID = 0;
+                    } else {
+                        valDocumentID = Integer.parseInt(view.getXuc002_DocumentID());
+                    }
+                    if (view.getXuc002_Book().isEmpty()) {
+                        valBook = 0;
+                    } else {
+                        valBook = Integer.parseInt(view.getXuc002_Book());
+                    }
+                    if (view.getXuc002_Page().isEmpty()) {
+                        valPage = 0;
+                    } else {
+                        valPage = Integer.parseInt(view.getXuc002_Page());
+                    }
+                    XUC002SurfaceOwner surface = model.createXUC002SurfaceOwner(
+                            model.getModCount(),
+                            100,
+                            view.getXuc002_Name1(),
+                            view.getXuc002_Name2(),
+                            view.getXuc002_Name3(),
+                            view.getXuc002_Name4(),
+                            view.getXuc002_Address(),
+                            view.getXuc002_City(),
+                            view.getXuc002_State(),
+                            Integer.parseInt(view.getXuc002_ZipCode()),
+                            view.getXuc002_ContactNumber(),
+                            view.getXuc002_cboDocumentType(),
+                            view.getXuc002_EffectiveDate(),
+                            view.getXuc002_RecordingDate(),
+                            valDocumentID,
+                            valBook,
+                            valPage);
+                    view.addSurfaceOwner(model.createSurfaceOwnerString(surface), model.getModCount());
+                    view.getEditSurfaceOwnerButton().setActionCommand(UserActions.EDIT_SURFACEOWNER.name());
+                    view.addButtonController(this, view.getEditSurfaceOwnerButton());
+                    view.getRemoveSurfaceOwnerButton().setActionCommand(UserActions.REMOVE_SURFACEOWNER.name());
+                    view.addButtonController(this, view.getRemoveSurfaceOwnerButton());
+                    model.addXUC002SurfaceOwner(surface);
+                    model.incrementMModCount();
+                    view.getSurfaceDialog().dispose();
+                } catch (NumberFormatException nf2) {
+                    System.out.println(nf2.getMessage());
                 }
-                if (view.getXuc002_Book().isEmpty()) {
-                    valBook = 0;
-                } else {
-                    valBook = Integer.parseInt(view.getXuc002_Book());
-                }
-                if (view.getXuc002_Page().isEmpty()) {
-                    valPage = 0;
-                } else {
-                    valPage = Integer.parseInt(view.getXuc002_Page());
-                }
-                XUC002SurfaceOwner surface = model.createXUC002SurfaceOwner(
-                        model.getModCount(),
-                        100,
-                        view.getXuc002_Name1(),
-                        view.getXuc002_Name2(),
-                        view.getXuc002_Name3(),
-                        view.getXuc002_Name4(),
-                        view.getXuc002_Address(),
-                        view.getXuc002_City(),
-                        view.getXuc002_State(),
-                        Integer.parseInt(view.getXuc002_ZipCode()),
-                        view.getXuc002_ContactNumber(),
-                        view.getXuc002_cboDocumentType(),
-                        view.getXuc002_EffectiveDate(),
-                        view.getXuc002_RecordingDate(),
-                        valDocumentID,
-                        valBook,
-                        valPage);
-                view.addSurfaceOwner(model.createSurfaceOwnerString(surface), model.getModCount());
-                view.getEditSurfaceOwnerButton().setActionCommand(UserActions.EDIT_SURFACEOWNER.name());
-                view.addButtonController(this, view.getEditSurfaceOwnerButton());
-                view.getRemoveSurfaceOwnerButton().setActionCommand(UserActions.REMOVE_SURFACEOWNER.name());
-                view.addButtonController(this, view.getRemoveSurfaceOwnerButton());
-                model.addXUC002SurfaceOwner(surface);
-                model.incrementMModCount();
-                view.getSurfaceDialog().dispose();
-            } catch (NumberFormatException nf2) {
-                System.out.println(nf2.getMessage());
-            }
             }
         }
 
@@ -213,17 +213,17 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     } else {
                         varZipCode = Integer.parseInt(view.getXuc003_ZipCode());
                     }
-                    if (view.getXuc003_DocumentID().isEmpty()){
+                    if (view.getXuc003_DocumentID().isEmpty()) {
                         valDocumentID = 0;
                     } else {
                         valDocumentID = Integer.parseInt(view.getXuc003_DocumentID());
                     }
-                    if (view.getXuc003_Book().isEmpty()){
+                    if (view.getXuc003_Book().isEmpty()) {
                         valBook = 0;
                     } else {
                         valBook = Integer.parseInt(view.getXuc003_Book());
                     }
-                    if (view.getXuc003_Page().isEmpty()){
+                    if (view.getXuc003_Page().isEmpty()) {
                         valPage = 0;
                     } else {
                         valPage = Integer.parseInt(view.getXuc003_Page());
@@ -281,9 +281,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_ZipCode(Integer.parseInt(view.getXuc003_ZipCode()));
                     }
                     model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_ContactNumber(view.getXuc003_ContactNumber());
-                    
+
                     model.decrementXuc001_InterestChecksum(model.getXUC003MineralOwner(getMineralOwnerIndex).getXuc003_Interest());
-                    
+
                     model.getXUC003MineralOwner(getMineralOwnerIndex).setXuc003_Interest(Double.parseDouble(view.getXuc003_Interest()));
                     model.getXUC003MineralOwner(getMineralOwnerIndex).setXuc003_InterestStatus(view.getXuc003_InterestStatus());
                     model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_DocumentType(view.getXuc003_cboDocumentType());
@@ -295,7 +295,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     if (!view.getXuc003_Book().isEmpty()) {
                         model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_Book(Integer.parseInt(view.getXuc003_Book()));
                     }
-                    if (!view.getXuc003_Page().isEmpty()){
+                    if (!view.getXuc003_Page().isEmpty()) {
                         model.getXUC003MineralOwner(getMineralOwnerIndex).setUc001_Page(Integer.parseInt(view.getXuc003_Page()));
                     }
                     model.incrementXuc001_InterestChecksum(Double.parseDouble(view.getXuc003_Interest()));
@@ -335,8 +335,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
             view.setXuc001_InterestChecksum(model.validateInterestChecksum());
             model.removeXUC003MineralOwner(index);
         }
-        
-        if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())){
+
+        if (e.getActionCommand().equals(UserActions.SAVE_ABSTRACT.name())) {
             if (this.validatePropertyForm() && model.validateInterestChecksum()) {
                 model.committoDB();
                 view.getSurfaceDialog().dispose();
@@ -480,17 +480,14 @@ public class UC001Controller implements java.awt.event.ActionListener {
             }
         }
 
-        if (model.getModCount() != 0) {
-            validFields++;
-        }
-        if (model.getModCount() != 0) {
+        if (model.getModCount() != 0 || model.getModCount() > 1) {
             validFields++;
         }
 
-        if (view.getXuc001_cbxBounders() && validFields == 16) {
+        if (view.getXuc001_cbxBounders() && validFields == 14) {
             return true;
         }
-        return !view.getXuc001_cbxBounders() & validFields == 12;
+        return !view.getXuc001_cbxBounders() & validFields == 10;
     }
 
     public boolean validateSurfaceOwnerForm() {
@@ -568,14 +565,14 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.setXuc002_lblState(false);
             }
         }
-        
+
         if (view.getXuc002_EffectiveDate().isEmpty() || !view.getXuc002_EffectiveDate().matches(dateRegEx)) {
             view.setXuc002_lblEffectiveDate(true);
         } else {
             view.setXuc002_lblEffectiveDate(false);
             validFields++;
         }
-  
+
         if (view.getXuc002_RecordingDate().isEmpty() || !view.getXuc002_RecordingDate().matches(dateRegEx)) {
             view.setXuc002_lblRecordingDate(true);
         } else {
@@ -606,7 +603,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.setXuc002_lblPage(false);
             }
         }
-        
+
         if (!view.getXuc002_DocumentID().isEmpty()) {
             if (view.getXuc002_Book().isEmpty() && view.getXuc002_Page().isEmpty()) {
                 validFields++;
@@ -635,7 +632,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 && !view.getXuc002_Name4().isEmpty()
                 && validFields == 11) {
             return true;
-        } 
+        }
 
         return false;
     } // END validateSurfaceOwnerForm()
@@ -644,12 +641,12 @@ public class UC001Controller implements java.awt.event.ActionListener {
         int validFields = 0;
 
         if (view.getXuc003_Interest().isEmpty() || !view.getXuc003_Interest().matches(royaltyRegEx)) {
-                view.setXuc003_lblInterest(true);
-            } else {
-                view.setXuc003_lblInterest(false);
-                validFields++;
-            }
- 
+            view.setXuc003_lblInterest(true);
+        } else {
+            view.setXuc003_lblInterest(false);
+            validFields++;
+        }
+
         if (view.getXuc003_Name1().isEmpty() || !view.getXuc003_Name1().matches(stringRegEx)) {
             view.setXuc003_lblName1(true);
 
@@ -678,7 +675,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
             }
         }
         if (!view.getXuc003_Name4().isEmpty()) {
-                        System.out.println("Test: " + validFields);
+            System.out.println("Test: " + validFields);
             if (!view.getXuc003_Name4().matches(stringRegEx)) {
                 view.setXuc003_lblName4(true);
 
@@ -730,14 +727,14 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.setXuc003_lblState(false);
             }
         }
-        
+
         if (view.getXuc003_EffectiveDate().isEmpty() || !view.getXuc003_EffectiveDate().matches(dateRegEx)) {
             view.setXuc003_lblEffectiveDate(true);
         } else {
             view.setXuc003_lblEffectiveDate(false);
             validFields++;
         }
-  
+
         if (view.getXuc003_RecordingDate().isEmpty() || !view.getXuc003_RecordingDate().matches(dateRegEx)) {
             view.setXuc003_lblRecordingDate(true);
         } else {
@@ -768,7 +765,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 view.setXuc003_lblPage(false);
             }
         }
-        
+
         if (!view.getXuc003_DocumentID().isEmpty()) {
             if (view.getXuc003_Book().isEmpty() && view.getXuc003_Page().isEmpty()) {
                 validFields++;
@@ -779,9 +776,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 validFields++;
             }
         }
-        
+
         System.out.println(validFields);
-        
+
         if (validFields == 5) {
             return true;
         } else if (!view.getXuc003_Name2().isEmpty()
@@ -790,7 +787,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 && validFields == 6) {
             return true;
         } else if (!view.getXuc003_Name2().isEmpty()
-         && !view.getXuc003_Name3().isEmpty()
+                && !view.getXuc003_Name3().isEmpty()
                 && view.getXuc003_Name4().isEmpty()
                 && validFields == 7) {
             return true;
@@ -803,7 +800,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
 
         return false;
     }
-        
+
     private void importSurfaceOwner(XUC002SurfaceOwner owner, String index) {
         view.setXuc002_Name1(owner.getUc001_Name1());
         if (owner.getUc001_Name2().isEmpty()) {
@@ -901,16 +898,16 @@ public class UC001Controller implements java.awt.event.ActionListener {
         } else {
             view.setXuc003_ContactNumber(owner.getUc001_ContactNumber());
         }
-        
+
         view.setXuc003_EffectiveDate(owner.getUc001_EffectiveDate());
         view.setXuc003_RecordingDate(owner.getUc001_RecordingDate());
-        if (owner.getUc001_DocumentID() != 0){
+        if (owner.getUc001_DocumentID() != 0) {
             view.setXuc003_DocumentID(Integer.toString(owner.getUc001_DocumentID()));
         }
-        if (owner.getUc001_Book() != 0){
+        if (owner.getUc001_Book() != 0) {
             view.setXuc003_Book(Integer.toString(owner.getUc001_Book()));
         }
-        if (owner.getUc001_Page() != 0){
+        if (owner.getUc001_Page() != 0) {
             view.setXuc003_Page(Integer.toString(owner.getUc001_Page()));
         }
         view.importMineralOwnerButtonProperties(true, index);
@@ -947,7 +944,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
         view.setXuc003_Book(null);
         view.setXuc003_lblBook(false);
         view.setXuc003_Page(null);
-        view.setXuc003_lblPage(false);      
+        view.setXuc003_lblPage(false);
     }
 
 }
