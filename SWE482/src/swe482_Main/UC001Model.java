@@ -168,11 +168,11 @@ public class UC001Model {
 
         String select = "SELECT LandRecordID from Property Where ID_Parcel = ?";
 
-        String update = "UPDATE Property SET ID_Tax = ? , Description = ? , Acres = ? WHERE LandRecordID = ?";
+        String update = "UPDATE Property SET ID_Tax = ? , Description = ? , Acres = ? Township = ?, Range = ?, Section = ?, NorthBounder = ?, EastBounder = ?, SouthBounder = ?, WestBounder = ?, PM = ? WHERE LandRecordID = ?";
 
         String insert = "INSERT INTO Property"
-                + "(LandRecordID,ID_Parcel,ID_Tax, Description, Acres)"
-                + "VALUES(?,?,?,?,?)";
+                + "(LandRecordID,ID_Parcel,ID_Tax, Description, Acres, Township, Range, Section, NorthBounder, EastBounder, SouthBounder, WestBounder, PM)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             con = this.connect();
@@ -188,7 +188,15 @@ public class UC001Model {
                 ustmt.setString(1, xuc001_TaxAccountID);
                 ustmt.setString(2, xuc001_LegalDescription);
                 ustmt.setDouble(3, xuc001_Acreage);
-                ustmt.setString(4, PID);
+                ustmt.setString(4, this.xuc001_Township);
+                ustmt.setString(5, this.xuc001_Range);
+                ustmt.setInt(6, this.xuc001_Section);
+                ustmt.setString(7, this.PropertyBounders[0]);
+                ustmt.setString(8, this.PropertyBounders[1]);
+                ustmt.setString(9, this.PropertyBounders[2]);
+                ustmt.setString(10, this.PropertyBounders[3]);
+                ustmt.setString(11, this.xuc001_Meridian);
+                ustmt.setString(12, PID);
                 ustmt.addBatch();
 
                 con.setAutoCommit(false);
@@ -205,6 +213,15 @@ public class UC001Model {
                 istmt.setString(3, this.xuc001_TaxAccountID);
                 istmt.setString(4, this.xuc001_LegalDescription);
                 istmt.setDouble(5, this.xuc001_Acreage);
+                istmt.setString(6, this.xuc001_Township);
+                istmt.setString(7, this.xuc001_Range);
+                istmt.setInt(8, this.xuc001_Section);
+                istmt.setString(9, this.PropertyBounders[0]);
+                istmt.setString(10, this.PropertyBounders[1]);
+                istmt.setString(11, this.PropertyBounders[2]);
+                istmt.setString(12, this.PropertyBounders[3]);
+                istmt.setString(13, this.xuc001_Meridian);
+                
                 istmt.executeUpdate();
                 System.out.println("Record is inserted into Property table!");
 
