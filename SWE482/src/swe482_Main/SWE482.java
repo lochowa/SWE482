@@ -4,7 +4,7 @@ package swe482_Main;
 
 /**
  *
- * @author Ubuntu2B
+ * @author Michael Barth
  */
 public class SWE482 {
 

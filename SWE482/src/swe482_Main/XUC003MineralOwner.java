@@ -1,10 +1,8 @@
 package swe482_Main;
 
-import java.util.ArrayList;
-
 /**
  *
- * @author Ubuntu2B
+ * @author Michael Barth
  */
 public class XUC003MineralOwner extends UC001Owner {
     

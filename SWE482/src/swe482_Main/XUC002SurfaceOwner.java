@@ -1,7 +1,5 @@
 package swe482_Main;
 
-import java.util.ArrayList;
-
 /**
  * @author Michael Barth This class object inherits attributes and
  * mutators/accessors from UC001Owner
