@@ -8,7 +8,6 @@ package swe482_Main;
  * @author Jeff Event Action method writing.
  */
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 
 public class UC001Controller implements java.awt.event.ActionListener {

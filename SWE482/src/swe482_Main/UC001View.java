@@ -890,16 +890,12 @@ public class UC001View extends JFrame implements java.util.Observer {
         xuc003_Name4 = new JTextField();
         xuc003_lblAddress = new JLabel();
         xuc003_Address = new JTextField();
-        xuc003_Address.setEditable(false);
         xuc003_lblCity = new JLabel();
         xuc003_City = new JTextField();
-        xuc003_City.setEditable(false);
         xuc003_lblState = new JLabel();
         xuc003_State = new JTextField();
-        xuc003_State.setEditable(false);
         xuc003_lblZipCode = new JLabel();
         xuc003_ZipCode = new JTextField();
-        xuc003_ZipCode.setEditable(false);
         xuc003_lblContactNumber = new JLabel();
         xuc003_ContactNumber = new JTextField();
         xuc003_lblSourceInformation = new JLabel();
@@ -1259,7 +1255,7 @@ public class UC001View extends JFrame implements java.util.Observer {
     }
     
     public void setXuc001_InterestChecksum(boolean feedback){
-        if (feedback){
+        if (!feedback){
             this.xuc001_InterestChecksum.setForeground(Color.RED);
         } else {
             this.xuc001_InterestChecksum.setForeground(Color.black);
@@ -1403,6 +1399,7 @@ public class UC001View extends JFrame implements java.util.Observer {
     // START XUC003 Form Elements
     private final String[] statusOptions = {
         "OPEN",
+        "LEASED",
         "HELD BY PRODUCTION",
         "STORAGE"
     };
