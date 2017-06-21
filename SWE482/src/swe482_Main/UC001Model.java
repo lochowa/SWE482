@@ -430,4 +430,12 @@ public class UC001Model {
     public boolean validateInterestChecksum(){
         return this.xuc001_InterestChecksum <= 1 && this.xuc001_InterestChecksum > 0;
     }
+
+    public ArrayList<XUC002SurfaceOwner> getSurfaceOwnerList() {
+        return SurfaceOwnerList;
+    }
+
+    public ArrayList<XUC003MineralOwner> getMineralOwnerList() {
+        return MineralOwnerList;
+    }
 }

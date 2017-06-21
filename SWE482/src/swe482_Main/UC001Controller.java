@@ -480,7 +480,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
             }
         }
 
-        if (model.getModCount() != 0 || model.getModCount() > 1) {
+        if(model.getMineralOwnerList().size() > 0 && model.getSurfaceOwnerList().size() > 0){
             validFields++;
         }
 
@@ -776,8 +776,6 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 validFields++;
             }
         }
-
-        System.out.println(validFields);
 
         if (validFields == 5) {
             return true;
