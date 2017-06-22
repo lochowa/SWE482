@@ -103,7 +103,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
     }
     
     //committoDB Method Written by Andrew Lochow
-    public void committoDB() {
+    public void committoDBSurface() {
         Connection con;
         PreparedStatement sostmt;
         PreparedStatement sosstmt;
