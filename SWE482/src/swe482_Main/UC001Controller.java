@@ -101,7 +101,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                 }
             }
         }
-
+//Cant figure out how to get committoDB() Method to instantiate below here... Either the committoDBSurface() or the committoDBMineral() Method...
         if (e.getActionCommand().equals(UserActions.INSERT_SURFACEOWNER.name())) {
             int valDocumentID, valBook, valPage;
             if (this.validateSurfaceOwnerForm()) {
@@ -147,7 +147,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     view.addButtonController(this, view.getRemoveSurfaceOwnerButton());
                     model.addXUC002SurfaceOwner(surface);
                     model.incrementMModCount();
-                    surface.committoDBSurface();
+                    //surface.committoDBSurface();
                     view.getSurfaceDialog().dispose();
                 } catch (NumberFormatException nf2) {
                     System.out.println(nf2.getMessage());
@@ -192,7 +192,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_Page(Integer.parseInt(view.getXuc002_Page()));
                     }
                     view.updateSurfaceOwner(model.createSurfaceOwnerString(model.getXUC002SurfaceOwner(updateSurfaceOwner)), updateSurfaceOwner);
-                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).committoDBSurface();
+                    //model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).committoDBSurface();
                     view.getSurfaceDialog().dispose();
                     
                 } catch (NumberFormatException nf3) {
@@ -262,6 +262,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     model.incrementXuc001_InterestChecksum(Double.parseDouble(view.getXuc003_Interest()));
                     view.setXuc001_InterestChecksum(model.createInterestChecksumString());
                     view.setXuc001_InterestChecksum(model.validateInterestChecksum());
+                    mineral.committoDBMineral();
                     view.getMineralDialog().dispose();
                 } catch (NumberFormatException nf4) {
                     System.out.println(nf4.toString());

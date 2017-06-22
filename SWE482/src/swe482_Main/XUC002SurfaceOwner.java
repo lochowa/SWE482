@@ -105,7 +105,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
     }
     
     //committoDB Method Written by Andrew Lochow
-    public void committoDBSurface() {
+    public final void committoDBSurface() {
         Connection con;
         PreparedStatement sostmt;
         PreparedStatement sosstmt;
@@ -113,7 +113,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
         PreparedStatement uosstmt;
         PreparedStatement iostmt;
         PreparedStatement iosstmt;
-        ResultSet rs;
+        //ResultSet rs;
         ResultSet rsos;
         ResultSet rso;
 
@@ -154,6 +154,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
             sostmt.setString(4, this.getUc001_ContactNumber());
             rso = sostmt.executeQuery();
             // If records match, then update
+            System.out.println("Performing Database Actions");
             if (rso.next()) {
                 ORID = rso.getString(1);
                 System.out.println("Record Exists under Owner Record ID: " + ORID + ". Updating Record instead.");
