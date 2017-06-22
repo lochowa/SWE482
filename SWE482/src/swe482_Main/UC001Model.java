@@ -172,7 +172,7 @@ public class UC001Model {
 
         String select = "SELECT LandRecordID from Property Where ID_Parcel = ?";
 
-        String update = "UPDATE Property SET ID_Tax = ? , Description = ? , Acres = ? Township = ?, Range = ?, Section = ?, NorthBounder = ?, EastBounder = ?, SouthBounder = ?, WestBounder = ?, PM = ? WHERE LandRecordID = ?";
+        String update = "UPDATE Property SET ID_Tax = ? , Description = ? , Acres = ?, Township = ?, Range = ?, Section = ?, NorthBounder = ?, EastBounder = ?, SouthBounder = ?, WestBounder = ?, PM = ? WHERE LandRecordID = ?";
 
         String insert = "INSERT INTO Property"
                 + "(LandRecordID,ID_Parcel,ID_Tax, Description, Acres, Township, Range, Section, NorthBounder, EastBounder, SouthBounder, WestBounder, PM)"
