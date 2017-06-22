@@ -89,7 +89,7 @@ public class UC001Model {
         this.modCount++;
     }
 
-    private final String dbRecordID = getDBRecordID();
+    public final String dbRecordID = getDBRecordID();
     private int xuc001_ParcelID;
     private String xuc001_TaxAccountID;
     private String xuc001_County;
@@ -107,6 +107,10 @@ public class UC001Model {
         UUID UrecID = UUID.randomUUID();
         String recID = UrecID.toString();
         return recID;
+    }
+    
+    public String getDBRecord(){
+        return this.dbRecordID;
     }
 
     private Connection connect() {
@@ -249,7 +253,8 @@ public class UC001Model {
             String uc001_RecordingDate,
             int uc001_DocumentID,
             int uc001_Book,
-            int uc001_Page
+            int uc001_Page,
+            String uc001_dbRecord
     ) {
         this.XUC002_SurfaceOwner = new XUC002SurfaceOwner(
                 insertModCount,
@@ -268,7 +273,8 @@ public class UC001Model {
                 uc001_RecordingDate,
                 uc001_DocumentID,
                 uc001_Book,
-                uc001_Page
+                uc001_Page,
+                uc001_dbRecord
         );
         return this.XUC002_SurfaceOwner;
     }

@@ -138,7 +138,8 @@ public class UC001Controller implements java.awt.event.ActionListener {
                             view.getXuc002_RecordingDate(),
                             valDocumentID,
                             valBook,
-                            valPage);
+                            valPage,
+                            model.getDBRecord());
                     view.addSurfaceOwner(model.createSurfaceOwnerString(surface), model.getModCount());
                     view.getEditSurfaceOwnerButton().setActionCommand(UserActions.EDIT_SURFACEOWNER.name());
                     view.addButtonController(this, view.getEditSurfaceOwnerButton());

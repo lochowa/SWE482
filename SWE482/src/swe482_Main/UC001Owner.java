@@ -16,6 +16,15 @@ public class UC001Owner {
     private String uc001_State;
     private int uc001_ZipCode;
     private String uc001_ContactNumber;
+    private String uc001_dbRecord;
+    
+    public String getUc001_dbRecord(){
+        return uc001_dbRecord;
+    }
+    
+    public void setUc001_dbRecord(String uc001_dbRecord) {
+        this.uc001_dbRecord = uc001_dbRecord;
+    }
 
     public String getUc001_ContactNumber() {
         return uc001_ContactNumber;

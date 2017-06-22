@@ -1,9 +1,19 @@
 package swe482_Main;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.UUID;
+
 /**
  * @author Michael Barth This class object inherits attributes and
+ * @author Andrew Lochow wrote SQL Portions
  * mutators/accessors from UC001Owner
  */
+
+
 public class XUC002SurfaceOwner extends UC001Owner {
 
     XUC002SurfaceOwner(
@@ -23,7 +33,8 @@ public class XUC002SurfaceOwner extends UC001Owner {
             String uc001_RecordingDate,
             int uc001_DocumentID,
             int uc001_Book,
-            int uc001_Page
+            int uc001_Page,
+            String dbRecord
     ) {
         this.setInsertModCount(insertModCount);
         this.setXuc002_Interest(xuc002_Interest);        
@@ -42,6 +53,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
         this.setUc001_DocumentID(uc001_DocumentID);
         this.setUc001_Book(uc001_Book);
         this.setUc001_Page(uc001_Page);
+        this.setUc001_dbRecord(dbRecord);
         System.out.println("START Create Surface Owner");
         System.out.println("Unique ID: " + this.getInsertModCount());
         System.out.println("Name 1: " + this.getUc001_Name1());
@@ -61,6 +73,158 @@ public class XUC002SurfaceOwner extends UC001Owner {
         System.out.println("Book: " + this.getUc001_Book());
         System.out.println("Page: " + this.getUc001_Page());
         System.out.println("END Creat Surface Owner");
+    }
+    private Connection connect() {
+        // SQLite connection string
+        //Commit Section Added 6/7/2017 by Andrew Lochow
+        String url = "jdbc:sqlite:./db/landman.db";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+            return conn;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
+    
+    public String getRandomUUID() {
+        UUID UrecID = UUID.randomUUID();
+        String recID = UrecID.toString();
+        return recID;
+    }
+    
+    public String getOwnerDBRecord(){
+        return this.OwnerDbRecord;
+    }
+    
+    public String getOwnershipDbRecord(){
+        return this.OwnershipDbRecord;
+    }
+    
+    //committoDB Method Written by Andrew Lochow
+    public void committoDB() {
+        Connection con;
+        PreparedStatement istmt;
+        PreparedStatement sostmt;
+        PreparedStatement sosstmt;
+        PreparedStatement uostmt;
+        PreparedStatement uosstmt;
+        PreparedStatement iostmt;
+        PreparedStatement iosstmt;
+        ResultSet rs;
+        ResultSet rsos;
+        ResultSet rso;
+
+        // String select = "SELECT OwnerRecordID from Ownership Where REF_LandRecordID = ?";
+        String selectowner = "SELECT OwnerRecordID from Owner Where NameLn1 = ? AND City = ? AND Phone = ?";
+        String selectownership = "Select OwnershipRecordID from Ownership Where REF_OwnerRecordID = ? AND Int_Surface =1 AND Int_Mineral = 0"
+                +" AND DocumentType = ? AND Book = ? AND Page = ? And DocumentID = ? AND REF_LandRecordID = ?";
+                
+
+        String updateowner = "UPDATE Owner "
+                +" SET NameLn1 = ?, NameLn2 = ?, NameLn3 = ?, NameLn4 = ?,"
+                +" AddressLn1 = ?, City = ?, State = ?, ZipCode = ?, Phone = ?"
+                +" WHERE OwnerRecordID = ?";
+        String updateownership = " UPDATE Ownership"
+                +" SET RecordingDate = ?, EffectiveDate = ? , DocumentID = ?, Book =?, Page = ?"
+                +" WHERE OwnershipRecordID = ?";
+        String insertownership = " INSERT INTO Ownership"
+                +"(OwnershipRecordID, REF_OwnerRecordID, DocumentType, RecordingDate, EffectiveDate, DocumentID, Book, Page, Int_Surface, Int_Mineral, REF_LandRecordID)"
+                +" VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String insertowner = "INSERT INTO Owner"
+                +"(OwnerRecordID, NameLn1, NameLn2, NameLn3, NameLn4, Alias, AddressLn1, City, State, ZipCode, Phone)"
+                +"VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+        try {
+            con = this.connect();
+            //sstmt = con.prepareStatement(select);
+            sostmt= con.prepareStatement(selectowner);
+            sosstmt = con.prepareStatement(selectownership);
+            
+            //sstmt.setString(1, this.dbRecord);
+            // query Owner table for matching records.
+            rso = sostmt.executeQuery();
+            String ORID;
+            ORID = rso.getString(1);
+            sostmt.setString(1, ORID);
+            sostmt.setString(2, this.getUc001_Name1());
+            sostmt.setString(3, this.getUc001_City());
+            sostmt.setString(4, this.getUc001_ContactNumber());
+            rso = sostmt.executeQuery();
+            // If records match, then update
+            if (rso.next()) {
+                ORID = rso.getString(1);
+                System.out.println("Record Exists under Owner Record ID: " + ORID + ". Updating Record instead.");
+                uostmt = con.prepareStatement(updateowner);
+                uostmt.setString(1, this.getUc001_Name1());
+                uostmt.setString(2, this.getUc001_Name2());
+                uostmt.setString(3, this.getUc001_Name3());
+                uostmt.setString(4, this.getUc001_Name4());
+                uostmt.setString(5, this.getUc001_Address());
+                uostmt.setString(6, this.getUc001_City());
+                uostmt.setString(7, this.getUc001_State());
+                uostmt.setInt(8, this.getUc001_ZipCode());
+                uostmt.setString(9, this.getUc001_ContactNumber());
+                uostmt.setString(10, ORID);
+                uostmt.addBatch();
+
+                con.setAutoCommit(false);
+                uostmt.executeBatch();
+                con.setAutoCommit(true);
+                System.out.println("Owner Record Updated Successfully.");
+                System.out.println("Checking if Ownership record exists.");
+                
+                // checking if Ownership record exists since it is known that the Owner exists.
+                rsos = sosstmt.executeQuery();
+                sosstmt.setString(1, ORID);
+                sosstmt.setString(2, this.getUc001_DocumentType());
+                sosstmt.setInt(3, this.getUc001_Book());
+                sosstmt.setInt(4, this.getUc001_Page());
+                sosstmt.setInt(5, this.getUc001_DocumentID());
+                sosstmt.setString(6, this.getUc001_dbRecord());
+                
+                // If it does exist perform update.
+                if (rsos.next()){
+                    String OSRID = rsos.getString(1);
+                    System.out.println("Record Exists under Ownership Record ID: " + OSRID + ". Updating Record instead.");
+                    uosstmt = con.prepareStatement(updateownership);
+                    uosstmt.setString(1, this.getUc001_RecordingDate());
+                    uosstmt.setString(2, this.getUc001_EffectiveDate());
+                    uosstmt.setInt(3, this.getUc001_DocumentID());
+                    uosstmt.setInt(4, this.getUc001_Book());
+                    uosstmt.setInt(5,this.getUc001_Page());                    
+                
+                // Otherwise insert the new ownership record for the existing owner
+                } else {
+                    System.out.println("Ownership Record does not exist");
+                    iosstmt = con.prepareStatement(insertownership);
+                    iosstmt.setString(1, this.getOwnershipDbRecord());
+                    //iostmt.setString(2, this.get);
+                    iosstmt.setString(2, this.getUc001_DocumentType());
+                    
+                }
+                
+                
+                con.close();
+                
+                
+                
+
+            } else {
+                System.out.println("Record does not exist, creating new record");
+                istmt = con.prepareStatement(insertowner);
+                istmt.setString(1, this.dbRecord);
+
+                
+                istmt.executeUpdate();
+                System.out.println("Record is inserted into Property table!");
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
@@ -118,6 +282,9 @@ public class XUC002SurfaceOwner extends UC001Owner {
     private int uc001_DocumentID;
     private int uc001_Book;
     private int uc001_Page;
+    private String dbRecord;
+    private final String OwnerDbRecord = getRandomUUID();
+    private final String OwnershipDbRecord = getRandomUUID();
     
     public double getXuc002_Interest() {
         return this.xuc002_Interest;
@@ -244,5 +411,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
     public void setUc001_Page(int uc001_Page) {
         this.uc001_Page = uc001_Page;
     }
+       
+
 
 }
