@@ -54,6 +54,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
         this.setUc001_Book(uc001_Book);
         this.setUc001_Page(uc001_Page);
         this.setUc001_dbRecord(dbRecord);
+        this.committoDBSurface();
         System.out.println("START Create Surface Owner");
         System.out.println("Unique ID: " + this.getInsertModCount());
         System.out.println("Name 1: " + this.getUc001_Name1());
@@ -73,6 +74,7 @@ public class XUC002SurfaceOwner extends UC001Owner {
         System.out.println("Book: " + this.getUc001_Book());
         System.out.println("Page: " + this.getUc001_Page());
         System.out.println("END Creat Surface Owner");
+        
     }
     private Connection connect() {
         // SQLite connection string
