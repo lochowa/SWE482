@@ -126,7 +126,7 @@ public class XUC003MineralOwner extends UC001Owner {
         PreparedStatement uosstmt;
         PreparedStatement iostmt;
         PreparedStatement iosstmt;
-        ResultSet rs;
+        //ResultSet rs;
         ResultSet rsos;
         ResultSet rso;
 

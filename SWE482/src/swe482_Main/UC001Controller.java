@@ -147,6 +147,7 @@ public class UC001Controller implements java.awt.event.ActionListener {
                     view.addButtonController(this, view.getRemoveSurfaceOwnerButton());
                     model.addXUC002SurfaceOwner(surface);
                     model.incrementMModCount();
+                    surface.committoDBSurface();
                     view.getSurfaceDialog().dispose();
                 } catch (NumberFormatException nf2) {
                     System.out.println(nf2.getMessage());
@@ -191,7 +192,9 @@ public class UC001Controller implements java.awt.event.ActionListener {
                         model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).setUc001_Page(Integer.parseInt(view.getXuc002_Page()));
                     }
                     view.updateSurfaceOwner(model.createSurfaceOwnerString(model.getXUC002SurfaceOwner(updateSurfaceOwner)), updateSurfaceOwner);
+                    model.getXUC002SurfaceOwner(getSurfaceOwnerIndex).committoDBSurface();
                     view.getSurfaceDialog().dispose();
+                    
                 } catch (NumberFormatException nf3) {
                     System.out.println("Update Surface Owner\n" + nf3.getMessage());
                 }
