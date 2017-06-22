@@ -228,7 +228,8 @@ public class UC001Model {
                 
                 istmt.executeUpdate();
                 System.out.println("Record is inserted into Property table!");
-
+                //  Add committSurfacetoDB() and committMineraltoDB() here.
+                //  It chains methods while the connection is open, if it works.  
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
