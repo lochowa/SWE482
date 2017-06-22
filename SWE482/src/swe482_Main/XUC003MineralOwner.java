@@ -230,10 +230,7 @@ public class XUC003MineralOwner extends UC001Owner {
                     iosstmt.setInt(9, 0);
                     iosstmt.setInt(10, 1);
                     iosstmt.setString(11, this.getUc001_dbRecord());
-                    iosstmt.addBatch();
-                    con.setAutoCommit(false);
-                    iosstmt.executeBatch();
-                    con.setAutoCommit(true);
+                    iosstmt.executeUpdate();
                     System.out.println("Ownership Record Inserted Successfully.");
                     
                     
@@ -256,10 +253,7 @@ public class XUC003MineralOwner extends UC001Owner {
                 iostmt.setString(8, this.getUc001_State());
                 iostmt.setInt(9, this.getUc001_ZipCode());
                 iostmt.setString(10, this.getUc001_ContactNumber());
-                iostmt.addBatch();
-                con.setAutoCommit(false);
-                iostmt.executeBatch();
-                con.setAutoCommit(true);
+                iostmt.executeUpdate();
                 System.out.println("Owner Record Inserted Successfully.");
                 
                 // Also Creating new Ownership Record
@@ -276,10 +270,7 @@ public class XUC003MineralOwner extends UC001Owner {
                 iosstmt.setInt(9, 1);
                 iosstmt.setInt(10, 0);
                 iosstmt.setString(11, this.getUc001_dbRecord());
-                iosstmt.addBatch();
-                con.setAutoCommit(false);
-                iosstmt.executeBatch();
-                con.setAutoCommit(true);
+                iosstmt.executeUpdate();
                 System.out.println("Ownership Record Inserted Successfully.");
                 
                 // close the connection
