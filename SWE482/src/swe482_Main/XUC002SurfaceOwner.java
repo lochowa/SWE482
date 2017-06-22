@@ -105,7 +105,6 @@ public class XUC002SurfaceOwner extends UC001Owner {
     //committoDB Method Written by Andrew Lochow
     public void committoDB() {
         Connection con;
-        PreparedStatement istmt;
         PreparedStatement sostmt;
         PreparedStatement sosstmt;
         PreparedStatement uostmt;
@@ -133,8 +132,8 @@ public class XUC002SurfaceOwner extends UC001Owner {
                 +"(OwnershipRecordID, REF_OwnerRecordID, DocumentType, RecordingDate, EffectiveDate, DocumentID, Book, Page, Int_Surface, Int_Mineral, REF_LandRecordID)"
                 +" VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         String insertowner = "INSERT INTO Owner"
-                +"(OwnerRecordID, NameLn1, NameLn2, NameLn3, NameLn4, Alias, AddressLn1, City, State, ZipCode, Phone)"
-                +"VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                +"(OwnerRecordID, NameLn1, NameLn2, NameLn3, NameLn4, AddressLn1, City, State, ZipCode, Phone)"
+                +"VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         try {
             con = this.connect();
@@ -193,33 +192,84 @@ public class XUC002SurfaceOwner extends UC001Owner {
                     uosstmt.setString(2, this.getUc001_EffectiveDate());
                     uosstmt.setInt(3, this.getUc001_DocumentID());
                     uosstmt.setInt(4, this.getUc001_Book());
-                    uosstmt.setInt(5,this.getUc001_Page());                    
+                    uosstmt.setInt(5,this.getUc001_Page());
+                    uosstmt.addBatch();
+                    con.setAutoCommit(false);
+                    uosstmt.executeBatch();
+                    con.setAutoCommit(true);
+                    System.out.println("Ownership Record Updated Successfully.");
+                    
                 
                 // Otherwise insert the new ownership record for the existing owner
                 } else {
                     System.out.println("Ownership Record does not exist");
                     iosstmt = con.prepareStatement(insertownership);
                     iosstmt.setString(1, this.getOwnershipDbRecord());
-                    //iostmt.setString(2, this.get);
-                    iosstmt.setString(2, this.getUc001_DocumentType());
+                    iosstmt.setString(2, this.getOwnerDBRecord());                    
+                    iosstmt.setString(3, this.getUc001_DocumentType());
+                    iosstmt.setString(4, this.getUc001_RecordingDate());
+                    iosstmt.setString(5, this.getUc001_EffectiveDate());
+                    iosstmt.setInt(6, this.getUc001_DocumentID());
+                    iosstmt.setInt(7, this.getUc001_Book());
+                    iosstmt.setInt(8, this.getUc001_Page());
+                    iosstmt.setInt(9, 1);
+                    iosstmt.setInt(10, 0);
+                    iosstmt.setString(11, this.getUc001_dbRecord());
+                    iosstmt.addBatch();
+                    con.setAutoCommit(false);
+                    iosstmt.executeBatch();
+                    con.setAutoCommit(true);
+                    System.out.println("Ownership Record Inserted Successfully.");
+                    
                     
                 }
-                
-                
+                // close the connection
                 con.close();
-                
-                
-                
 
             } else {
-                System.out.println("Record does not exist, creating new record");
-                istmt = con.prepareStatement(insertowner);
-                istmt.setString(1, this.dbRecord);
-
                 
-                istmt.executeUpdate();
-                System.out.println("Record is inserted into Property table!");
-
+                // Creating new Owner Record
+                System.out.println("Record does not exist, creating new records");
+                iostmt = con.prepareStatement(insertowner);
+                iostmt.setString(1, ORID);
+                iostmt.setString(2, this.getUc001_Name1());
+                iostmt.setString(3, this.getUc001_Name2());
+                iostmt.setString(4, this.getUc001_Name3());
+                iostmt.setString(5, this.getUc001_Name4());
+                iostmt.setString(6, this.getUc001_Address());
+                iostmt.setString(7, this.getUc001_City());
+                iostmt.setString(8, this.getUc001_State());
+                iostmt.setInt(9, this.getUc001_ZipCode());
+                iostmt.setString(10, this.getUc001_ContactNumber());
+                iostmt.addBatch();
+                con.setAutoCommit(false);
+                iostmt.executeBatch();
+                con.setAutoCommit(true);
+                System.out.println("Owner Record Inserted Successfully.");
+                
+                // Also Creating new Ownership Record
+                System.out.println("Now creating Ownership Record");
+                iosstmt = con.prepareStatement(insertownership);
+                iosstmt.setString(1, this.getOwnershipDbRecord());
+                iosstmt.setString(2, this.getOwnerDBRecord());                    
+                iosstmt.setString(3, this.getUc001_DocumentType());
+                iosstmt.setString(4, this.getUc001_RecordingDate());
+                iosstmt.setString(5, this.getUc001_EffectiveDate());
+                iosstmt.setInt(6, this.getUc001_DocumentID());
+                iosstmt.setInt(7, this.getUc001_Book());
+                iosstmt.setInt(8, this.getUc001_Page());
+                iosstmt.setInt(9, 1);
+                iosstmt.setInt(10, 0);
+                iosstmt.setString(11, this.getUc001_dbRecord());
+                iosstmt.addBatch();
+                con.setAutoCommit(false);
+                iosstmt.executeBatch();
+                con.setAutoCommit(true);
+                System.out.println("Ownership Record Inserted Successfully.");
+                
+                // close the connection
+                con.close();
+                
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
