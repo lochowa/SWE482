@@ -297,7 +297,8 @@ public class UC001Model {
             String uc001_RecordingDate,
             int uc001_DocumentID,
             int uc001_Book,
-            int uc001_Page
+            int uc001_Page,
+            String uc001_dbRecord
     ) {
         this.XUC003_MineralOwner = new XUC003MineralOwner(
                 insertModCount,
@@ -317,7 +318,8 @@ public class UC001Model {
                 uc001_RecordingDate,
                 uc001_DocumentID,
                 uc001_Book,
-                uc001_Page
+                uc001_Page,
+                uc001_dbRecord
         );
         return this.XUC003_MineralOwner;
     }
